@@ -2,7 +2,10 @@
 
 # dependencies
 /node_modules
+/venv
+/env
 /.pnp
+/static
 .pnp.js
 
 # testing

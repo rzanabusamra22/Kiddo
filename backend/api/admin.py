@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import play
+from .models import Play
 
 # Register models
-admin.site.register(play)
+admin.site.register(Play)
