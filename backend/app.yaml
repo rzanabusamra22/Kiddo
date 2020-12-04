@@ -15,4 +15,4 @@ handlers:
 
 # To create a flex env & custom runtime (Needs Dockerfile)
 # runtime: custom
-env: flex
+# env: flex
