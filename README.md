@@ -16,8 +16,15 @@ This website gives a safe envorinment for kids to play and learn
 
 ### Technologies used ###
 * Python
+* Django
+* Rest framework
+* Sqlite3
 * MySql
-* React Type Script
+* gCloud app engine
+* gCloud sql
+* React Native
+* Expo cli
+* Android Studio
 
 ### Launch ###
 ## Frontend ##
@@ -30,7 +37,7 @@ This website gives a safe envorinment for kids to play and learn
 
 * To create new virtual environment (venv)
 * Open bash inside /backend
-* python -m venv venv
+* $ python -m venv venv
 
 * To enter venv
 * Open bash inside /backend
