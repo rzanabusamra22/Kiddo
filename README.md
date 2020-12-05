@@ -25,15 +25,23 @@ This website gives a safe envorinment for kids to play and learn
 
 ## Backend ##
 * To run the database locally on localhost
-* Open bash inside /final/backend
+* Install gcloud then open bash inside /backend
 * $ ./cloud_sql_proxy -instances=disco-nirvana-297409:europe-west3:pearls=tcp:3306
 
-* To enter the virtual environment (venv)
-* Open bash inside /final/backend
+* To create new virtual environment (venv)
+* Open bash inside /backend
+* python -m venv venv
+
+* To enter venv
+* Open bash inside /backend
 * $ . venv/Scripts/activate
 
-* To run the server locally
-* Enter venv
+* To install dependancies
+* Enter venv or open bash inside /backend (global install)
+* $ pip install -r requirements.txt
+
+* To run the server locally (after installing dependancies)
+* Enter venv or open bash inside /backend
 * $ python manage.py runserver
 
 ### Before you deploy ###
