@@ -1,0 +1,18 @@
+runtime: python39
+
+handlers:
+
+# To serve the files in the static directory.
+- url: /static
+  static_dir: static/
+
+# This handler routes all requests not caught above to the main app. 
+- url: /.*
+  script: auto
+
+# This is an alternative to app variable in main.py (if it fails to be detected)
+# entrypoint: gunicorn -b :$PORT backend.wsgi
+
+# To create a flex env & custom runtime (Needs Dockerfile)
+# runtime: custom
+# env: flex
