@@ -1,20 +1,6 @@
 {
-  "name": "Kiddo",
-  "version": "1.0.0",
-  "description": "App for Children",
-  "main": "backend/server/server.js",
-  "author": "Black Pearl",
-  "private": false,
-  "license": "none",
-  "homepage": "",
   "scripts": {
-    "start": "python manage.py runserver"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "nodemon": "^2.0.6"
-  },
-  "engines": {
-    "node": "14.x"
+    "start": "python manage.py runserver",
+    "addvenv" : "python -m venv venv"
   }
 }
