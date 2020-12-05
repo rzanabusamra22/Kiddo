@@ -11,22 +11,25 @@ import CategoryItem from './category-item-card'
 
 export default function Home() {
     const [imgs, setImg] = useState([
-        { src: require('../imgs/game.png'), key: 1 },
-        { src: require('../imgs/videos-patrick.png'), key: 2 },
-        { src: require('../imgs/pics-albums-picka.jpg'), key: 3 },
-        { src: require('../imgs/learning-dora.png'), key: 4 },
+        { src: require('../imgs/learn-card-blue.png'), key: 1 },
+        { src: require('../imgs/art-card-green.png'), key: 4 },
+        { src: require('../imgs/videos-card-blue.png'), key: 3 },
+        { src: require('../imgs/albums-card-green.png'), key: 2 },
+        { src: require('../imgs/games-card-orange.png'), key: 5 },
     ])
     return (
         <View style={styles.container}>
-
-            <FlatList
-                data={imgs}
-                renderItem={({ item }) => (
-                    <CategoryItem item={item} />
-                )}
-                numColumns={1}
-            />
-
+            <View style={styles.content}>
+                <View style={styles.list}>
+                    <FlatList
+                        data={imgs}
+                        renderItem={({ item }) => (
+                            <CategoryItem item={item} />
+                        )}
+                        numColumns={1}
+                    />
+                </View>
+            </View>
         </View>
     );
 }
@@ -34,11 +37,19 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: "column",
-        backgroundColor: 'yellow',
-        alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: 10,
+        backgroundColor: 'blue',
+    },
+    content: {
+
+        backgroundColor: 'red',
+        flex: 1
+    },
+    list: {
+        flex: 1,
+        backgroundColor: '#F0BF00'
     }
+
 });
 
 
