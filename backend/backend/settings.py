@@ -95,12 +95,8 @@ else:
     # run $ ./cloud_sql_proxy -instances=disco-nirvana-297409:europe-west3:pearls=tcp:3306
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
+            'ENGINE': 'django.db.backends.sqlite3',
             'NAME': 'blackpearl',
-            'USER': 'xoro',
-            'PASSWORD': '',
         }
     }
 
