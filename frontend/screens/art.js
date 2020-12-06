@@ -23,6 +23,7 @@ export default function Art(){
                      source={x.pic}
                      style={{ width: 200, height: 180 }}
                      />
+                     <Text>{x.item}</Text>
                      </View>
                      </View>
                      </TouchableOpacity>  
@@ -36,7 +37,7 @@ export default function Art(){
 
 const styles = StyleSheet.create({
     mainContainer:{
-    marginTop:110
+    marginTop:110,
     },
     a1:{
         flexDirection:'row',
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
         marginLeft:80
     },
     cardContent:{
-        flexDirection:'row',
+        flexDirection:"column",
         justifyContent:'center',
         alignItems:'center',
         marginHorizontal:20,
