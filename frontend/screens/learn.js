@@ -13,7 +13,7 @@ export default function Learn(){
         {key:"a7",item:"Animals",pic:require('./assests/pictures/Animals.png')}
     ])
     const pressHandlers = (key)=>{
-        console.log
+        //console.log(key)
     } 
         return(
             <View style={styles.mainContainer}>
