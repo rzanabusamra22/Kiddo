@@ -7,10 +7,10 @@ import Home from './android/homepage/home-comp'
 // <Home />
 export default function App() {
   return (
-    <Signin />
+    <Home />
   );
 }
-  
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -38,4 +38,3 @@ const styles = StyleSheet.create({
     )}
 />
 */
-  
