@@ -20,8 +20,23 @@ export default function Signin ({navigation}) {
         //     })
         // }); 
         //for then---> alert
-        setUsername('')
-        setPassword('')
+
+     
+        var raw = "";
+
+        var requestOptions = {
+          method: 'GET',
+          body: raw,
+          redirect: 'follow'
+        };
+        
+        fetch("http://127.0.0.1:8000/users/", requestOptions)
+          .then(response => response.json())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+        
+        // setUsername('')
+        // setPassword('')
     }
 
     return (
@@ -56,7 +71,7 @@ export default function Signin ({navigation}) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.loginBtn}>
-                    <Text  onPress={() => navigation.navigate('Games')} style={styles.loginText}>LOGIN</Text>
+                    <Text  onPress={handleSubmit} style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
 
 

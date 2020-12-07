@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Signin from './admin-signin';
 import CategoryItem from './category-item-card'
 
 // import star from './android/imgs/star'
@@ -21,13 +22,14 @@ export default function Home() {
         <View style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.list}>
-                    <FlatList
+                    <Signin />
+                    {/* <FlatList
                         data={imgs}
                         renderItem={({ item }) => (
                             <CategoryItem item={item} />
                         )}
                         numColumns={1}
-                    />
+                    /> */}
                 </View>
             </View>
         </View>
