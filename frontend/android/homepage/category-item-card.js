@@ -16,17 +16,13 @@ export default function CategoryItem({ item }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'red',
         flex: 1,
         flexDirection: 'row',
-        justifyContent: "center"
+        justifyContent: "center",
+        marginTop: 20
     },
     img: {
-        backgroundColor: 'blue',
-        width: win.width / 2.5,
-        height: win.width / 2,
-        paddingLeft: 10,
-        paddingRight: 10,
-        //margin: win.width / 50
+        width: win.width,
+        height: win.width / 2.5,
     }
 })

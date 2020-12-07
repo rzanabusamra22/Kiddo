@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
 
+<<<<<<< HEAD
 export default function Signin () {
+=======
+export default function Signin() {
+>>>>>>> 511ea219b8bad1e945a3b1204f66cbc75885ca26
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
