@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert } from 'react-native';
 var { vw, vh, vmin, vmax } = require('react-native-viewport-units');
 export default function Videos() {
+
+
+   
     return (
         <View style={styles.container}>
-            {[...Array(6)].map(function (x,i){
-                return (
-                    <TouchableOpacity key = {i} style={{ marginLeft: 7 * vw, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
-                        <Image style={{ height: "100%", width: "100%" }} source={{ uri: "https://s3.amazonaws.com/scschoolfiles/621/design_img__m0yjw8.png" }} />
-                    </TouchableOpacity>
-                )
-            })}
+           <Button onPress={fetchTest}>Fetch</Button>
         </View>
     );
 }

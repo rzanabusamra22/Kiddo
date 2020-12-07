@@ -1,15 +1,15 @@
-import React ,{useState} from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Signin from './screens/admin-signin'
 import Home from './screens/home-comp'
-import Games from './screens/games'
-import Videos from './screens/videos'
+// import Games from './screens/games'
+// import Videos from './screens/videos'
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
-const Stack = createStackNavigator()
+//const Stack = createStackNavigator()
 // import star from './android/imgs/star'
 // <Home />
 // const getFonts = () => {
@@ -20,19 +20,25 @@ const Stack = createStackNavigator()
 // }
 export default function App() {
   return (
-    <Games/> 
+    <Home />
+    // <NavigationContainer>
+    //   <Stack.Navigator initialRouteName="kids">
+    //     <Stack.Screen name="Games" component={Home} />
+    //     <Stack.Screen name="Signin" component={Signin} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
-//   const [fontsLoaded,setFontsLoaded] =useState(false);
-//   if(fontsLoaded){  
-//     return (
-//     <Learn />
-//   )
-// }else{  
-//   return(
-//     <AppLoading
-//     startAsync={getFonts}
-//     onFinish={()=> setFontsLoaded(true)}
-//     />  )}   
+  //   const [fontsLoaded,setFontsLoaded] =useState(false);
+  //   if(fontsLoaded){  
+  //     return (
+  //     <Learn />
+  //   )
+  // }else{  
+  //   return(
+  //     <AppLoading
+  //     startAsync={getFonts}
+  //     onFinish={()=> setFontsLoaded(true)}
+  //     />  )}   
 }
 
 const styles = StyleSheet.create({
