@@ -46,7 +46,6 @@ export default function Signin () {
                 console.log('diss')
             }}
         >
-
             <View style={styles.container}>
 
                 <Text style={styles.logo}>Kiddo</Text>

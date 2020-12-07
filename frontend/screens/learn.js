@@ -2,28 +2,29 @@ import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
 // import {Dimensions} from 'react-native';
 // const wind = Dimensions.get('window');
-export default function Learn(){
+
+export default function Learn({ navigation }){
     const [list,setList] = useState([
-        {key:"a1",item:"Alphabet",pic:require('./assests/pictures/Letters.png')},
-        {key:"a2",item:"Numbers",pic:require('./assests/pictures/Numbers.png')},
-        {key:"a3",item:"Body Parts",pic:require('./assests/pictures/Body parts.png')},
-        {key:"a4",item:"Fruits",pic:require('./assests/pictures/Fruits.png')},
-        {key:"a5",item:"Vegetables",pic:require('./assests/pictures/Vegatabels.png')},
-        {key:"a6",item:"Colors",pic:require('./assests/pictures/Colors.png')},
-        {key:"a7",item:"Animals",pic:require('./assests/pictures/Animals.png')}
+        {nav:"Alphabet",key:"a1",item:"Alphabet",pic:require('./assests/pictures/Letters.png')},
+        {nav:"Numbers",key:"a2",item:"Numbers",pic:require('./assests/pictures/Numbers.png')},
+        {nav:"BodyPart",key:"a3",item:"Body Parts",pic:require('./assests/pictures/Body parts.png')},
+        {nav:"Fruits",key:"a4",item:"Fruits",pic:require('./assests/pictures/Fruits.png')},
+        {nav:"Vegatables",key:"a5",item:"Vegetables",pic:require('./assests/pictures/Vegatabels.png')},
+        {nav:"Colors",key:"a6",item:"Colors",pic:require('./assests/pictures/Colors.png')},
+        {nav:"Animals",key:"a7",item:"Animals",pic:require('./assests/pictures/Animals.png')}
     ])
-    const pressHandlers = (key)=>{
-        console.log
-    } 
+    const pressHandler = (x) => {
+        navigation.navigate(x)
+        console.log(x)
+    }
         return(
             <View style={styles.mainContainer}>
              <SafeAreaView >
                 <ScrollView >
-                
                 {list.map((x)=>{
                      var y=x.key
                         return (
-                        <TouchableOpacity onPress={()=>pressHandlers(x.key)}>
+                        <TouchableOpacity onPress={()=>pressHandler(x.nav)}>
                         <View style={styles[y]}>
                         <View style={styles.cardContent}>
                         <Text>{x.item}</Text>
@@ -35,20 +36,14 @@ export default function Learn(){
                          </TouchableOpacity>  
                         )
                 })}
-                       
                 </ScrollView>
              </SafeAreaView>
             </View>
             )
-    
-
     }
 
 
 const styles = StyleSheet.create({
-    mainContainer:{
-    marginTop:50
-    },
     a1:{
         fontFamily:'font2',
         borderRadius:6,

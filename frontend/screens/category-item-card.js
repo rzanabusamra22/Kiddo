@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import { Dimensions } from "react-native";
 const win = Dimensions.get('window');
-export default function CategoryItem({ item }) {
+
+export default function CategoryItem({ item ,press }) {
+    
     return (
-        <View style={styles.container}>
-            <TouchableOpacity >
-
+        <View style={styles.container} >
+            <TouchableOpacity onPress={()=>press(item.nav)}>
                 <Image style={styles.img} source={item.src} />
-
             </TouchableOpacity>
         </View>
     )
