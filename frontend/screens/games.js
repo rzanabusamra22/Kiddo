@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert } from 'react-native';
-var { vw, vh, vmin, vmax } = require('react-native-viewport-units');
-export default function Games({navigation}) {
+// var { vw, vh, vmin, vmax } = require('react-native-viewport-units');
+export default function Games() {
     return (
         <View style={styles.container}>
             {[...Array(6)].map(function (x,i){
                 return (
-                    <TouchableOpacity  onPress={() => navigation.navigate('Signin')} key = {i} style={{ marginLeft: 7 * vw, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
-                        <Image style={{borderRadius:15,height: "100%", width: "100%" }} source={{ uri: "https://pbs.twimg.com/media/D1eeNItVsAAIEQ4.jpg" }} />
+                    <TouchableOpacity key = {i} >
+                        <Image  source={{ uri: "https://pbs.twimg.com/media/D1eeNItVsAAIEQ4.jpg" }} />
                     </TouchableOpacity>
                 )
             })}
         </View>
     );
 }
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,

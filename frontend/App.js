@@ -7,8 +7,8 @@ import Signin from './screens/admin-signin'
 import Home from './screens/home-comp'
 import Games from './screens/games'
 import Videos from './screens/videos'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator()
 // import star from './android/imgs/star'
 // <Home />
@@ -20,12 +20,7 @@ const Stack = createStackNavigator()
 // }
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="kids">
-        <Stack.Screen name="Games" component={Home} />
-        <Stack.Screen name="Signin" component={Signin} />
-      </Stack.Navigator>
-    </NavigationContainer>      
+    <Games/> 
   );
 //   const [fontsLoaded,setFontsLoaded] =useState(false);
 //   if(fontsLoaded){  

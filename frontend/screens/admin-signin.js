@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
 
-export default function Signin ({navigation}) {
+export default function Signin () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -56,7 +56,7 @@ export default function Signin ({navigation}) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.loginBtn}>
-                    <Text  onPress={() => navigation.navigate('Games')} style={styles.loginText}>LOGIN</Text>
+                    <Text style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
 
 
