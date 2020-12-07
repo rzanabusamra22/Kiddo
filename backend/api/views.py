@@ -22,8 +22,18 @@ from django.views.decorators.csrf import csrf_exempt
 #         serializer = UserSerializer(User_list, many=True)
 #         return JsonResponse(serializer.data, safe=False)
 
-# ViewSets define the view behavior.
 
+# ViewSets define the view behavior.
+def get(self, request, format=None):
+    serializer = self.serializer_class(data=request.data)
+    if serializer.is_valid():
+        obj = serializer.save()
+        response = Response(standardResponse(data=serializer.data), 
+                            status=status.HTTP_201_CREATED)
+        # If you have defined a get_absolute_url method on your model, then
+        # you can use that to get a URL for the new object
+        response['Location'] = obj.get_absolute_url()
+        return response
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
