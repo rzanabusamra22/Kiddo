@@ -1,31 +1,19 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert } from 'react-native';
-
-export default function Games () {
-    return(
+var { vw, vh, vmin, vmax } = require('react-native-viewport-units');
+export default function Games({navigation}) {
+    return (
         <View style={styles.container}>
-            <TouchableOpacity style={{border:"5px solid black",marginLeft:"10vw",marginTop:"6vh", height:"25vh", width:"40vw"}}>
-                <Image style={{height:"100%", width:"100%"}} source={{uri:"https://s3.amazonaws.com/scschoolfiles/621/design_img__m0yjw8.png"}} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{border:"5px solid black",marginLeft:"10vw",marginTop:"6vh", height:"25vh", width:"40vw"}}>
-                <Image style={{height:"100%", width:"100%"}} source={{uri:"https://s3.amazonaws.com/scschoolfiles/621/design_img__m0yjw8.png"}} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{border:"5px solid black",marginLeft:"10vw",marginTop:"6vh", height:"25vh", width:"40vw"}}>
-                <Image style={{height:"100%", width:"100%"}} source={{uri:"https://s3.amazonaws.com/scschoolfiles/621/design_img__m0yjw8.png"}} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{border:"5px solid black",marginLeft:"10vw",marginTop:"6vh", height:"25vh", width:"40vw"}}>
-                <Image style={{height:"100%", width:"100%"}} source={{uri:"https://s3.amazonaws.com/scschoolfiles/621/design_img__m0yjw8.png"}} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{border:"5px solid black",marginLeft:"10vw",marginTop:"6vh", height:"25vh", width:"40vw"}}>
-                <Image style={{height:"100%", width:"100%"}} source={{uri:"https://s3.amazonaws.com/scschoolfiles/621/design_img__m0yjw8.png"}} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{border:"5px solid black",marginLeft:"10vw",marginTop:"6vh", height:"25vh", width:"40vw"}}>
-                <Image style={{height:"100%", width:"100%"}} source={{uri:"https://s3.amazonaws.com/scschoolfiles/621/design_img__m0yjw8.png"}} />
-            </TouchableOpacity>
+            {[...Array(6)].map(function (x,i){
+                return (
+                    <TouchableOpacity  onPress={() => navigation.navigate('Signin')} key = {i} style={{ marginLeft: 7 * vw, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
+                        <Image style={{borderRadius:15,height: "100%", width: "100%" }} source={{ uri: "https://pbs.twimg.com/media/D1eeNItVsAAIEQ4.jpg" }} />
+                    </TouchableOpacity>
+                )
+            })}
         </View>
     );
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

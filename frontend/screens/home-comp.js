@@ -11,11 +11,11 @@ import CategoryItem from './category-item-card'
 
 export default function Home() {
     const [imgs, setImg] = useState([
-        { src: require('../imgs/learn-card-blue.png'), key: 1 },
-        { src: require('../imgs/art-card-green.png'), key: 4 },
-        { src: require('../imgs/videos-card-blue.png'), key: 3 },
-        { src: require('../imgs/albums-card-green.png'), key: 2 },
-        { src: require('../imgs/games-card-orange.png'), key: 5 },
+        { src: require('./assests/pictures/learn-card-blue.png'), key: 1 },
+        { src: require('./assests/pictures/art-card-green.png'), key: 4 },
+        { src: require('./assests/pictures/videos-card-blue.png'), key: 3 },
+        { src: require('./assests/pictures/albums-card-green.png'), key: 2 },
+        { src: require('./assests/pictures/games-card-orange.png'), key: 5 },
     ])
     return (
         <View style={styles.container}>
