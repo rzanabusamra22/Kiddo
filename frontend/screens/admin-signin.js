@@ -25,6 +25,7 @@ export default function Signin ({navigation}) {
 
 var requestOptions = {
   method: 'GET',
+ 
   redirect: 'follow'
 };
 

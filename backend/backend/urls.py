@@ -24,8 +24,8 @@ router.register(r'users', views.UserViewSet)
 router.register(r'plays', views.PlayViewSet)
 router.register(r'admins', views.AdminViewSet)
 router.register(r'supporters', views.SupporterViewSet)
-router.register(r'records', views.RecordsViewSet)
-router.register(r'photos', views.PhotosViewSet)
+router.register(r'records', views.RecordViewSet)
+router.register(r'photos', views.PhotoViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

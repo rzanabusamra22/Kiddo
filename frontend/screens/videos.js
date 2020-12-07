@@ -1,22 +1,52 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert } from 'react-native';
-var { vw, vh, vmin, vmax } = require('react-native-viewport-units');
-export default function Videos() {
 
+class Videos extends Component{
+    constructor(){
+        super()
+        this.state={
+            result : []
+        }
+    }
+    componentDidMount() {
+      
 
-   
+    var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+    };
+
+fetch("http://127.0.0.1:8000/records/", requestOptions)
+  .then(response => response.json())
+  .then(result =>{
+  this.setState({
+      result
+  })
+  console.log(result)})
+  .catch(error => console.log('error', error));
+    }
+
+    render (){
     return (
         <View style={styles.container}>
-           <Button onPress={fetchTest}>Fetch</Button>
+           
+        
+       
+          <Image source={{uri:this.state.result[0]?.thumbnail}} style={styles.img}/>
+        
         </View>
     );
-}
+}}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
         flexDirection: 'row',
         flexWrap: 'wrap'
+    },
+    img: {
+        width:120,
+        height:120
     },
     logo: {
         fontWeight: "bold",
@@ -56,3 +86,4 @@ const styles = StyleSheet.create({
         color: "black"
     }
 });
+export default Videos
