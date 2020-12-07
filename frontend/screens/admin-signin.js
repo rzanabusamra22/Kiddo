@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
 
-export default Signin = () => {
+export default function Signin () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 

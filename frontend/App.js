@@ -2,12 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Signin from './screens/admin-signin'
+import Games from './screens/Games'
 import Home from './android/homepage/home-comp'
 // import star from './android/imgs/star'
 // <Home />
 export default function App() {
   return (
-    <Signin />
+    <Games />
   );
 }
   

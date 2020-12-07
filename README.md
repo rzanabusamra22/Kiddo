@@ -28,10 +28,16 @@ This website gives a safe envorinment for kids to play and learn
 
 ### Launch ###
 ## Frontend ##
-* not ready yet
+* To install dependancies
+* Open bash inside /frontend
+* $ npm i
+
+* To run the app on localhost
+* Open bash inside /frontend
+* $ npm run web
 
 ## Backend ##
-* To run the database locally on localhost
+* To run the database on localhost
 * Install gcloud then open bash inside /backend
 * $ ./cloud_sql_proxy -instances=disco-nirvana-297409:europe-west3:pearls=tcp:3306
 
@@ -51,8 +57,10 @@ This website gives a safe envorinment for kids to play and learn
 * Enter venv or open bash inside /backend
 * $ python manage.py runserver
 
-### Before you deploy ###
-later
+### Deploy ###
+* To deploy a server using app engine
+* Install gcloud then open bash inside /backend
+* $ gcloud app deploy
 
 ### Members ###
 * Razan Abusamra
