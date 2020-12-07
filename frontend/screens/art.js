@@ -37,7 +37,7 @@ export default function Art(){
 
 const styles = StyleSheet.create({
     mainContainer:{
-    marginTop:110,
+    marginTop:50,
     },
     a1:{
         flexDirection:'row',
