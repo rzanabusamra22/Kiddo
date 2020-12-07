@@ -1,6 +1,5 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert } from 'react-native';
-var { vw, vh, vmin, vmax } = require('react-native-viewport-units');
 export default function Videos() {
 
 

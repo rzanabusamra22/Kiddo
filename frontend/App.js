@@ -5,7 +5,7 @@ import { AppLoading } from 'expo';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Signin from './screens/admin-signin'
 import Home from './screens/home-comp'
-// import Games from './screens/games'
+import Games from './screens/games'
 // import Videos from './screens/videos'
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
@@ -20,7 +20,7 @@ import Home from './screens/home-comp'
 // }
 export default function App() {
   return (
-    <Home />
+    <Games />
     // <NavigationContainer>
     //   <Stack.Navigator initialRouteName="kids">
     //     <Stack.Screen name="Games" component={Home} />
