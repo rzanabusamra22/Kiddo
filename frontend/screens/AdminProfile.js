@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 
-export default function Album(){
+export default function AdminProfile(){
     return(
         <Text>
-            Album
+        Profile
         </Text>
     )
 }

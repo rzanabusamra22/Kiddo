@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
 
-export default function Signin ({navigation}) {
+export default function Signin () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -20,8 +20,22 @@ export default function Signin ({navigation}) {
         //     })
         // }); 
         //for then---> alert
-        setUsername('')
-        setPassword('')
+
+
+
+var requestOptions = {
+  method: 'GET',
+ 
+  redirect: 'follow'
+};
+
+fetch("http://127.0.0.1:8000/users/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+        
+        // setUsername('')
+        // setPassword('')
     }
 
     return (
