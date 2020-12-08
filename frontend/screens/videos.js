@@ -1,10 +1,5 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert } from 'react-native';
-<<<<<<< HEAD
-export default function Videos() {
-=======
->>>>>>> 6e49f525e1c2e11a81b69ad502259d9e3590ae3d
-
 class Videos extends Component{
     constructor(){
         super()

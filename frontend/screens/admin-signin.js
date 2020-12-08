@@ -69,7 +69,7 @@ fetch("http://127.0.0.1:8000/users/", requestOptions)
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.loginBtn}>
-                    <Text  onPress={handleSubmit} style={styles.loginText}>LOGIN</Text>
+                    <Text  style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
 
 

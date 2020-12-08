@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 
-export default function Pictures(){
+export default function Coloring(){
     return(
         <Text>
-            pictures
+            Coloring
         </Text>
     )
 }
