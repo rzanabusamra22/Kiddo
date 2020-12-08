@@ -27,9 +27,9 @@ import Drawing from './screens/subScreens/Drawing';
 import Signin from './screens/admin-signin';
 import Donate from './screens/donate';
 import AdminProfile from './screens/AdminProfile';
-//Signed In
+//Admin Signed In
 import DrawerContent from './screens/DrawerContent';
-//Needs to Sign In
+//Admin Needs to Sign In
 import DrawerContent2 from './screens/DrawerContent2';
 //Navigation
 const Stack = createStackNavigator();
@@ -38,8 +38,6 @@ const HomeStack = createStackNavigator();
 const SignInstack = createStackNavigator();
 const Donatestack = createStackNavigator();
 const AdminProfilestack = createStackNavigator();
-
-
 //Home Stack 
 const HomeStackScreen = ({navigation}) =>{
   return(
@@ -59,7 +57,7 @@ const HomeStackScreen = ({navigation}) =>{
      name="Home"
      component={Home}
      options={{ 
-       title: 'Home',
+       title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
     }}
  />
@@ -165,8 +163,8 @@ const AdminStackScreen = ({navigation}) =>{
 export default function App() {
   return (
      <NavigationContainer>
-       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-       {/* <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}> */}
+       {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}> */}
+       <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}>
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
