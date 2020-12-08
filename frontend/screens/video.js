@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Text} from 'react-native';
-
-export default function Pictures(){
+import {WebView} from 'react-native-webview'
+export default function Videos(){
     return(
-        <Text>
-            pictures
-        </Text>
+        <WebView
+        source={{
+          uri:
+            "https://www.youtube.com/embed/A6cgQDyvEzc"
+        }}
+/>
     )
 }
 
