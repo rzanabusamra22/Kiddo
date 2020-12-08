@@ -55,7 +55,7 @@ export default function Signin ({navigation}) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.loginBtn}>
-                    <Text  onPress={() => navigation.navigate('Games')} style={styles.loginText}>LOGIN</Text>
+                    <Text  style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
 
 

@@ -3,7 +3,6 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
 import Icon from 'react-native-vector-icons/Ionicons'
 // Home Screen Categories
 import Home from './screens/home-comp'
@@ -24,13 +23,17 @@ import Animals from './screens/subScreens/Animals';
 import Coloring from './screens/subScreens/coloring.js';
 import Drawing from './screens/subScreens/Drawing';
 //Drawer Pages
-import Signin from './screens/admin-signin'
+import Signin from './screens/admin-signin';
+import Donate from './screens/donate';
 //Navigation
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 const HomeStack = createStackNavigator();
 const SignInstack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+const Donatestack = createStackNavigator();
 
+
+//Home Stack 
 const HomeStackScreen = ({navigation}) =>{
   return(
     <HomeStack.Navigator 
@@ -72,6 +75,7 @@ const HomeStackScreen = ({navigation}) =>{
     </HomeStack.Navigator>
   )
 }
+//SignIn Stack 
 const SignInStackScreen = ({navigation}) =>{
   return(
     <SignInstack.Navigator 
@@ -97,51 +101,42 @@ const SignInStackScreen = ({navigation}) =>{
     </SignInstack.Navigator>
   )
 }
-
+//Donate Stack 
+const DonateStackScreen = ({navigation}) =>{
+  return(
+    <Donatestack.Navigator 
+  initialRouteName="Home"
+  screenOptions={{
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }}
+  >
+    <Donatestack.Screen
+     name="Donate"
+     component={Donate}
+     options={{ 
+       title: 'Donate',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
+    }}
+ />
+    </Donatestack.Navigator>
+  )
+}
+// The App 
 export default function App() {
   return (
      <NavigationContainer>
       <Drawer.Navigator initialRouteName="HomeStackScreen">
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
+        <Drawer.Screen name="Donate" component={DonateStackScreen} />
       </Drawer.Navigator>
 
     </NavigationContainer>
   ); 
 }
-
-//  {/* Home Screen Categories */}
-//  <Stack.Navigator 
-//  initialRouteName="Home"
-//  screenOptions={{
-//    headerStyle: {
-//      backgroundColor: '#f4511e',
-//    },
-//    headerTintColor: '#fff',
-//    headerTitleStyle: {
-//      fontWeight: 'bold',
-//    },
-//  }}
-//  >
-//  <Stack.Screen
-//      name="Home"
-//      component={Home}
-//      options={{ title: 'Home' }}
-//  />
-//     <Stack.Screen name="Learn" component={Learn} />
-//     <Stack.Screen name="Art" component={Art} />
-//     <Stack.Screen name="Videos" component={Videos} />
-//     <Stack.Screen name="Album" component={Album} />
-//     <Stack.Screen name="Games" component={Games} />
-//     {/* Learn Catagories  */}
-//     <Stack.Screen name="Alphabet" component={Alphabet} />
-//     <Stack.Screen name="Numbers" component={Numbers} />
-//     <Stack.Screen name="BodyPart" component={BodyPart} />
-//     <Stack.Screen name="Fruits" component={Fruits} />
-//     <Stack.Screen name="Vegatables" component={Vegatables} />
-//     <Stack.Screen name="Colors" component={Colors} />
-//     <Stack.Screen name="Animals" component={Animals} />
-//     {/* Art Catagories  */}
-//     <Stack.Screen name="Coloring" component={Coloring} />
-//     <Stack.Screen name="Drawing" component={Drawing} />
-// </Stack.Navigator>
