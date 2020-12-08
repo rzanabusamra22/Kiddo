@@ -21,14 +21,14 @@ export default function Home({ navigation }) {
         <View style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.list}>
-                    <Signin />
-                    {/* <FlatList
+                    
+                    <FlatList
                         data={imgs}
                         renderItem={({ item }) => (
                             <CategoryItem item={item}  press={pressHandler}/> 
                         )}
                         numColumns={1}
-                    /> */}
+                    />
                 </View>
             </View>
         </View>
