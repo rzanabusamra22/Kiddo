@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Play,Admin,Supporter,Records,Photos
+from .models import Play,Admin,Supporter,Record,Photo
 
 
 # Serializers define the API representation.
@@ -22,12 +22,12 @@ class SupporterSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Supporter
         fields = ['username','password','email','donation']
-class RecordsSerializer(serializers.HyperlinkedModelSerializer):
+class RecordSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Records
+        model = Record
         fields = ['link', 'category', 'thumbnail']
-class PhotosSerializer(serializers.HyperlinkedModelSerializer):
+class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Photos
+        model = Photo
         fields = ['category', 'link', 'sound']
         

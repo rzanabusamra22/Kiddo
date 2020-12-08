@@ -1,41 +1,144 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import Signin from './screens/admin-signin'
-import Home from './android/homepage/home-comp'
-// import star from './android/imgs/star'
-// <Home />
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { AppLoading } from 'expo';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/Ionicons'
+
+// Home Screen Categories
+import Home from './screens/home-comp'
+import Learn from './screens/learn';
+import Art from './screens/art';
+import Videos from './screens/videos';
+import Album from './screens/Album';
+import Games from './screens/games';
+// Learn Catagories 
+import Alphabet from './screens/subScreens/Alphabet'
+import Numbers from './screens/subScreens/Numbers';
+import BodyPart from './screens/subScreens/BodyPart';
+import Fruits from './screens/subScreens/Fruits';
+import Vegatables from './screens/subScreens/Vegatables';
+import Colors from './screens/subScreens/Colors';
+import Animals from './screens/subScreens/Animals';
+//Art Catagories 
+import Coloring from './screens/subScreens/coloring.js';
+import Drawing from './screens/subScreens/Drawing';
+//Drawer Pages
+import Signin from './screens/admin-signin';
+import Donate from './screens/donate';
+//Navigation
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+const HomeStack = createStackNavigator();
+const SignInstack = createStackNavigator();
+const Donatestack = createStackNavigator();
+
+
+//Home Stack 
+const HomeStackScreen = ({navigation}) =>{
+  return(
+    <HomeStack.Navigator 
+ initialRouteName="Home"
+ screenOptions={{
+   headerStyle: {
+     backgroundColor: '#f4511e',
+   },
+   headerTintColor: '#fff',
+   headerTitleStyle: {
+     fontWeight: 'bold',
+   },
+ }}
+ >
+  <HomeStack.Screen
+     name="Home"
+     component={Home}
+     options={{ 
+       title: 'Home',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
+    }}
+ />
+    <HomeStack.Screen name="Learn" component={Learn} />
+    <HomeStack.Screen name="Art" component={Art} />
+    <HomeStack.Screen name="Videos" component={Videos} />
+    <HomeStack.Screen name="Album" component={Album} />
+    <HomeStack.Screen name="Games" component={Games} />
+    {/* Learn Catagories  */}
+     <HomeStack.Screen name="Alphabet" component={Alphabet} />
+     <HomeStack.Screen name="Numbers" component={Numbers} />
+     <HomeStack.Screen name="BodyPart" component={BodyPart} />
+     <HomeStack.Screen name="Fruits" component={Fruits} />
+     <HomeStack.Screen name="Vegatables" component={Vegatables} />
+     <HomeStack.Screen name="Colors" component={Colors} />
+     <HomeStack.Screen name="Animals" component={Animals} />
+     {/* Art Catagories  */}
+     <HomeStack.Screen name="Coloring" component={Coloring} />
+     <HomeStack.Screen name="Drawing" component={Drawing} />
+    </HomeStack.Navigator>
+  )
+}
+//SignIn Stack 
+const SignInStackScreen = ({navigation}) =>{
+  return(
+    <SignInstack.Navigator 
+  initialRouteName="Home"
+  screenOptions={{
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }}
+  >
+    <SignInstack.Screen
+     name="Signin"
+     component={Signin}
+     options={{ 
+       title: 'Signin',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
+    }}
+ />
+    </SignInstack.Navigator>
+  )
+}
+//Donate Stack 
+const DonateStackScreen = ({navigation}) =>{
+  return(
+    <Donatestack.Navigator 
+  initialRouteName="Home"
+  screenOptions={{
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }}
+  >
+    <Donatestack.Screen
+     name="Donate"
+     component={Donate}
+     options={{ 
+       title: 'Donate',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
+    }}
+ />
+    </Donatestack.Navigator>
+  )
+}
+// The App 
 export default function App() {
   return (
-    <Signin />
-  );
+     <NavigationContainer>
+      <Drawer.Navigator initialRouteName="HomeStackScreen">
+        <Drawer.Screen name="Home" component={HomeStackScreen} />
+        <Drawer.Screen name="SignIn" component={SignInStackScreen} />
+        <Drawer.Screen name="Donate" component={DonateStackScreen} />
+      </Drawer.Navigator>
+
+    </NavigationContainer>
+  ); 
 }
-  
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'yellow',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-
-
-// <View style={styles.container}>
-    //   <Text>Open up App.js to start working on your app!</Text>
-    //   {/* <TouchableOpacity onPress={() => console.log('clicked')}>
-    //     <Image source={star} />
-    //   </TouchableOpacity> */}
-    //   <StatusBar style="auto" />
-    // </View>
-
-/*
-<FlatList
-    data={array}
-    renderItem = {({item}) =>(
-      <Text>{item.text}</Text>
-    )}
-/>
-*/
-  

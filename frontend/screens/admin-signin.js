@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
 
-export default Signin = () => {
+export default function Signin () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -20,8 +20,22 @@ export default Signin = () => {
         //     })
         // }); 
         //for then---> alert
-        setUsername('')
-        setPassword('')
+
+
+
+var requestOptions = {
+  method: 'GET',
+ 
+  redirect: 'follow'
+};
+
+fetch("http://127.0.0.1:8000/users/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+        
+        // setUsername('')
+        // setPassword('')
     }
 
     return (
@@ -31,7 +45,6 @@ export default Signin = () => {
                 console.log('diss')
             }}
         >
-
             <View style={styles.container}>
 
                 <Text style={styles.logo}>Kiddo</Text>
@@ -56,7 +69,7 @@ export default Signin = () => {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.loginBtn}>
-                    <Text onPress={handleSubmit} style={styles.loginText}>LOGIN</Text>
+                    <Text  style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
 
 
