@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import { Dimensions } from "react-native";
 const win = Dimensions.get('window');
-export default function CategoryItem({ item }) {
+
+export default function CategoryItem({ item ,press }) {
+    
     return (
-        <View style={styles.container}>
-            <TouchableOpacity >
-
+        <View style={styles.container} >
+            <TouchableOpacity onPress={()=>press(item.nav)}>
                 <Image style={styles.img} source={item.src} />
-
             </TouchableOpacity>
         </View>
     )
@@ -16,17 +16,13 @@ export default function CategoryItem({ item }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'red',
         flex: 1,
         flexDirection: 'row',
-        justifyContent: "center"
+        justifyContent: "center",
+        marginTop: 20
     },
     img: {
-        backgroundColor: 'blue',
-        width: win.width / 2.5,
-        height: win.width / 2,
-        paddingLeft: 10,
-        paddingRight: 10,
-        //margin: win.width / 50
+        width: win.width,
+        height: win.width / 2.5,
     }
 })
