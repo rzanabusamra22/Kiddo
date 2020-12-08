@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
-        backgroundColor: '#F0BF00'
+        backgroundColor: '#fff'
     }
 });
