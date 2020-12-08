@@ -3,9 +3,9 @@ import { StyleSheet, View, Text} from 'react-native';
 
 export default function Coloring(){
     return(
-        <>
-        Coloring
-        </>
+        <Text>
+            Coloring
+        </Text>
     )
 }
 

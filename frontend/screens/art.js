@@ -14,10 +14,10 @@ export default function Art({ navigation }){
         <View style={styles.mainContainer}>
          <SafeAreaView >
             <ScrollView >
-            {list.map((x)=>{
+            {list.map((x,i)=>{
                  var y=x.key
                     return (
-                    <TouchableOpacity onPress={()=>pressHandler(x.nav)}>
+                    <TouchableOpacity onPress={()=>pressHandler(x.nav)} key={i}>
                     <View style={styles[y]}>
                     <View style={styles.cardContent}>
                     <Image 
