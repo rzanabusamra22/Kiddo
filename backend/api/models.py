@@ -13,7 +13,7 @@ class Admin(models.Model):
     email = models.CharField(max_length=200)
     def __str__(self):
         return self.username
-
+        
 class Supporter(models.Model):
     username = models.CharField(max_length=40)
     password = models.CharField(max_length=40)
