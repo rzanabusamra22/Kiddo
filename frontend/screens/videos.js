@@ -1,25 +1,51 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert } from 'react-native';
-var { vw, vh, vmin, vmax } = require('react-native-viewport-units');
-export default function Videos() {
+class Videos extends Component{
+    constructor(){
+        super()
+        this.state={
+            result : []
+        }
+    }
+    componentDidMount() {
+      
+
+    var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+    };
+
+fetch("https://disco-nirvana-297409.oa.r.appspot.com/records/", requestOptions)
+  .then(response => response.json())
+  .then(result =>{
+  this.setState({
+      result
+  })
+  console.log(result)})
+  .catch(error => console.log('error', error));
+    }
+
+    render (){
     return (
         <View style={styles.container}>
-            {[...Array(6)].map(function (x,i){
-                return (
-                    <TouchableOpacity key = {i} style={{ marginLeft: 7 * vw, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
-                        <Image style={{ height: "100%", width: "100%" }} source={{ uri: "https://s3.amazonaws.com/scschoolfiles/621/design_img__m0yjw8.png" }} />
-                    </TouchableOpacity>
-                )
-            })}
+           
+        
+       
+          <Image source={{uri:this.state.result[0]?.thumbnail}} style={styles.img}/>
+        
         </View>
     );
-}
+}}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
         flexDirection: 'row',
         flexWrap: 'wrap'
+    },
+    img: {
+        width:120,
+        height:120
     },
     logo: {
         fontWeight: "bold",
@@ -59,3 +85,4 @@ const styles = StyleSheet.create({
         color: "black"
     }
 });
+export default Videos
