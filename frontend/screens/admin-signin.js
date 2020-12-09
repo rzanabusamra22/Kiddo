@@ -6,6 +6,7 @@ export default function Signin () {
     const [password, setPassword] = useState('');
 
     const handleSubmit = () => {
+        
         console.log('*****************************************')
         console.log(username + "   " + password)
         // fetch('http://127.0.0.1:5000/signin', {

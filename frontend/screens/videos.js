@@ -1,41 +1,61 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert } from 'react-native';
-class Videos extends Component{
-    constructor(){
-        super()
-        this.state={
-            result : []
+import { WebView } from 'react-native-webview'
+import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert, Linking } from 'react-native';
+import { Dimensions } from 'react-native';
+import { sendvideo } from './redux/actions';
+import { connect } from 'react-redux';
+const wind = Dimensions.get('window');
+var vw = wind.width * 0.01
+var vh = wind.height * 0.01
+class Videos extends Component {
+    constructor(props) {
+        
+        super(props)
+        this.state = {
+            result: [],
         }
     }
     componentDidMount() {
-      
 
-    var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-    };
 
-fetch("https://disco-nirvana-297409.oa.r.appspot.com/records/", requestOptions)
-  .then(response => response.json())
-  .then(result =>{
-  this.setState({
-      result
-  })
-  console.log(result)})
-  .catch(error => console.log('error', error));
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+
+        fetch("https://disco-nirvana-297409.oa.r.appspot.com/records/", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                this.setState({
+                    result
+                })
+                console.log(result)
+            })
+            .catch(error => console.log('error', error));
     }
+    // "https://emea.iframed.cn.dmti.cloud/content/1513/bottle-catch/game/uk/appleonionbottlecatch-100320-en.48316029/index.html?pageName=cn/apple-and-onion-bottle-catch&gametitle=Bottle Catch&server=web|www.cartoonnetworkhq.com&OnetrustActiveGroups=,req,pf,BG403,tdc,ven,ad,adv,BG405"
+    render() {
+       const navigation = this.props.navigation
+       const sendvideo = this.props.sendvideo
+        return (
+            <View style={styles.container}>
+                {this.state.result.map(function (x, i) {
+                    return (
+                        <TouchableOpacity onPress={() =>{ 
+                             sendvideo(x.link);
+                             navigation.navigate('Video')
+                             }}  key={i} style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
 
-    render (){
-    return (
-        <View style={styles.container}>
-           
-        
-       
-          <Image source={{uri:this.state.result[0]?.thumbnail}} style={styles.img}/>
-        
-        </View>
-    );
-}}
+                            <Image style={{ borderRadius: 15, height: "100%", width: "100%" }} source={{ uri: x?.thumbnail }} />
+                        </TouchableOpacity>
+                    )
+                })}
+
+
+            </View>
+        );
+    }
+}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -44,8 +64,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },
     img: {
-        width:120,
-        height:120
+        width: 120,
+        height: 120
     },
     logo: {
         fontWeight: "bold",
@@ -85,4 +105,17 @@ const styles = StyleSheet.create({
         color: "black"
     }
 });
-export default Videos
+
+// Redux
+const mapStateToProps = (state) => {
+    return {
+       videolink: state.videolink,
+    }
+  }
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      sendvideo: (z) => { dispatch(sendvideo(z)) },
+    }
+  }
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Videos);  

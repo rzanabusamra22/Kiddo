@@ -17,7 +17,7 @@ export default function Games({ navigation }) {
                 )
             })}
         </View>
-    );
+    )
 }
 const styles = StyleSheet.create({
     container: {
