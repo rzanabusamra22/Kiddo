@@ -1,10 +1,7 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert, Linking } from 'react-native';
-import { Dimensions } from 'react-native';
-const wind = Dimensions.get('window');
-var vw = wind.width * 0.01
-var vh = wind.height * 0.01
-class Colors extends Component {
+import { StyleSheet, View, Text} from 'react-native';
+
+class Drawing extends Component{
     constructor() {
         super()
         this.state = {
@@ -31,14 +28,14 @@ class Colors extends Component {
     }
 
     render() {
-    return (
-    <Text>
-        Colors
+    return(
+        <Text>
+            Drawing
         </Text>
     )
 }}
 
 const styles = StyleSheet.create({
-
+    
 })
-export default Colors
+export default Drawing

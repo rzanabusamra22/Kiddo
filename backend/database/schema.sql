@@ -17,22 +17,22 @@ CREATE TABLE supporter (
   donation int not null
 );
 
-CREATE TABLE records (
+CREATE TABLE record (
   id int not null primary key auto_increment,
   link varchar(1000) not null unique,
-  category varchar(50) not null unique,
-  photo varchar(1000) not null unique
+  category varchar(50) not null,
+  Thumbnail varchar(1000) not null unique
 );
 
 CREATE TABLE play (
   id int not null primary key auto_increment,
   link varchar(1000) not null unique,
-  photo varchar(1000) not null unique
+  Thumbnail varchar(1000) not null unique
 );
 
-CREATE TABLE photos (
+CREATE TABLE photo (
   id int not null primary key auto_increment,
-  category varchar(50) not null unique,
+  category varchar(50) not null,
   link varchar(1000) not null unique,
-  sound varchar(1000) not null unique
+  sound varchar(1000) not null
 );

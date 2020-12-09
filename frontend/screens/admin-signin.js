@@ -6,6 +6,7 @@ export default function Signin () {
     const [password, setPassword] = useState('');
 
     const handleSubmit = () => {
+        
         console.log('*****************************************')
         console.log(username + "   " + password)
         // fetch('http://127.0.0.1:5000/signin', {
@@ -21,19 +22,18 @@ export default function Signin () {
         // }); 
         //for then---> alert
 
-     
-        var raw = "";
 
-        var requestOptions = {
-          method: 'GET',
-          body: raw,
-          redirect: 'follow'
-        };
-        
-        fetch("http://127.0.0.1:8000/users/", requestOptions)
-          .then(response => response.json())
-          .then(result => console.log(result))
-          .catch(error => console.log('error', error));
+
+var requestOptions = {
+  method: 'GET',
+ 
+  redirect: 'follow'
+};
+
+fetch("http://127.0.0.1:8000/users/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
         
         // setUsername('')
         // setPassword('')
@@ -70,7 +70,7 @@ export default function Signin () {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.loginBtn}>
-                    <Text  onPress={handleSubmit} style={styles.loginText}>LOGIN</Text>
+                    <Text  style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
 
 

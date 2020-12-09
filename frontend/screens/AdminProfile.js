@@ -1,17 +1,14 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 
-class Album extends Component{
+class AdminProfile extends Component{
     constructor() {
         super()
-        this.state = {
-            result: []
-        }
     }
-    render(){
+    render() {
     return(
         <Text>
-            Album
+        Profile
         </Text>
     )
 }}
@@ -19,4 +16,4 @@ class Album extends Component{
 const styles = StyleSheet.create({
     
 })
-export default Album 
+export default AdminProfile

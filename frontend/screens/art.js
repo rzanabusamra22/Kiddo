@@ -1,22 +1,23 @@
 import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
 
-export default function Art(){
+export default function Art({ navigation }){
     const [list,setList] = useState([
-        {key:"a1",item:"Coloring",pic:require('./assests/pictures/coloring.png')},
-        {key:"a2",item:"Drawing",pic:require('./assests/pictures/drawing.png')},
+        {nav:"Coloring",key:"a1",item:"Coloring",pic:require('./assests/pictures/coloring.png')},
+        {nav:"Drawing",key:"a2",item:"Drawing",pic:require('./assests/pictures/drawing.png')},
     ])
-    const pressHandlers = (key)=>{
-        //console.log(key)
+    const pressHandler = (x) => {
+        navigation.navigate(x)
+        console.log(x)
     }
     return(
         <View style={styles.mainContainer}>
          <SafeAreaView >
             <ScrollView >
-            {list.map((x)=>{
+            {list.map((x,i)=>{
                  var y=x.key
                     return (
-                    <TouchableOpacity onPress={()=>pressHandlers(x.key)}>
+                    <TouchableOpacity onPress={()=>pressHandler(x.nav)} key={i}>
                     <View style={styles[y]}>
                     <View style={styles.cardContent}>
                     <Image 

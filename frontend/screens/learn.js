@@ -7,7 +7,7 @@ export default function Learn({ navigation }){
     const [list,setList] = useState([
         {nav:"Alphabet",key:"a1",item:"Alphabet",pic:require('./assests/pictures/Letters.png')},
         {nav:"Numbers",key:"a2",item:"Numbers",pic:require('./assests/pictures/Numbers.png')},
-        {nav:"BodyPart",key:"a3",item:"Body Parts",pic:require('./assests/pictures/Body parts.png')},
+        {nav:"BodyPart",key:"a3",item:"Body Parts",pic:require('./assests/pictures/Body-parts.png')},
         {nav:"Fruits",key:"a4",item:"Fruits",pic:require('./assests/pictures/Fruits.png')},
         {nav:"Vegatables",key:"a5",item:"Vegetables",pic:require('./assests/pictures/Vegatabels.png')},
         {nav:"Colors",key:"a6",item:"Colors",pic:require('./assests/pictures/Colors.png')},
@@ -21,10 +21,10 @@ export default function Learn({ navigation }){
             <View style={styles.mainContainer}>
              <SafeAreaView >
                 <ScrollView >
-                {list.map((x)=>{
+                {list.map((x,i)=>{
                      var y=x.key
                         return (
-                        <TouchableOpacity onPress={()=>pressHandler(x.nav)}>
+                        <TouchableOpacity onPress={()=>pressHandler(x.nav) } key={i}>
                         <View style={styles[y]}>
                         <View style={styles.cardContent}>
                         <Text>{x.item}</Text>
