@@ -4,6 +4,7 @@ const initState = {
         { username: "", password: "" }
     ],
     videolink: "",
+    gamelink : "",
 }
 
 // Edits the Redux variables
@@ -14,6 +15,13 @@ const rootReducer = (state = initState, action) => {
             videolink: action.videolink
         }
     }
+    if (action.type === "sendgame") {
+        return  {
+            ...state,
+            gamelink: action.gamelink
+        }
+    }
+    
     return state;
 }
 

@@ -16,6 +16,8 @@ import Learn from './screens/learn';
 import Art from './screens/art';
 import Videos from './screens/videos';
 import Video from './screens/video';
+import Game from './screens/game';
+
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -74,6 +76,7 @@ const HomeStackScreen = ({navigation}) =>{
     <HomeStack.Screen name="Videos" component={Videos} />
     <HomeStack.Screen name="Album" component={Album} />
     <HomeStack.Screen name="Games" component={Games} />
+    <HomeStack.Screen name="Game" component={Game} />
     {/* Learn Catagories  */}
      <HomeStack.Screen name="Alphabet" component={Alphabet} />
      <HomeStack.Screen name="Numbers" component={Numbers} />
