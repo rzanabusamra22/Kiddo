@@ -11,16 +11,21 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os 
 from pathlib import Path
+#from rest_framework.authtoken.models import Token
+print('************************///////////////////*************************')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '^^mf4ndpr(bjf@yvtny-lgdk3yb7f_y)qtr)4=&+b50&@8kdn5'
+#  token = Token.objects.create(user="xoro")
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^^mf4ndpr(bjf@yvtny-lgdk3yb7f_y)qtr)4=&+b50&@8kdn5'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
+    'djoser'
+
 ]
 
 MIDDLEWARE = [
@@ -168,7 +176,31 @@ STATIC_ROOT = 'static'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ]
+
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+   ),
+    
+       
+    
+#    'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated'
+#    ),
+}
+
+AUTH_USER_MODEL = 'api.User'
+
+DJOSER = {
+    'LOGIN_FIELD': 'username',
+    'USER_CREATE_PASSWORD_RETYPE':True,
+    'SERIALIZERS': {
+        'user_create': 'api.serializers.UserSerializer',
+        'user': 'api.serializers.UserSerializer'
+
+    }
 }
