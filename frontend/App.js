@@ -163,8 +163,8 @@ const AdminStackScreen = ({navigation}) =>{
 export default function App() {
   return (
      <NavigationContainer>
-       {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}> */}
-       <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}>
+       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+       {/* <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}> */}
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
