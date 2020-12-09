@@ -9,6 +9,16 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from datetime import datetime
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from django.http import HttpResponse
+from rest_framework.parsers import JSONParser
+import json
+# def public(request):
+#     return HttpResponse("You don't need to be authenticated to see this")
+
+# @api_view(['GET'])
+# def private(request):
+#     return HttpResponse("You should not see this message if not authenticated!")
 # def index(request):
 #     admin_list = Admin.objects
 #     context = {'admin_list': admin_list}
@@ -36,6 +46,25 @@ from rest_framework.response import Response
 #         response['Location'] = obj.get_absolute_url()
 #         return response
 
+@api_view(['POST'])
+def signup(request):
+    print('***************** SIGNUP **************')
+    print(request)
+    #body_unicode = request.body.decode('utf-8')
+    #body = json.loads(body_unicode)
+    data = JSONParser().parse(request)
+    serializer = UserSerializer(data=data)
+    
+  
+    #username=body['username'], password=body['password'], email=body["email"]
+   
+    #serializer.set_password('password')
+    print('**************** pass AFTER')
+   # print(serializer.password)
+    if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+    return JsonResponse(serializer.errors, status=400)
 
 @api_view(['GET'])
 def index(request):

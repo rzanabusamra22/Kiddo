@@ -9,10 +9,10 @@ class Play(models.Model):
 
 class User(AbstractBaseUser,PermissionsMixin):
     objects =  UserManager()
-    is_staff = models.BooleanField(blank=True,default=True)
-    is_superuser = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     username = models.CharField(max_length=40, unique=True)
-    password = models.CharField(max_length=40)
+    password = models.CharField(max_length=1000)
     email = models.EmailField(max_length=200, unique=True)
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = [ 'email','password']
