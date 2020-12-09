@@ -22,15 +22,16 @@ from django.contrib import admin
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'plays', views.PlayViewSet)
-router.register(r'admins', views.AdminViewSet)
+#router.register(r'admins', views.AdminViewSet)
 router.register(r'supporters', views.SupporterViewSet)
 router.register(r'records', views.RecordViewSet)
 router.register(r'photos', views.PhotoViewSet)
-
+# router.register(r'token')
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include(router.urls)),
-    path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
+   path('', include(router.urls)),
+   path('admin/', admin.site.urls),
+   path('checkserver/',views.index,name='index'),
+   path('auth/', include('api.urls')),
 ]

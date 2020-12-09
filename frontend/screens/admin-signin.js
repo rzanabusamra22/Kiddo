@@ -29,7 +29,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://127.0.0.1:8000/users/", requestOptions)
+fetch("https://disco-nirvana-297409.oa.r.appspot.com/users/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));

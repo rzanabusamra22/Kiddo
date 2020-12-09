@@ -1,13 +1,14 @@
-from django.contrib.auth.models import User
-from .serializers import PlaySerializer, UserSerializer, AdminSerializer, SupporterSerializer, RecordSerializer, PhotoSerializer
+#from django.contrib.auth.models import User
+from .serializers import *
 from rest_framework import viewsets
-from .models import Play, Admin, Supporter, Record, Photo
-
+from .models import *
+from rest_framework.decorators import api_view
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
-
+from rest_framework import status
+from datetime import datetime
+from rest_framework.response import Response
 # def index(request):
 #     admin_list = Admin.objects
 #     context = {'admin_list': admin_list}
@@ -35,9 +36,17 @@ from django.views.decorators.csrf import csrf_exempt
 #         response['Location'] = obj.get_absolute_url()
 #         return response
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+
+@api_view(['GET'])
+def index(request):
+    print('**************************')
+    date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    message = 'server is live current time is '
+    return Response(data=message + date,status=status.HTTP_200_OK)
+
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
 
 
 class PlayViewSet(viewsets.ModelViewSet):
@@ -45,9 +54,9 @@ class PlayViewSet(viewsets.ModelViewSet):
     serializer_class = PlaySerializer
 
 
-class AdminViewSet (viewsets.ModelViewSet):
-    queryset = Admin.objects.all()
-    serializer_class = AdminSerializer
+class UserViewSet (viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 class SupporterViewSet (viewsets.ModelViewSet):

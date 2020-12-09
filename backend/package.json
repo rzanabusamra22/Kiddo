@@ -1,7 +1,10 @@
 {
   "scripts": {
     "start": "python manage.py runserver",
-    "addvenv": "python -m venv venv"
+    "create": "python -m venv venv",
+    "mm": "python manage.py makemigrations api",
+     "m": "python manage.py migrate"
+
   },
   "dependencies": {
     "django": "^1.0.0"
