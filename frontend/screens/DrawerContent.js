@@ -25,6 +25,7 @@ export default function DrawerContent(props) {
   const signOutHandler = () => {
     console.log('*****************************************')
     localStorage.removeItem('token')
+    props.navigation.navigate('Home')
    // this.props.setUser({});
 
 };

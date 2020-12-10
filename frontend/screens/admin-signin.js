@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
-import Logout from './logout'
+
 export default function Signin ({navigation}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = () => {
+        
         console.log('*****************************************')
         console.log(username + "   " + password)
         // fetch('http://127.0.0.1:5000/signin', {
@@ -83,7 +84,7 @@ fetch("http://localhost:8000/auth/login/", requestOptions)
                 <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
                     <Text  style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
-                <Logout />
+             
 
             </View>
 
