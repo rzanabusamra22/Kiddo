@@ -40,7 +40,10 @@ const SignInstack = createStackNavigator();
 const Donatestack = createStackNavigator();
 const AdminProfilestack = createStackNavigator();
 //Home Stack 
+
 const HomeStackScreen = ({navigation}) =>{
+  
+
   return(
     <HomeStack.Navigator 
  initialRouteName="Home"
@@ -161,11 +164,32 @@ const AdminStackScreen = ({navigation}) =>{
 }
 
 // The App 
-export default function App() {
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state={
+      token: ''
+    }
+  }
+
+  componentDidMount(){
+    this.setState({
+      token: localStorage.getItem('token')
+    })
+  }
+  render(){
   return (
      <NavigationContainer>
-       {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}> */}
-       <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}>
+       <Drawer.Navigator drawerContent={props => 
+       {
+       if(this.state.token){
+        <DrawerContent {...props} />
+       }
+      else {
+        <DrawerContent2 {...props} /> 
+      }
+    }}  >
+       {/* <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}> */}
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
@@ -174,4 +198,5 @@ export default function App() {
 
     </NavigationContainer>
   ); 
-}
+}}
+export default App

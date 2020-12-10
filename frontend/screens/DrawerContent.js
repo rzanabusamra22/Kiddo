@@ -21,7 +21,13 @@ import { color } from 'react-native-reanimated';
 
 
 export default function DrawerContent(props) {
+     
+  const signOutHandler = () => {
+    console.log('*****************************************')
+    localStorage.removeItem('token')
+   // this.props.setUser({});
 
+};
     return(
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>
@@ -87,7 +93,7 @@ export default function DrawerContent(props) {
                         />
                     )}
                     label="Sign Out"
-                    // onPress={() => {signOut()}}
+                    onPress={() => {signOutHandler()}}
                 />
             </Drawer.Section>
         </View>
