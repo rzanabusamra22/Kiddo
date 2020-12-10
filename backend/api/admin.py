@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Play, Photo, Admin, Record, Supporter
+from .models import *
 
 # Register models
-admin.site.register(Admin)
+admin.site.register(User)
 admin.site.register(Photo)
 admin.site.register(Play)
 admin.site.register(Record)

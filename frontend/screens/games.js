@@ -1,23 +1,61 @@
-import React, { useState } from 'react';
-import {WebView} from 'react-native-webview'
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert , Linking} from 'react-native';
-import {Dimensions} from 'react-native';
+import React, { Component, useState } from 'react';
+import { WebView } from 'react-native-webview'
+import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, Button, Alert, Linking } from 'react-native';
+import { Dimensions } from 'react-native';
+import { sendgame } from './redux/actions';
+import { connect } from 'react-redux';
 const wind = Dimensions.get('window');
 var vw = wind.width * 0.01
 var vh = wind.height * 0.01
-export default function Games({ navigation }) {
-    return (
-        <View style={styles.container}>
-            {[...Array(6)].map(function (x, i) {
-                return (
-                    <TouchableOpacity onPress={() =>Linking.openURL('https://www.youtube.com/embed/Jrg9KxGNeJY')} key={i} style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
+class Games extends Component {
+    constructor(props) {
+        
+        super(props)
+        this.state = {
+            result: [],
+        }
+    }
+    componentDidMount() {
 
-                        <Image style={{ borderRadius: 15, height: "100%", width: "100%" }} source={{ uri: "https://pbs.twimg.com/media/D1eeNItVsAAIEQ4.jpg" }} />
-                    </TouchableOpacity>
-                )
-            })}
-        </View>
-    );
+
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+
+        fetch("https://disco-nirvana-297409.oa.r.appspot.com/plays", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                this.setState({
+                    result
+                })
+                console.log(result)
+            })
+            .catch(error => console.log('error', error));
+    }
+    
+    render() {
+       const navigation = this.props.navigation
+       const sendgame = this.props.sendgame
+        return (
+            <View style={styles.container}>
+                  <ScrollView>
+                {this.state.result.map(function (x, i) {
+                    return (
+                        <TouchableOpacity onPress={() =>{ 
+                             sendgame(x.link);
+                             navigation.navigate('Game')
+                             }}  key={i} style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
+
+                            <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: x?.thumbnail }} />
+                        </TouchableOpacity>
+                    )
+                })}
+
+                  </ScrollView >
+            </View>
+        );
+    }
 }
 const styles = StyleSheet.create({
     container: {
@@ -25,6 +63,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         flexDirection: 'row',
         flexWrap: 'wrap'
+    },
+    img: {
+        width: 120,
+        height: 120
     },
     logo: {
         fontWeight: "bold",
@@ -64,3 +106,17 @@ const styles = StyleSheet.create({
         color: "black"
     }
 });
+
+// Redux
+const mapStateToProps = (state) => {
+    return {
+       gamelink: state.gamelink,
+    }
+  }
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      sendgame: (z) => { dispatch(sendgame(z)) },
+    }
+  }
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Games);  

@@ -5,12 +5,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AppLoading } from 'expo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons'
-
+//redux
+import {createStore} from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './screens/redux/reducers.js';
+const store = createStore(rootReducer);
 // Home Screen Categories
 import Home from './screens/home-comp'
 import Learn from './screens/learn';
 import Art from './screens/art';
 import Videos from './screens/videos';
+import Video from './screens/video';
+import Game from './screens/game';
+
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -32,6 +39,7 @@ import AdminProfile from './screens/AdminProfile';
 import DrawerContent from './screens/DrawerContent';
 //Admin Needs to Sign In
 import DrawerContent2 from './screens/DrawerContent2';
+
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -64,9 +72,11 @@ const HomeStackScreen = ({navigation}) =>{
  />
     <HomeStack.Screen name="Learn" component={Learn} />
     <HomeStack.Screen name="Art" component={Art} />
+    <HomeStack.Screen name="Video" component={Video} />
     <HomeStack.Screen name="Videos" component={Videos} />
     <HomeStack.Screen name="Album" component={Album} />
     <HomeStack.Screen name="Games" component={Games} />
+    <HomeStack.Screen name="Game" component={Game} />
     {/* Learn Catagories  */}
      <HomeStack.Screen name="Alphabet" component={Alphabet} />
      <HomeStack.Screen name="Numbers" component={Numbers} />
@@ -163,9 +173,10 @@ const AdminStackScreen = ({navigation}) =>{
 // The App 
 export default function App() {
   return (
+    <Provider store={store}>
      <NavigationContainer>
-       {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}> */}
-       <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}>
+       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+       {/* <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}> */}
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
@@ -173,5 +184,6 @@ export default function App() {
       </Drawer.Navigator>
 
     </NavigationContainer>
+    </Provider>
   ); 
 }
