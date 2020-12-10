@@ -69,8 +69,7 @@ This website gives a safe envorinment for kids to play and learn
 
 * To update the database tables
 * Enter venv or open bash inside /backend (global)
-* `$ python manage.py makemigrations api`
-* `$ python manage.py migrate`
+* `$ python manage.py makemigrations api` then `$ python manage.py migrate`
 
 ## Deploy ##
 * To deploy a server using app engine
