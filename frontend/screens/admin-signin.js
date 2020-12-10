@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
-
-export default function Signin () {
+import Logout from './logout'
+export default function Signin ({navigation}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -22,17 +22,29 @@ export default function Signin () {
         // }); 
         //for then---> alert
 
-
-
+     
+ var raw = JSON.stringify({"username":username,"password":password});
 var requestOptions = {
-  method: 'GET',
- 
+  method: 'POST',
+  body: raw ,
+  headers: {
+    "Content-Type": "application/json"
+  },
   redirect: 'follow'
 };
 
-fetch("https://disco-nirvana-297409.oa.r.appspot.com/users/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
+
+fetch("http://localhost:8000/auth/login/", requestOptions)
+  .then(response => response.json())
+  .then(result => {
+        //this.props.setUser(results.data)
+       
+        if( result.token !== undefined){
+            localStorage.setItem('token', result.token);
+            navigation.navigate('Home')
+        }
+        
+        console.log(result)})
   .catch(error => console.log('error', error));
         
         // setUsername('')
@@ -69,10 +81,10 @@ fetch("https://disco-nirvana-297409.oa.r.appspot.com/users/", requestOptions)
                     <Text style={styles.forgot}>Forgot Password?</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.loginBtn}>
+                <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
                     <Text  style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
-
+                <Logout />
 
             </View>
 

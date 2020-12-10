@@ -16,6 +16,8 @@ import Learn from './screens/learn';
 import Art from './screens/art';
 import Videos from './screens/videos';
 import Video from './screens/video';
+import Game from './screens/game';
+
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -74,6 +76,7 @@ const HomeStackScreen = ({navigation}) =>{
     <HomeStack.Screen name="Videos" component={Videos} />
     <HomeStack.Screen name="Album" component={Album} />
     <HomeStack.Screen name="Games" component={Games} />
+    <HomeStack.Screen name="Game" component={Game} />
     {/* Learn Catagories  */}
      <HomeStack.Screen name="Alphabet" component={Alphabet} />
      <HomeStack.Screen name="Numbers" component={Numbers} />
@@ -172,8 +175,8 @@ export default function App() {
   return (
     <Provider store={store}>
      <NavigationContainer>
-       {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}> */}
-       <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}>
+       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+       {/* <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}> */}
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
