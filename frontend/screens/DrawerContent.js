@@ -20,29 +20,69 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { color } from 'react-native-reanimated';
 
 
-export default function DrawerContent(props) {
-     
-  const signOutHandler = () => {
+class DrawerContent extends React.Component{
+  constructor(props){
+    super(props)
+      this.state={
+        user: {username:'Admin', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU'}
+
+      }
+  }
+  
+  componentDidMount() {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+
+  
+    fetch("http://localhost:8000/getid/", 
+            {headers: 
+                myHeaders
+              ,
+            redirect: 'follow'
+        })
+            .then(response => response.text())
+            .then(result => {
+                fetch("http://localhost:8000/users/"+result, {
+                    headers: myHeaders,
+                    redirect: 'follow'
+                   })
+                .then(response => response.json())
+                .then(result => {
+                    this.setState({
+                      user: result
+                    })
+                    console.log(result)})
+                .catch(()=> console.log('Err fetch user info'))
+            })
+            .catch(()=> console.log('Err fetch userid'))
+  }
+    // const user = localStorage.getItem('user')
+    // console.log(user)
+  signOutHandler = () => {
     console.log('*****************************************')
     localStorage.removeItem('token')
-    props.navigation.navigate('Home')
+    localStorage.removeItem('user')
+    this.props.navigation.navigate('Home')
    // this.props.setUser({});
 
 };
+    render(){
     return(
         <View style={{flex:1}}>
-            <DrawerContentScrollView {...props}>
+            <DrawerContentScrollView {...this.props}>
                 <View style={styles.drawerContent}>
                     <View  style={styles.userInfoSection}>
                       <View style={{flexDirection:'row',marginTop: 15}}>
                       <Avatar.Image 
                                 source={{
-                                    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU'
+                                    uri: this.state.user.thumbnail
                                 }}
                                 size={50}
                             />
                             <View  style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title}>Admin Name</Title>
+                              <Title style={styles.title}>{this.state.user.username}</Title>
                                 <Caption style={styles.caption}>Admin</Caption>
                             </View>
                       </View>
@@ -57,7 +97,7 @@ export default function DrawerContent(props) {
                                 />
                             )}
                             label="Home"
-                            onPress={() => {props.navigation.navigate('Home')}}
+                            onPress={() => {this.props.navigation.navigate('Home')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -68,7 +108,7 @@ export default function DrawerContent(props) {
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {props.navigation.navigate('Profile')}}
+                            onPress={() => {this.props.navigation.navigate('Profile')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -79,7 +119,7 @@ export default function DrawerContent(props) {
                                 />
                             )}
                             label="Donate"
-                            onPress={() => {props.navigation.navigate('Donate')}}
+                            onPress={() => {this.props.navigation.navigate('Donate')}}
                         />
                     </Drawer.Section>
                 </View>
@@ -94,13 +134,13 @@ export default function DrawerContent(props) {
                         />
                     )}
                     label="Sign Out"
-                    onPress={() => {signOutHandler()}}
+                    onPress={() => {this.signOutHandler()}}
                 />
             </Drawer.Section>
         </View>
     )
 }
-
+}
 const styles = StyleSheet.create({
     drawerContent: {
       flex: 1,
@@ -146,3 +186,13 @@ const styles = StyleSheet.create({
       paddingHorizontal: 16,
     },
   });
+
+  export default DrawerContent
+
+
+
+
+
+
+
+ 

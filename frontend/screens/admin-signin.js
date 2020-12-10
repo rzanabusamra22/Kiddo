@@ -34,6 +34,7 @@ var requestOptions = {
 };
 
 
+
 fetch("http://localhost:8000/auth/login/", requestOptions)
   .then(response => response.json())
   .then(result => {
@@ -42,8 +43,7 @@ fetch("http://localhost:8000/auth/login/", requestOptions)
         if( result.token !== undefined){
             localStorage.setItem('token', result.token);
             navigation.navigate('Home')
-        }
-        
+        }  
         console.log(result)})
   .catch(error => console.log('error', error));
         
