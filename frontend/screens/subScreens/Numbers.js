@@ -2,18 +2,16 @@ import React, { Component, useState } from 'react';
 import { Image, StyleSheet, Text, View } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 const slides = [
-    {key: "one",image: {uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjB5OMwDXrf2tHhMnu3KgpjL2lVU7fkryTiA&usqp=CAU'}},
-    {key: "two",image: {uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjB5OMwDXrf2tHhMnu3KgpjL2lVU7fkryTiA&usqp=CAU'}},
-    // {key: "one",image: require('../assests/pictures/1.PNG')},
-    // {key: "two",image: require("../assests/pictures/2.PNG")},
-    // {key: "three",image: require("../assests/pictures/3.PNG")},
-    // {key: "four",image: require("../assests/pictures/4.PNG")},
-    // {key: "five",image: require("../assests/pictures/5.PNG")},
-    // {key: "six",image: require("../assests/pictures/6.PNG")},
-    // {key: "seven",image: require("../assests/pictures/7.PNG")},
-    // {key: "eight",image: require("../assests/pictures/8.PNG")},
-    // {key: "nine",image: require("../assests/pictures/9.PNG")},
-    // {key: "ten",image: require("../assests/pictures/10.PNG")},
+    {key: "one",image: {uri: 'https://i.imgur.com/N6AqfnY.png'}},
+    {key: "two",image: {uri: 'https://i.imgur.com/hV0OYM5.png'}},
+    {key: "three",image: {uri: 'https://i.imgur.com/crlJyCy.png'}},
+    {key: "four",image: {uri: 'https://i.imgur.com/RlRnjZb.png'}},
+    {key: "five",image: {uri: 'https://i.imgur.com/p1PKdcl.png'}},
+    {key: "six",image: {uri: 'https://i.imgur.com/V3aCy5Z.png'}},
+    {key: "seven",image: {uri: 'https://i.imgur.com/XlOO2oJ.png'}},
+    {key: "eight",image: {uri: 'https://i.imgur.com/xf82Wb3.png'}},
+    {key: "nine",image: {uri: 'https://i.imgur.com/Nxbwd4E.png'}},
+    {key: "ten",image: {uri: 'https://i.imgur.com/EpyMsS0.png'}},
   ];
 class Numbers extends Component{
     constructor(){
@@ -27,7 +25,6 @@ class Numbers extends Component{
             <Image
               source={item.image}
               style={{
-                // marginTop:20,
                 height: 600,
                 width: 400,
               }}
@@ -82,29 +79,3 @@ export default Numbers
 
 
 
-
-
-
-
-
-// import React, { Component, useState } from 'react';
-// import { StyleSheet, Image, Text, View} from 'react-native';
-// class Numbers extends Component{
-//     constructor(){
-//         super()
-//         this.state={
-
-//         }
-//     }
-//     render (){
-//     return (
-//       <View>
-//           <Image
-//           {require("../assests/pictures/1.PNG")} />
-//       </View>
-//     );
-// }}
-// const styles = StyleSheet.create({
-
-// });
-// export default Numbers

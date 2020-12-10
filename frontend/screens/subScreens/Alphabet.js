@@ -1,49 +1,98 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert , Linking} from 'react-native';
-import {Dimensions} from 'react-native';
-const wind = Dimensions.get('window');
-var vw = wind.width * 0.01
-var vh = wind.height * 0.01
+import { Image, StyleSheet, Text, View } from "react-native";
+import AppIntroSlider from "react-native-app-intro-slider";
+const slides = [
+    {key: "A",image: {uri: 'https://i.imgur.com/nTnaSnC.png'}},
+    {key: "B",image: {uri: 'https://i.imgur.com/JUo3oew.png'}},
+    {key: "C",image: {uri: 'https://i.imgur.com/12ve8qR.png'}},
+    {key: "D",image: {uri: 'https://i.imgur.com/7lwGMFf.png'}},
+    {key: "E",image: {uri: 'https://i.imgur.com/zEiJiMA.png'}},
+    {key: "F",image: {uri: 'https://i.imgur.com/eBaDmhl.png'}},
+    {key: "G",image: {uri: 'https://i.imgur.com/1mXAQRS.png'}},
+    {key: "H",image: {uri: 'https://i.imgur.com/NQ7WI4F.png'}},
+    {key: "I",image: {uri: 'https://i.imgur.com/HoO98OY.png'}},
+    {key: "J",image: {uri: 'https://i.imgur.com/jKZJ0KC.png'}},
+    {key: "K",image: {uri: 'https://i.imgur.com/TwrxTj8.png'}},
+    {key: "L",image: {uri: 'https://i.imgur.com/L5L50HD.png'}},
+    {key: "M",image: {uri: 'https://i.imgur.com/o4dJoLb.png'}},
+    {key: "N",image: {uri: 'https://i.imgur.com/R77XXRw.png'}},
+    {key: "O",image: {uri: 'https://i.imgur.com/kM7iFVI.png'}},
+    {key: "P",image: {uri: 'https://i.imgur.com/5r777DK.png'}},
+    {key: "Q",image: {uri: 'https://i.imgur.com/JDRM4cT.png'}},
+    {key: "R",image: {uri: 'https://i.imgur.com/IC0nRrt.png'}},
+    {key: "S",image: {uri: 'https://i.imgur.com/2dlmeV4.png'}},
+    {key: "T",image: {uri: 'https://i.imgur.com/q4uy79U.png'}},
+    {key: "U",image: {uri: 'https://i.imgur.com/PGN7nRu.png'}},
+    {key: "V",image: {uri: 'https://i.imgur.com/r5ZHPed.png'}},
+    {key: "W",image: {uri: 'https://i.imgur.com/UP6t5gd.png'}},
+    {key: "X",image: {uri: 'https://i.imgur.com/vfwzBKE.png'}},
+    {key: "Y",image: {uri: 'https://i.imgur.com/NEdp3C6.png'}},
+    {key: "Z",image: {uri: 'https://i.imgur.com/BhifPhf.png'}},
+  ];
 class Alphabet extends Component{
     constructor(){
         super()
         this.state={
-            result : []
         }
     }
-    componentDidMount() {
-      
-        
-        var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-        };
-    
-    fetch("https://disco-nirvana-297409.oa.r.appspot.com/records/", requestOptions)
-      .then(response => response.json())
-      .then(result =>{
-      this.setState({
-          result
-      })
-      console.log(result)})
-      .catch(error => console.log('error', error));
-        }
-        render(){
-    return(
-        <View style={styles.container}>
-            {[...Array(6)].map(function (x, i) {
-                return (
-                    <TouchableOpacity onPress={() =>Linking.openURL('https://www.youtube.com/embed/Jrg9KxGNeJY')} key={i} style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
-
-                        <Image style={{ borderRadius: 15, height: "100%", width: "100%" }} source={{ uri: "https://pbs.twimg.com/media/D1eeNItVsAAIEQ4.jpg" }} />
-                    </TouchableOpacity>
-                )
-            })}
-        </View>
-    )
+    _renderItem = ({ item }) => {
+        return (
+          <View style={styles.container}>
+            <Image
+              source={item.image}
+              style={{
+                height: 600,
+                width: 400,
+              }}
+            />
+          </View>
+        );
+      };
+    render (){
+          return (
+          <AppIntroSlider
+            renderItem={this._renderItem} 
+            data={slides} 
+           />
+          );
 }}
-
 const styles = StyleSheet.create({
-    
-})
+    container: {
+        flexDirection:'row',
+        justifyContent:'center',
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+      }
+});
 export default Alphabet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
