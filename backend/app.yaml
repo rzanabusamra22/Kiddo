@@ -11,7 +11,7 @@ handlers:
   script: auto
 
 # This is an alternative to app variable in main.py (if it fails to be detected)
-# entrypoint: gunicorn -b :$PORT backend.wsgi
+# entrypoint: gunicorn -b :$PORT main:app
 
 # To create a flex env & custom runtime (Needs Dockerfile)
 # runtime: custom
