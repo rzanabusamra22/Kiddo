@@ -29,7 +29,6 @@ class Games extends Component {
                 this.setState({
                     result
                 })
-                console.log(result)
             })
             .catch(error => console.log('error', error));
     }
