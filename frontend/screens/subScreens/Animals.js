@@ -1,50 +1,47 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert , Linking} from 'react-native';
-import {Dimensions} from 'react-native';
-const wind = Dimensions.get('window');
-var vw = wind.width * 0.01
-var vh = wind.height * 0.01
+import { Image, StyleSheet, Text, View } from "react-native";
+import AppIntroSlider from "react-native-app-intro-slider";
+const slides = [
+    {key: "chicken",image: {uri: 'https://i.imgur.com/I9KTOXD.png'}},
+    {key: "cow",image: {uri: 'https://i.imgur.com/DxLuZ6L.png'}},
+    {key: "duck",image: {uri: 'https://i.imgur.com/66YRBq0.png'}},
+    {key: "horse",image: {uri: 'https://i.imgur.com/2cJG2FR.png'}},
+    {key: "sheep",image: {uri: 'https://i.imgur.com/MeAefcJ.png'}}
+  ];
 class Animals extends Component{
     constructor(){
         super()
         this.state={
-            result : []
         }
     }
-    componentDidMount() {
-      
-
-    var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-    };
-
-fetch("https://disco-nirvana-297409.oa.r.appspot.com/records/", requestOptions)
-  .then(response => response.json())
-  .then(result =>{
-  this.setState({
-      result
-  })
-  console.log(result)})
-  .catch(error => console.log('error', error));
-    }
-
+    _renderItem = ({ item }) => {
+        return (
+          <View style={styles.container}>
+            <Image
+              source={item.image}
+              style={{
+                height: 600,
+                width: 400,
+              }}
+            />
+          </View>
+        );
+      };
     render (){
-    return(
-        <View style={styles.container}>
-            {[...Array(6)].map(function (x, i) {
-                return (
-                    <TouchableOpacity onPress={() =>Linking.openURL('https://www.youtube.com/embed/Jrg9KxGNeJY')} key={i} style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
-
-                        <Image style={{ borderRadius: 15, height: "100%", width: "100%" }} source={{ uri: "https://pbs.twimg.com/media/D1eeNItVsAAIEQ4.jpg" }} />
-                    </TouchableOpacity>
-                )
-            })}
-        </View>
-    )
+          return (
+          <AppIntroSlider
+            renderItem={this._renderItem} 
+            data={slides} 
+           />
+          );
 }}
-
 const styles = StyleSheet.create({
-    
-})
+    container: {
+        flexDirection:'row',
+        justifyContent:'center',
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+      }
+});
 export default Animals

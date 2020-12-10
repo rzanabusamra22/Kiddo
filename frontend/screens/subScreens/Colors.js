@@ -1,44 +1,47 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert, Linking } from 'react-native';
-import { Dimensions } from 'react-native';
-const wind = Dimensions.get('window');
-var vw = wind.width * 0.01
-var vh = wind.height * 0.01
-class Colors extends Component {
-    constructor() {
+import { Image, StyleSheet, Text, View } from "react-native";
+import AppIntroSlider from "react-native-app-intro-slider";
+const slides = [
+    {key: "blue",image: {uri: 'https://i.imgur.com/Ep7evnj.png'}},
+    {key: "green",image: {uri: 'https://i.imgur.com/xLQtVUv.png'}},
+    {key: "red",image: {uri: 'https://i.imgur.com/aGmwdPW.png'}},
+    {key: "black",image: {uri: 'https://i.imgur.com/PlGSddL.png'}},
+    {key: "yellow",image: {uri: 'https://i.imgur.com/pVY2D1N.png'}}
+  ];
+class Colors extends Component{
+    constructor(){
         super()
-        this.state = {
-            result: []
+        this.state={
         }
     }
-    componentDidMount() {
-
-
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-        };
-
-        fetch("https://disco-nirvana-297409.oa.r.appspot.com/records/", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                this.setState({
-                    result
-                })
-                console.log(result)
-            })
-            .catch(error => console.log('error', error));
-    }
-
-    render() {
-    return (
-    <Text>
-        Colors
-        </Text>
-    )
+    _renderItem = ({ item }) => {
+        return (
+          <View style={styles.container}>
+            <Image
+              source={item.image}
+              style={{
+                height: 600,
+                width: 400,
+              }}
+            />
+          </View>
+        );
+      };
+    render (){
+          return (
+          <AppIntroSlider
+            renderItem={this._renderItem} 
+            data={slides} 
+           />
+          );
 }}
-
 const styles = StyleSheet.create({
-
-})
+    container: {
+        flexDirection:'row',
+        justifyContent:'center',
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+      }
+});
 export default Colors

@@ -38,4 +38,5 @@ class Drawing extends Component{
 const styles = StyleSheet.create({
     
 })
-export default Drawing
+
+
