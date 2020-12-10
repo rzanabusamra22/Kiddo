@@ -13,7 +13,7 @@ class Alphabet extends Component{
     }
     componentDidMount() {
       
-
+        
         var requestOptions = {
         method: 'GET',
         redirect: 'follow'
