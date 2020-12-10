@@ -15,34 +15,30 @@ Including another URLconf
 """
 from api import views
 from django.urls import path
-from rest_framework import routers
 from django.contrib import admin
 from django.conf.urls import url, include
+from rest_framework import routers
 from rest_framework_jwt import views as jwt_views
-from django.conf.urls import url
-
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'plays', views.PlayViewSet)
-#router.register(r'admins', views.AdminViewSet)
 router.register(r'supporters', views.SupporterViewSet)
 router.register(r'records', views.RecordViewSet)
 router.register(r'photos', views.PhotoViewSet)
+# router.register(r'admins', views.AdminViewSet)
 # router.register(r'token')
+
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-   path('', include(router.urls)),
    path('admin/', admin.site.urls),
+   path("", include( router.urls )),
+   path("", include('djoser.urls')),
+   path("", include('djoser.urls.authtoken')),
    url(r'^account/', include('djoser.urls')),
    url(r'^auth/login/', jwt_views.obtain_jwt_token, name='auth'),
    path('checkserver/',views.index,name='index'),
- #  path('auth/', include('api.urls')),
-#    url(r'^api/public/', views.public),
-#    url(r'^api/private/', views.private), 
-   path("auth/", include('djoser.urls')),
-   path("auth/", include('djoser.urls.authtoken')),
    path('signup/', views.signup, name='signup')
 ]
