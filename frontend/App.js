@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AppLoading } from 'expo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons'
+
 // Home Screen Categories
 import Home from './screens/home-comp'
 import Learn from './screens/learn';

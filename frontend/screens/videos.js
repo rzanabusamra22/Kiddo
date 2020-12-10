@@ -15,7 +15,7 @@ class Videos extends Component{
     redirect: 'follow'
     };
 
-fetch("http://127.0.0.1:8000/records/", requestOptions)
+fetch("https://disco-nirvana-297409.oa.r.appspot.com/records/", requestOptions)
   .then(response => response.json())
   .then(result =>{
   this.setState({
