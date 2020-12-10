@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { WebView } from 'react-native-webview'
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert, Linking } from 'react-native';
+import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
 import { Dimensions } from 'react-native';
 import { sendvideo } from './redux/actions';
 import { connect } from 'react-redux';
@@ -38,9 +38,11 @@ class Videos extends Component {
        const navigation = this.props.navigation
        const sendvideo = this.props.sendvideo
         return (
-            <View style={styles.container}>
+            <View>
+                <ScrollView style={styles.container}>
                 {this.state.result.map(function (x, i) {
                     return (
+                    
                         <TouchableOpacity onPress={() =>{ 
                              sendvideo(x.link);
                              navigation.navigate('Video')
@@ -48,10 +50,11 @@ class Videos extends Component {
 
                             <Image style={{ borderRadius: 15, height: "100%", width: "100%" }} source={{ uri: x?.thumbnail }} />
                         </TouchableOpacity>
+                    
                     )
                 })}
 
-
+            </ScrollView>
             </View>
         );
     }

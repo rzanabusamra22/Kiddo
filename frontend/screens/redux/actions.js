@@ -3,6 +3,12 @@
 export const sendvideo = (z) => {
     return {
         type: 'sendvideo',
-        videolink: z
+        videolink: z,
+    }
+}
+export const sendgame = (z) => {
+    return {
+        type: 'sendgame',
+        gamelink: z,
     }
 }
