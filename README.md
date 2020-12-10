@@ -1,5 +1,7 @@
+[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://disco-nirvana-297409.oa.r.appspot.com/)
+
 # Project Name #
-Kiddo
+[Kiddo](https://disco-nirvana-297409.oa.r.appspot.com/)
 
 ### Heading ###
 Website for kids
@@ -7,14 +9,14 @@ Website for kids
 ### Sub-Heading ###
 This website gives a safe envorinment for kids to play and learn
 
-## Table of contents ###
+## Table of contents ##
 * Technologies
 * Launch
 * Deploy
 * Members
 * Roles
 
-### Technologies used ###
+## Technologies used ##
 * Python
 * Django
 * Rest framework
@@ -29,7 +31,6 @@ This website gives a safe envorinment for kids to play and learn
 * Android Studio
 * VS Code
 
-### Launch ###
 ## Frontend ##
 * To install dependancies
 * Open bash inside /frontend
@@ -69,19 +70,19 @@ This website gives a safe envorinment for kids to play and learn
 * $ python manage.py makemigrations api
 * $ python manage.py migrate
 
-### Deploy ###
+## Deploy ##
 * To deploy a server using app engine
 * Install gcloud then open bash inside /backend
 * $ gcloud app deploy
 
-* Deployed links
+### Deployed links ###
 * Backend server
 * https://disco-nirvana-297409.oa.r.appspot.com/
 * Backend admin server
 * https://disco-nirvana-297409.oa.r.appspot.com/admin
 
-### Members ###
-* Razan Abusamra - Scrum master
+## Members ##
+* Razan Abusamra - Scrum Master
 * Hamdallah Fatayer - Co-Leader
 * Noor Ashqar - Development
 * Dima jaber - Development
