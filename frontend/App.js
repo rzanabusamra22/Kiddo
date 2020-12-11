@@ -182,7 +182,6 @@ export default function App() {
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
         <Drawer.Screen name="Profile" component={AdminStackScreen} />
       </Drawer.Navigator>
-
     </NavigationContainer>
     </Provider>
   ); 

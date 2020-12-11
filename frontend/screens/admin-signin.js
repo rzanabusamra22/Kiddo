@@ -34,7 +34,7 @@ var requestOptions = {
 };
 
 
-fetch("http://localhost:8000/auth/login/", requestOptions)
+fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
   .then(response => response.json())
   .then(result => {
         //this.props.setUser(results.data)

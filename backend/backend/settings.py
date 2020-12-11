@@ -105,11 +105,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 if os.getenv('GAE_APPLICATION', None):
     # Running on production App Engine, so connect to Google Cloud SQL using
-    # the unix socket at /cloudsql/disco-nirvana-297409:europe-west3:pearls
+    # the unix socket at /cloudsql/blackpearl2:us-central1:blackpearl
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/disco-nirvana-297409:europe-west3:pearls',
+            'HOST': '/cloudsql/blackpearl2:us-central1:blackpearl',
             'USER': 'xoro',
             'PASSWORD': '',
             'NAME': 'blackpearl',
@@ -118,7 +118,7 @@ if os.getenv('GAE_APPLICATION', None):
 # else:
     # Running locally so connect to either a local MySQL instance or connect to Cloud SQL via the proxy. 
     # To host the database locally
-    # run $ ./cloud_sql_proxy -instances=disco-nirvana-297409:europe-west3:pearls=tcp:3306
+    # run $ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306
     # DATABASES = {
     #     'default': {
     #         'ENGINE': 'django.db.backends.mysql',

@@ -1,7 +1,7 @@
-[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://disco-nirvana-297409.oa.r.appspot.com/)
+[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://blackpearl2.ew.r.appspot.com/)
 
 # Project Name #
-[Kiddo](https://disco-nirvana-297409.oa.r.appspot.com/)
+[Kiddo](https://blackpearl2.ew.r.appspot.com/)
 
 ### Heading ###
 Website for kids
@@ -44,8 +44,8 @@ This website gives a safe envorinment for kids to play and learn
 
 ## Backend ##
 * To run mysql database on localhost (you can skip this and use sqlite3 default database)
-* Install gcloud then open bash inside /backend
-* `$ ./cloud_sql_proxy -instances=disco-nirvana-297409:europe-west3:pearls=tcp:3306`
+* Uncomment the database code in /backend/settings.py then Install gcloud then open bash inside /backend
+* `$ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306`
 
 * To create new virtual environment (venv)
 * Open bash inside /backend
@@ -78,9 +78,9 @@ This website gives a safe envorinment for kids to play and learn
 
 ### Deployed links ###
 * Backend server
-* https://disco-nirvana-297409.oa.r.appspot.com/
+* https://blackpearl2.ew.r.appspot.com/
 * Backend admin server
-* https://disco-nirvana-297409.oa.r.appspot.com/admin
+* https://blackpearl2.ew.r.appspot.com/admin
 
 ## Members ##
 * Razan Abusamra - Scrum Master
