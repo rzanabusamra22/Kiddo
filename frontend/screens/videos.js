@@ -4,6 +4,7 @@ import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFee
 import { Dimensions } from 'react-native';
 import { sendvideo } from './redux/actions';
 import { connect } from 'react-redux';
+// import * as Progress from 'react-native-progress';
 const wind = Dimensions.get('window');
 var vw = wind.width * 0.01
 var vh = wind.height * 0.01
@@ -37,8 +38,9 @@ class Videos extends Component {
        const navigation = this.props.navigation
        const sendvideo = this.props.sendvideo
         return (
-            <View>
+            
                 <ScrollView style={styles.container}>
+                {/* <Progress.Bar progress={0.3} width={200} /> */}
                 {this.state.result.map(function (x, i) {
                     return (
                     
@@ -49,12 +51,13 @@ class Videos extends Component {
 
                             <Image style={{ borderRadius: 15, height: "100%", width: "100%" }} source={{ uri: x?.thumbnail }} />
                         </TouchableOpacity>
+                        
                     
                     )
                 })}
-
+            
             </ScrollView>
-            </View>
+            
         );
     }
 }
