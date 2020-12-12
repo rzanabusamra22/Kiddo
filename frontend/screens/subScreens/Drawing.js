@@ -9,13 +9,10 @@ class Drawing extends Component{
         }
     }
     componentDidMount() {
-
-
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
         };
-
         fetch("https://blackpearl2.ew.r.appspot.com/records/", requestOptions)
             .then(response => response.json())
             .then(result => {
@@ -38,5 +35,6 @@ class Drawing extends Component{
 const styles = StyleSheet.create({
     
 })
+export default Drawing
 
 

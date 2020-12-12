@@ -134,3 +134,5 @@ const styles = StyleSheet.create({
         color: "black"
     }
 });
+
+//headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),

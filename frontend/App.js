@@ -70,7 +70,11 @@ const HomeStackScreen = ({navigation}) =>{
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
     }}
  />
-    <HomeStack.Screen name="Learn" component={Learn} />
+    <HomeStack.Screen 
+    name="Learn" component={Learn} options={{ 
+       title: 'Kiddo',
+       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
+    }}/>
     <HomeStack.Screen name="Art" component={Art} />
     <HomeStack.Screen name="Video" component={Video} />
     <HomeStack.Screen name="Videos" component={Videos} />
