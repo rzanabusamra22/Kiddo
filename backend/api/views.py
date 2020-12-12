@@ -2,7 +2,7 @@
 from .serializers import *
 from rest_framework import viewsets
 from .models import *
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -13,6 +13,9 @@ from rest_framework.decorators import api_view
 from django.http import HttpResponse
 from rest_framework.parsers import JSONParser
 import json
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
 # def public(request):
 #     return HttpResponse("You don't need to be authenticated to see this")
 
@@ -47,6 +50,7 @@ import json
 #         return response
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def signup(request):
     print('***************** SIGNUP **************')
     print(request)
@@ -66,11 +70,15 @@ def signup(request):
             return JsonResponse(serializer.data, status=201)
     return JsonResponse(serializer.errors, status=400)
 
+#return user id when sign in 
 @api_view(['GET'])
 def sample_view(request):
     current_user = request.user
     print(current_user.id)
     return Response(current_user.id)
+
+#changing pass later
+
 
 
 @api_view(['GET'])
@@ -83,6 +91,7 @@ def index(request):
 # class UserViewSet(viewsets.ModelViewSet):
 #     queryset = User.objects.all()
 #     serializer_class = UserSerializer
+
 
 
 class PlayViewSet(viewsets.ModelViewSet):
