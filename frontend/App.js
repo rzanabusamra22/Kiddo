@@ -188,6 +188,7 @@ class App extends React.Component {
   render(){
   return (
     <Provider store={store}>
+     <audio id="sound"></audio>
      <NavigationContainer>
        
         <Drawer.Navigator drawerContent={props => 
@@ -209,6 +210,7 @@ class App extends React.Component {
 
     </NavigationContainer>
     </Provider>
+
   ); 
 }}
 export default App
