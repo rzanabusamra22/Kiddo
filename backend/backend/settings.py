@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'rest_framework_jwt',
-    'djoser'
+    'djoser',
+    'phone_field',
 
 ]
 
@@ -115,28 +116,28 @@ if os.getenv('GAE_APPLICATION', None):
             'NAME': 'blackpearl',
         }
     }
-# else:
+else:
     # Running locally so connect to either a local MySQL instance or connect to Cloud SQL via the proxy. 
     # To host the database locally
     # run $ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.mysql',
-    #         'HOST': '127.0.0.1',
-    #         'PORT': '3306',
-    #         'NAME': 'blackpearl',
-    #         'USER': 'xoro',
-    #         'PASSWORD': '',
-    #     }
-    # }
-else:
-    # run offline database
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'db.sqlite3',
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '127.0.0.1',
+            'PORT': '3306',
+            'NAME': 'blackpearl',
+            'USER': 'xoro',
+            'PASSWORD': '',
         }
     }
+# else:
+#     # run offline database
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': 'db.sqlite3',
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
