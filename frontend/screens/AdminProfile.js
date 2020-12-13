@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { Component, useState } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 
-export default function AdminProfile(){
+class AdminProfile extends Component{
+    constructor() {
+        super()
+    }
+    render() {
     return(
         <Text>
         Profile
         </Text>
     )
-}
+}}
 
 const styles = StyleSheet.create({
     
 })
+export default AdminProfile

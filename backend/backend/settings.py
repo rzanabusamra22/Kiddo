@@ -11,16 +11,26 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os 
 from pathlib import Path
+# import json
+# from six.moves.urllib import request
+# from cryptography.x509 import load_pem_x509_certificate
+# from cryptography.hazmat.backends import default_backend
+# from cryptography.hazmat.primitives import serialization
+#from rest_framework.authtoken.models import Token
+print('************************///////////////////*************************')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '^^mf4ndpr(bjf@yvtny-lgdk3yb7f_y)qtr)4=&+b50&@8kdn5'
+#  token = Token.objects.create(user="xoro")
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^^mf4ndpr(bjf@yvtny-lgdk3yb7f_y)qtr)4=&+b50&@8kdn5'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +51,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
+    'rest_framework_jwt',
+    'djoser',
+    'phone_field',
+
 ]
 
 MIDDLEWARE = [
@@ -91,38 +106,38 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 if os.getenv('GAE_APPLICATION', None):
     # Running on production App Engine, so connect to Google Cloud SQL using
-    # the unix socket at /cloudsql/disco-nirvana-297409:europe-west3:pearls
+    # the unix socket at /cloudsql/blackpearl2:us-central1:blackpearl
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/disco-nirvana-297409:europe-west3:pearls',
+            'HOST': '/cloudsql/blackpearl2:us-central1:blackpearl',
             'USER': 'xoro',
             'PASSWORD': '',
             'NAME': 'blackpearl',
         }
     }
-# else:
+else:
     # Running locally so connect to either a local MySQL instance or connect to Cloud SQL via the proxy. 
     # To host the database locally
-    # run $ ./cloud_sql_proxy -instances=disco-nirvana-297409:europe-west3:pearls=tcp:3306
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.mysql',
-    #         'HOST': '127.0.0.1',
-    #         'PORT': '3306',
-    #         'NAME': 'blackpearl',
-    #         'USER': 'xoro',
-    #         'PASSWORD': '',
-    #     }
-    # }
-else:
-    # run offline database
+    # run $ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'db.sqlite3',
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '127.0.0.1',
+            'PORT': '3306',
+            'NAME': 'blackpearl',
+            'USER': 'xoro',
+            'PASSWORD': '',
         }
     }
+# else:
+#     # run offline database
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': 'db.sqlite3',
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -168,7 +183,58 @@ STATIC_ROOT = 'static'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ]
+
+     'DEFAULT_AUTHENTICATION_CLASSES': [
+       'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+         'rest_framework_jwt.authentication.JSONWebTokenAuthentication'
+     ],
+    
+     
+    
+   'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+   ]
+
+   
 }
+
+AUTH_USER_MODEL = 'api.User'
+
+DJOSER = {
+    'LOGIN_FIELD': 'username',
+    'USER_CREATE_PASSWORD_RETYPE':True,
+    'SERIALIZERS': {
+        'user_create': 'api.serializers.UserSerializer',
+        'user': 'api.serializers.UserSerializer'
+
+    }
+}
+
+# AUTH0_DOMAIN = 'xoro.eu.auth0.com'
+# API_IDENTIFIER = 'https://xoro.eu.auth0.com/api/v2/'
+# PUBLIC_KEY = None
+# JWT_ISSUER = None
+# if AUTH0_DOMAIN:
+#     jsonurl = request.urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
+#     jwks = json.loads(jsonurl.read().decode('utf-8'))
+#     cert = '-----BEGIN CERTIFICATE-----\n' + jwks['keys'][0]['x5c'][0] + '\n-----END CERTIFICATE-----'
+#     certificate = load_pem_x509_certificate(cert.encode('utf-8'), default_backend())
+#     PUBLIC_KEY = certificate.public_key()
+#     JWT_ISSUER = 'https://' + AUTH0_DOMAIN + '/'
+
+# def jwt_get_username_from_payload_handler(payload):
+#     return "dima"
+
+# JWT_AUTH = {
+#     'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt_get_username_from_payload_handler,
+#     'JWT_PUBLIC_KEY': PUBLIC_KEY,
+#     'JWT_ALGORITHM': 'RS256',
+#     'JWT_AUDIENCE': API_IDENTIFIER,
+#     'JWT_ISSUER': JWT_ISSUER,
+#     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+# }

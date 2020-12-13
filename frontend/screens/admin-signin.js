@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
-
-export default function Signin () {
+export default function Signin ({navigation}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = () => {
+        
         console.log('*****************************************')
         console.log(username + "   " + password)
         // fetch('http://127.0.0.1:5000/signin', {
@@ -21,17 +21,29 @@ export default function Signin () {
         // }); 
         //for then---> alert
 
-
-
+     
+ var raw = JSON.stringify({"username":username,"password":password});
 var requestOptions = {
-  method: 'GET',
- 
+  method: 'POST',
+  body: raw ,
+  headers: {
+    "Content-Type": "application/json"
+  },
   redirect: 'follow'
 };
 
-fetch("http://127.0.0.1:8000/users/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
+
+fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
+  .then(response => response.json())
+  .then(result => {
+        //this.props.setUser(results.data)
+       
+        if( result.token !== undefined){
+            localStorage.setItem('token', result.token);
+            navigation.navigate('Home')
+        }
+        
+        console.log(result)})
   .catch(error => console.log('error', error));
         
         // setUsername('')
@@ -68,16 +80,13 @@ fetch("http://127.0.0.1:8000/users/", requestOptions)
                     <Text style={styles.forgot}>Forgot Password?</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.loginBtn}>
+                <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
                     <Text  style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
-
-
             </View>
 
         </TouchableWithoutFeedback>
     );
-
 }
 
 const styles = StyleSheet.create({
@@ -125,3 +134,5 @@ const styles = StyleSheet.create({
         color: "black"
     }
 });
+
+//headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),

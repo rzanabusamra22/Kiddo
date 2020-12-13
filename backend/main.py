@@ -6,4 +6,4 @@ from backend.wsgi import application
 app = application
 
 # gcloud API key
-key = "AIzaSyBeJDH5m8bbhYAup1ofLVbrwVx99Sr96m8"
+key = "AIzaSyBcHO6RYYzGOLMBnP-K6UhAUfSxAdsHPvM"

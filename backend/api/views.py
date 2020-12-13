@@ -1,13 +1,24 @@
-from django.contrib.auth.models import User
-from .serializers import PlaySerializer, UserSerializer, AdminSerializer, SupporterSerializer, RecordSerializer, PhotoSerializer
+#from django.contrib.auth.models import User
+from .serializers import *
 from rest_framework import viewsets
-from .models import Play, Admin, Supporter, Record, Photo
-
+from .models import *
+from rest_framework.decorators import api_view
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import status
+from datetime import datetime
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from django.http import HttpResponse
+from rest_framework.parsers import JSONParser
+import json
+# def public(request):
+#     return HttpResponse("You don't need to be authenticated to see this")
 
-
+# @api_view(['GET'])
+# def private(request):
+#     return HttpResponse("You should not see this message if not authenticated!")
 # def index(request):
 #     admin_list = Admin.objects
 #     context = {'admin_list': admin_list}
@@ -35,9 +46,43 @@ from django.views.decorators.csrf import csrf_exempt
 #         response['Location'] = obj.get_absolute_url()
 #         return response
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+@api_view(['POST'])
+def signup(request):
+    print('***************** SIGNUP **************')
+    print(request)
+    #body_unicode = request.body.decode('utf-8')
+    #body = json.loads(body_unicode)
+    data = JSONParser().parse(request)
+    serializer = UserSerializer(data=data)
+    
+  
+    #username=body['username'], password=body['password'], email=body["email"]
+   
+    #serializer.set_password('password')
+    print('**************** pass AFTER')
+   # print(serializer.password)
+    if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+    return JsonResponse(serializer.errors, status=400)
+
+@api_view(['GET'])
+def id(request):
+    current_user = request.user
+    print(current_user.id)
+    return Response(current_user.id)
+
+
+@api_view(['GET'])
+def index(request):
+    print('**************************')
+    date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    message = 'server is live current time is '
+    return Response(data=message + date,status=status.HTTP_200_OK)
+
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
 
 
 class PlayViewSet(viewsets.ModelViewSet):
@@ -45,9 +90,9 @@ class PlayViewSet(viewsets.ModelViewSet):
     serializer_class = PlaySerializer
 
 
-class AdminViewSet (viewsets.ModelViewSet):
-    queryset = Admin.objects.all()
-    serializer_class = AdminSerializer
+class UserViewSet (viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 class SupporterViewSet (viewsets.ModelViewSet):
