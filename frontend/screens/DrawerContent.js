@@ -62,15 +62,15 @@ class DrawerContent extends React.Component{
   }
    
  
-  signOutHandler = async () => {
-    console.log('*****************************************')
-   await AsyncStorage.removeItem('@token')
-   location.reload();
-    //this.props.navigation.navigate('Home')
+//   signOutHandler = async () => {
+//     console.log('*****************************************')
+//    await AsyncStorage.removeItem('@token')
+//    location.reload();
+//     //this.props.navigation.navigate('Home')
 
-   // this.props.setUser({});
+//    // this.props.setUser({});
 
-};
+// };
     render(){
     return(
         <View style={{flex:1}}>
