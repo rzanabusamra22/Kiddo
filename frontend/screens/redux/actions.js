@@ -12,3 +12,15 @@ export const sendgame = (z) => {
         gamelink: z,
     }
 }
+export const senddraw = (z) => {
+    return {
+        type: 'senddraw',
+        drawlink: z,
+    }
+}
+export const sendcoloring = (z) => {
+    return {
+        type: 'sendcoloring',
+        coloringlink: z,
+    }
+}

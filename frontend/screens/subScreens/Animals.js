@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { Image, StyleSheet, Text, View } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { TouchableOpacity } from 'react-native';
-var Sound = require('react-native-sound');
+// var Sound = require('react-native-sound');
 
 const slides = [
   {key: "chicken",image: {uri: 'https://i.imgur.com/I9KTOXD.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6620"},

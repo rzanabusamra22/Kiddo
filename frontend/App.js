@@ -18,6 +18,8 @@ import Art from './screens/art';
 import Videos from './screens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
+import Draw from './screens/subScreens/draw';
+import ColoringS from './screens/subScreens/coloringS';
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -223,6 +225,16 @@ const HomeStackScreen = ({navigation}) =>{
         routes: [{ name: 'Home' }],
       }) }/>)
    }}/>
+   <HomeStack.Screen 
+    name="coloringS" 
+    component={ColoringS} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
      <HomeStack.Screen 
      name="Drawing" 
      component={Drawing} 
@@ -232,6 +244,16 @@ const HomeStackScreen = ({navigation}) =>{
         index: 0,
         routes: [{ name: 'Home' }],
       }) }/>)
+   }}/>
+   <HomeStack.Screen 
+    name="draw" 
+    component={Draw} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
    }}/>
     </HomeStack.Navigator>
   )

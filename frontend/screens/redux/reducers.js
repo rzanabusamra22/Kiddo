@@ -5,6 +5,8 @@ const initState = {
     ],
     videolink: "",
     gamelink : "",
+    drawlink : "",
+    coloringlink : "",
 }
 
 // Edits the Redux variables
@@ -19,6 +21,18 @@ const rootReducer = (state = initState, action) => {
         return  {
             ...state,
             gamelink: action.gamelink
+        }
+    }
+    if (action.type === "senddraw") {
+        return  {
+            ...state,
+            gamelink: action.drawlink
+        }
+    }
+    if (action.type === "sendcoloring") {
+        return  {
+            ...state,
+            gamelink: action.coloringlink
         }
     }
     
