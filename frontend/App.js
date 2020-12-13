@@ -171,19 +171,38 @@ const AdminStackScreen = ({navigation}) =>{
 }
 
 // The App 
-export default function App() {
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state={
+
+    }
+  }
+
+  componentDidMount(){
+
+  }
+  render(){
   return (
     <Provider store={store}>
-     <NavigationContainer>
-       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-       {/* <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}> */}
+    <audio id="sound"></audio>
+    <NavigationContainer>
+      <Drawer.Navigator drawerContent={props => 
+       {
+       if(localStorage.getItem('token')){
+       return  <DrawerContent {...props}/>
+       }
+       else {
+       return  <DrawerContent2 {...props}/> 
+       }
+       }}> 
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
         <Drawer.Screen name="Profile" component={AdminStackScreen} />
       </Drawer.Navigator>
-
     </NavigationContainer>
     </Provider>
   ); 
-}
+}}
+export default App 

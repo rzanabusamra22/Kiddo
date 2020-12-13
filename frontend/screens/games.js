@@ -23,7 +23,7 @@ class Games extends Component {
             redirect: 'follow'
         };
 
-        fetch("https://disco-nirvana-297409.oa.r.appspot.com/plays", requestOptions)
+        fetch("https://blackpearl2.ew.r.appspot.com/plays", requestOptions)
             .then(response => response.json())
             .then(result => {
                 this.setState({

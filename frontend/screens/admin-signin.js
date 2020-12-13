@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
-import Logout from './logout'
 export default function Signin ({navigation}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -34,7 +33,7 @@ var requestOptions = {
 };
 
 
-fetch("http://localhost:8000/auth/login/", requestOptions)
+fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
   .then(response => response.json())
   .then(result => {
         //this.props.setUser(results.data)
@@ -84,13 +83,10 @@ fetch("http://localhost:8000/auth/login/", requestOptions)
                 <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
                     <Text  style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
-                <Logout />
-
             </View>
 
         </TouchableWithoutFeedback>
     );
-
 }
 
 const styles = StyleSheet.create({

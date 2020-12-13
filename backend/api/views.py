@@ -67,6 +67,13 @@ def signup(request):
     return JsonResponse(serializer.errors, status=400)
 
 @api_view(['GET'])
+def id(request):
+    current_user = request.user
+    print(current_user.id)
+    return Response(current_user.id)
+
+
+@api_view(['GET'])
 def index(request):
     print('**************************')
     date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")

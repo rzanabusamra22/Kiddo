@@ -18,15 +18,20 @@ class Videos extends Component {
     }
     componentDidMount() {
 
-
+        var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+    myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'GET',
-            redirect: 'follow'
+            redirect: 'follow',
+            headers:myHeaders
         };
 
-        fetch("https://disco-nirvana-297409.oa.r.appspot.com/records/", requestOptions)
+        fetch("https://blackpearl2.ew.r.appspot.com/records/", requestOptions)
             .then(response => response.json())
             .then(result => {
+                console.log(result)
                 this.setState({
                     result
                 })
