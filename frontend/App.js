@@ -17,7 +17,6 @@ import Art from './screens/art';
 import Videos from './screens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
-
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -39,7 +38,6 @@ import AdminProfile from './screens/AdminProfile';
 import DrawerContent from './screens/DrawerContent';
 //Admin Needs to Sign In
 import DrawerContent2 from './screens/DrawerContent2';
-
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -70,24 +68,167 @@ const HomeStackScreen = ({navigation}) =>{
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
     }}
  />
-    <HomeStack.Screen name="Learn" component={Learn} />
-    <HomeStack.Screen name="Art" component={Art} />
-    <HomeStack.Screen name="Video" component={Video} />
-    <HomeStack.Screen name="Videos" component={Videos} />
-    <HomeStack.Screen name="Album" component={Album} />
-    <HomeStack.Screen name="Games" component={Games} />
-    <HomeStack.Screen name="Game" component={Game} />
+    <HomeStack.Screen 
+    name="Learn" 
+    component={Learn} 
+    options={{ 
+       title: 'Kiddo',
+       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+    }}/>
+    <HomeStack.Screen 
+    name="Art" 
+    component={Art} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Video" 
+    component={Video} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Videos" 
+    component={Videos} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Album" 
+    component={Album} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Games" 
+    component={Games} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Game" 
+    component={Game} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
     {/* Learn Catagories  */}
-     <HomeStack.Screen name="Alphabet" component={Alphabet} />
-     <HomeStack.Screen name="Numbers" component={Numbers} />
-     <HomeStack.Screen name="BodyPart" component={BodyPart} />
-     <HomeStack.Screen name="Fruits" component={Fruits} />
-     <HomeStack.Screen name="Vegatables" component={Vegatables} />
-     <HomeStack.Screen name="Colors" component={Colors} />
-     <HomeStack.Screen name="Animals" component={Animals} />
+     <HomeStack.Screen 
+     name="Alphabet" 
+     component={Alphabet} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Numbers" 
+     component={Numbers} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="BodyPart" 
+     component={BodyPart} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Fruits" 
+     component={Fruits} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Vegatables" 
+     component={Vegatables} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Colors" 
+     component={Colors}  options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Animals" 
+     component={Animals} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
      {/* Art Catagories  */}
-     <HomeStack.Screen name="Coloring" component={Coloring} />
-     <HomeStack.Screen name="Drawing" component={Drawing} />
+     <HomeStack.Screen 
+     name="Coloring" 
+     component={Coloring}  
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Drawing" 
+     component={Drawing} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
     </HomeStack.Navigator>
   )
 }
@@ -110,7 +251,7 @@ const SignInStackScreen = ({navigation}) =>{
      name="Signin"
      component={Signin}
      options={{ 
-       title: 'Signin',
+       title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
     }}
  />
@@ -136,8 +277,9 @@ const DonateStackScreen = ({navigation}) =>{
      name="Donate"
      component={Donate}
      options={{ 
-       title: 'Donate',
-     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
+      title: 'Kiddo',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
     </Donatestack.Navigator>
@@ -162,25 +304,22 @@ const AdminStackScreen = ({navigation}) =>{
      name="Profile"
      component={AdminProfile}
      options={{ 
-       title: 'Profile',
-     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
+      title: 'Kiddo',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+     headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
     </AdminProfilestack.Navigator>
   )
 }
-
 // The App 
 class App extends React.Component {
   constructor(){
     super()
     this.state={
-
     }
   }
-
   componentDidMount(){
-
   }
   render(){
   return (
