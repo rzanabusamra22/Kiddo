@@ -1,6 +1,7 @@
 //Admin Is signedin
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage'
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -44,7 +45,8 @@ class DrawerContent extends React.Component{
         })
             .then(response => response.text())
             .then(result => {
-                fetch("https://blackpearl2.ew.r.appspot.com/users/"+result, {
+             //   fetch("http://localhost:8000/users/"+result, {
+               fetch("https://blackpearl2.ew.r.appspot.com/users/"+result, {
                     headers: myHeaders,
                     redirect: 'follow'
                    })
@@ -58,13 +60,14 @@ class DrawerContent extends React.Component{
             })
             .catch(()=> console.log('Err fetch userid'))
   }
-    // const user = localStorage.getItem('user')
-    // console.log(user)
-  signOutHandler = () => {
+   
+ 
+  signOutHandler = async () => {
     console.log('*****************************************')
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-    this.props.navigation.navigate('Home')
+   await AsyncStorage.removeItem('@token')
+     location.reload();
+    //this.props.navigation.navigate('Home')
+
    // this.props.setUser({});
 
 };
@@ -113,7 +116,7 @@ class DrawerContent extends React.Component{
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="account-check-outline" 
+                                name="gift-outline" 
                                 color={color}
                                 size={size}
                                 />

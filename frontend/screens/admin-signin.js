@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import AsyncStorage from '@react-native-community/async-storage'
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
+
+const [STORAGE_KEY] = '@save_token'
 export default function Signin ({navigation}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    
     const handleSubmit = () => {
         
         console.log('*****************************************')
@@ -19,10 +22,8 @@ export default function Signin ({navigation}) {
         //         password: password
         //     })
         // }); 
-        //for then---> alert
-
-     
- var raw = JSON.stringify({"username":username,"password":password});
+        //for then---> alert   
+var raw = JSON.stringify({"username":username,"password":password});
 var requestOptions = {
   method: 'POST',
   body: raw ,
@@ -31,19 +32,26 @@ var requestOptions = {
   },
   redirect: 'follow'
 };
-
-
+//fetch("http://localhost:8000/auth/login/", requestOptions)
 fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
   .then(response => response.json())
-  .then(result => {
+  .then( (result) => {
         //this.props.setUser(results.data)
-       
-        if( result.token !== undefined){
-            localStorage.setItem('token', result.token);
-            navigation.navigate('Home')
-        }
-        
-        console.log(result)})
+        if(result.token !== undefined){
+    
+          // AsyncStorage.setItem('@storage_Key', result.token)
+          AsyncStorage.setItem('@token', result.token)
+         
+          .then(()=>{
+            location.reload();
+            //navigation.navigate('Home')
+          })
+          console.log('****************************************')
+          //  console.log(AsyncStorage.getItem('@token'))
+          } 
+            
+        }  
+        )
   .catch(error => console.log('error', error));
         
         // setUsername('')
