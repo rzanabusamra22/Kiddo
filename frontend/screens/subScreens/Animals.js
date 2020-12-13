@@ -11,12 +11,17 @@ const slides = [
   {key: "horse",image: {uri: 'https://i.imgur.com/2cJG2FR.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6595"},
   {key: "sheep",image: {uri: 'https://i.imgur.com/MeAefcJ.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6630"}
   ];
+
+ //sound 
+
 class Animals extends Component{
     constructor(){
         super()
         this.state={
         }
     }
+   
+     
     _renderItem = ({ item }) => {
         return (
           <View style={styles.container}>
@@ -31,6 +36,7 @@ class Animals extends Component{
                 height: 600,
                 width: 400,
               }}
+          
             />
           </TouchableOpacity>
           </View>
@@ -38,7 +44,7 @@ class Animals extends Component{
       };
     render (){
           return (
-          <AppIntroSlider
+          <AppIntroSlider 
             renderItem={this._renderItem} 
             data={slides} 
            />
