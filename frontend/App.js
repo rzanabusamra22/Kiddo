@@ -17,7 +17,6 @@ import Art from './screens/art';
 import Videos from './screens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
-
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -39,7 +38,6 @@ import AdminProfile from './screens/AdminProfile';
 import DrawerContent from './screens/DrawerContent';
 //Admin Needs to Sign In
 import DrawerContent2 from './screens/DrawerContent2';
-
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -253,7 +251,7 @@ const SignInStackScreen = ({navigation}) =>{
      name="Signin"
      component={Signin}
      options={{ 
-       title: 'Signin',
+       title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
     }}
  />
@@ -279,7 +277,7 @@ const DonateStackScreen = ({navigation}) =>{
      name="Donate"
      component={Donate}
      options={{ 
-       title: 'Donate',
+      title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
        headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
@@ -306,7 +304,7 @@ const AdminStackScreen = ({navigation}) =>{
      name="Profile"
      component={AdminProfile}
      options={{ 
-       title: 'Profile',
+      title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
@@ -314,18 +312,14 @@ const AdminStackScreen = ({navigation}) =>{
     </AdminProfilestack.Navigator>
   )
 }
-
 // The App 
 class App extends React.Component {
   constructor(){
     super()
     this.state={
-
     }
   }
-
   componentDidMount(){
-
   }
   render(){
   return (
