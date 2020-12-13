@@ -1,4 +1,7 @@
 {
+  "name": "Kiddo",
+  "description": "app for kids",
+  "license": "none",
   "main": "index.js",
   "scripts": {
     "android": "react-native run-android",
@@ -8,29 +11,28 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/cli": "^4.13.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/drawer": "^5.11.4",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
-    "client": "0.0.1",
     "expo": "^39.0.5",
     "expo-cli": "^4.0.8",
     "expo-splash-screen": "~0.6.2",
     "expo-status-bar": "~1.0.2",
     "expo-updates": "~0.3.2",
-    "jquery": "^3.5.1",
     "navigation": "^5.3.1",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
     "react-native": "^0.63.4",
     "react-native-app-intro-slider": "^4.0.4",
-    "react-native-cli": "^2.0.1",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-paper": "^4.4.1",
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
+    "react-native-sound": "^0.11.0",
     "react-native-unimodules": "~0.11.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-viewport-units": "0.0.5",
@@ -49,6 +51,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TheBlackPearl-FinaleProject/Kiddo"
   },
   "private": false
 }
