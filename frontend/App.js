@@ -1,5 +1,16 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+import $ from 'jquery'
+var jsdom =  require('jsdom').JSDOM;
+var window = $( new jsdom().parentWindow);
+// const { JSDOM } = jsdom;
+// const { window } = new JSDOM();
+// const { document } = (new JSDOM('')).window;
+// global.document = document;
+
+
+import AsyncStorage from '@react-native-community/async-storage'
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppLoading } from 'expo';
@@ -178,39 +189,47 @@ class App extends React.Component {
   constructor(){
     super()
     this.state={
-     
+      token:''
     }
   }
 
   componentDidMount(){
-  
+    $("body").append("<audio id='sound'></audio>")
+    var assigntoken = async()=>{
+    const token = await AsyncStorage.getItem('@token')
+    this.setState({token})}
+    assigntoken()
   }
   render(){
   return (
     <Provider store={store}>
-     <audio id="sound"></audio>
-     <NavigationContainer>
-       
-        <Drawer.Navigator drawerContent={props => 
+    <NavigationContainer>
+      <Drawer.Navigator drawerContent={ (props) => 
        {
-       if(localStorage.getItem('token')){
-       return  <DrawerContent {...props} />
+        // var assigntoken = async()=>{
+        //   const token = await AsyncStorage.getItem('@token')
+        //   this.setState({token})}
+        //   assigntoken()
+       
+       if(this.state.token){
+       return  <DrawerContent {...props}/>
        }
-      else {
-       return  <DrawerContent2 {...props} /> 
-      }
-    }}  > 
-      
-         {/* <Drawer.Navigator drawerContent={props => <DrawerContent2 {...props} />}>  */}
+       else {
+       return  <DrawerContent2 {...props}/> 
+      //  }
+       }
+      //  catch {
+      //    console.log('ERRRRRRRRRRRRRR ')
+      //  }
+      }}> 
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
         <Drawer.Screen name="Profile" component={AdminStackScreen} />
       </Drawer.Navigator>
-
     </NavigationContainer>
     </Provider>
 
   ); 
 }}
-export default App
+export default App 

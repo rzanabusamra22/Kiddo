@@ -1,7 +1,7 @@
-[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://disco-nirvana-297409.oa.r.appspot.com/)
+[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://blackpearl2.ew.r.appspot.com/)
 
 # Project Name #
-[Kiddo](https://disco-nirvana-297409.oa.r.appspot.com/)
+[Kiddo](https://blackpearl2.ew.r.appspot.com/)
 
 ### Heading ###
 Website for kids
@@ -43,10 +43,6 @@ This website gives a safe envorinment for kids to play and learn
 * `$ npm run web`
 
 ## Backend ##
-* To run mysql database on localhost (you can skip this and use sqlite3 default database)
-* Install gcloud then open bash inside /backend
-* `$ ./cloud_sql_proxy -instances=disco-nirvana-297409:europe-west3:pearls=tcp:3306`
-
 * To create new virtual environment (venv)
 * Open bash inside /backend
 * `$ python -m venv venv`
@@ -63,11 +59,15 @@ This website gives a safe envorinment for kids to play and learn
 * Enter venv or open bash inside /backend
 * `$ python manage.py runserver`
 
+* To run mysql database on localhost (you can skip this and use sqlite3 default database)
+* Uncomment the database code in /backend/settings.py then Install gcloud then open bash inside /backend
+* `$ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306`
+
 * To update dependancies file
 * Enter venv or open bash inside /backend (global)
 * `$ pip freeze > requirements.txt`
 
-* To update the database tables
+* To update the database tables for localhost
 * Enter venv or open bash inside /backend (global)
 * `$ python manage.py makemigrations api` then `$ python manage.py migrate`
 
@@ -76,11 +76,16 @@ This website gives a safe envorinment for kids to play and learn
 * Install gcloud then open bash inside /backend
 * `$ gcloud app deploy`
 
+* To update the deployed server
+* Run mysql database on localhost then open bash inside /backend
+* `$ python manage.py makemigrations api` then
+* `$ python manage.py migrate` then `$ gcloud app deploy`
+
 ### Deployed links ###
 * Backend server
-* https://disco-nirvana-297409.oa.r.appspot.com/
+* https://blackpearl2.ew.r.appspot.com/
 * Backend admin server
-* https://disco-nirvana-297409.oa.r.appspot.com/admin
+* https://blackpearl2.ew.r.appspot.com/admin
 
 ## Members ##
 * Razan Abusamra - Scrum Master

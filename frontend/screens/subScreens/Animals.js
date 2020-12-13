@@ -5,11 +5,11 @@ import { TouchableOpacity } from 'react-native';
 import $ from 'jquery'
 
 const slides = [
-    {key: "chicken",image: {uri: 'https://i.imgur.com/I9KTOXD.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6620"},
-    {key: "cow",image: {uri: 'https://i.imgur.com/DxLuZ6L.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6523"},
-    {key: "duck",image: {uri: 'https://i.imgur.com/66YRBq0.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6595"},
-    {key: "horse",image: {uri: 'https://i.imgur.com/2cJG2FR.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6595"},
-    {key: "sheep",image: {uri: 'https://i.imgur.com/MeAefcJ.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6630"}
+  {key: "chicken",image: {uri: 'https://i.imgur.com/I9KTOXD.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6620"},
+  {key: "cow",image: {uri: 'https://i.imgur.com/DxLuZ6L.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6523"},
+  {key: "duck",image: {uri: 'https://i.imgur.com/66YRBq0.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6595"},
+  {key: "horse",image: {uri: 'https://i.imgur.com/2cJG2FR.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6595"},
+  {key: "sheep",image: {uri: 'https://i.imgur.com/MeAefcJ.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6630"}
   ];
 
  //sound 
@@ -25,11 +25,11 @@ class Animals extends Component{
     _renderItem = ({ item }) => {
         return (
           <View style={styles.container}>
-           <TouchableOpacity onPress={()=>{  $("#sound").attr({
+          <TouchableOpacity onPress={()=>{  $("#sound").attr({
           'src':item.sound, 
           'autoplay':'autoplay'
-      })}
-}>          
+          })}
+          }>         
             <Image
               source={item.image}
               style={{
@@ -38,7 +38,7 @@ class Animals extends Component{
               }}
           
             />
-           </TouchableOpacity>
+          </TouchableOpacity>
           </View>
         );
       };

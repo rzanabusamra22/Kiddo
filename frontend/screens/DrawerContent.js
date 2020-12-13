@@ -1,6 +1,7 @@
 //Admin Is signedin
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage'
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -28,15 +29,15 @@ class DrawerContent extends React.Component{
 
       }
   }
-  
+
   componentDidMount() {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+    myHeaders.append("Content-Type", "application/json");
 
-  
-    fetch("http://localhost:8000/getid/", 
+
+    fetch("https://blackpearl2.ew.r.appspot.com/getid/", 
             {headers: 
                 myHeaders
               ,
@@ -44,7 +45,8 @@ class DrawerContent extends React.Component{
         })
             .then(response => response.text())
             .then(result => {
-                fetch("http://localhost:8000/users/"+result, {
+             //   fetch("http://localhost:8000/users/"+result, {
+               fetch("https://blackpearl2.ew.r.appspot.com/users/"+result, {
                     headers: myHeaders,
                     redirect: 'follow'
                    })
@@ -58,31 +60,32 @@ class DrawerContent extends React.Component{
             })
             .catch(()=> console.log('Err fetch userid'))
   }
-    // const user = localStorage.getItem('user')
-    // console.log(user)
-  signOutHandler = () => {
+   
+ 
+  signOutHandler = async () => {
     console.log('*****************************************')
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-    this.props.navigation.navigate('Home')
+   await AsyncStorage.removeItem('@token')
+   location.reload();
+    //this.props.navigation.navigate('Home')
+
    // this.props.setUser({});
 
 };
     render(){
     return(
         <View style={{flex:1}}>
-            <DrawerContentScrollView {...this.props}>
+              <DrawerContentScrollView {...this.props}>
                 <View style={styles.drawerContent}>
                     <View  style={styles.userInfoSection}>
                       <View style={{flexDirection:'row',marginTop: 15}}>
                       <Avatar.Image 
                                 source={{
-                                    uri: this.state.user.thumbnail
+                                  uri: this.state.user.thumbnail
                                 }}
                                 size={50}
                             />
                             <View  style={{marginLeft:15, flexDirection:'column'}}>
-                              <Title style={styles.title}>{this.state.user.username}</Title>
+                                <Title style={styles.title}>{this.state.user.username}</Title>
                                 <Caption style={styles.caption}>Admin</Caption>
                             </View>
                       </View>
@@ -139,8 +142,8 @@ class DrawerContent extends React.Component{
             </Drawer.Section>
         </View>
     )
-}
-}
+}}
+
 const styles = StyleSheet.create({
     drawerContent: {
       flex: 1,
@@ -186,13 +189,5 @@ const styles = StyleSheet.create({
       paddingHorizontal: 16,
     },
   });
-
   export default DrawerContent
-
-
-
-
-
-
-
- 
+  

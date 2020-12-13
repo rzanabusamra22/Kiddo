@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import AsyncStorage from '@react-native-community/async-storage'
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
 
+const [STORAGE_KEY] = '@save_token'
 export default function Signin ({navigation}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    
     const handleSubmit = () => {
         
         console.log('*****************************************')
@@ -35,16 +37,26 @@ var requestOptions = {
 
 
 
-fetch("http://localhost:8000/auth/login/", requestOptions)
+//fetch("http://localhost:8000/auth/login/", requestOptions)
+fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
   .then(response => response.json())
-  .then(result => {
+  .then( (result) => {
         //this.props.setUser(results.data)
-       
-        if( result.token !== undefined){
-            localStorage.setItem('token', result.token);
-            navigation.navigate('Home')
+        if(result.token !== undefined){
+           
+          // AsyncStorage.setItem('@storage_Key', result.token)
+          AsyncStorage.setItem('@token', result.token)
+         
+          .then(()=>{
+            location.reload();
+            //navigation.navigate('Home')
+          })
+          console.log('****************************************')
+          //  console.log(AsyncStorage.getItem('@token'))
+          } 
+            
         }  
-        console.log(result)})
+        )
   .catch(error => console.log('error', error));
         
         // setUsername('')
@@ -84,13 +96,10 @@ fetch("http://localhost:8000/auth/login/", requestOptions)
                 <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
                     <Text  style={styles.loginText}>LOGIN</Text>
                 </TouchableOpacity>
-             
-
             </View>
 
         </TouchableWithoutFeedback>
     );
-
 }
 
 const styles = StyleSheet.create({

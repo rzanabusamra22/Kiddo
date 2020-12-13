@@ -16,7 +16,7 @@ class Drawing extends React.Component{
             redirect: 'follow'
         };
 
-        fetch("https://disco-nirvana-297409.oa.r.appspot.com/records/", requestOptions)
+        fetch("https://blackpearl2.ew.r.appspot.com/records/", requestOptions)
             .then(response => response.json())
             .then(result => {
                 this.setState({

@@ -4,8 +4,8 @@
     "create": "python -m venv venv",
     "venv": ". venv/Scripts/activate",
     "mm": "python manage.py makemigrations api",
-    "m": "python manage.py migrate"
-
+    "m": "python manage.py migrate",
+    "super": "python manage.py createsuperuser"
   },
   "dependencies": {
     "django": "^1.0.0"
