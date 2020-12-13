@@ -1,8 +1,10 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+
 import $ from 'jquery'
-var jsdom =  require('jsdom').JSDOM;
-var window = $( new jsdom().parentWindow);
+
+// var jsdom =  require('jsdom').JSDOM;
+// var window = $( new jsdom().parentWindow);
 // const { JSDOM } = jsdom;
 // const { window } = new JSDOM();
 // const { document } = (new JSDOM('')).window;
@@ -59,6 +61,9 @@ const SignInstack = createStackNavigator();
 const Donatestack = createStackNavigator();
 const AdminProfilestack = createStackNavigator();
 //Home Stack 
+
+
+
 
 const HomeStackScreen = ({navigation}) =>{
   
