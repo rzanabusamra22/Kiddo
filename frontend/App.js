@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+import $ from 'jquery'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppLoading } from 'expo';
@@ -180,12 +181,11 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-
+    $("body").append("<audio id='sound'></audio>")
   }
   render(){
   return (
     <Provider store={store}>
-    <audio id="sound"></audio>
     <NavigationContainer>
       <Drawer.Navigator drawerContent={props => 
        {
