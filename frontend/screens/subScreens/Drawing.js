@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 
-class Drawing extends Component{
+class Drawing extends React.Component{
     constructor() {
         super()
         this.state = {
@@ -35,7 +35,5 @@ class Drawing extends Component{
 const styles = StyleSheet.create({
     
 })
-export default Drawing
-
 
 export default Drawing
