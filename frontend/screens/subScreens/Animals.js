@@ -1,24 +1,59 @@
-import React from 'react';
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert , Linking} from 'react-native';
-import {Dimensions} from 'react-native';
-const wind = Dimensions.get('window');
-var vw = wind.width * 0.01
-var vh = wind.height * 0.01
-export default function Animals(){
-    return(
-        <View style={styles.container}>
-            {[...Array(6)].map(function (x, i) {
-                return (
-                    <TouchableOpacity onPress={() =>Linking.openURL('https://www.youtube.com/embed/Jrg9KxGNeJY')} key={i} style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
+import React, { Component, useState } from 'react';
+import { Image, StyleSheet, Text, View } from "react-native";
+import AppIntroSlider from "react-native-app-intro-slider";
+import { TouchableOpacity } from 'react-native';
+// var Sound = require('react-native-sound');
 
-                        <Image style={{ borderRadius: 15, height: "100%", width: "100%" }} source={{ uri: "https://pbs.twimg.com/media/D1eeNItVsAAIEQ4.jpg" }} />
-                    </TouchableOpacity>
-                )
-            })}
-        </View>
-    )
-}
+const slides = [
+  {key: "chicken",image: {uri: 'https://i.imgur.com/I9KTOXD.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6620"},
+  {key: "cow",image: {uri: 'https://i.imgur.com/DxLuZ6L.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6523"},
+  {key: "duck",image: {uri: 'https://i.imgur.com/66YRBq0.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6595"},
+  {key: "horse",image: {uri: 'https://i.imgur.com/2cJG2FR.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6595"},
+  {key: "sheep",image: {uri: 'https://i.imgur.com/MeAefcJ.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6630"}
+  ];
 
+ //sound 
+
+class Animals extends Component{
+    constructor(){
+        super()
+        this.state={
+        }
+    }
+   
+     
+    _renderItem = ({ item }) => {
+        return (
+          <View style={styles.container}>
+          <TouchableOpacity onPress={()=>{  }
+          }>         
+            <Image
+              source={item.image}
+              style={{
+                height: 600,
+                width: 400,
+              }}
+          
+            />
+          </TouchableOpacity>
+          </View>
+        );
+      };
+    render (){
+          return (
+          <AppIntroSlider 
+            renderItem={this._renderItem} 
+            data={slides} 
+           />
+          );
+}}
 const styles = StyleSheet.create({
-    
-})
+    container: {
+        flexDirection:'row',
+        justifyContent:'center',
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+      }
+});
+export default Animals

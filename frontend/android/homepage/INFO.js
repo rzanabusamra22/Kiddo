@@ -2,7 +2,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import CategoryItem from './category-item-card'
 
 // import star from './android/imgs/star'
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
 //     redirect: 'follow'
 //   };
   
-//   fetch("http://127.0.0.1:8000/users/", requestOptions)
+//   fetch("https://blackpearl2.ew.r.appspot.com/users/", requestOptions)
 //     .then(response => response.text())
 //     .then(result => console.log(result))
 //     .catch(error => console.log('error', error));

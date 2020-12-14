@@ -1,69 +1,123 @@
+[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://blackpearl2.ew.r.appspot.com/)
+
 # Project Name #
-Kiddo
+[Kiddo](https://blackpearl2.ew.r.appspot.com/)
 
 ### Heading ###
 Website for kids
 
-### Sub-Heading ###
+### Details ###
 This website gives a safe envorinment for kids to play and learn
 
-## Table of contents ###
+## Table of contents ##
 * Technologies
-* Launch
+* Frontend
+* Backend
 * Deploy
 * Members
-* Roles
 
-### Technologies used ###
+## Technologies Used ##
+### Languages ###
 * Python
+* Javascript
+* CSS
+* HTML
+### Libraries & Technologies ###
 * Django
-* Rest framework
+* Rest Framework API
+* JWT
 * Sqlite3
 * MySql
-* gCloud app engine
-* gCloud sql
 * React Native
-* Expo cli
+* React Native Sound
+* React Native Animation
+* React Navigation
+* React Redux
+* Expo Cli
+* Jest
+* Enzyme
+* Stripe
+### Programs ###
+* VS Code
 * Android Studio
+* gCloud SDK
+### Command Lines ###
+* npm -->
+* git -->
+* pip -->
+* py -->
+* expo -->
+* jest -->
+* gcloud -->
+* curl -->
+* gem -->
+* pod -->
 
-### Launch ###
 ## Frontend ##
-* not ready yet
+* To install dependancies
+* Open bash inside /frontend
+* `$ npm i`
+
+* To run the app on localhost
+* Open bash inside /frontend
+* `$ npm run web` or `$ expo start`
+
+* To build Android App
+* Open bash inside /frontend
+* `$ npm run android`
+
+* To build ios App (on windows)
+* Install ruby & curl & git & cocoapods then Open bash inside /frontend/ios
+* `$ pod install` then `$ npm run ios`
+
 
 ## Backend ##
-* To run the database locally on localhost
-* Install gcloud then open bash inside /backend
-* $ ./cloud_sql_proxy -instances=disco-nirvana-297409:europe-west3:pearls=tcp:3306
-
 * To create new virtual environment (venv)
 * Open bash inside /backend
-* $ python -m venv venv
+* `$ python -m venv venv`
 
 * To enter venv
 * Open bash inside /backend
-* $ . venv/Scripts/activate
+* `$ . venv/Scripts/activate`
 
 * To install dependancies
 * Enter venv or open bash inside /backend (global install)
-* $ pip install -r requirements.txt
+* `$ pip install -r requirements.txt`
 
 * To run the server locally (after installing dependancies)
 * Enter venv or open bash inside /backend
-* $ python manage.py runserver
+* `$ python manage.py runserver`
 
-### Before you deploy ###
-later
+* To run mysql database on localhost (you can skip this and use sqlite3 default database)
+* Uncomment the database code in /backend/settings.py then Install gcloud then open bash inside /backend
+* `$ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306`
 
-### Members ###
-* Razan Abusamra
-* Dima jaber
-* Dema Abuzahra
-* Hamdallah Fatayer
-* Noor Ashqar
+* To update dependancies file
+* Enter venv or open bash inside /backend (global)
+* `$ pip freeze > requirements.txt`
 
-### Roles ###
-* Noor Ashqar - Owner
-* Razan Abusamra - Scrum master
-* Hamdallah Fatayer - Co
-* Dema Abuzahra - Development
+* To update the database tables for localhost
+* Enter venv or open bash inside /backend (global)
+* `$ python manage.py makemigrations api` then `$ python manage.py migrate`
+
+## Deploy ##
+* To deploy a server using app engine
+* Install gcloud then open bash inside /backend
+* `$ gcloud app deploy`
+
+* To update the deployed server
+* Run mysql database on localhost then open bash inside /backend
+* `$ python manage.py makemigrations api` then
+* `$ python manage.py migrate` then `$ gcloud app deploy`
+
+### Deployed links ###
+* Backend server
+* https://blackpearl2.ew.r.appspot.com/
+* Backend admin server
+* https://blackpearl2.ew.r.appspot.com/admin
+
+## Members ##
+* Razan Abusamra - Scrum Master
+* Hamdallah Fatayer - Co-Leader
+* Noor Ashqar - Development
 * Dima jaber - Development
