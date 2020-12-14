@@ -48,6 +48,10 @@ import DrawerContent from './screens/DrawerContent';
 import DrawerContent2 from './screens/DrawerContent2';
 //Parent
 import Parent from './screens/parents-landingpage'
+import SignUp from './screens/parent/singUpParents'
+import MusicApp from './screens/parent/index'
+//Donation
+import Stripe from "./screens/stripe";
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -347,6 +351,26 @@ const ParentStackScreen = ({navigation}) =>{
      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
+  <ParentStack.Screen
+     name="MusicApp"
+     component={MusicApp}
+     options={{ 
+      title: 'Kiddo',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+     headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
+    }}
+ />
+  <ParentStack.Screen
+     name="SignUp" 
+     component={SignUp}  
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+ 
     </ParentStack.Navigator>
   )
 }
@@ -391,7 +415,7 @@ class App extends React.Component {
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
         <Drawer.Screen name="Profile" component={AdminStackScreen} />
-        <Drawer.Screen name="Parent" component={ParentStackScreen} />
+        <Drawer.Screen name="Parent"  component={ParentStackScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
     </Provider>
