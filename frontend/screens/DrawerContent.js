@@ -62,15 +62,15 @@ class DrawerContent extends React.Component{
   }
    
  
-//   signOutHandler = async () => {
-//     console.log('*****************************************')
-//    await AsyncStorage.removeItem('@token')
-//    location.reload();
-//     //this.props.navigation.navigate('Home')
+  signOutHandler = async () => {
+    console.log('*****************************************')
+   await AsyncStorage.removeItem('@token')
+     location.reload();
+    //this.props.navigation.navigate('Home')
 
 //    // this.props.setUser({});
 
-// };
+};
     render(){
     return(
         <View style={{flex:1}}>
@@ -116,7 +116,7 @@ class DrawerContent extends React.Component{
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="account-check-outline" 
+                                name="gift-outline" 
                                 color={color}
                                 size={size}
                                 />

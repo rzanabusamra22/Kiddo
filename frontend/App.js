@@ -1,5 +1,12 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+// import $ from 'jquery'
+// var jsdom =  require('jsdom').JSDOM;
+// var window = $( new jsdom().parentWindow);
+// const { JSDOM } = jsdom;
+// const { window } = new JSDOM();
+// const { document } = (new JSDOM('')).window;
+// global.document = document;
 import AsyncStorage from '@react-native-community/async-storage'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -41,6 +48,8 @@ import AdminProfile from './screens/AdminProfile';
 import DrawerContent from './screens/DrawerContent';
 //Admin Needs to Sign In
 import DrawerContent2 from './screens/DrawerContent2';
+//Parent
+import Parent from './screens/parents-landingpage'
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -48,11 +57,9 @@ const HomeStack = createStackNavigator();
 const SignInstack = createStackNavigator();
 const Donatestack = createStackNavigator();
 const AdminProfilestack = createStackNavigator();
+const ParentStack = createStackNavigator();
 //Home Stack 
-
 const HomeStackScreen = ({navigation}) =>{
-  
-
   return(
     <HomeStack.Navigator 
  initialRouteName="Home"
@@ -338,6 +345,33 @@ const AdminStackScreen = ({navigation}) =>{
     </AdminProfilestack.Navigator>
   )
 }
+//Parent Stack 
+const ParentStackScreen = ({navigation}) =>{
+  return(
+    <ParentStack.Navigator 
+  initialRouteName="Home"
+  screenOptions={{
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }}
+  >
+    <ParentStack.Screen
+     name="Parent"
+     component={Parent}
+     options={{ 
+      title: 'Kiddo',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+     headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
+    }}
+ />
+    </ParentStack.Navigator>
+  )
+}
 // The App 
 class App extends React.Component {
   constructor(){
@@ -369,6 +403,7 @@ class App extends React.Component {
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
         <Drawer.Screen name="Profile" component={AdminStackScreen} />
+        <Drawer.Screen name="Parent" component={ParentStackScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
     </Provider>

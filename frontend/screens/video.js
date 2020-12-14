@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     flex : 1,
   }, 
   vid:{
-      width:"500px",
-      height:"500px"
+      width:500,
+      height:500
     }
 })
 const mapStateToProps = (state) => {

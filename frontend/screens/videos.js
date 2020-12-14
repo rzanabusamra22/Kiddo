@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { WebView } from 'react-native-webview'
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
+import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
 import { Dimensions } from 'react-native';
 import { sendvideo } from './redux/actions';
 import { connect } from 'react-redux';
@@ -43,25 +43,43 @@ class Videos extends Component {
        const navigation = this.props.navigation
        const sendvideo = this.props.sendvideo
         return (
-            
-                <ScrollView style={styles.container}>
-                {/* <Progress.Bar progress={0.3} width={200} /> */}
-                {this.state.result.map(function (x, i) {
-                    return (
-                    
-                        <TouchableOpacity onPress={() =>{ 
-                             sendvideo(x.link);
-                             navigation.navigate('Video')
-                             }}  key={i} style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
 
-                            <Image style={{ borderRadius: 15, height: "100%", width: "100%" }} source={{ uri: x?.thumbnail }} />
-                        </TouchableOpacity>
+            <FlatList
+            data={this.state.result}
+            renderItem={({ item })=>(
+                <TouchableOpacity onPress={() =>{ 
+                                     sendvideo(item.link);
+                                     navigation.navigate('Video')
+                                     }}  style={StyleSheet.container, StyleSheet.img}>
+        
+                                    <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,paddingBottom:100*vh ,width: 100 * vw }} source={{ uri: item ?.thumbnail }} />
+                                </TouchableOpacity>
+            )}
+            
+            keyExtractor={(index)=>{return index}
+            }
+            
+            />
+            
+            //     <ScrollView style={styles.container}>
+            //     {/* <Progress.Bar progress={0.3} width={200} /> */}
+            //     {this.state.result.map(function (x, i) {
+            //         return (
+                    
+            //             <TouchableOpacity onPress={() =>{ 
+            //                  sendvideo(x.link);
+            //                  navigation.navigate('Video')
+            //                 //  {display:"flex" , alignItems:"center",  marginLeft: vw * 6, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }
+            //                  }}  key={i} style={StyleSheet.container, StyleSheet.img}>
+
+            //                 <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,paddingBottom:100*vh ,width: 100 * vw }} source={{ uri: x?.thumbnail }} />
+            //             </TouchableOpacity>
                         
                     
-                    )
-                })}
+            //         )
+            //     })}
             
-            </ScrollView>
+            // </ScrollView>
             
         );
     }
@@ -72,6 +90,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         flexDirection: 'row',
         flexWrap: 'wrap'
+        
     },
     img: {
         width: 120,

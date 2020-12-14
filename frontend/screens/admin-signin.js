@@ -22,10 +22,8 @@ export default function Signin ({navigation}) {
         //         password: password
         //     })
         // }); 
-        //for then---> alert
-
-     
- var raw = JSON.stringify({"username":username,"password":password});
+        //for then---> alert   
+var raw = JSON.stringify({"username":username,"password":password});
 var requestOptions = {
   method: 'POST',
   body: raw ,
@@ -34,16 +32,13 @@ var requestOptions = {
   },
   redirect: 'follow'
 };
-
-
-
 //fetch("http://localhost:8000/auth/login/", requestOptions)
 fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
   .then(response => response.json())
   .then( (result) => {
         //this.props.setUser(results.data)
         if(result.token !== undefined){
-           
+    
           // AsyncStorage.setItem('@storage_Key', result.token)
           AsyncStorage.setItem('@token', result.token)
          
@@ -67,7 +62,7 @@ fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
         <TouchableWithoutFeedback
             onPress={() => {
                 Keyboard.dismiss();
-                console.log('diss')
+                console.log('disspacito')
             }}
         >
             <View style={styles.container}>
