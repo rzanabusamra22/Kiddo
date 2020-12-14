@@ -1,11 +1,10 @@
-  
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions,TextInput } from 'react-native';
 
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
 const { width, height } = Dimensions.get('window');
-
+// for the animations Setting 
 const {
   Value,
   event,
@@ -20,6 +19,7 @@ const {
   timing,
   clockRunning,
   interpolate,
+  concat,
   Extrapolate
 } = Animated;
 
@@ -51,12 +51,13 @@ function runTiming(clock, value, dest) {
     state.position
   ]);
 }
+//return + render 
 class MusicApp extends Component {
   constructor() {
     super();
-
+    // functions to controll motion + styling 
     this.buttonOpacity = new Value(1);
-
+    //control the white box when it is open 
     this.onStateChange = event([
       {
         nativeEvent: ({ state }) =>
@@ -68,6 +69,19 @@ class MusicApp extends Component {
           ])
       }
     ]);
+    // control closing action when press on X
+    this.onCloseState = event([
+        {
+          nativeEvent: ({ state }) =>
+            block([
+              cond(
+                eq(state, State.END),
+                set(this.buttonOpacity, runTiming(new Clock(), 0, 1))
+              )
+            ])
+        }
+      ]);
+
 
     this.buttonY = interpolate(this.buttonOpacity, {
       inputRange: [0, 1],
@@ -80,51 +94,68 @@ class MusicApp extends Component {
       outputRange: [-height / 3, 0],
       extrapolate: Extrapolate.CLAMP
     });
+
+    this.textInputZindex = interpolate(this.buttonOpacity, {
+        inputRange: [0, 1],
+        outputRange: [1,-1],
+        extrapolate: Extrapolate.CLAMP
+      });
+
+    this.textInputY = interpolate(this.buttonOpacity, {
+        inputRange: [0, 1],
+        outputRange: [0,100],
+        extrapolate: Extrapolate.CLAMP
+      });
+
+    this.textInputOpacity = interpolate(this.buttonOpacity, {
+        inputRange: [0, 1],
+        outputRange: [1,0],
+        extrapolate: Extrapolate.CLAMP
+      });
+
+      this.rotateCross = interpolate(this.buttonOpacity, {
+        inputRange: [0, 1],
+        outputRange: [180,360],
+        extrapolate: Extrapolate.CLAMP
+      });
   }
+  //main return + render 
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: 'white',
-          justifyContent: 'flex-end'
-        }}
-      >
-        <Animated.View
-          style={{
-            ...StyleSheet.absoluteFill,
-            transform: [{ translateY: this.bgY }]
-          }}
-        >
-          <Image
-            source={require('../parent/PG.png')}
-            style={{ flex: 1, height: null, width: null }}
-          />
+      <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'flex-end'}}>
+        {/* Background Picture */}
+        <Animated.View style={{...StyleSheet.absoluteFill, transform: [{ translateY: this.bgY }]}}>
+          <Image source={require('../parent/PG.png')} style={{ flex: 1, height: null, width: null }}/>
         </Animated.View>
+        {/* Landpage Content */}
         <View style={{ height: height / 3, justifyContent: 'center' }}>
+          {/* Sign in button 1 control the main animation*/}
           <TapGestureHandler onHandlerStateChange={this.onStateChange}>
-            <Animated.View
-              style={{
-                ...styles.button,
-                opacity: this.buttonOpacity,
-                transform: [{ translateY: this.buttonY }]
-              }}
-            >
+            <Animated.View style={{...styles.button,opacity: this.buttonOpacity,transform: [{ translateY: this.buttonY }]}}>
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>SIGN IN</Text>
             </Animated.View>
           </TapGestureHandler>
-          <Animated.View
-            style={{
-              ...styles.button,
-              backgroundColor: '#e3a02d',
-              opacity: this.buttonOpacity,
-              transform: [{ translateY: this.buttonY }]
-            }}
-          >
-            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>
-              SIGN UP
-            </Text>
+           {/* Sign up button */}
+          <Animated.View style={{...styles.button,backgroundColor: '#dc962e',opacity: this.buttonOpacity,transform: [{ translateY: this.buttonY }]}}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>SIGN UP</Text>
           </Animated.View>
+          {/* White Box Settings + Styleing */}
+          <Animated.View style={{zIndex:this.textInputZindex,opacity:this.textInputOpacity,transform:[{translateY:this.textInputY}],height:height/3,...StyleSheet.absoluteFill,top:null,justifyContent:'center',}}>
+              {/* Closeing Setting */}
+           <TapGestureHandler onHandlerStateChange={this.onCloseState}>
+               <Animated.View style={styles.closeButton}>
+                 <Animated.Text style={{fontSize:15,transform:[{rotate: concat(this.rotateCross,'deg')}]}}>X</Animated.Text>
+               </Animated.View>
+           </TapGestureHandler>
+           {/* Email input */}
+           <TextInput placeholder='EMAIL'style={styles.textInput} placeholderTextColor='black'></TextInput>
+           {/* Password input */}
+           <TextInput placeholder='PASSWORD'style={styles.textInput} placeholderTextColor='black'></TextInput>
+           {/* Signin Botton 2  */}
+           <Animated.View style={styles.button}>
+              <Text style={{fontSize:20,fontWeight:'bold'}}>SIGN IN</Text>
+          </Animated.View>
+          </Animated.View >
         </View>
       </View>
     );
@@ -145,6 +176,32 @@ const styles = StyleSheet.create({
     borderRadius: 35,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 5
+    marginVertical: 5,
+    shadowOffset:{width:2,height:2},
+    shadowColor:'black',
+    shadowOpacity:0.2
+  },
+  closeButton:{
+    height:40,
+    width:40,
+    backgroundColor:'white',
+    borderRadius:20,
+    alignItems:'center',
+    justifyContent:'center',
+    position:'absolute',
+    top:-20,
+    left:width/2 -20,
+    shadowOffset:{width:2,height:2},
+    shadowColor:'black',
+    shadowOpacity:0.2
+  },
+    textInput:{
+    height:50,
+    borderRadius:25,
+    borderWidth:0.5,
+    marginHorizontal:20,
+    paddingLeft:10,
+    marginVertical:5,
+    borderColor:'rgba(0,0,0,0.2)'
   }
-});
+}); 
