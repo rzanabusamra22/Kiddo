@@ -16,22 +16,42 @@ This website gives a safe envorinment for kids to play and learn
 * Deploy
 * Members
 
-## Technologies used ##
+## Technologies Used ##
+### Languages ###
 * Python
+* Javascript
+* CSS
+* HTML
+### Libraries & Technologies ###
 * Django
 * Rest Framework API
 * JWT
 * Sqlite3
 * MySql
-* gCloud App Engine
-* gCloud Sql
 * React Native
+* React Native Sound
+* React Native Animation
 * React Navigation
 * React Redux
 * Expo Cli
-### Programs Used ###
-* Android Studio
+* Jest
+* Enzyme
+* Stripe
+### Programs ###
 * VS Code
+* Android Studio
+* gCloud SDK
+### Command Lines ###
+* npm -->
+* git -->
+* pip -->
+* py -->
+* expo -->
+* jest -->
+* gcloud -->
+* curl -->
+* gem -->
+* pod -->
 
 ## Frontend ##
 * To install dependancies
@@ -40,7 +60,16 @@ This website gives a safe envorinment for kids to play and learn
 
 * To run the app on localhost
 * Open bash inside /frontend
-* `$ npm run web`
+* `$ npm run web` or `$ expo start`
+
+* To build Android App
+* Open bash inside /frontend
+* `$ npm run android`
+
+* To build ios App (on windows)
+* Install ruby & curl & git & cocoapods then Open bash inside /frontend/ios
+* `$ pod install` then `$ npm run ios`
+
 
 ## Backend ##
 * To create new virtual environment (venv)

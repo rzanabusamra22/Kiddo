@@ -2,7 +2,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import CategoryItem from './category-item-card'
 
 // import star from './android/imgs/star'

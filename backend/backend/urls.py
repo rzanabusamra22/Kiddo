@@ -23,8 +23,8 @@ from rest_framework_jwt import views as jwt_views
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
+router.register(r'historys', views.HistoryViewSet)
 router.register(r'plays', views.PlayViewSet)
-router.register(r'supporters', views.SupporterViewSet)
 router.register(r'records', views.RecordViewSet)
 router.register(r'photos', views.PhotoViewSet)
 # router.register(r'admins', views.AdminViewSet)

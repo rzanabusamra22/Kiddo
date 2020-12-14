@@ -17,8 +17,8 @@ function cacheImages(images) {
   }
 
 class Parent extends Component{
-    constructor() {
-    super()
+    constructor(props) {
+    super(props)
     this.state = {
         isReady:false
     }
@@ -38,7 +38,7 @@ render() {
           />
         );
       }
-      return <MusicApp />;
+      return <MusicApp props={this.props}/>;
 }}
 
 const styles = StyleSheet.create({

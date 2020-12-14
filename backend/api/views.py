@@ -9,7 +9,6 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from datetime import datetime
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from django.http import HttpResponse
 from rest_framework.parsers import JSONParser
 import json
@@ -72,20 +71,12 @@ def signup(request):
 
 #return user id when sign in 
 @api_view(['GET'])
-def sample_view(request):
+def id(request):
     current_user = request.user
     print(current_user.id)
     return Response(current_user.id)
 
 #changing pass later
-
-
-
-@api_view(['GET'])
-def id(request):
-    current_user = request.user
-    print(current_user.id)
-    return Response(current_user.id)
 
 
 @api_view(['GET'])
@@ -99,27 +90,21 @@ def index(request):
 #     queryset = User.objects.all()
 #     serializer_class = UserSerializer
 
-
-
 class PlayViewSet(viewsets.ModelViewSet):
     queryset = Play.objects.all()
     serializer_class = PlaySerializer
-
 
 class UserViewSet (viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-
-class SupporterViewSet (viewsets.ModelViewSet):
-    queryset = Supporter.objects.all()
-    serializer_class = SupporterSerializer
-
+class HistoryViewSet (viewsets.ModelViewSet):
+    queryset = History.objects.all()
+    serializer_class = HistorySerializer
 
 class RecordViewSet (viewsets.ModelViewSet):
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
-
 
 class PhotoViewSet (viewsets.ModelViewSet):
     queryset = Photo.objects.all()
