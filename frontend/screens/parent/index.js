@@ -1,27 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions,TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpacity} from 'react-native';
+import { withNavigation } from 'react-navigation';
 
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
 const { width, height } = Dimensions.get('window');
 // for the animations Setting 
-const {
-  Value,
-  event,
-  block,
-  cond,
-  eq,
-  set,
-  Clock,
-  startClock,
-  stopClock,
-  debug,
-  timing,
-  clockRunning,
-  interpolate,
-  concat,
-  Extrapolate
-} = Animated;
+const {Value,event,block,cond,eq,set,Clock,startClock,stopClock,debug,timing,clockRunning,interpolate,concat,Extrapolate} = Animated;
 
 function runTiming(clock, value, dest) {
   const state = {
@@ -53,8 +38,8 @@ function runTiming(clock, value, dest) {
 }
 //return + render 
 class MusicApp extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
     // functions to controll motion + styling 
     this.buttonOpacity = new Value(1);
     //control the white box when it is open 
@@ -122,6 +107,7 @@ class MusicApp extends Component {
   //main return + render 
   render() {
     return (
+      // const { navigation } = this.props;
       <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'flex-end'}}>
         {/* Background Picture */}
         <Animated.View style={{...StyleSheet.absoluteFill, transform: [{ translateY: this.bgY }]}}>
@@ -136,9 +122,11 @@ class MusicApp extends Component {
             </Animated.View>
           </TapGestureHandler>
            {/* Sign up button */}
+           <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('SignUp')}}>
           <Animated.View style={{...styles.button,backgroundColor: '#dc962e',opacity: this.buttonOpacity,transform: [{ translateY: this.buttonY }]}}>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>SIGN UP</Text>
           </Animated.View>
+          </TouchableOpacity>
           {/* White Box Settings + Styleing */}
           <Animated.View style={{zIndex:this.textInputZindex,opacity:this.textInputOpacity,transform:[{translateY:this.textInputY}],height:height/3,...StyleSheet.absoluteFill,top:null,justifyContent:'center',}}>
               {/* Closeing Setting */}

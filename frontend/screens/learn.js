@@ -1,7 +1,5 @@
 import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
-// import {Dimensions} from 'react-native';
-// const wind = Dimensions.get('window');
 
 export default function Learn({ navigation }){
     const [list,setList] = useState([
@@ -15,7 +13,7 @@ export default function Learn({ navigation }){
     ])
     const pressHandler = (x) => {
         navigation.navigate(x)
-        console.log(x)
+        //console.log(x)
     }
         return(
             <View style={styles.mainContainer}>
