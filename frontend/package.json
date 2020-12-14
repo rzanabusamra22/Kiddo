@@ -1,5 +1,5 @@
 {
-  "name": "Kiddo",
+  "name": "kiddo",
   "description": "app for kids",
   "license": "none",
   "main": "index.js",
@@ -11,17 +11,21 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.12.10",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/cli": "^4.13.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/drawer": "^5.11.4",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
+    "@testing-library/react-native": "^7.1.0",
+    "cocoapods": "0.0.0",
     "expo": "^39.0.5",
     "expo-cli": "^4.0.8",
     "expo-splash-screen": "~0.6.2",
     "expo-status-bar": "~1.0.2",
     "expo-updates": "~0.3.2",
+    "jest-expo": "^40.0.1",
     "navigation": "^5.3.1",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
@@ -45,12 +49,30 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
-    "babel-jest": "~25.2.6",
-    "jest": "~25.2.6",
-    "react-test-renderer": "~16.13.1"
+    "babel-jest": "^25.5.1",
+    "babel-preset-react-native": "^4.0.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
+    "jest": "^25.5.4",
+    "jest-react-native": "^18.0.0",
+    "react-test-renderer": "^16.13.1",
+    "redux-mock-store": "^1.5.4",
+    "snapshot-diff": "^0.8.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo/universal",
+    "verbose": true,
+    "setupFiles": [
+      "./jest/globalFetch.js"
+    ],
+    "setupFilesAfterEnv": [
+      "./__mocks__/mocks.js",
+      "./jest/snapshotDiff.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|frontend|react-native-button)/)"
+    ]
   },
   "repository": {
     "type": "git",

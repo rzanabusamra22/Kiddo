@@ -1,29 +1,19 @@
+import { sendvideo,sendgame } from './actions';
+
 // Creates the Redux variables
 const initState = {
-    test: [
-        { username: "", password: "" }
-    ],
     videolink: "",
     gamelink : "",
 }
 
 // Edits the Redux variables
-const rootReducer = (state = initState, action) => {
-    if (action.type === "sendvideo") {
-        return  {
-            ...state,
-            videolink: action.videolink
-        }
+export default rootReducer = (state = initState, action) => {
+    switch (action.type) {
+        case sendvideo:
+            return {...state, videolink: action.videolink}
+        case sendgame:
+            return {...state, gamelink: action.gamelink}
+        default:
+            return state;
     }
-    if (action.type === "sendgame") {
-        return  {
-            ...state,
-            gamelink: action.gamelink
-        }
-    }
-    
-    return state;
 }
-
-export default rootReducer;
-
