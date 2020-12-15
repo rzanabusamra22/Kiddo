@@ -7,5 +7,6 @@ admin.site.register(History)
 admin.site.register(Photo)
 admin.site.register(Play)
 admin.site.register(Record)
+admin.site.register(Donation)
 
 

@@ -18,8 +18,8 @@
     "@react-navigation/drawer": "^5.11.4",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
-    "@testing-library/react-native": "^7.1.0",
     "@stripe/stripe-js": "^1.11.0",
+    "@testing-library/react-native": "^7.1.0",
     "expo": "^39.0.5",
     "expo-asset": "~8.2.0",
     "expo-cli": "^4.0.8",
@@ -39,6 +39,7 @@
     "react-native-screens": "~2.10.1",
     "react-native-sound": "^0.11.0",
     "react-native-svg": "^12.1.0",
+    "react-native-testing-library": "^6.0.0",
     "react-native-unimodules": "~0.11.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-viewport-units": "0.0.5",
@@ -47,6 +48,7 @@
     "react-navigation": "^4.4.3",
     "react-navigation-stack": "^2.10.2",
     "react-redux": "^7.2.2",
+    "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.5"
   },
   "devDependencies": {
@@ -65,12 +67,9 @@
   "jest": {
     "preset": "jest-expo/universal",
     "verbose": true,
-    "setupFiles": [
-      "./jest/globalFetch.js"
-    ],
+    "setupFiles": [],
     "setupFilesAfterEnv": [
-      "./__mocks__/mocks.js",
-      "./jest/snapshotDiff.js"
+      "./__mocks__/mocks.js"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(react-native|frontend|react-native-button)/)"
