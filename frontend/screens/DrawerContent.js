@@ -3,9 +3,9 @@
 
 //Admin Is signedin
 import React from 'react';
-import RNRestart from 'react-native-restart';
+
 import { View, StyleSheet} from 'react-native';
-// import {Restart} from 'fiction-expo-restart';
+
 import AsyncStorage from '@react-native-community/async-storage'
 import {
     DrawerContentScrollView,
@@ -131,7 +131,7 @@ class DrawerContent extends React.Component{
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="account-check-outline" 
+                                name="gift-outline" 
                                 color={color}
                                 size={size}
                                 />

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import AsyncStorage from '@react-native-community/async-storage'
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
-import RNRestart from 'react-native-restart';
-import RestartAndroid from 'react-native-restart-android'
-import { Updates } from 'expo';
+
+
 
 const [STORAGE_KEY] = '@save_token'
 class Signin extends React.Component {
@@ -46,16 +45,13 @@ var requestOptions = {
   },
   redirect: 'follow'
 };
-
-
-
 //fetch("http://localhost:8000/auth/login/", requestOptions)
 fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
   .then(response => response.json())
   .then( (result) => {
         //this.props.setUser(results.data)
         if(result.token !== undefined){
-           
+    
           // AsyncStorage.setItem('@storage_Key', result.token)
           console.log(result.token)
           AsyncStorage.setItem('@token', result.token)
