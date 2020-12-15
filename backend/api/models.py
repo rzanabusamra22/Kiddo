@@ -12,7 +12,6 @@ class User(AbstractBaseUser,PermissionsMixin):
     email = models.EmailField(max_length=200, unique=True)
     phone = PhoneField(blank=True, help_text='Contact phone number')
     thumbnail = models.CharField(max_length=244, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU")
-    donation = models.IntegerField(default=0)
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = [ 'email','password']
     def __str__(self):
@@ -24,16 +23,22 @@ class History(models.Model):
     thumbnail = models.CharField(max_length=244)
     kind = models.CharField(max_length=50)
 
+class Donation(models.Model):
+    username = models.CharField(max_length=40)
+    donation = models.IntegerField(default=0)
+    REQUIRED_FIELDS = [ "donation" ]
+
 class Record(models.Model):
     link = models.CharField(max_length=244, unique=True)
-    category = models.CharField(max_length=50)
+    category = models.CharField(max_length=50, default="x")
     thumbnail = models.CharField(max_length=244, unique=True)
 
 class Photo(models.Model):
     link = models.CharField(max_length=244, unique=True)
-    category = models.CharField(max_length=50)
+    category = models.CharField(max_length=50, default="x")
     sound = models.CharField(max_length=244)
 
 class Play(models.Model):
     link = models.CharField(max_length=244, unique=True)
+    category = models.CharField(max_length=50, default="x")
     thumbnail = models.CharField(max_length=244, unique=True)

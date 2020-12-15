@@ -39,6 +39,7 @@
     "react-native-screens": "~2.10.1",
     "react-native-sound": "^0.11.0",
     "react-native-svg": "^12.1.0",
+    "react-native-testing-library": "^6.0.0",
     "react-native-unimodules": "~0.11.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-viewport-units": "0.0.5",
@@ -67,12 +68,9 @@
   "jest": {
     "preset": "jest-expo/universal",
     "verbose": true,
-    "setupFiles": [
-      "./jest/globalFetch.js"
-    ],
+    "setupFiles": [],
     "setupFilesAfterEnv": [
-      "./__mocks__/mocks.js",
-      "./jest/snapshotDiff.js"
+      "./__mocks__/mocks.js"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|react-clone-referenced-element|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|sentry-expo|native-base))"
