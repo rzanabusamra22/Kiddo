@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList,Button } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import CategoryItem from './category-item-card'
 // import LottieView from 'lottie-react-native';
 

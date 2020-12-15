@@ -6,7 +6,6 @@ const initState = {
     videolink: "",
     gamelink : "",
 }
-
 // Edits the Redux variables
 const rootReducer = (state = initState, action) => {
     if (action.type === "sendvideo") {
@@ -21,9 +20,6 @@ const rootReducer = (state = initState, action) => {
             gamelink: action.gamelink
         }
     }
-    
     return state;
 }
-
 export default rootReducer;
-

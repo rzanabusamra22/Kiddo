@@ -9,13 +9,14 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from datetime import datetime
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from django.http import HttpResponse
 from rest_framework.parsers import JSONParser
 import json
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
 # def public(request):
 #     return HttpResponse("You don't need to be authenticated to see this")
 
@@ -70,19 +71,27 @@ def signup(request):
             return JsonResponse(serializer.data, status=201)
     return JsonResponse(serializer.errors, status=400)
 
-#return user id when sign in 
+#recieves donations
+#save record to donation db 
+#
 @api_view(['POST'])
+@permission_classes([AllowAny])
+def donate(request):
+    data = JSONParser().parse(request)
+    serializer = DonationSerializer(data=data)
+    print(serializer)
+    serializer.save()
+    return Response("Thanks",status=201)
 
-def sample_view(request):
+#return user id when sign in 
+@api_view(['GET'])
+def id(request):
     current_user = request.user
     print(current_user.id)
     return Response(current_user.id)
 
 #changing pass later
 
-#return donate user info
-@api_view(['GET'])
-#req_body: amount - user
 
 @api_view(['GET'])
 def id(request):
@@ -102,28 +111,51 @@ def index(request):
 #     queryset = User.objects.all()
 #     serializer_class = UserSerializer
 
+class UserViewSet (viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['username']
+    search_fields = ['username']
+    ordering_fields = '__all__'
+    ordering = ['username']
 
+class HistoryViewSet (viewsets.ModelViewSet):
+    queryset = History.objects.all()
+    serializer_class = HistorySerializer
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['username', 'kind']
+    search_fields = ['username', 'kind']
+    ordering_fields = ['username', 'kind']
+
+class DonationViewSet (viewsets.ModelViewSet):
+    queryset = Donation.objects.all()
+    serializer_class = DonationSerializer
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['username']
+    search_fields = ['username']
+    ordering_fields = ['username','donation']
 
 class PlayViewSet(viewsets.ModelViewSet):
     queryset = Play.objects.all()
     serializer_class = PlaySerializer
-
-
-class UserViewSet (viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class SupporterViewSet (viewsets.ModelViewSet):
-    queryset = Supporter.objects.all()
-    serializer_class = SupporterSerializer
-
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['category']
+    search_fields = ['category']
+    ordering_fields = ['category']
 
 class RecordViewSet (viewsets.ModelViewSet):
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
-
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['category']
+    search_fields = ['category']
+    ordering_fields = ['category']
 
 class PhotoViewSet (viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['category']
+    search_fields = ['category']
+    ordering_fields = ['category']
