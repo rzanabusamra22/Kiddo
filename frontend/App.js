@@ -1,23 +1,18 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-
-import $ from 'jquery'
-
-// var jsdom =  require('jsdom').JSDOM;
-// var window = $( new jsdom().parentWindow);
-// const { JSDOM } = jsdom;
-// const { window } = new JSDOM();
-// const { document } = (new JSDOM('')).window;
-// global.document = document;
-
-
 import AsyncStorage from '@react-native-community/async-storage'
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppLoading } from 'expo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons'
+//restart 
+import RestartAndroid from 'react-native-restart-android'
+
+// or
+//import { RestartAndroid } from 'react-native-restart-android'
+// or
+//const RestartAndroid = require('react-native-restart-android')
 //redux
 import {createStore} from 'redux';
 import { Provider } from 'react-redux';
@@ -30,7 +25,6 @@ import Art from './screens/art';
 import Videos from './screens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
-
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -52,7 +46,6 @@ import AdminProfile from './screens/AdminProfile';
 import DrawerContent from './screens/DrawerContent';
 //Admin Needs to Sign In
 import DrawerContent2 from './screens/DrawerContent2';
-
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -89,24 +82,168 @@ const HomeStackScreen = ({navigation}) =>{
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
     }}
  />
-    <HomeStack.Screen name="Learn" component={Learn} />
-    <HomeStack.Screen name="Art" component={Art} />
-    <HomeStack.Screen name="Video" component={Video} />
-    <HomeStack.Screen name="Videos" component={Videos} />
-    <HomeStack.Screen name="Album" component={Album} />
-    <HomeStack.Screen name="Games" component={Games} />
-    <HomeStack.Screen name="Game" component={Game} />
+    <HomeStack.Screen 
+    name="Learn" 
+    component={Learn} 
+    options={{ 
+       title: 'Kiddo',
+       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+    }}/>
+    <HomeStack.Screen 
+    name="Art" 
+    component={Art} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Video" 
+    component={Video} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Videos" 
+    component={Videos} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Album" 
+    component={Album} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Games" 
+    component={Games} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+    <HomeStack.Screen 
+    name="Game" 
+    component={Game} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
     {/* Learn Catagories  */}
-     <HomeStack.Screen name="Alphabet" component={Alphabet} />
-     <HomeStack.Screen name="Numbers" component={Numbers} />
-     <HomeStack.Screen name="BodyPart" component={BodyPart} />
-     <HomeStack.Screen name="Fruits" component={Fruits} />
-     <HomeStack.Screen name="Vegatables" component={Vegatables} />
-     <HomeStack.Screen name="Colors" component={Colors} />
-     <HomeStack.Screen name="Animals" component={Animals} />
+     <HomeStack.Screen 
+     name="Alphabet" 
+     component={Alphabet} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Numbers" 
+     component={Numbers} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="BodyPart" 
+     component={BodyPart} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Fruits" 
+     component={Fruits} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Vegatables" 
+     component={Vegatables} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+  
+     <HomeStack.Screen 
+     name="Colors" 
+     component={Colors}  options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Animals" 
+     component={Animals} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
      {/* Art Catagories  */}
-     <HomeStack.Screen name="Coloring" component={Coloring} />
-     <HomeStack.Screen name="Drawing" component={Drawing} />
+     <HomeStack.Screen 
+     name="Coloring" 
+     component={Coloring}  
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
+     <HomeStack.Screen 
+     name="Drawing" 
+     component={Drawing} 
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+   }}/>
     </HomeStack.Navigator>
   )
 }
@@ -129,7 +266,7 @@ const SignInStackScreen = ({navigation}) =>{
      name="Signin"
      component={Signin}
      options={{ 
-       title: 'Signin',
+       title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
     }}
  />
@@ -155,8 +292,9 @@ const DonateStackScreen = ({navigation}) =>{
      name="Donate"
      component={Donate}
      options={{ 
-       title: 'Donate',
-     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
+      title: 'Kiddo',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
     </Donatestack.Navigator>
@@ -181,51 +319,57 @@ const AdminStackScreen = ({navigation}) =>{
      name="Profile"
      component={AdminProfile}
      options={{ 
-       title: 'Profile',
-     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
+      title: 'Kiddo',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+     headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
     </AdminProfilestack.Navigator>
   )
 }
-
 // The App 
 class App extends React.Component {
   constructor(){
     super()
     this.state={
-      token:''
+      token:'',
+      test:false
     }
   }
 
+  frn=()=>{
+    console.log(' **********    FRN     ***********')
+ //  RestartAndroid.restart()
+    this.forceUpdate()
+   // this.setState({})
+   this.setState({test: 'p'})
+  }
   componentDidMount(){
-    $("body").append("<audio id='sound'></audio>")
     var assigntoken = async()=>{
     const token = await AsyncStorage.getItem('@token')
-    this.setState({token})}
+    this.setState({
+      token:token,
+      test:0 
+    })}
     assigntoken()
   }
+
   render(){
   return (
     <Provider store={store}>
     <NavigationContainer>
       <Drawer.Navigator drawerContent={ (props) => 
        {
-        // var assigntoken = async()=>{
-        //   const token = await AsyncStorage.getItem('@token')
-        //   this.setState({token})}
-        //   assigntoken()
-       
        if(this.state.token){
-       return  <DrawerContent {...props}/>
+      console.log('DC1:                ',this.state.token)
+       return  <DrawerContent {...props} frn={this.frn.bind(this)} nth={this.state.test}/>
        }
        else {
-       return  <DrawerContent2 {...props}/> 
-      //  }
+       console.log('DC2:                ',this.state.token)
+       return  <DrawerContent2 {...props} frn={this.frn.bind(this)} nth={this.state.test}/> 
        }
-      //  catch {
-      //    console.log('ERRRRRRRRRRRRRR ')
-      //  }
+       
+       //this.setState({flag:1})
       }}> 
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
@@ -234,7 +378,8 @@ class App extends React.Component {
       </Drawer.Navigator>
     </NavigationContainer>
     </Provider>
-
   ); 
 }}
+
 export default App 
+

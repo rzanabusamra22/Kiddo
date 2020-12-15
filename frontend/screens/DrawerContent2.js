@@ -21,7 +21,7 @@ import { color } from 'react-native-reanimated';
 
 
 export default function DrawerContent2(props) {
-
+  console.log( 'dc2 ****** ',props.frn)
     return(
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>
@@ -62,7 +62,7 @@ export default function DrawerContent2(props) {
                         />
                     )}
                     label="Admin SignIn"
-                    onPress={() => {props.navigation.navigate('SignIn')}}
+                    onPress={() => {props.navigation.navigate('SignIn', {frn: props.frn} )}}
                 />
             </Drawer.Section>
         </View>

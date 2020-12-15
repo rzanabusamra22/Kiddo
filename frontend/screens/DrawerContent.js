@@ -1,6 +1,11 @@
+//android restart 
+//import RestartAndroid from 'react-native-restart-android'
+
 //Admin Is signedin
 import React from 'react';
+import RNRestart from 'react-native-restart';
 import { View, StyleSheet} from 'react-native';
+// import {Restart} from 'fiction-expo-restart';
 import AsyncStorage from '@react-native-community/async-storage'
 import {
     DrawerContentScrollView,
@@ -26,7 +31,7 @@ class DrawerContent extends React.Component{
     super(props)
       this.state={
         user: {username:'Admin', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU'}
-
+        ,flag:0
       }
   }
 
@@ -64,14 +69,24 @@ class DrawerContent extends React.Component{
  
   signOutHandler = async () => {
     console.log('*****************************************')
+    console.log(AsyncStorage.getItem('@token'))
    await AsyncStorage.removeItem('@token')
-   location.reload();
-    //this.props.navigation.navigate('Home')
+   console.log(AsyncStorage.getItem('@token'))
+   //this.props.setUser({});
+   this.setState({user:{}})//jft
+   console.log('PROPS:   ',this.props.frn)
+   console.log(this.props.nth)
+   //RestartAndroid.restart()
 
-   // this.props.setUser({});
+   this.props.frn();
+   //this.setState({flag: 1})
+  // RNRestart.Restart();
+   //Restart();
+  // this.props.navigation.navigate('Home')
 
 };
     render(){
+      console.log( 'dc1 ****** ',this.props.frn)
     return(
         <View style={{flex:1}}>
               <DrawerContentScrollView {...this.props}>
