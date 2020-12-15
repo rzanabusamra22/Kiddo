@@ -1,5 +1,5 @@
 {
-  "name": "Kiddo",
+  "name": "kiddo",
   "description": "app for kids",
   "license": "none",
   "main": "index.js",
@@ -11,28 +11,35 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.12.10",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/cli": "^4.13.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/drawer": "^5.11.4",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
+    "@stripe/stripe-js": "^1.11.0",
+    "@testing-library/react-native": "^7.1.0",
     "expo": "^39.0.5",
+    "expo-asset": "~8.2.0",
     "expo-cli": "^4.0.8",
     "expo-splash-screen": "~0.6.2",
     "expo-status-bar": "~1.0.2",
     "expo-updates": "~0.3.2",
+    "jest-expo": "^40.0.1",
     "navigation": "^5.3.1",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
     "react-native": "^0.63.4",
     "react-native-app-intro-slider": "^4.0.4",
-    "react-native-gesture-handler": "^1.7.0",
+    "react-native-gesture-handler": "^1.9.0",
     "react-native-paper": "^4.4.1",
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-sound": "^0.11.0",
+    "react-native-svg": "^12.1.0",
+    "react-native-testing-library": "^6.0.0",
     "react-native-unimodules": "~0.11.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-viewport-units": "0.0.5",
@@ -41,16 +48,32 @@
     "react-navigation": "^4.4.3",
     "react-navigation-stack": "^2.10.2",
     "react-redux": "^7.2.2",
+    "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
-    "babel-jest": "~25.2.6",
-    "jest": "~25.2.6",
-    "react-test-renderer": "~16.13.1"
+    "babel-jest": "^25.5.1",
+    "babel-preset-react-native": "^4.0.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
+    "jest": "^25.5.4",
+    "jest-react-native": "^18.0.0",
+    "react-test-renderer": "^16.13.1",
+    "redux-mock-store": "^1.5.4",
+    "snapshot-diff": "^0.8.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo/universal",
+    "verbose": true,
+    "setupFiles": [],
+    "setupFilesAfterEnv": [
+      "./__mocks__/mocks.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|frontend|react-native-button)/)"
+    ]
   },
   "repository": {
     "type": "git",

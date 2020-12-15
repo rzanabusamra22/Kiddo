@@ -65,7 +65,7 @@ class DrawerContent extends React.Component{
   signOutHandler = async () => {
     console.log('*****************************************')
    await AsyncStorage.removeItem('@token')
-   location.reload();
+     location.reload();
     //this.props.navigation.navigate('Home')
 
    // this.props.setUser({});
@@ -116,7 +116,7 @@ class DrawerContent extends React.Component{
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="account-check-outline" 
+                                name="gift-outline" 
                                 color={color}
                                 size={size}
                                 />
