@@ -14,10 +14,13 @@ class SignUp extends Component{
 render() {
       return (
         <View style={styles.container}>
-          <Text style={styles.text}>
-              SignUp PARENTS
+          <Text style={styles.logo1}>
+              Kiddo
           </Text>
-          <TextInput placeholder='USER NAME'style={styles.textInput} placeholderTextColor='black'></TextInput>
+          <Text style={styles.logo}>
+              Parents SignUp
+          </Text>
+          <TextInput placeholder='NAME'style={styles.textInput} placeholderTextColor='black'></TextInput>
           <TextInput placeholder='EMAIL'style={styles.textInput} placeholderTextColor='black'></TextInput>
           <TextInput placeholder='PASSWORD'style={styles.textInput} placeholderTextColor='black'></TextInput>
           <TouchableOpacity style={styles.button}>
@@ -32,8 +35,20 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#fff',
-      // alignItems: 'center',
+      alignItems: 'center',
       justifyContent: 'center'
+    },
+    logo1: {
+        fontWeight: "bold",
+        fontSize: 30,
+        color: "black",
+        marginBottom: 10
+    },
+    logo: {
+        fontWeight: "bold",
+        fontSize: 25,
+        color: "black",
+        marginBottom: 40
     },
     text:{
       alignItems: 'center',
@@ -41,6 +56,7 @@ const styles = StyleSheet.create({
     },
     textInput:{
       height:50,
+      width:300,
       borderRadius:25,
       borderWidth:0.5,
       marginHorizontal:20,
@@ -51,6 +67,7 @@ const styles = StyleSheet.create({
     button: {
       backgroundColor: 'white',
       height: 70,
+      width:300,
       marginHorizontal: 20,
       borderRadius: 35,
       alignItems: 'center',
