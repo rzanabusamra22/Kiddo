@@ -15,10 +15,7 @@ render() {
       return (
         <View style={styles.container}>
           <Text style={styles.logo1}>
-              Kiddo
-          </Text>
-          <Text style={styles.logo}>
-              Parents SignUp
+              Kiddo Parents
           </Text>
           <TextInput placeholder='NAME'style={styles.textInput} placeholderTextColor='black'></TextInput>
           <TextInput placeholder='EMAIL'style={styles.textInput} placeholderTextColor='black'></TextInput>
@@ -45,7 +42,6 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     logo: {
-        fontWeight: "bold",
         fontSize: 25,
         color: "black",
         marginBottom: 40
@@ -56,7 +52,7 @@ const styles = StyleSheet.create({
     },
     textInput:{
       height:50,
-      width:300,
+      width:350,
       borderRadius:25,
       borderWidth:0.5,
       marginHorizontal:20,
@@ -67,7 +63,7 @@ const styles = StyleSheet.create({
     button: {
       backgroundColor: 'white',
       height: 70,
-      width:300,
+      width:350,
       marginHorizontal: 20,
       borderRadius: 35,
       alignItems: 'center',
