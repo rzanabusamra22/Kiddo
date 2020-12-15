@@ -71,7 +71,8 @@ def signup(request):
     return JsonResponse(serializer.errors, status=400)
 
 #return user id when sign in 
-@api_view(['GET'])
+@api_view(['POST'])
+
 def sample_view(request):
     current_user = request.user
     print(current_user.id)
@@ -79,7 +80,9 @@ def sample_view(request):
 
 #changing pass later
 
-
+#return donate user info
+@api_view(['GET'])
+#req_body: amount - user
 
 @api_view(['GET'])
 def id(request):
