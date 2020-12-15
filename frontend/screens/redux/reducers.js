@@ -9,7 +9,7 @@ const initState = {
 }
 
 // Edits the Redux variables
-export default rootReducer = (state = initState, action) => {
+var rootReducer = (state = initState, action) => {
     switch (action.type) {
         case sendvideo:
             return {...state, videolink: action.videolink}
@@ -23,3 +23,4 @@ export default rootReducer = (state = initState, action) => {
             return state;
     }
 }
+export default rootReducer

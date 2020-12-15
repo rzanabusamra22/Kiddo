@@ -1,7 +1,7 @@
 {
   "name": "kiddo",
   "description": "app for kids",
-  "license": "none",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "android": "react-native run-android",
@@ -18,8 +18,8 @@
     "@react-navigation/drawer": "^5.11.4",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
-    "@testing-library/react-native": "^7.1.0",
     "@stripe/stripe-js": "^1.11.0",
+    "@testing-library/react-native": "^7.1.0",
     "expo": "^39.0.5",
     "expo-asset": "~8.2.0",
     "expo-cli": "^4.0.8",
@@ -45,8 +45,10 @@
     "react-native-web": "~0.13.12",
     "react-native-webview": "10.7.0",
     "react-navigation": "^4.4.3",
+    "react-navigation-drawer": "^2.6.0",
     "react-navigation-stack": "^2.10.2",
     "react-redux": "^7.2.2",
+    "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.5"
   },
   "devDependencies": {
@@ -73,7 +75,7 @@
       "./jest/snapshotDiff.js"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!(react-native|frontend|react-native-button)/)"
+      "node_modules/(?!((jest-)?react-native|react-clone-referenced-element|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|sentry-expo|native-base))"
     ]
   },
   "private": false

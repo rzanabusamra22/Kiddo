@@ -1,11 +1,4 @@
 import * as React from 'react';
-// import $ from 'jquery'
-// var jsdom =  require('jsdom').JSDOM;
-// var window = $( new jsdom().parentWindow);
-// const { JSDOM } = jsdom;
-// const { window } = new JSDOM();
-// const { document } = (new JSDOM('')).window;
-// global.document = document;
 import AsyncStorage from '@react-native-community/async-storage'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';

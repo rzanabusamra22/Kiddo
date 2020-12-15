@@ -1,3 +1,7 @@
+
+// jest.mock('url/to/toggleStatusBar', () => ({ toggleStatusBar: jest.fn(() => jest.fn) })); // tests passed
+
+
 describe("Test", () => {
     beforeAll(() => {
       Object.defineProperty(window, "matchMedia", {
