@@ -2,6 +2,11 @@
 from .serializers import *
 from rest_framework import viewsets
 from .models import *
+
+#date
+from django.utils import timezone
+import datetime
+#
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -81,11 +86,19 @@ def donate(request):
     serializer = DonationSerializer(data=data)
     print('********************')
     print(serializer)
+    date=timezone.now(),
+    print('****           DATE              ')
+    print(date)
+        #
+    now = datetime.datetime.now()
+    print('****           DATE              ')
+    print(now)
+        # 
     if serializer.is_valid():
         print('valid')
-        #date=timezone.now(),
-      
-        serializer.save()
+        #
+       
+       # serializer.save()
         return JsonResponse(serializer.data, status=201)
     return Response("ERR",status=400)
 
