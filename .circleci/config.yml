@@ -28,9 +28,9 @@ jobs:
             cd frontend
             npm i
             npm test
+      - node/test
 workflows:
   testing:
     jobs:
       - backend
       - frontend
-      - node/test
