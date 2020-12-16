@@ -34,6 +34,7 @@ Markdown==3.3.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
 mysql-connector-python==8.0.22
+mysqlclient==1.4.6
 numpy==1.19.4
 oauthlib==3.1.0
 pipenv==2020.11.15
