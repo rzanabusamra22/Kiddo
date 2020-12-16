@@ -25,6 +25,7 @@ const PaymentScreen = () => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
       
+      
       var raw = JSON.stringify({
         "authToken": jsonResponse,
         "username":username,

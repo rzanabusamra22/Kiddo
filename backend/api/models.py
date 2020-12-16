@@ -18,27 +18,27 @@ class User(AbstractBaseUser,PermissionsMixin):
         return self.username
         
 class History(models.Model):
-    username = models.CharField(max_length=40)
+    user = models.CharField(max_length=40)
     link = models.CharField(max_length=244)
     thumbnail = models.CharField(max_length=244)
     kind = models.CharField(max_length=50)
 
 class Donation(models.Model):
-    username = models.CharField(max_length=40)
-    donation = models.IntegerField(default=0)
-    REQUIRED_FIELDS = [ "donation" ]
+    user = models.CharField(max_length=40, default="unknown")
+    amount = models.IntegerField(default=0)
+    REQUIRED_FIELDS = [ "amount" ]
 
 class Record(models.Model):
     link = models.CharField(max_length=244, unique=True)
-    category = models.CharField(max_length=50, default="x")
+    category = models.CharField(max_length=50, default="video")
     thumbnail = models.CharField(max_length=244, unique=True)
 
 class Photo(models.Model):
     link = models.CharField(max_length=244, unique=True)
-    category = models.CharField(max_length=50, default="x")
+    category = models.CharField(max_length=50, default="picture")
     sound = models.CharField(max_length=244)
 
 class Play(models.Model):
     link = models.CharField(max_length=244, unique=True)
-    category = models.CharField(max_length=50, default="x")
+    category = models.CharField(max_length=50, default="game")
     thumbnail = models.CharField(max_length=244, unique=True)

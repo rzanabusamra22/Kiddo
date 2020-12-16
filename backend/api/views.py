@@ -58,15 +58,14 @@ def signup(request):
     #body_unicode = request.body.decode('utf-8')
     #body = json.loads(body_unicode)
     data = JSONParser().parse(request)
+    print('here 61')
     serializer = UserSerializer(data=data)
-    
-  
     #username=body['username'], password=body['password'], email=body["email"]
-   
     #serializer.set_password('password')
     print('**************** pass AFTER')
    # print(serializer.password)
     if serializer.is_valid():
+            print('user serializer is valid')
             serializer.save()
             return JsonResponse(serializer.data, status=201)
     return JsonResponse(serializer.errors, status=400)
@@ -78,10 +77,17 @@ def signup(request):
 @permission_classes([AllowAny])
 def donate(request):
     data = JSONParser().parse(request)
+    print(data)
     serializer = DonationSerializer(data=data)
+    print('********************')
     print(serializer)
-    serializer.save()
-    return Response("Thanks",status=201)
+    if serializer.is_valid():
+        print('valid')
+        #date=timezone.now(),
+      
+        serializer.save()
+        return JsonResponse(serializer.data, status=201)
+    return Response("ERR",status=400)
 
 #return user id when sign in 
 @api_view(['GET'])
@@ -92,12 +98,6 @@ def id(request):
 
 #changing pass later
 
-
-@api_view(['GET'])
-def id(request):
-    current_user = request.user
-    print(current_user.id)
-    return Response(current_user.id)
 
 
 @api_view(['GET'])
@@ -124,17 +124,17 @@ class HistoryViewSet (viewsets.ModelViewSet):
     queryset = History.objects.all()
     serializer_class = HistorySerializer
     filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
-    filterset_fields = ['username', 'kind']
-    search_fields = ['username', 'kind']
-    ordering_fields = ['username', 'kind']
+    filterset_fields = ['user', 'kind']
+    search_fields = ['user', 'kind']
+    ordering_fields = ['user', 'kind']
 
 class DonationViewSet (viewsets.ModelViewSet):
     queryset = Donation.objects.all()
     serializer_class = DonationSerializer
     filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
-    filterset_fields = ['username']
-    search_fields = ['username']
-    ordering_fields = ['username','donation']
+    filterset_fields = ['user']
+    search_fields = ['user']
+    ordering_fields = ['user','amount']
 
 class PlayViewSet(viewsets.ModelViewSet):
     queryset = Play.objects.all()
