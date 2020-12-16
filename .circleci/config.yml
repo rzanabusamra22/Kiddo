@@ -28,12 +28,8 @@ jobs:
             cd frontend
             npm i
             npm test
-  node:
-    docker:
-      - image: circleci/node:latest
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
+  javascript:
+    executor: node/default
     steps:
       - checkout
       - run: cd frontend
@@ -43,4 +39,4 @@ workflows:
     jobs:
       - backend
       - frontend
-      - node
+      - javascript
