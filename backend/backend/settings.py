@@ -131,13 +131,13 @@ else:
         }
     }
 # else:
-#     # run offline database
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': 'db.sqlite3',
-#         }
-#     }
+    # # run offline database
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.sqlite3',
+    #         'NAME': 'db.sqlite3',
+    #     }
+    # }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -188,10 +188,10 @@ REST_FRAMEWORK = {
     # ]
 
      'DEFAULT_AUTHENTICATION_CLASSES': [
-       'rest_framework.authentication.TokenAuthentication',
-     #  'rest_framework.authentication.BasicAuthentication', # if this one is on, we can't do even login 
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication', 
         'rest_framework.authentication.SessionAuthentication',
-         'rest_framework_jwt.authentication.JSONWebTokenAuthentication'
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication'
      ],
     
      

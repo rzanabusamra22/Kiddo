@@ -114,17 +114,17 @@ class HistoryViewSet (viewsets.ModelViewSet):
     queryset = History.objects.all()
     serializer_class = HistorySerializer
     filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
-    filterset_fields = ['username', 'kind']
-    search_fields = ['username', 'kind']
-    ordering_fields = ['username', 'kind']
+    filterset_fields = ['user', 'kind']
+    search_fields = ['user', 'kind']
+    ordering_fields = ['user', 'kind']
 
 class DonationViewSet (viewsets.ModelViewSet):
     queryset = Donation.objects.all()
     serializer_class = DonationSerializer
     filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
-    filterset_fields = ['username']
-    search_fields = ['username']
-    ordering_fields = ['username','donation']
+    filterset_fields = ['user']
+    search_fields = ['user']
+    ordering_fields = ['user','amount']
 
 class PlayViewSet(viewsets.ModelViewSet):
     queryset = Play.objects.all()
