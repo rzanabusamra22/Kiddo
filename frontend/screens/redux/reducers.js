@@ -1,4 +1,3 @@
-import { sendvideo,sendgame, sendcoloring,senddraw, senditem, sendvideocat, } from './actions';
 
 // Creates the Redux variables
 const initState = {
@@ -6,7 +5,6 @@ const initState = {
     gamelink : "",
     drawlink : "",
     coloringlink : "",
-    videoitem: "asdS",
     videocat: ""
 }
 
@@ -21,8 +19,6 @@ var rootReducer = (state = initState, action) => {
             return {...state,drawlink:action.drawlink}
         case 'sendcoloring':
             return {...state,coloringlink:action.coloringlink}
-        case 'senditem':
-            return {...state,videoitem:action.videoitem}
         case 'sendvideocat':
             return {...state,videocat:action.videocat}
         default:

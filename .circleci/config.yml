@@ -1,0 +1,46 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
+jobs:
+  backend:
+    docker:
+      - image: circleci/python:3.9
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - run:
+          command: | 
+            cd backend
+            pip install -r requirements.txt
+            python manage.py test 
+  frontend:
+    docker:
+      - image: circleci/node:latest
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - run:
+          command: | 
+            cd frontend
+            npm i
+            npm test
+  node:
+    docker:
+      - image: circleci/node:latest
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - run: cd frontend
+      - node/test
+workflows:
+  testing:
+    jobs:
+      - backend
+      - frontend
+      - node
