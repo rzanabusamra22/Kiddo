@@ -7,8 +7,8 @@ const STRIPE_PK = 'pk_test_51HoFgjCxgtcfoZwvsKFbfVjfG9zEtZV8SlBCIQ9gziIN1dFFj5Wb
 
 const PaymentView = (props) => { 
 
-    const { amount, product} = props
-
+    const { amount } = props
+    const { username } = props 
 
     const onCheckStatus = (response) => {
         props.onCheckStatus(response)
@@ -74,14 +74,7 @@ const PaymentView = (props) => {
                         align-items: center;
                     }
 
-                    .products-info{
-                        
-                        height: 150px;
-                        width: 100%;
-                        padding: 20px;
-                        text-align: center;
-
-                    }
+                  
 
                     .card-errors{
                         color: red;
@@ -98,13 +91,13 @@ const PaymentView = (props) => {
             </head>
             <body>
                 
-                <!-- product info -->
+                <!-- donation info -->
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="products-info">
-                            Product Info: ${product}
+                       
+                            Donator: ${username}
                             Amount: ${amount}
-                        </div>
+                     
                     </div>
                     <div class="row">
                         <label class="card-errors" id="card-errors"></label>
@@ -238,7 +231,7 @@ const PaymentView = (props) => {
                         var paymentRequest = stripe.paymentRequest({
                             country: "IN",
                             currency: "inr",
-                            total: {
+                            total: { 
                                 amount: ${amount * 100},
                                 label: "Total"
                             }
@@ -288,7 +281,7 @@ const PaymentView = (props) => {
 
     const onMessage = (event) => {
         const { data } =  event.nativeEvent;
-        console.log(data)
+        console.log('******* paymentView, data: ',  data)
         onCheckStatus(data)
         
     }
