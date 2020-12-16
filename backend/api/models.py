@@ -13,7 +13,7 @@ class User(AbstractBaseUser,PermissionsMixin):
     phone = PhoneField(blank=True, help_text='Contact phone number')
     thumbnail = models.CharField(max_length=244, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU")
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = [ 'email','password']
+    REQUIRED_FIELDS = ['password']
     def __str__(self):
         return self.username
         

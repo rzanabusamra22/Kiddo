@@ -36,11 +36,8 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
-      - run:
-          command: | 
-            cd frontend
+      - run: cd frontend
       - node/test
-
 workflows:
   testing:
     jobs:

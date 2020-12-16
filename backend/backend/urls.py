@@ -43,7 +43,7 @@ urlpatterns = [
    path('checkserver/',views.index,name='index'),
    path('signup/', views.signup, name='signup'),
    path('getid/', views.id, name="id"),
-#    path('donate/', views.donate, name="donate")
+   path('donate/', views.donate, name="donate")
 ]
 
 # /users/id  -> apiGet

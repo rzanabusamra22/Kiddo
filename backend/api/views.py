@@ -72,13 +72,15 @@ def signup(request):
     return JsonResponse(serializer.errors, status=400)
 
 #recieves donations
-# @api_view(['POST'])
-# @permission_classes([AllowAny])
-# def donate(request):
-#     data = JSONParser().parse(request)
-#     serializer = DonationSerializer(data=data)
-#     serializer.save()
-#     return Response("Thanks",status=201)
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def donate(request):
+    data = JSONParser().parse(request)
+    serializer = DonationSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response("Thanks",status=201)
+    return JsonResponse(serializer.errors, status=400)
 
 #return user id when sign in 
 @api_view(['GET'])
