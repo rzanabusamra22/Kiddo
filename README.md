@@ -129,6 +129,6 @@ react native - expo - react animation - navigation - sliders - picutres - drawer
 * Hamdallah Fatayer - Co-Leader
 python - django - rest framework - google sdk - cloud sql - google app engine - android studio - jest - circle ci - android & ios platform testing
 * Noor Ashqar - Development
-react - expo - jest - database data control - videos - pictures - games - webview & iframe - sounds - songs
+react - expo - jest - database data control - videos - pictures - games - webview & iframe - sounds - songs - redux
 * Dima jaber - Development
 python - django - rest framework - jwt - django token - djoser 
