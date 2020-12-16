@@ -1,7 +1,7 @@
 {
   "name": "kiddo",
   "description": "app for kids",
-  "license": "MIT",
+  "license": "none",
   "main": "index.js",
   "scripts": {
     "android": "react-native run-android",
@@ -27,12 +27,13 @@
     "expo-status-bar": "~1.0.2",
     "expo-updates": "~0.3.2",
     "jest-expo": "^40.0.1",
+    "lottie-react-native": "^2.6.1",
     "navigation": "^5.3.1",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
     "react-native": "^0.63.4",
     "react-native-app-intro-slider": "^4.0.4",
-    "react-native-gesture-handler": "^1.9.0",
+    "react-native-gesture-handler": "~1.7.0",
     "react-native-paper": "^4.4.1",
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "3.1.4",
@@ -46,7 +47,6 @@
     "react-native-web": "~0.13.12",
     "react-native-webview": "10.7.0",
     "react-navigation": "^4.4.3",
-    "react-navigation-drawer": "^2.6.0",
     "react-navigation-stack": "^2.10.2",
     "react-redux": "^7.2.2",
     "react-stripe-checkout": "^2.6.3",
@@ -68,13 +68,19 @@
   "jest": {
     "preset": "jest-expo/universal",
     "verbose": true,
-    "setupFiles": [],
+    "setupFiles": [
+      "./__mocks__/mocks.js"
+    ],
     "setupFilesAfterEnv": [
       "./__mocks__/mocks.js"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|react-clone-referenced-element|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|sentry-expo|native-base))"
+      "node_modules/(?!(react-native|my-project|react-native-button)/)"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TheBlackPearl-FinaleProject/Kiddo"
   },
   "private": false
 }

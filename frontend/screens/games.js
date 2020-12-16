@@ -28,7 +28,9 @@ class Games extends Component {
         fetch("https://blackpearl2.ew.r.appspot.com/plays", requestOptions)
             .then(response => response.json())
             .then(result => {
+                console.log(result)
                 this.setState({
+
                     result
                 })
             })
@@ -38,10 +40,12 @@ class Games extends Component {
     render() {
        const navigation = this.props.navigation
        const sendgame = this.props.sendgame
+       console.log(this.props.gamelink)
         return (
             <View style={styles.container}>
                   <ScrollView>
-                {this.state.result.map(function (x, i) {
+                      {this.state.result ? 
+                this.state.result.map(function (x, i) {
                     return (
                         <TouchableOpacity onPress={() =>{ 
                              sendgame(x.link);
@@ -51,8 +55,8 @@ class Games extends Component {
                             <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: x?.thumbnail }} />
                         </TouchableOpacity>
                     )
-                })}
-
+                }):<></>
+            }
                   </ScrollView >
             </View>
         );

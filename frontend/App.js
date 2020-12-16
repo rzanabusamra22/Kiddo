@@ -14,7 +14,8 @@ const store = createStore(rootReducer);
 import Home from './screens/home-comp'
 import Learn from './screens/learn';
 import Art from './screens/art';
-import Videos from './screens/videos';
+import Videolists from './screens/videolists';
+import Videos from './screens/subScreens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
 import Draw from './screens/subScreens/draw';
@@ -100,6 +101,16 @@ const HomeStackScreen = ({navigation}) =>{
     <HomeStack.Screen 
     name="Video" 
     component={Video} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+   <HomeStack.Screen 
+    name="Videolists" 
+    component={Videolists} 
     options={{ 
       title: 'Kiddo',
       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
