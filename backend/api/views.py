@@ -7,6 +7,10 @@ from .models import *
 from django.utils import timezone
 import datetime
 #
+#uuid
+import uuid
+import stripe 
+
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -63,7 +67,6 @@ def signup(request):
     #body_unicode = request.body.decode('utf-8')
     #body = json.loads(body_unicode)
     data = JSONParser().parse(request)
-    print('here 61')
     serializer = UserSerializer(data=data)
     #username=body['username'], password=body['password'], email=body["email"]
     #serializer.set_password('password')
@@ -82,25 +85,35 @@ def signup(request):
 @permission_classes([AllowAny])
 def donate(request):
     data = JSONParser().parse(request)
+    stripe.api_key = "sk_test_51HoFgjCxgtcfoZwvcEdcYWIIp09TagQbzRsNAnY34gPlj6zMdDSxgN9tK9FzMbVIJWJMEkM7SKlqAxTZEGmS9CHl00Dxl3xZhc"
+    print('123456789----------- ')
+    print(data)
+    try:
+        stripe.Charge.create(
+            amount=data["amount"],
+            currency="USD",
+            source=data["authToken"],
+        )
+    except:
+        return Response('Credit Card Invalid', status=401)
+
+    data.pop("authToken")
     print(data)
     serializer = DonationSerializer(data=data)
     print('********************')
     print(serializer)
-    date=timezone.now(),
+    # date=timezone.now(),
     print('****           DATE              ')
-    print(date)
-        #
-    now = datetime.datetime.now()
-    print('****           DATE              ')
-    print(now)
+    # print(date)
         # 
     if serializer.is_valid():
         print('valid')
         #
        
-       # serializer.save()
+        serializer.save()
         return JsonResponse(serializer.data, status=201)
-    return Response("ERR",status=400)
+    return JsonResponse(serializer.errors)
+
 
 #return user id when sign in 
 @api_view(['GET'])

@@ -7,8 +7,8 @@ const STRIPE_PK = 'pk_test_51HoFgjCxgtcfoZwvsKFbfVjfG9zEtZV8SlBCIQ9gziIN1dFFj5Wb
 
 const PaymentView = (props) => { 
 
-    const { amount } = props
-    const { username } = props 
+    const { amount,username } = props
+    
 
     const onCheckStatus = (response) => {
         props.onCheckStatus(response)
@@ -110,7 +110,7 @@ const PaymentView = (props) => {
                                     <div id="card-element" class="card-element">
 
                                         <div class="form-group">
-                                            <label for="card_number">Carn Number</label>
+                                            <label for="card_number">Card Number</label>
                                             <input type="text" class="form-control" id="card_number" data-stripe="number">
                                         </div>
 
