@@ -1,4 +1,3 @@
-
 // Creates the Redux variables
 const initState = {
     videolink: "",
@@ -7,7 +6,6 @@ const initState = {
     coloringlink : "",
     videocat: ""
 }
-
 // Edits the Redux variables
 var rootReducer = (state = initState, action) => {
     switch (action.type) {

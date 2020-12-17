@@ -2,6 +2,11 @@
 from .serializers import *
 from rest_framework import viewsets
 from .models import *
+
+#date
+from django.utils import timezone
+import datetime
+#
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -58,15 +63,14 @@ def signup(request):
     #body_unicode = request.body.decode('utf-8')
     #body = json.loads(body_unicode)
     data = JSONParser().parse(request)
+    print('here 61')
     serializer = UserSerializer(data=data)
-    
-  
     #username=body['username'], password=body['password'], email=body["email"]
-   
     #serializer.set_password('password')
     print('**************** pass AFTER')
    # print(serializer.password)
     if serializer.is_valid():
+            print('user serializer is valid')
             serializer.save()
             return JsonResponse(serializer.data, status=201)
     return JsonResponse(serializer.errors, status=400)
@@ -76,11 +80,25 @@ def signup(request):
 @permission_classes([AllowAny])
 def donate(request):
     data = JSONParser().parse(request)
+    print(data)
     serializer = DonationSerializer(data=data)
+    print('********************')
+    print(serializer)
+    date=timezone.now(),
+    print('****           DATE              ')
+    print(date)
+        #
+    now = datetime.datetime.now()
+    print('****           DATE              ')
+    print(now)
+        # 
     if serializer.is_valid():
+        print('valid')
+        #
+       
         serializer.save()
-        return Response("Thanks",status=201)
-    return JsonResponse(serializer.errors, status=400)
+        return JsonResponse(serializer.data, status=201)
+    return Response("ERR",status=400)
 
 #return user id when sign in 
 @api_view(['GET'])
@@ -90,6 +108,7 @@ def id(request):
     return Response(current_user.id)
 
 #changing pass later
+
 
 
 @api_view(['GET'])
