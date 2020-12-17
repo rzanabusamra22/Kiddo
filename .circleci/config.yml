@@ -1,13 +1,4 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
-parameters:
-  app-dir:
-    type: string
-    default: ""
-defaults:
-  run:
-    working-directory: ./frontend
 jobs:
   backend:
     docker:
@@ -40,4 +31,3 @@ workflows:
     jobs:
       - backend
       - frontend
-      - node/test
