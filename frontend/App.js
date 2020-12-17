@@ -1,12 +1,4 @@
-import 'react-native-gesture-handler';
 import * as React from 'react';
-// import $ from 'jquery'
-// var jsdom =  require('jsdom').JSDOM;
-// var window = $( new jsdom().parentWindow);
-// const { JSDOM } = jsdom;
-// const { window } = new JSDOM();
-// const { document } = (new JSDOM('')).window;
-// global.document = document;
 import AsyncStorage from '@react-native-community/async-storage'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -22,9 +14,12 @@ const store = createStore(rootReducer);
 import Home from './screens/home-comp'
 import Learn from './screens/learn';
 import Art from './screens/art';
-import Videos from './screens/videos';
+import Videolists from './screens/videolists';
+import Videos from './screens/subScreens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
+import Draw from './screens/subScreens/draw';
+import ColoringS from './screens/subScreens/coloringS';
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -51,7 +46,7 @@ import Parent from './screens/parent/parents-landingpage'
 import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
 //Donation
-import Stripe from "./screens/Stripe/stripe"
+// import Stripe from "./screens/stripe/";
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -106,6 +101,16 @@ const HomeStackScreen = ({navigation}) =>{
     <HomeStack.Screen 
     name="Video" 
     component={Video} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+   <HomeStack.Screen 
+    name="Videolists" 
+    component={Videolists} 
     options={{ 
       title: 'Kiddo',
       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
@@ -234,6 +239,16 @@ const HomeStackScreen = ({navigation}) =>{
         routes: [{ name: 'Home' }],
       }) }/>)
    }}/>
+   <HomeStack.Screen 
+    name="coloringS" 
+    component={ColoringS} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
      <HomeStack.Screen 
      name="Drawing" 
      component={Drawing} 
@@ -243,6 +258,16 @@ const HomeStackScreen = ({navigation}) =>{
         index: 0,
         routes: [{ name: 'Home' }],
       }) }/>)
+   }}/>
+   <HomeStack.Screen 
+    name="draw" 
+    component={Draw} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
    }}/>
     </HomeStack.Navigator>
   )
@@ -383,7 +408,6 @@ class App extends React.Component {
     }
   }
   componentDidMount(){
-    // $("body").append("<audio id='sound'></audio>")
     var assigntoken = async()=>{
     const token = await AsyncStorage.getItem('@token')
     this.setState({token})}
@@ -395,21 +419,12 @@ class App extends React.Component {
     <NavigationContainer>
       <Drawer.Navigator drawerContent={ (props) => 
        {
-        // var assigntoken = async()=>{
-        //   const token = await AsyncStorage.getItem('@token')
-        //   this.setState({token})}
-        //   assigntoken()
-       
        if(this.state.token){
        return  <DrawerContent {...props}/>
        }
        else {
        return  <DrawerContent2 {...props}/> 
-      //  }
        }
-      //  catch {
-      //    console.log('ERRRRRRRRRRRRRR ')
-      //  }
       }}> 
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
@@ -421,4 +436,5 @@ class App extends React.Component {
     </Provider>
   ); 
 }}
+
 export default App 
