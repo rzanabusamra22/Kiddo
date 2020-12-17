@@ -12,17 +12,22 @@ from djoser.serializers import UserCreateSerializer
 class PlaySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Play
-        fields = ['link', 'thumbnail']
+        fields = ['category', 'link', 'thumbnail']
 
 class UserSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = [ 'username', 'password', 'email','is_staff', 'is_superuser', 'thumbnail', 'phone']
+        fields = [ 'username', 'password', 'email', 'phone', 'thumbnail', 'is_staff', 'is_superuser',]
 
-class SupporterSerializer(UserCreateSerializer):
-    class Meta(UserCreateSerializer.Meta):
-        model = Supporter
-        fields = ['username','password','email','donation']
+class HistorySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = History
+        fields = ['user', 'link', 'thumbnail', 'kind']
+
+class DonationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Donation
+        fields = ['user', 'amount']
 
 class RecordSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
