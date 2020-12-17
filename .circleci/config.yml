@@ -34,4 +34,4 @@ workflows:
       - backend
       - frontend
       - node/test:
-         app-dir: ./frontend
+         app-dir: ~/project/frontend
