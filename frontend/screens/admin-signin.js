@@ -62,7 +62,7 @@ fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
         <TouchableWithoutFeedback
             onPress={() => {
                 Keyboard.dismiss();
-                console.log('diss')
+                console.log('disspacito')
             }}
         >
             <View style={styles.container}>

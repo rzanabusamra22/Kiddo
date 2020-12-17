@@ -18,7 +18,6 @@ import {
     Switch
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { color } from 'react-native-reanimated';
 
 
 class DrawerContent extends React.Component{
@@ -68,7 +67,7 @@ class DrawerContent extends React.Component{
      location.reload();
     //this.props.navigation.navigate('Home')
 
-   // this.props.setUser({});
+//    // this.props.setUser({});
 
 };
     render(){
