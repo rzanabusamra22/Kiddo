@@ -69,13 +69,13 @@
     "preset": "jest-expo/universal",
     "verbose": true,
     "setupFiles": [
-      "./__mocks__/mocks.js"
+      
     ],
     "setupFilesAfterEnv": [
-      "./__mocks__/mocks.js"
+      "./jest/setup.js"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!(react-native|my-project|react-native-button)/)"
+      
     ]
   },
   "repository": {
