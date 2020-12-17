@@ -68,7 +68,9 @@
   "jest": {
     "preset": "jest-expo/universal",
     "verbose": true,
-    "setupFiles": ["./__mocks__/mocks.js"],
+    "setupFiles": [
+      "./__mocks__/mocks.js"
+    ],
     "setupFilesAfterEnv": [
       "./__mocks__/mocks.js"
     ],
