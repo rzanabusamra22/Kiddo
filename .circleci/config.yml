@@ -1,8 +1,4 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
-general:
-  build_dir: frontend
 jobs:
   backend:
     docker:
@@ -14,7 +10,6 @@ jobs:
       - checkout
       - run:
           command: | 
-            cd ..
             cd backend
             pip install -r requirements.txt
             python manage.py test 
@@ -28,6 +23,7 @@ jobs:
       - checkout
       - run:
           command: | 
+            cd frontend
             npm i
             npm test
 workflows:
@@ -35,4 +31,3 @@ workflows:
     jobs:
       - backend
       - frontend
-      - node/test

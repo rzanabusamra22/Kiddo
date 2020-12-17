@@ -5,13 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AppLoading } from 'expo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons'
-
-//payment
-import PaymentScreen from './screens/Stripe/payment-screen'
-// or
-//import { RestartAndroid } from 'react-native-restart-android'
-// or
-//const RestartAndroid = require('react-native-restart-android')
 //redux
 import {createStore} from 'redux';
 import { Provider } from 'react-redux';
@@ -21,9 +14,12 @@ const store = createStore(rootReducer);
 import Home from './screens/home-comp'
 import Learn from './screens/learn';
 import Art from './screens/art';
-import Videos from './screens/videos';
+import Videolists from './screens/videolists';
+import Videos from './screens/subScreens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
+import Draw from './screens/subScreens/draw';
+import ColoringS from './screens/subScreens/coloringS';
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -46,10 +42,11 @@ import DrawerContent from './screens/DrawerContent';
 //Admin Needs to Sign In
 import DrawerContent2 from './screens/DrawerContent2';
 //Parent
-import Parent from './screens/parent/parents-landingpage'
+import Parent from './screens/parents-landingpage'
 import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
-
+//Donation
+import Stripe from "./screens/stripe";
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -104,6 +101,16 @@ const HomeStackScreen = ({navigation}) =>{
     <HomeStack.Screen 
     name="Video" 
     component={Video} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
+   <HomeStack.Screen 
+    name="Videolists" 
+    component={Videolists} 
     options={{ 
       title: 'Kiddo',
       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
@@ -202,7 +209,6 @@ const HomeStackScreen = ({navigation}) =>{
         routes: [{ name: 'Home' }],
       }) }/>)
    }}/>
-  
      <HomeStack.Screen 
      name="Colors" 
      component={Colors}  options={{ 
@@ -233,6 +239,16 @@ const HomeStackScreen = ({navigation}) =>{
         routes: [{ name: 'Home' }],
       }) }/>)
    }}/>
+   <HomeStack.Screen 
+    name="coloringS" 
+    component={ColoringS} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
+   }}/>
      <HomeStack.Screen 
      name="Drawing" 
      component={Drawing} 
@@ -242,6 +258,16 @@ const HomeStackScreen = ({navigation}) =>{
         index: 0,
         routes: [{ name: 'Home' }],
       }) }/>)
+   }}/>
+   <HomeStack.Screen 
+    name="draw" 
+    component={Draw} 
+    options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>),
    }}/>
     </HomeStack.Navigator>
   )
@@ -288,8 +314,8 @@ const DonateStackScreen = ({navigation}) =>{
   }}
   >
     <Donatestack.Screen
-     name="PaymentScreen"
-     component={PaymentScreen}
+     name="Donate"
+     component={Donate}
      options={{ 
       title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
@@ -378,28 +404,15 @@ class App extends React.Component {
   constructor(){
     super()
     this.state={
-      token:'',
-      test:false
+      token:''
     }
-  }
-
-  frn=()=>{
-    console.log(' **********    FRN     ***********')
- //  RestartAndroid.restart()
-    this.forceUpdate()
-   // this.setState({})
-   this.setState({test: 'p'})
   }
   componentDidMount(){
     var assigntoken = async()=>{
     const token = await AsyncStorage.getItem('@token')
-    this.setState({
-      token:token,
-      test:0 
-    })}
+    this.setState({token})}
     assigntoken()
   }
-
   render(){
   return (
     <Provider store={store}>
@@ -407,15 +420,11 @@ class App extends React.Component {
       <Drawer.Navigator drawerContent={ (props) => 
        {
        if(this.state.token){
-      console.log('DC1:                ',this.state.token)
-       return  <DrawerContent {...props} frn={this.frn.bind(this)} nth={this.state.test}/>
+       return  <DrawerContent {...props}/>
        }
        else {
-       console.log('DC2:                ',this.state.token)
-       return  <DrawerContent2 {...props} frn={this.frn.bind(this)} nth={this.state.test}/> 
+       return  <DrawerContent2 {...props}/> 
        }
-       
-       //this.setState({flag:1})
       }}> 
         <Drawer.Screen name="Home" component={HomeStackScreen} />
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
@@ -429,4 +438,3 @@ class App extends React.Component {
 }}
 
 export default App 
-
