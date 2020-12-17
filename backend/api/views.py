@@ -80,26 +80,30 @@ def signup(request):
 @permission_classes([AllowAny])
 def donate(request):
     data = JSONParser().parse(request)
+    stripe.api_key = "sk_test_51HoFgjCxgtcfoZwvcEdcYWIIp09TagQbzRsNAnY34gPlj6zMdDSxgN9tK9FzMbVIJWJMEkM7SKlqAxTZEGmS9CHl00Dxl3xZhc"
+    print('123456789----------- ')
+    print(data)
+    stripe.Charge.create(
+        amount= 100 * data.amount,
+        currency="INR",
+        source=data.authToken,
+        )
+    data2 = {"amount":data.amount} 
     print(data)
     serializer = DonationSerializer(data=data)
     print('********************')
     print(serializer)
-    date=timezone.now(),
+    # date=timezone.now(),
     print('****           DATE              ')
-    print(date)
-        #
-    now = datetime.datetime.now()
-    print('****           DATE              ')
-    print(now)
+    # print(date)
         # 
     if serializer.is_valid():
         print('valid')
         #
-       
         serializer.save()
         return JsonResponse(serializer.data, status=201)
-    return Response("ERR",status=400)
-
+    return Response("recieved",status=200)
+    
 #return user id when sign in 
 @api_view(['GET'])
 def id(request):
