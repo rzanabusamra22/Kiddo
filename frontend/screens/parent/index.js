@@ -140,7 +140,9 @@ class MusicApp extends Component {
            <TextInput placeholder='PASSWORD'style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Signin Botton 2  */}
            <Animated.View style={styles.button}>
-              <Text style={{fontSize:20,fontWeight:'bold'}}>SIGN IN</Text>
+              <TouchableOpacity>
+                <Text style={{fontSize:20,fontWeight:'bold'}}>SIGN IN</Text>
+              </TouchableOpacity>
           </Animated.View>
           </Animated.View >
         </View>
