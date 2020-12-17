@@ -69,13 +69,13 @@
     "preset": "jest-expo/universal",
     "verbose": true,
     "setupFiles": [
-      
+      "./jest/setup.js"
     ],
     "setupFilesAfterEnv": [
       "./jest/setup.js"
     ],
     "transformIgnorePatterns": [
-      
+      "node_modules/(?!(frontend|react-native-button)/)"
     ]
   },
   "repository": {
