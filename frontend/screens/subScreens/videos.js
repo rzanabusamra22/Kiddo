@@ -53,12 +53,14 @@ class Videos extends Component {
                 <TouchableOpacity onPress={() =>{ 
                                      sendvideo(item.link);
                                      navigation.navigate('Video')
-                                     }}  style={StyleSheet.container, StyleSheet.img}>
+                                     }} >
         
-                                    <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,paddingBottom:100*vh ,width: 100 * vw }} source={{ uri: item ?.thumbnail }} />
+                                    <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,marginright:100
+                                        ,paddingBottom:30*vh ,width: 50 * vw }} source={{ uri: item ?.thumbnail }} />
                                 </TouchableOpacity>
             )}
             keyExtractor={(item,i)=>{return `${i}`}}
+            numColumns = {2}
             />
             
             //     <ScrollView style={styles.container}>

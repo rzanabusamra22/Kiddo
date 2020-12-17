@@ -36,27 +36,28 @@ class Coloring extends Component {
     }
     
     render() {
-       const navigation = this.props.navigation
-       const sendcoloring = this.props.sendcoloring
-        return (
-            <View style={styles.container}>
-                  <ScrollView>
-                {this.state.result.map(function (x, i) {
-                    return (
-                        <TouchableOpacity onPress={() =>{ 
-                             sendcoloring(x.link);
-                             navigation.navigate('coloringS')
-                             }}  key={i} style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
-
-                            <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: x?.thumbnail }} />
-                        </TouchableOpacity>
-                    )
-                })}
-
-                  </ScrollView >
-            </View>
-        );
-    }
+        const navigation = this.props.navigation
+        const sendgame = this.props.sendgame
+        const anygame=this.state.result.filter((game,i)=>{return game.category==="color"})
+         return (
+             <FlatList
+             data ={anygame}
+             renderItem={({item})=>(
+                         <TouchableOpacity onPress={() =>{ 
+                              sendgame(item.link);
+                              navigation.navigate('Game')
+                              }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
+ 
+                             <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: item?.thumbnail }} />
+                         </TouchableOpacity>
+                     )
+                 
+                  }
+             keyExtractor={(item,i)=>{return `${i}`}}
+             numColumns = {2}
+         />
+         );
+                 }
 }
 const styles = StyleSheet.create({
     container: {
