@@ -36,10 +36,10 @@ const PaymentScreen = () => {
         redirect: 'follow'
       };
       
-      fetch("https://blackpearl2.ew.r.appspot.com/donations/", requestOptions)
+      fetch("https://blackpearl2.ew.r.appspot.com/donate/", requestOptions)
         .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .then(result => setResponse("thanks"))
+        .catch(error => setResponse("sorry"))
     }
 
     const paymentUI = () => {
