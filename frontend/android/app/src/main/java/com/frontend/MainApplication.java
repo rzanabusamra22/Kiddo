@@ -6,14 +6,8 @@ import android.net.Uri;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-<<<<<<< HEAD
-import com.reactnativerestart.RestartPackage;
-import com.reactnativerestart.RestartPackage;
-=======
-import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
->>>>>>> 2245be4526c35be1a28500d8fec4c2164a383a42
+
 import com.zmxv.RNSound.RNSoundPackage;
-import com.soundapp.SoundModulePackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
