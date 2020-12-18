@@ -16,22 +16,49 @@ This website gives a safe envorinment for kids to play and learn
 * Deploy
 * Members
 
-## Technologies used ##
+## Technologies Used ##
+### Languages ###
 * Python
+* Javascript
+* CSS
+* HTML
+### Libraries & Technologies ###
 * Django
 * Rest Framework API
 * JWT
 * Sqlite3
 * MySql
-* gCloud App Engine
-* gCloud Sql
 * React Native
+* React Native Sound
+* React Native Animation
 * React Navigation
 * React Redux
 * Expo Cli
-### Programs Used ###
-* Android Studio
+* Jest
+* Enzyme
+* Stripe
+* Circle Ci
+### Programs ###
 * VS Code
+* Android Studio
+* gCloud SDK
+### Command Lines ###
+* npm -->
+* git -->
+* pip -->
+* py -->
+* expo -->
+* jest -->
+* gcloud -->
+* curl -->
+* gem -->
+* pod -->
+* choco -->
+* circleci -->
+* react-native -->
+* xx xx xx xx xx
+* brew -->
+* sudo -->
 
 ## Frontend ##
 * To install dependancies
@@ -40,7 +67,16 @@ This website gives a safe envorinment for kids to play and learn
 
 * To run the app on localhost
 * Open bash inside /frontend
-* `$ npm run web`
+* `$ npm run web` or `$ expo start`
+
+* To build Android App
+* Open bash inside /frontend
+* `$ npm run android`
+
+* To build ios App (on windows)
+* Install ruby & curl & git & cocoapods then Open bash inside /frontend/ios
+* `$ pod install` then `$ npm run ios`
+
 
 ## Backend ##
 * To create new virtual environment (venv)
@@ -89,6 +125,10 @@ This website gives a safe envorinment for kids to play and learn
 
 ## Members ##
 * Razan Abusamra - Scrum Master
+react native - expo - react animation - navigation - sliders - picutres - drawer
 * Hamdallah Fatayer - Co-Leader
+python - django - rest framework - google sdk - cloud sql - google app engine - android studio - jest - circle ci - android & ios platform testing
 * Noor Ashqar - Development
+react - expo - jest - database data control - videos - pictures - games - webview & iframe - sounds - songs - redux
 * Dima jaber - Development
+python - django - rest framework - jwt - django token - djoser 

@@ -1,7 +1,8 @@
+import { useLinkProps } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList,Button } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import CategoryItem from './category-item-card'
+// import LottieView from 'lottie-react-native';
 
 
 export default function Home({ navigation }) {
@@ -9,7 +10,7 @@ export default function Home({ navigation }) {
     const [imgs, setImg] = useState([
         { src: require('./assests/pictures/learn-card-blue.png'), key: "1" ,nav:"Learn"},
         { src: require('./assests/pictures/art-card-green.png'), key: "4" ,nav:"Art"},
-        { src: require('./assests/pictures/videos-card-blue.png'), key: "3" ,nav:"Videos"},
+        { src: require('./assests/pictures/videos-card-blue.png'), key: "3" ,nav:"Videolists"},
         { src: require('./assests/pictures/albums-card-green.png'), key: "2" ,nav:"Album"},
         { src: require('./assests/pictures/games-card-orange.png'), key: "5" ,nav:"Games"},
     ])
@@ -21,7 +22,7 @@ export default function Home({ navigation }) {
         <View style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.list}>
-                    
+                {/* <LottieView source={require('./assests/pictures/17629-all-together.json')} autoPlay loop /> */}
                     <FlatList
                         data={imgs}
                         renderItem={({ item }) => (

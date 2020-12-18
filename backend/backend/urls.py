@@ -23,9 +23,10 @@ from rest_framework_jwt import views as jwt_views
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
+router.register(r'historys', views.HistoryViewSet)
 router.register(r'plays', views.PlayViewSet)
-router.register(r'supporters', views.SupporterViewSet)
 router.register(r'records', views.RecordViewSet)
+router.register(r'donations', views.DonationViewSet)
 router.register(r'photos', views.PhotoViewSet)
 # router.register(r'admins', views.AdminViewSet)
 # router.register(r'token')
@@ -41,7 +42,8 @@ urlpatterns = [
    url(r'^auth/login/', jwt_views.obtain_jwt_token, name='auth'),
    path('checkserver/',views.index,name='index'),
    path('signup/', views.signup, name='signup'),
-   path('getid/', views.id, name="id")
+   path('getid/', views.id, name="id"),
+   path('donate/', views.donate, name="donate")
 ]
 
 # /users/id  -> apiGet

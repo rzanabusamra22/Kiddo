@@ -1,3 +1,4 @@
+
 """
 Django settings for backend project.
 
@@ -55,7 +56,7 @@ INSTALLED_APPS = [
     'rest_framework_jwt',
     'djoser',
     'phone_field',
-
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -188,10 +189,10 @@ REST_FRAMEWORK = {
     # ]
 
      'DEFAULT_AUTHENTICATION_CLASSES': [
-       'rest_framework.authentication.TokenAuthentication',
-     #  'rest_framework.authentication.BasicAuthentication', # if this one is on, we can't do even login 
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication', 
         'rest_framework.authentication.SessionAuthentication',
-         'rest_framework_jwt.authentication.JSONWebTokenAuthentication'
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication'
      ],
     
      
@@ -199,9 +200,9 @@ REST_FRAMEWORK = {
    'DEFAULT_PERMISSION_CLASSES': [
        'rest_framework.permissions.IsAuthenticated'
        # 'rest_framework.permissions.AllowAny'
-   ]
+   ],
 
-   
+   'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 AUTH_USER_MODEL = 'api.User'

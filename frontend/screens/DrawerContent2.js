@@ -6,22 +6,11 @@ import {
     DrawerItem
 } from '@react-navigation/drawer';
 import {
-    useTheme,
-    Avatar,
-    Title,
-    Caption,
-    Paragraph,
-    Drawer,
-    Text,
-    TouchableRipple,
-    Switch
+    Drawer
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { color } from 'react-native-reanimated';
-
 
 export default function DrawerContent2(props) {
-
     return(
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>
@@ -41,13 +30,24 @@ export default function DrawerContent2(props) {
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="account-check-outline" 
+                                name="gift-outline" 
                                 color={color}
                                 size={size}
                                 />
                             )}
                             label="Donate"
                             onPress={() => {props.navigation.navigate('Donate')}}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="account-star-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="Parent"
+                            onPress={() => {props.navigation.navigate('Parent')}}
                         />
                     </Drawer.Section>
                 </View>
@@ -62,7 +62,7 @@ export default function DrawerContent2(props) {
                         />
                     )}
                     label="Admin SignIn"
-                    onPress={() => {props.navigation.navigate('SignIn')}}
+                    onPress={() => {props.navigation.navigate('SignIn', {frn: props.frn} )}}
                 />
             </Drawer.Section>
         </View>
