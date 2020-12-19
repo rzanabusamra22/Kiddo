@@ -168,4 +168,3 @@ const styles = StyleSheet.create({
     }
 });
 export default Signin
-//headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),

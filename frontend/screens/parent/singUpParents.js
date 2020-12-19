@@ -1,8 +1,6 @@
 import React, { Component, useState } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpacity} from 'react-native';
 
-
-
 class SignUp extends Component{
     constructor() {
     super()
@@ -36,15 +34,10 @@ const styles = StyleSheet.create({
       justifyContent: 'center'
     },
     logo1: {
-        fontWeight: "bold",
-        fontSize: 30,
-        color: "black",
-        marginBottom: 10
-    },
-    logo: {
-        fontSize: 25,
-        color: "black",
-        marginBottom: 40
+      fontWeight: "bold",
+      fontSize: 30,
+      color: "black",
+      marginBottom: 10
     },
     text:{
       alignItems: 'center',
