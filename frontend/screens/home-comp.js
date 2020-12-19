@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#FFFACD'
     }
 });
 
