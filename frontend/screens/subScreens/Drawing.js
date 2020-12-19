@@ -38,7 +38,7 @@ class Drawing extends Component {
     render() {
         const navigation = this.props.navigation
         const senddraw = this.props.senddraw
-        const anygame=this.state.result.filter((game,i)=>{return game.category==="draw"})
+        const anygame=this.state.result
          return (
              <FlatList
              data ={anygame}

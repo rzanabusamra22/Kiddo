@@ -34,8 +34,6 @@ class DrawerContent extends React.Component{
       }
   }
 
-   
- 
   signOutHandler = async () => {
     console.log('*****************************************')
     console.log(AsyncStorage.getItem('@token'))
