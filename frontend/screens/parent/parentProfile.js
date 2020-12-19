@@ -8,6 +8,8 @@ class parentProfile extends Component{
             result: []
         }
     }
+
+    
     render(){
     return(
         <SafeAreaView style={styles.container}>

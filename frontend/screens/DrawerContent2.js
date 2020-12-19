@@ -61,7 +61,7 @@ export default function DrawerContent2(props) {
                         size={size}
                         />
                     )}
-                    label="Admin SignIn"
+                    label="SignIn"
                     onPress={() => {props.navigation.navigate('SignIn', {frn: props.frn} )}}
                 />
             </Drawer.Section>

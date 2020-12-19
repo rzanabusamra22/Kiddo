@@ -62,9 +62,9 @@ fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
             console.log(this.props.navigation)
             console.log('********** frn from admin-signin ', this.props.frn)
             //RestartAndroid.restart()
-            RNRestart.Restart();
-          //  this.props.navigation.push('Home');
-            //this.props.navigation.navigate('Home')
+            //RNRestart.Restart();
+           // this.props.navigation.push('Home');
+            this.props.navigation.navigate('Home')
           })
           console.log('*******************||**||*********************')
           //  console.log(AsyncStorage.getItem('@token'))

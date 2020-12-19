@@ -68,10 +68,7 @@ def signup(request):
     #body_unicode = request.body.decode('utf-8')
     #body = json.loads(body_unicode)
     data = JSONParser().parse(request)
-<<<<<<< HEAD
-=======
     #print('here 61')
->>>>>>> 80e4c7fdf63deb1f3bb18367871b5e5a0fff72c9
     serializer = UserSerializer(data=data)
     #username=body['username'], password=body['password'], email=body["email"]
     #serializer.set_password('password')
@@ -89,13 +86,8 @@ def signup(request):
 def donate(request):
     data = JSONParser().parse(request)
     stripe.api_key = "sk_test_51HoFgjCxgtcfoZwvcEdcYWIIp09TagQbzRsNAnY34gPlj6zMdDSxgN9tK9FzMbVIJWJMEkM7SKlqAxTZEGmS9CHl00Dxl3xZhc"
-<<<<<<< HEAD
-    print('123456789----------- ')
-    print(data)
-=======
     # print('123456789----------- ')
 
->>>>>>> 80e4c7fdf63deb1f3bb18367871b5e5a0fff72c9
     try:
         stripe.Charge.create(
             amount=data["amount"],
@@ -103,7 +95,6 @@ def donate(request):
             source=data["authToken"],
         )
     except:
-<<<<<<< HEAD
         return Response('Credit Card Invalid', status=401)
 
     data.pop("authToken")
@@ -123,23 +114,6 @@ def donate(request):
         return JsonResponse(serializer.data, status=201)
     return JsonResponse(serializer.errors)
 
-=======
-        return Response('Invalid Card', status=401)
-
-    data.pop("authToken")
-    # print(data)
-    serializer = DonationSerializer(data=data)
-    # print('********************')
-    # print(serializer)
-    # date=timezone.now(),
-    # print('**** DATE')
-    # print(date)
-    if serializer.is_valid():
-        #print('valid')
-        serializer.save()
-        return JsonResponse(serializer.data, status=201)
-    return JsonResponse(serializer.errors, status=400)
->>>>>>> 80e4c7fdf63deb1f3bb18367871b5e5a0fff72c9
 
 #return user id when sign in 
 @api_view(['GET'])

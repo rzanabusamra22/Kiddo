@@ -29,11 +29,12 @@ class DrawerContent extends React.Component{
   constructor(props){
     super(props)
       this.state={
-        user: {username:'Admin', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU'}
+        user: {username:'user', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU'}
         ,flag:0
       }
   }
-
+  
+  ///////////////////////////////////////////////////////////
   componentDidMount() {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
@@ -73,15 +74,17 @@ class DrawerContent extends React.Component{
    console.log(AsyncStorage.getItem('@token'))
    //this.props.setUser({});
    this.setState({user:{}})//jft
-   console.log('PROPS:   ',this.props.frn)
-   console.log(this.props.nth)
+//   console.log('PROPS:   ',this.props.frn)
+ //  console.log(this.props.nth)
    //RestartAndroid.restart()
-
-   this.props.frn();
+   //RNRestart.Restart();
+ //  this.props.frn();
    //this.setState({flag: 1})
   // RNRestart.Restart();
    //Restart();
-  // this.props.navigation.navigate('Home')
+
+
+   this.props.navigation.navigate('Home')
 
 };
     render(){
@@ -99,8 +102,12 @@ class DrawerContent extends React.Component{
                                 size={50}
                             />
                             <View  style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title}>{this.state.user.username}</Title>
-                                <Caption style={styles.caption}>Admin</Caption>
+                                <Title style={styles.title} >{this.state.user.username}</Title>
+                        
+                                {this.state.user.is_admin? <Caption style={styles.caption} > Admin </Caption>
+                                :  <Caption style={styles.caption} > User </Caption>  
+                              }
+                               
                             </View>
                       </View>
                     </View>
