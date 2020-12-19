@@ -39,11 +39,11 @@ class Home extends Component {
 
     //navigation or props without {}
     const imgs = [
-        { src: 'https://imgur.com/6lgs8ZW', key: "1" ,nav:"Learn"},
-        { src: 'https://imgur.com/3Tddewk', key: "4" ,nav:"Art"},
-        { src: 'https://imgur.com/XtsLPGS', key: "3" ,nav:"Videolists"},
-        { src: 'https://imgur.com/nZ39fI6', key: "2" ,nav:"Album"},
-        { src: 'https://imgur.com/HF8KJbd', key: "5" ,nav:"Games"},
+        { src: 'https://imgur.com/6lgs8ZW.png', key: "1" ,nav:"Learn"},
+        { src: 'https://imgur.com/3Tddewk.png', key: "4" ,nav:"Art"},
+        { src: 'https://imgur.com/XtsLPGS.png', key: "3" ,nav:"Videolists"},
+        { src: 'https://imgur.com/nZ39fI6.png', key: "2" ,nav:"Album"},
+        { src: 'https://imgur.com/HF8KJbd.png', key: "5" ,nav:"Games"},
     ]
     
     const pressHandler = (x) => {
