@@ -2,7 +2,6 @@ import * as React from 'react';
 import AsyncStorage from '@react-native-community/async-storage'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { AppLoading } from 'expo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons'
 //redux
@@ -42,11 +41,12 @@ import DrawerContent from './screens/DrawerContent';
 //Admin Needs to Sign In
 import DrawerContent2 from './screens/DrawerContent2';
 //Parent
-import Parent from './screens/parents-landingpage'
+import Parent from './screens/parent/parents-landingpage'
 import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
+import parentProfile from './screens/parent/parentProfile'
 //Donation
-import Stripe from "./screens/stripe";
+// import Stripe from "./screens/stripe/";
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -395,6 +395,17 @@ const ParentStackScreen = ({navigation}) =>{
         routes: [{ name: 'Home' }],
       }) }/>)
    }}/>
+
+   <ParentStack.Screen
+     name="parentProfile" 
+     component={parentProfile}  
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+     }}/>
  
     </ParentStack.Navigator>
   )

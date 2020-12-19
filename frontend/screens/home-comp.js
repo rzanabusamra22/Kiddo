@@ -1,27 +1,59 @@
-import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList,Button } from 'react-native';
+import React, { useState,Component } from 'react';
 import CategoryItem from './category-item-card'
-// import LottieView from 'lottie-react-native';
+import { senduser } from './redux/actions';
+import { connect } from 'react-redux';
 
+class Home extends Component {
+    constructor(props) {
+        super(props)
+            this.state = {
+                result: [],
+            }} 
 
-export default function Home({ navigation }) {
+    componentDidMount() {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+        myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+        myHeaders.append("Content-Type", "application/json");
+    
+    
+        fetch("https://blackpearl2.ew.r.appspot.com/getid/", 
+                {headers: myHeaders,
+                redirect: 'follow'
+                })
+                .then(response => response.text())
+                .then(result => {
+                   fetch("https://blackpearl2.ew.r.appspot.com/users/"+result, {
+                        headers: myHeaders,
+                        redirect: 'follow'
+                       })
+                    .then(response => response.json())
+                    .then(result => {this.props.senduser(result)})
+                    .catch(()=> console.log('Err fetch user info'))
+                })
+                .catch(()=> console.log('Err fetch userid'))
+      }
+
+    render() {
+
     //navigation or props without {}
-    const [imgs, setImg] = useState([
-        { src: require('./assests/pictures/learn-card-blue.png'), key: "1" ,nav:"Learn"},
-        { src: require('./assests/pictures/art-card-green.png'), key: "4" ,nav:"Art"},
-        { src: require('./assests/pictures/videos-card-blue.png'), key: "3" ,nav:"Videolists"},
-        { src: require('./assests/pictures/albums-card-green.png'), key: "2" ,nav:"Album"},
-        { src: require('./assests/pictures/games-card-orange.png'), key: "5" ,nav:"Games"},
-    ])
+    const imgs = [
+        { src: 'https://imgur.com/6lgs8ZW.png', key: "1" ,nav:"Learn"},
+        { src: 'https://imgur.com/3Tddewk.png', key: "4" ,nav:"Art"},
+        { src: 'https://imgur.com/XtsLPGS.png', key: "3" ,nav:"Videolists"},
+        { src: 'https://imgur.com/nZ39fI6.png', key: "2" ,nav:"Album"},
+        { src: 'https://imgur.com/HF8KJbd.png', key: "5" ,nav:"Games"},
+    ]
+    
     const pressHandler = (x) => {
-        navigation.navigate(x)
+        this.props.navigation.navigate(x)
     }
     
     return (
         <View style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.list}>
-                {/* <LottieView source={require('./assests/pictures/17629-all-together.json')} autoPlay loop /> */}
                     <FlatList
                         data={imgs}
                         renderItem={({ item }) => (
@@ -33,13 +65,12 @@ export default function Home({ navigation }) {
             </View>
         </View>
     );
+    }
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // paddingTop: 10,
-        // backgroundColor: 'blue',
     },
     content: {
         backgroundColor: 'red',
@@ -47,6 +78,19 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#FFFACD'
     }
 });
+
+// Redux
+const mapStateToProps = (state) => {
+    return {
+    }
+  }
+const mapDispatchToProps = (dispatch) => {
+    return {
+      senduser: (z) => { dispatch(senduser(z)) },
+    }
+  }
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Home);  

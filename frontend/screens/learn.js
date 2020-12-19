@@ -3,13 +3,13 @@ import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity
 
 export default function Learn({ navigation }){
     const [list,setList] = useState([
-        {nav:"Alphabet",key:"a1",item:"Alphabet",pic:require('./assests/pictures/Letters.png')},
-        {nav:"Numbers",key:"a2",item:"Numbers",pic:require('./assests/pictures/Numbers.png')},
-        {nav:"BodyPart",key:"a3",item:"Body Parts",pic:require('./assests/pictures/Body-parts.png')},
-        {nav:"Fruits",key:"a4",item:"Fruits",pic:require('./assests/pictures/Fruits.png')},
-        {nav:"Vegatables",key:"a5",item:"Vegetables",pic:require('./assests/pictures/Vegatabels.png')},
-        {nav:"Colors",key:"a6",item:"Colors",pic:require('./assests/pictures/Colors.png')},
-        {nav:"Animals",key:"a7",item:"Animals",pic:require('./assests/pictures/Animals.png')}
+        {nav:"Alphabet",key:"a1",item:"Alphabet",pic:'https://i.imgur.com/vYKCqse.png'},
+        {nav:"Numbers",key:"a2",item:"Numbers",pic:'https://i.imgur.com/KORqjZ3.png'},
+        {nav:"BodyPart",key:"a3",item:"Body Parts",pic:'https://i.imgur.com/1drrAj3.png'},
+        {nav:"Fruits",key:"a4",item:"Fruits",pic:'https://i.imgur.com/nEC36xJ.png'},
+        {nav:"Vegatables",key:"a5",item:"Vegetables",pic:'https://i.imgur.com/M2INFgf.png'},
+        {nav:"Colors",key:"a6",item:"Colors",pic:'https://i.imgur.com/rPOfwXs.png'},
+        {nav:"Animals",key:"a7",item:"Animals",pic:'https://i.imgur.com/o6XWPz8.png'}
     ])
     const pressHandler = (x) => {
         navigation.navigate(x)
@@ -25,9 +25,9 @@ export default function Learn({ navigation }){
                         <TouchableOpacity onPress={()=>pressHandler(x.nav) } key={i}>
                         <View style={styles[y]}>
                         <View style={styles.cardContent}>
-                        <Text>{x.item}</Text>
+                        <Text style={styles.text}>{x.item}</Text>
                         <Image 
-                         source={x.pic}
+                         source={{uri:x.pic}} 
                          style={{ width: 90, height: 45 }}/>
                          </View>
                          </View>
@@ -43,7 +43,6 @@ export default function Learn({ navigation }){
 
 const styles = StyleSheet.create({
     a1:{
-        fontFamily:'font2',
         borderRadius:6,
         elevation:3,
         shadowOffset: {width:1, height:1},
@@ -52,7 +51,8 @@ const styles = StyleSheet.create({
         shadowOpacity:0.3,
         shadowRadius: 2,
         marginHorizontal:4,
-        marginVertical:6
+        marginVertical:6,
+        marginTop:16
     },
     a2:{
         borderRadius:6,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         borderRadius:6,
         elevation:3,
         shadowOffset: {width:1, height:1},
-        backgroundColor:'#F88408',
+        backgroundColor:'#79C24D',
         shadowColor:"#333",
         shadowOpacity:0.3,
         shadowRadius: 2,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         borderRadius:6,
         elevation:3,
         shadowOffset: {width:1, height:1},
-        backgroundColor:'#79C24D',
+        backgroundColor:'#F88408',
         shadowColor:"#333",
         shadowOpacity:0.3,
         shadowRadius: 2,
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         borderRadius:6,
         elevation:3,
         shadowOffset: {width:1, height:1},
-        backgroundColor:'#ED1B24',
+        backgroundColor:'gold', 
         shadowColor:"#333",
         shadowOpacity:0.3,
         shadowRadius: 2,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
         borderRadius:6,
         elevation:3,
         shadowOffset: {width:1, height:1},
-        backgroundColor:'gold',
+        backgroundColor:'#ED1B24',
         shadowColor:"#333",
         shadowOpacity:0.3,
         shadowRadius: 2,
@@ -128,5 +128,10 @@ const styles = StyleSheet.create({
         padding:18,
         // marginHorizontal:20,
         // marginVertical:35
+    },
+    text:{
+        color:'#fff',
+        fontSize:20,
+        fontWeight: "bold",
     }
 })

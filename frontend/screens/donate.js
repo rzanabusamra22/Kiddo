@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text,Image,TouchableOpacity,Modal} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import PaymentScreen from './Stripe/payment-screen'
 
 export default function Donate(){
     const [modalOpen, setModalOpen] = useState(false);
@@ -14,9 +15,7 @@ export default function Donate(){
                        style={{...styles.modalToggle, ...styles.modalClose}} 
                        onPress={() => setModalOpen(false)} 
                      />
-                   <Text>
-                       Testing Model
-                   </Text>
+                   <PaymentScreen />
                </View>
            </Modal>
            <Text style={styles.text}>
@@ -29,7 +28,7 @@ export default function Donate(){
             style={styles.picture}
             source={{
             uri:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMgv9qsmU4f4b3fjYsRj9UF5lpMPDuQDJDCQ&usqp=CAU',
+            'https://www.crisisservicescanada.ca/wp-content/uploads/2019/02/banner-update-08.png',
             }}
              />
             <View style={styles.buttonContainer}>
@@ -48,13 +47,8 @@ const styles = StyleSheet.create({
         picture: {
           width: "100%",
           height: "45%",
-        } ,
-        container:{
-            flex: 1,
-            backgroundColor: '#fff',
-        },
+        },container: { flex: 1, backgroundColor: 'white', justifyContent: 'center'},
         text:{
-        marginTop:75,
         fontWeight: 'bold',
         textAlign:'center',
         color:'#2b31ae',
@@ -64,7 +58,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign:'center',
         color:'#2b31ae',
-        fontSize:25
+        fontSize:25,
         },
         buttonContainer:{
         flexDirection:'row',
@@ -73,7 +67,7 @@ const styles = StyleSheet.create({
         Btn: {
         width: "80%",
         borderRadius: 25,
-        backgroundColor: '#d74caf',
+        backgroundColor: '#f4511e',
         height: 50,
         marginTop: 5,
         },
@@ -85,21 +79,21 @@ const styles = StyleSheet.create({
         fontSize:20
         },
         modalToggle: {
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: 10,
-            borderWidth: 1,
-            borderColor: '#f2f2f2',
-            padding: 10,
-            borderRadius: 10,
-            alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: '#f2f2f2',
+        padding: 10,
+        borderRadius: 10,
+        alignSelf: 'center',
           },
-          modalClose: {
-            marginTop: 20,
-            marginBottom: 0,
+        modalClose: {
+        marginTop: 20,
+        marginBottom: 0,
           },
-          modalContent: {
-            flex: 1,
+        modalContent: {
+        flex: 1,
           }
 })
 

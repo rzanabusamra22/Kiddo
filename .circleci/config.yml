@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@3.0.1
 jobs:
   backend:
     docker:
@@ -28,19 +28,10 @@ jobs:
             cd frontend
             npm i
             npm test
-  node:
-    docker:
-      - image: circleci/node:latest
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - checkout
-      - run: cd frontend
-      - node/test
 workflows:
   testing:
     jobs:
       - backend
       - frontend
-      - node
+      - node/test:
+         app-dir: ~/project/frontend

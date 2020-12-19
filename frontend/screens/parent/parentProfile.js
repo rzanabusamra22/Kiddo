@@ -1,0 +1,77 @@
+import React, { Component, useState } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView ,TouchableOpacity} from "react-native";
+
+class parentProfile extends Component{
+    constructor() {
+        super()
+        this.state = {
+            result: []
+        }
+    }
+    render(){
+    return(
+        <SafeAreaView style={styles.container}>
+            <Text style={[styles.text, { fontWeight: "200", fontSize: 30 ,color:'#2b31ae'}]}>Thank You For Trusting Us</Text>
+            <View style={{ alignSelf: "center" }}>
+                <View style={styles.profileImage}>
+                    <Image source={{uri: "https://en.artpsy.pro/wp-content/uploads/2012/09/family.png"}} style={styles.image} resizeMode="center"></Image>
+                </View>
+            </View>
+            <View style={styles.infoContainer}>
+                <Text style={[styles.text1, { fontWeight: "200", fontSize: 36 }]}>ParentName</Text>
+                <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>Parent Panal</Text>
+            </View>
+            <TouchableOpacity>
+            <View style={styles.button}>
+                <Text style={{fontSize:20,fontWeight: "200"}}>My Kid History</Text>
+           </View>
+           </TouchableOpacity>
+        </SafeAreaView>
+    )
+}}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#FFF"
+    },
+    text:{
+    marginTop:70,
+    textAlign:'center',
+    color:'#2b31ae',
+    },
+    text1: {
+        color: "#52575D"
+    },
+    image: {
+        flex: 1,
+        height: undefined,
+        width: undefined
+    },
+    profileImage: {
+        width: 200,
+        height: 200,
+        borderRadius: 100,
+        overflow: "hidden",
+        marginTop:15
+    },
+    infoContainer: {
+        alignSelf: "center",
+        alignItems: "center",
+        marginTop: 16
+    },
+    button: {
+      backgroundColor: 'white',
+      height: 70,
+      marginHorizontal: 75,
+      borderRadius: 35,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginVertical: 5,
+      shadowOffset:{width:2,height:2},
+      shadowColor:'black',
+      shadowOpacity:0.2,
+      marginTop:20
+    }
+});
+export default parentProfile
