@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler/jestSetup';
-require('jest-fetch-mock').enableMocks()
+require('jest-fetch-mock').enableMocks();
 
 if(window){
 Object.defineProperty(window, 'matchMedia', {
