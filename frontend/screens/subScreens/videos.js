@@ -40,12 +40,12 @@ class Videos extends Component {
             .catch(error => console.log('error', error));
     }
     save(item) {
-
+        console.log(this.props.user.username)
         var myHeaders = new Headers();
    myHeaders.append("Content-Type", "application/json");
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
    
-   var raw = JSON.stringify({"user":this.props.user,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
+   var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
    
    var requestOptions = {
      method: 'POST',
@@ -70,8 +70,8 @@ class Videos extends Component {
             <FlatList
             data={videoctagory}
             renderItem={({ item })=>(
-                <TouchableOpacity onPress={(item) =>{ 
-                                     save(item)
+                <TouchableOpacity onPress={() =>{ 
+                                     this.save(item)
                                      sendvideo(item.link);
                                      navigation.navigate('Video')
                                      }} >

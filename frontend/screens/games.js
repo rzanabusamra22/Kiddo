@@ -43,7 +43,7 @@ class Games extends Component {
    myHeaders.append("Content-Type", "application/json");
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
    
-   var raw = JSON.stringify({"user":this.props.user,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Game"});
+   var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Game"});
    
    var requestOptions = {
      method: 'POST',
@@ -66,7 +66,7 @@ class Games extends Component {
             <FlatList
             data ={anygame}
             renderItem={({item})=>(
-                        <TouchableOpacity onPress={(item) =>{ 
+                        <TouchableOpacity onPress={() =>{ 
                              this.save(item);
                              sendgame(item.link);
                              navigation.navigate('Game')
