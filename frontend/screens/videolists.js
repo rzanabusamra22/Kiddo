@@ -32,7 +32,7 @@ import { connect } from 'react-redux';
                         <TouchableOpacity onPress={()=>this.pressHandler(x) } key={i}>
                         <View style={styles[y]}>
                         <View style={styles.cardContent}>
-                        <Text>{x.item}</Text>
+                        <Text style={styles.text}>{x.item}</Text>
                         <Image 
                          source={x.pic}
                          style={{ width: 90, height: 45 }}/>
@@ -50,7 +50,6 @@ import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
     a1:{
-        fontFamily:'font2',
         borderRadius:6,
         elevation:3,
         shadowOffset: {width:1, height:1},
@@ -83,49 +82,10 @@ const styles = StyleSheet.create({
         marginHorizontal:4,
         marginVertical:6
     },
-    a4:{
-        borderRadius:6,
-        elevation:3,
-        shadowOffset: {width:1, height:1},
-        backgroundColor:'#F88408',
-        shadowColor:"#333",
-        shadowOpacity:0.3,
-        shadowRadius: 2,
-        marginHorizontal:4,
-        marginVertical:6
-    },
-    a5:{
-        borderRadius:6,
-        elevation:3,
-        shadowOffset: {width:1, height:1},
-        backgroundColor:'#79C24D',
-        shadowColor:"#333",
-        shadowOpacity:0.3,
-        shadowRadius: 2,
-        marginHorizontal:4,
-        marginVertical:6
-    },
-    a6:{
-        borderRadius:6,
-        elevation:3,
-        shadowOffset: {width:1, height:1},
-        backgroundColor:'#ED1B24',
-        shadowColor:"#333",
-        shadowOpacity:0.3,
-        shadowRadius: 2,
-        marginHorizontal:4,
-        marginVertical:6
-    },
-    a7:{
-        borderRadius:6,
-        elevation:3,
-        shadowOffset: {width:1, height:1},
-        backgroundColor:'gold',
-        shadowColor:"#333",
-        shadowOpacity:0.3,
-        shadowRadius: 2,
-        marginHorizontal:4,
-        marginVertical:6
+    text:{
+        color:'#fff',
+        fontSize:20,
+        fontWeight: "bold",
     },
     cardContent:{
         // flex:1,

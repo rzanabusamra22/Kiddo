@@ -16,9 +16,7 @@ const PaymentScreen = () => {
     const onCheckStatus = async (paymentResponse) => {
         setPaymentStatus('Thank you for supporting, Please wait while confirming your donation!')
         setResponse(paymentResponse)
-        var myHeaders = new Headers();
-        console.log('*********************** donate & user:' + username + '      ' + amount)
-        let jsonResponse = JSON.parse(paymentResponse);
+        
       // perform operation to check payment status
 
       var myHeaders = new Headers();
@@ -27,7 +25,7 @@ const PaymentScreen = () => {
       
       
       var raw = JSON.stringify({
-        "authToken": jsonResponse,
+        "authToken": JSON.parse(paymentResponse.token.id),
         "username":username,
         "amount":parseInt(amount)});
     
@@ -38,37 +36,10 @@ const PaymentScreen = () => {
         redirect: 'follow'
       };
       
-      fetch("https://blackpearl2.ew.r.appspot.com/donations/", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-       
-      
-        try{
-           if(stripeResponse){
-
-                const { paid } = stripeResponse.data;
-                if(paid === true){
-                    setPaymentStatus('Donation Success')
-                }else{
-                    setPaymentStatus('Donation failed due to some issue')
-                }
-
-            }else{
-                setPaymentStatus(' Donation failed due to some issue')
-            }
-
-        }
-        catch (error) {
-            
-            console.log(error)
-            setPaymentStatus(' Donation failed due to some issue')
-
-        }
- 
-    
-
-
+      fetch("https://blackpearl2.ew.r.appspot.com/donate/", requestOptions)
+        .then(response => response.json())
+        .then(result => setResponse("thanks"))
+        .catch(error => setResponse("sorry"))
     }
 
     const paymentUI = () => {
@@ -116,7 +87,7 @@ const PaymentScreen = () => {
             if(response !== undefined){
                 console.log('Response is not defined')
                 return <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 300, marginTop: 50}}>
-                    <Text>  **************** **************   **********</Text>
+                    <Text>************** ************** **************</Text>
                     <Text style={{ fontSize: 25, margin: 10}}> { paymentStatus} </Text>
                     <Text style={{ fontSize: 16, margin: 10}}> { response} </Text>
                 </View>
@@ -130,11 +101,13 @@ const PaymentScreen = () => {
         }
 
     }
-return (<View style={styles.container}>
-            {paymentUI()}
-        </View>)
-        
+
+    return (<View style={styles.container}>
+                {paymentUI()}
+            </View>)
+
 }
+
 const styles = StyleSheet.create({
 container: { flex: 1, paddingTop: 100, backgroundColor: 'white', justifyContent: 'center'},
 navigation: { flex: 2 },
@@ -142,4 +115,4 @@ body: { flex: 10, justifyContent: 'center', alignItems: 'center', backgroundColo
 footer: { flex: 1, backgroundColor: 'cyan' }
 })
 
- export default PaymentScreen;
+export default PaymentScreen;
