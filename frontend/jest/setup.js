@@ -1,4 +1,3 @@
-if(window){
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation(query => ({
@@ -12,7 +11,6 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
-}
 
 import 'react-native-gesture-handler/jestSetup';
 

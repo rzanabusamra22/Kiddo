@@ -1,10 +1,17 @@
-import 'react-native';
+/**
+* @jest-environment jsdom
+*/
+
+import '../__mocks__/mocks';
 import React from 'react'
 import App from '../App';
-// Note: test renderer must be required after react-native.
-import window from '../__mocks__/mocks'; // Must be imported before the tested file
-import { render } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native';
+import { act } from 'react-test-renderer';
 
-it('renders correctly', () => {
+
+
+
+it('renders correctly', async () => {
   render(<App />);
+  await act(async () => {})
 });

@@ -83,7 +83,7 @@ fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
         <TouchableWithoutFeedback
             onPress={() => {
                 Keyboard.dismiss();
-                console.log('diss')
+                console.log('disspacito')
             }}
         >
             <View style={styles.container}>
@@ -168,4 +168,3 @@ const styles = StyleSheet.create({
     }
 });
 export default Signin
-//headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),

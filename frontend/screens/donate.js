@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text,Image,TouchableOpacity,Modal} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import PaymentScreen from './Stripe/payment-screen'
 
 export default function Donate(){
     const [modalOpen, setModalOpen] = useState(false);
@@ -14,9 +15,7 @@ export default function Donate(){
                        style={{...styles.modalToggle, ...styles.modalClose}} 
                        onPress={() => setModalOpen(false)} 
                      />
-                   <Text>
-                       Testing Model
-                   </Text>
+                   <PaymentScreen />
                </View>
            </Modal>
            <Text style={styles.text}>
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
             backgroundColor: '#fff',
         },
         text:{
-        marginTop:75,
+        marginTop:110,
         fontWeight: 'bold',
         textAlign:'center',
         color:'#2b31ae',
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign:'center',
         color:'#2b31ae',
-        fontSize:25
+        fontSize:25,
         },
         buttonContainer:{
         flexDirection:'row',
