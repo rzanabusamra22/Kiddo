@@ -3,8 +3,8 @@ import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity
 
 export default function Art({ navigation }){
     const [list,setList] = useState([
-        {nav:"Coloring",key:"a1",item:"Coloring",pic:require('./assests/pictures/coloring.png')},
-        {nav:"Drawing",key:"a2",item:"Drawing",pic:require('./assests/pictures/drawing.png')},
+        {nav:"Coloring",key:"a1",item:"Coloring",pic:{uri: 'https://imgur.com/Hsm0YR5'}},
+        {nav:"Drawing",key:"a2",item:"Drawing",pic:{uri: 'https://imgur.com/0r8qpuJ'}},
     ])
     const pressHandler = (x) => {
         navigation.navigate(x)
@@ -21,7 +21,7 @@ export default function Art({ navigation }){
                     <View style={styles[y]}>
                     <View style={styles.cardContent}>
                     <Image 
-                     source={x.pic}
+                     source={require(x.pic)}
                      style={{ width: 200, height: 180 }}
                      />
                      <Text style={styles.text}>{x.item}</Text>

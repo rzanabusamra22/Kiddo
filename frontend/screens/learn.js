@@ -3,13 +3,13 @@ import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity
 
 export default function Learn({ navigation }){
     const [list,setList] = useState([
-        {nav:"Alphabet",key:"a1",item:"Alphabet",pic:require('./assests/pictures/Letters.png')},
-        {nav:"Numbers",key:"a2",item:"Numbers",pic:require('./assests/pictures/Numbers.png')},
-        {nav:"BodyPart",key:"a3",item:"Body Parts",pic:require('./assests/pictures/Body-parts.png')},
-        {nav:"Fruits",key:"a4",item:"Fruits",pic:require('./assests/pictures/Fruits.png')},
-        {nav:"Vegatables",key:"a5",item:"Vegetables",pic:require('./assests/pictures/Vegatabels.png')},
-        {nav:"Colors",key:"a6",item:"Colors",pic:require('./assests/pictures/Colors.png')},
-        {nav:"Animals",key:"a7",item:"Animals",pic:require('./assests/pictures/Animals.png')}
+        {nav:"Alphabet",key:"a1",item:"Alphabet",pic:'./assests/pictures/Letters.png'},
+        {nav:"Numbers",key:"a2",item:"Numbers",pic:'./assests/pictures/Numbers.png'},
+        {nav:"BodyPart",key:"a3",item:"Body Parts",pic:'./assests/pictures/Body-parts.png'},
+        {nav:"Fruits",key:"a4",item:"Fruits",pic:'./assests/pictures/Fruits.png'},
+        {nav:"Vegatables",key:"a5",item:"Vegetables",pic:'./assests/pictures/Vegatabels.png'},
+        {nav:"Colors",key:"a6",item:"Colors",pic:'./assests/pictures/Colors.png'},
+        {nav:"Animals",key:"a7",item:"Animals",pic:'./assests/pictures/Animals.png'}
     ])
     const pressHandler = (x) => {
         navigation.navigate(x)
@@ -27,7 +27,7 @@ export default function Learn({ navigation }){
                         <View style={styles.cardContent}>
                         <Text style={styles.text}>{x.item}</Text>
                         <Image 
-                         source={x.pic}
+                         source={require(x.pic)}
                          style={{ width: 90, height: 45 }}/>
                          </View>
                          </View>

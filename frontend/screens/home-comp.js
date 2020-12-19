@@ -5,8 +5,8 @@ import { senduser } from './redux/actions';
 import { connect } from 'react-redux';
 
 class Home extends Component {
-    constructor({ navigation }) {
-        super({ navigation })
+    constructor(props) {
+        super(props)
             this.state = {
                 result: [],
             }} 
@@ -34,18 +34,20 @@ class Home extends Component {
                 })
                 .catch(()=> console.log('Err fetch userid'))
       }
+
     render() {
 
     //navigation or props without {}
     const imgs = [
-        { src: require('./assests/pictures/learn-card-blue.png'), key: "1" ,nav:"Learn"},
-        { src: require('./assests/pictures/art-card-green.png'), key: "4" ,nav:"Art"},
-        { src: require('./assests/pictures/videos-card-blue.png'), key: "3" ,nav:"Videolists"},
-        { src: require('./assests/pictures/albums-card-green.png'), key: "2" ,nav:"Album"},
-        { src: require('./assests/pictures/games-card-orange.png'), key: "5" ,nav:"Games"},
+        { src: 'https://imgur.com/6lgs8ZW', key: "1" ,nav:"Learn"},
+        { src: 'https://imgur.com/3Tddewk', key: "4" ,nav:"Art"},
+        { src: 'https://imgur.com/XtsLPGS', key: "3" ,nav:"Videolists"},
+        { src: 'https://imgur.com/nZ39fI6', key: "2" ,nav:"Album"},
+        { src: 'https://imgur.com/HF8KJbd', key: "5" ,nav:"Games"},
     ]
+    
     const pressHandler = (x) => {
-        navigation.navigate(x)
+        this.props.navigation.navigate(x)
     }
     
     return (

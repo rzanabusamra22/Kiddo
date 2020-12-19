@@ -6,21 +6,18 @@ import { connect } from 'react-redux';
      constructor(props){
          super(props)
          this.state={
-             
         }
     }
      pressHandler = (x) => {
          this.props.sendvideocat(x.item)
          console.log(this.props.videocat)
         this.props.navigation.navigate("Videos")
-        
     }
      render(){
     const list = [
-        {key:"a1",item:"funny",pic:require('./assests/pictures/Letters.png')},
-        {key:"a2",item:"cartoon",pic:require('./assests/pictures/Numbers.png')},
-        {key:"a3",item:"song",pic:require('./assests/pictures/Body-parts.png')},
-        
+        {key:"a1",item:"funny",pic:{uri: 'https://i.imgur.com/cXuZxf2.jpg'}},
+        {key:"a2",item:"cartoon",pic:{uri: 'https://i.imgur.com/RKGP04e.jpg'}},
+        {key:"a3",item:"song",pic:{uri: 'https://i.imgur.com/q55umGJ.jpg'}},
     ]
         return(
             <View style={styles.mainContainer}>
@@ -32,10 +29,10 @@ import { connect } from 'react-redux';
                         <TouchableOpacity onPress={()=>this.pressHandler(x) } key={i}>
                         <View style={styles[y]}>
                         <View style={styles.cardContent}>
-                        <Text style={styles.text}>{x.item}</Text>
                         <Image 
                          source={x.pic}
-                         style={{ width: 90, height: 45 }}/>
+                         style={{ width: 180, height: 180 }}/>
+                         <Text style={styles.text}>{x.item}</Text>
                          </View>
                          </View>
                          </TouchableOpacity>  
@@ -50,51 +47,63 @@ import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
     a1:{
+        flexDirection:'row',
+        justifyContent:'center',
         borderRadius:6,
         elevation:3,
         shadowOffset: {width:1, height:1},
-        backgroundColor:'#2AC1DC',
+        backgroundColor:'#ffe631',
         shadowColor:"#333",
         shadowOpacity:0.3,
         shadowRadius: 2,
         marginHorizontal:4,
-        marginVertical:6
+        marginVertical:6,
+        width:250,
+        marginLeft:80,
+        marginTop:33
     },
     a2:{
+        flexDirection:'row',
+        justifyContent:'center',
         borderRadius:6,
         elevation:3,
         shadowOffset: {width:1, height:1},
-        backgroundColor:'#773EA9',
+        backgroundColor:'#93d4fe',
         shadowColor:"#333",
         shadowOpacity:0.3,
         shadowRadius: 2,
         marginHorizontal:4,
-        marginVertical:6
+        marginVertical:6,
+        width:250,
+        marginLeft:80
     },
     a3:{
+        flexDirection:'row',
+        justifyContent:'center',
         borderRadius:6,
         elevation:3,
         shadowOffset: {width:1, height:1},
-        backgroundColor:'#EA3A7A',
+        backgroundColor:'#fc84dd',
         shadowColor:"#333",
         shadowOpacity:0.3,
         shadowRadius: 2,
         marginHorizontal:4,
-        marginVertical:6
+        marginVertical:6,
+        width:250,
+        marginLeft:80
     },
     text:{
         color:'#fff',
-        fontSize:20,
+        fontSize:25,
         fontWeight: "bold",
+        marginTop:20,
     },
     cardContent:{
-        // flex:1,
-        flexDirection:'row',
-        justifyContent:'space-between',
+        flexDirection:"column",
+        justifyContent:'center',
         alignItems:'center',
-        padding:18,
-        // marginHorizontal:20,
-        // marginVertical:35
+        marginHorizontal:20,
+        marginVertical:35
     }
 })
 const mapStateToProps = (state) => {
