@@ -1,3 +1,5 @@
+// frontend/jest.config.js
+// this file sets the configurations for jest
 module.exports = {
     "preset": "jest-expo/universal",
     "verbose": true,
@@ -15,4 +17,4 @@ module.exports = {
       "\\.(css|scss|less)$": "./jest/styleMock.js",
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./jest/fileMock.js"
     }
-  }
+}

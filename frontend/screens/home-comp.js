@@ -1,21 +1,15 @@
-import { useLinkProps } from '@react-navigation/native';
-import React, { useState,Component } from 'react';
 import { StyleSheet, Text, View, Image, FlatList,Button } from 'react-native';
+import React, { useState,Component } from 'react';
+import CategoryItem from './category-item-card'
 import { senduser } from './redux/actions';
 import { connect } from 'react-redux';
-import CategoryItem from './category-item-card'
-// import LottieView from 'lottie-react-native';
-
 
 class Home extends Component {
     constructor({ navigation }) {
-        
         super({ navigation })
-        this.state = {
-            result: [],
-
-        }
-    } 
+            this.state = {
+                result: [],
+            }} 
 
     componentDidMount() {
         var myHeaders = new Headers();
@@ -43,13 +37,13 @@ class Home extends Component {
     render() {
 
     //navigation or props without {}
-    const [imgs, setImg] = useState([
+    const imgs = [
         { src: require('./assests/pictures/learn-card-blue.png'), key: "1" ,nav:"Learn"},
         { src: require('./assests/pictures/art-card-green.png'), key: "4" ,nav:"Art"},
         { src: require('./assests/pictures/videos-card-blue.png'), key: "3" ,nav:"Videolists"},
         { src: require('./assests/pictures/albums-card-green.png'), key: "2" ,nav:"Album"},
         { src: require('./assests/pictures/games-card-orange.png'), key: "5" ,nav:"Games"},
-    ])
+    ]
     const pressHandler = (x) => {
         navigation.navigate(x)
     }
@@ -58,7 +52,6 @@ class Home extends Component {
         <View style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.list}>
-                {/* <LottieView source={require('./assests/pictures/17629-all-together.json')} autoPlay loop /> */}
                     <FlatList
                         data={imgs}
                         renderItem={({ item }) => (
@@ -76,8 +69,6 @@ class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // paddingTop: 10,
-        // backgroundColor: 'blue',
     },
     content: {
         backgroundColor: 'red',
@@ -94,10 +85,10 @@ const mapStateToProps = (state) => {
     return {
     }
   }
-  const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
       senduser: (z) => { dispatch(senduser(z)) },
     }
   }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(Home);  
+export default connect(mapStateToProps, mapDispatchToProps)(Home);  

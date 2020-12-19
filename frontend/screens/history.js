@@ -1,45 +1,46 @@
 // frontend/screens/history.js
-// imports
+// import
 import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
 import React, { Component, useState } from 'react';
-import { Dimensions } from 'react-native';
 import { sendvideo, sendgame } from '../redux/actions';
 import { connect } from 'react-redux';
 
-const wind = Dimensions.get('window');
-var vw = wind.width * 0.01;
-var vh = wind.height * 0.01;
-
 class History extends Component {
     constructor(props) {
-    super(props)
-    this.state = {
-        result: [],
-    }}
+        super(props)
+            this.state = {
+                result: [],
+            }}
 
     componentDidMount() {
 
+    // fetch the history for the current user
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
-    myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+        myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+        myHeaders.append("Content-Type", "application/json");
 
     var requestOptions = {
-    method: 'GET',
-    redirect: 'follow',
-    headers:myHeaders
+        method: 'GET',
+        redirect: 'follow',
+        headers:myHeaders
     };
 
     fetch(`https://blackpearl2.ew.r.appspot.com/historys/?user=${this.props.user.username}&kind=`, requestOptions)
-    .then(response => response.json())
-    .then(result => {
-    this.setState({result})})
-    .catch(error => console.log('error', error));
+        .then(response => response.json())
+        .then(result => {this.setState({result})})
+        .catch(error => console.log('error', error));
+
     }
+
     go(x){
+
+        // when clicking on a history item visits the page again
        if(x.kind==="video"){sendvideo(item.link);this.props.navigation.navigate(x.kind)}
        else{sendgame(item.link);this.props.navigation.navigate(x.kind)}
+
     }
+
     render() {
         return(
             <View style={styles.mainContainer}>
@@ -63,13 +64,14 @@ class History extends Component {
             </View>
     )}
 }
+
+// react native styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
         flexDirection: 'row',
         flexWrap: 'wrap'
-        
     },
     img: {
         width: 120,
@@ -117,14 +119,14 @@ const styles = StyleSheet.create({
 // Redux
 const mapStateToProps = (state) => {
     return {
-    user: state.user,
+        user: state.user,
     }
   }
-  const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
       sendgame: (z) => { dispatch(sendgame(z)) },
       sendvideo: (z) => { dispatch(sendvideo(z)) },
     }
   }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(History);  
+export default connect(mapStateToProps, mapDispatchToProps)(History);  
