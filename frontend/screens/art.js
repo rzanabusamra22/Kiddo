@@ -3,8 +3,8 @@ import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity
 
 export default function Art({ navigation }){
     const [list,setList] = useState([
-        {nav:"Coloring",key:"a1",item:"Coloring",pic:'./assests/pictures/coloring.png'},
-        {nav:"Drawing",key:"a2",item:"Drawing",pic:'./assests/pictures/drawing.png'},
+        {nav:"Coloring",key:"a1",item:"Coloring",pic:{uri: 'https://imgur.com/Hsm0YR5'}},
+        {nav:"Drawing",key:"a2",item:"Drawing",pic:{uri: 'https://imgur.com/0r8qpuJ'}},
     ])
     const pressHandler = (x) => {
         navigation.navigate(x)
