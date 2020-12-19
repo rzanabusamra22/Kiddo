@@ -1,7 +1,7 @@
 import { useLinkProps } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList,Button } from 'react-native';
-import { senduser } from '../redux/actions';
+import { senduser } from './redux/actions';
 import { connect } from 'react-redux';
 import CategoryItem from './category-item-card'
 // import LottieView from 'lottie-react-native';
