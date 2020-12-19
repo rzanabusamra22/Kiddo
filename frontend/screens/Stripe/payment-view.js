@@ -93,12 +93,7 @@ const PaymentView = (props) => {
                 
                 <!-- donation info -->
                 <div class="container-fluid">
-                    <div class="row">
-                       
-                            Donator: ${username}
-                            Amount: ${amount}
-                     
-                    </div>
+
                     <div class="row">
                         <label class="card-errors" id="card-errors"></label>
                     </div>
@@ -283,10 +278,7 @@ const PaymentView = (props) => {
         const { data } =  event.nativeEvent;
         console.log('******* paymentView, data: ',  data)
         onCheckStatus(data)
-        
     }
-
-
 
 return <WebView
     javaScriptEnabled={true}
@@ -298,6 +290,4 @@ return <WebView
 />
 
 }
- 
-
  export default PaymentView
