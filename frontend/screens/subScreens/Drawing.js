@@ -25,7 +25,7 @@ class Drawing extends Component {
             redirect: 'follow',
             headers: myHeaders
         };
-        fetch("https://blackpearl2.ew.r.appspot.com/plays", requestOptions)
+        fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=draw", requestOptions)
             .then(response => response.json())
             .then(result => {
                 this.setState({

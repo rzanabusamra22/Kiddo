@@ -29,7 +29,7 @@ class Videos extends Component {
             headers:myHeaders
         };
 
-        fetch("https://blackpearl2.ew.r.appspot.com/records/", requestOptions)
+        fetch(`https://blackpearl2.ew.r.appspot.com/records/?category=${this.props.videocat}`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
@@ -40,7 +40,6 @@ class Videos extends Component {
             .catch(error => console.log('error', error));
     }
     save(item) {
-        console.log(this.props.user.username)
         var myHeaders = new Headers();
    myHeaders.append("Content-Type", "application/json");
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
@@ -64,7 +63,7 @@ class Videos extends Component {
        const navigation = this.props.navigation
        const sendvideo = this.props.sendvideo
        console.log(this.props.videocat)
-       const videoctagory = this.state.result.filter((video,i)=>{return video.category===this.props.videocat})
+       const videoctagory = this.state.result
         return (
 
             <FlatList

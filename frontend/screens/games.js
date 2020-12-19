@@ -52,7 +52,7 @@ class Games extends Component {
      redirect: 'follow'
    };
    
-   fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
+   fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=other", requestOptions)
      .then(response => response.json())
      .then(result => console.log(result))
      .catch(error => console.log('error', error));
@@ -61,7 +61,7 @@ class Games extends Component {
     render() {
        const navigation = this.props.navigation
        const sendgame = this.props.sendgame
-       const anygame=this.state.result.filter((game,i)=>{return game.category==="other"})
+       const anygame=this.state.result
         return (
             <FlatList
             data ={anygame}
