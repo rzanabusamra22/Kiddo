@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
             backgroundColor: '#fff',
         },
         text:{
-        marginTop:75,
+        marginTop:110,
         fontWeight: 'bold',
         textAlign:'center',
         color:'#2b31ae',
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign:'center',
         color:'#2b31ae',
-        fontSize:25
+        fontSize:25,
         },
         buttonContainer:{
         flexDirection:'row',
