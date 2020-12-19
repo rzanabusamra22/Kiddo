@@ -42,7 +42,7 @@ This website gives a safe envorinment for kids to play and learn
 * VS Code
 * Android Studio
 * gCloud SDK
-### Command Lines ###
+### Command Lines Used ###
 * npm -->
 * git -->
 * pip -->
@@ -56,7 +56,7 @@ This website gives a safe envorinment for kids to play and learn
 * choco -->
 * circleci -->
 * react-native -->
-* xx xx xx xx xx
+* x for mac x
 * brew -->
 * sudo -->
 
