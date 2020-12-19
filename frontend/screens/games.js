@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { WebView } from 'react-native-webview'
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, Button, Alert, Linking } from 'react-native';
+import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback,FlatList, TouchableOpacity, ScrollView, Button, Alert, Linking } from 'react-native';
 import { Dimensions } from 'react-native';
 import { sendgame } from './redux/actions';
 import { connect } from 'react-redux';
@@ -16,17 +16,21 @@ class Games extends Component {
         }
     }
     componentDidMount() {
-
-
+        var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+    myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'GET',
-            redirect: 'follow'
+            redirect: 'follow',
+            headers: myHeaders
         };
-
         fetch("https://blackpearl2.ew.r.appspot.com/plays", requestOptions)
             .then(response => response.json())
             .then(result => {
+                console.log(result)
                 this.setState({
+
                     result
                 })
             })
@@ -36,26 +40,27 @@ class Games extends Component {
     render() {
        const navigation = this.props.navigation
        const sendgame = this.props.sendgame
+       const anygame=this.state.result.filter((game,i)=>{return game.category==="other"})
         return (
-            <View style={styles.container}>
-                  <ScrollView>
-                {this.state.result.map(function (x, i) {
-                    return (
+            <FlatList
+            data ={anygame}
+            renderItem={({item})=>(
                         <TouchableOpacity onPress={() =>{ 
-                             sendgame(x.link);
+                             sendgame(item.link);
                              navigation.navigate('Game')
-                             }}  key={i} style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
+                             }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
 
-                            <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: x?.thumbnail }} />
+                            <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: item?.thumbnail }} />
                         </TouchableOpacity>
                     )
-                })}
-
-                  </ScrollView >
-            </View>
+                
+                 }
+            keyExtractor={(item,i)=>{return `${i}`}}
+            numColumns = {2}
+        />
         );
-    }
-}
+                }
+            }
 const styles = StyleSheet.create({
     container: {
         flex: 1,

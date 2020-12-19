@@ -1,25 +1,26 @@
 // Creates the Redux variables
 const initState = {
-    test: [
-        { username: "", password: "" }
-    ],
     videolink: "",
     gamelink : "",
+    drawlink : "",
+    coloringlink : "",
+    videocat: ""
 }
 // Edits the Redux variables
-const rootReducer = (state = initState, action) => {
-    if (action.type === "sendvideo") {
-        return  {
-            ...state,
-            videolink: action.videolink
-        }
+var rootReducer = (state = initState, action) => {
+    switch (action.type) {
+        case 'sendvideo':
+            return {...state, videolink: action.videolink}
+        case 'sendgame':
+            return {...state, gamelink: action.gamelink}
+        case 'senddraw':
+            return {...state,drawlink:action.drawlink}
+        case 'sendcoloring':
+            return {...state,coloringlink:action.coloringlink}
+        case 'sendvideocat':
+            return {...state,videocat:action.videocat}
+        default:
+            return state;
     }
-    if (action.type === "sendgame") {
-        return  {
-            ...state,
-            gamelink: action.gamelink
-        }
-    }
-    return state;
 }
-export default rootReducer;
+export default rootReducer

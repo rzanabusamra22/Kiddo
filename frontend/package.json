@@ -26,15 +26,16 @@
     "expo-splash-screen": "~0.6.2",
     "expo-status-bar": "~1.0.2",
     "expo-updates": "~0.3.2",
-    "link": "^0.1.5",
     "jest-expo": "^40.0.1",
-    "lottie-react-native": "^3.5.0",
+    "jsdom": "^16.4.0",
+    "link": "^0.1.5",
+    "lottie-react-native": "^2.6.1",
     "navigation": "^5.3.1",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
     "react-native": "^0.63.4",
     "react-native-app-intro-slider": "^4.0.4",
-    "react-native-gesture-handler": "^1.9.0",
+    "react-native-gesture-handler": "~1.7.0",
     "react-native-paper": "^4.4.1",
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "3.1.4",
@@ -69,13 +70,14 @@
     "preset": "jest-expo/universal",
     "verbose": true,
     "setupFiles": [
-      "./__mocks__/mocks.js"
+      "./jest/setup.js"
     ],
     "setupFilesAfterEnv": [
-      "./__mocks__/mocks.js"
+      "./jest/setup.js"
     ],
+    "testEnvironment": "jsdom",
     "transformIgnorePatterns": [
-      "node_modules/(?!(react-native|my-project|react-native-button)/)"
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
     ]
   },
   "repository": {

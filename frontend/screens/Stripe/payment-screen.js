@@ -25,7 +25,7 @@ const PaymentScreen = () => {
       
       
       var raw = JSON.stringify({
-        "authToken": jsonResponse,
+        "authToken": JSON.parse(paymentResponse.token.id),
         "username":username,
         "amount":parseInt(amount)});
     
@@ -113,7 +113,7 @@ const PaymentScreen = () => {
             if(response !== undefined){
                 console.log('Response is  defined')
                 return <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 300, marginTop: 50}}>
-                    <Text>  **************** **************   **********</Text>
+                    <Text>************** ************** **************</Text>
                     <Text style={{ fontSize: 25, margin: 10}}> { paymentStatus} </Text>
                     <Text style={{ fontSize: 16, margin: 10}}> { response} </Text>
                 </View>
@@ -127,11 +127,13 @@ const PaymentScreen = () => {
         }
 
     }
-return (<View style={styles.container}>
-            {paymentUI()}
-        </View>)
-        
+
+    return (<View style={styles.container}>
+                {paymentUI()}
+            </View>)
+
 }
+
 const styles = StyleSheet.create({
 container: { flex: 1, paddingTop: 100, backgroundColor: 'white', justifyContent: 'center'},
 navigation: { flex: 2 },
@@ -139,4 +141,4 @@ body: { flex: 10, justifyContent: 'center', alignItems: 'center', backgroundColo
 footer: { flex: 1, backgroundColor: 'cyan' }
 })
 
- export default PaymentScreen;
+export default PaymentScreen;
