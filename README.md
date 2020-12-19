@@ -42,7 +42,7 @@ This website gives a safe envorinment for kids to play and learn
 * VS Code
 * Android Studio
 * gCloud SDK
-### Command Lines ###
+### Command Lines Used ###
 * npm -->
 * git -->
 * pip -->
@@ -56,7 +56,7 @@ This website gives a safe envorinment for kids to play and learn
 * choco -->
 * circleci -->
 * react-native -->
-* xx xx xx xx xx
+* x For IOS x
 * brew -->
 * sudo -->
 
@@ -69,11 +69,15 @@ This website gives a safe envorinment for kids to play and learn
 * Open bash inside /frontend
 * `$ npm run web` or `$ expo start`
 
+* To run jest test
+* Open bash inside /frontend
+* `$ npm test`
+
 * To build Android App
 * Open bash inside /frontend
 * `$ npm run android`
 
-* To build ios App (on windows)
+* To build ios App (prefered on mac)
 * Install ruby & curl & git & cocoapods then Open bash inside /frontend/ios
 * `$ pod install` then `$ npm run ios`
 
@@ -125,10 +129,10 @@ This website gives a safe envorinment for kids to play and learn
 
 ## Members ##
 * Razan Abusamra - Scrum Master
-react native - expo - react animation - navigation - sliders - picutres - drawer
+react native - expo - react animation - navigation - sliders - picutres - drawer - stripe - user profile
 * Hamdallah Fatayer - Co-Leader
-python - django - rest framework - google sdk - cloud sql - google app engine - android studio - jest - circle ci - android & ios platform testing
+python - django - rest framework - google sdk - cloud sql - google app engine - android studio - jest - circle ci - all platforms testing - deploy backend - deploy frontend - user history
 * Noor Ashqar - Development
-react - expo - jest - database data control - videos - pictures - games - webview & iframe - sounds - songs - redux
+react - expo - jest - database data control - videos - pictures - games - webview & iframe - sounds - songs - redux - all platforms builds
 * Dima jaber - Development
-python - django - rest framework - jwt - django token - djoser 
+python - django - rest framework - jwt - django token - djoser - stripe - sign in & up - RNSound

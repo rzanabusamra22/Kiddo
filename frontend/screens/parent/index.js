@@ -135,9 +135,9 @@ class MusicApp extends Component {
                </Animated.View>
            </TapGestureHandler>
            {/* Email input */}
-           <TextInput placeholder='EMAIL'style={styles.textInput} placeholderTextColor='black'></TextInput>
+           <TextInput keyboardType="email-address" placeholder='EMAIL'style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Password input */}
-           <TextInput placeholder='PASSWORD'style={styles.textInput} placeholderTextColor='black'></TextInput>
+           <TextInput secureTextEntry={true} placeholder='PASSWORD'style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Signin Botton 2  */}
            <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('parentProfile')}}>
            <Animated.View style={styles.button}>

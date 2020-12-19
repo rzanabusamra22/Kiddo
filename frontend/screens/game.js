@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
          this.state={
          }
      }
+
      render(){
          console.log(this.props.gamelink)
     return(
