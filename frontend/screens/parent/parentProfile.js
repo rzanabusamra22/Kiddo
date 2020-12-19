@@ -11,7 +11,7 @@ class parentProfile extends Component{
     render(){
     return(
         <SafeAreaView style={styles.container}>
-            <Text style={[styles.text, { fontWeight: "200", fontSize: 36 ,color:'#2b31ae'}]}>Thank You For Trusting Us</Text>
+            <Text style={[styles.text, { fontWeight: "200", fontSize: 30 ,color:'#2b31ae'}]}>Thank You For Trusting Us</Text>
             <View style={{ alignSelf: "center" }}>
                 <View style={styles.profileImage}>
                     <Image source={{uri: "https://en.artpsy.pro/wp-content/uploads/2012/09/family.png"}} style={styles.image} resizeMode="center"></Image>
