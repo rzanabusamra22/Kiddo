@@ -8,7 +8,7 @@ export default function CategoryItem({ item ,press }) {
     return (
         <View style={styles.container} >
             <TouchableOpacity onPress={()=>press(item.nav)}>
-                <Image style={styles.img} source={require(item.src)} />
+                <Image style={styles.img} source={{uri:item.src}} />
             </TouchableOpacity>
         </View>
     )
