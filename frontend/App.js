@@ -2,7 +2,6 @@ import * as React from 'react';
 import AsyncStorage from '@react-native-community/async-storage'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { AppLoading } from 'expo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons'
 //redux

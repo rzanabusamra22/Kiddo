@@ -36,6 +36,27 @@ class Games extends Component {
             })
             .catch(error => console.log('error', error));
     }
+
+    save(item) {
+
+        var myHeaders = new Headers();
+   myHeaders.append("Content-Type", "application/json");
+   myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+   
+   var raw = JSON.stringify({"user":this.props.user,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Game"});
+   
+   var requestOptions = {
+     method: 'POST',
+     headers: myHeaders,
+     body: raw,
+     redirect: 'follow'
+   };
+   
+   fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
+     .then(response => response.json())
+     .then(result => console.log(result))
+     .catch(error => console.log('error', error));
+   }
     
     render() {
        const navigation = this.props.navigation
@@ -45,7 +66,8 @@ class Games extends Component {
             <FlatList
             data ={anygame}
             renderItem={({item})=>(
-                        <TouchableOpacity onPress={() =>{ 
+                        <TouchableOpacity onPress={(item) =>{ 
+                             this.save(item);
                              sendgame(item.link);
                              navigation.navigate('Game')
                              }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
@@ -115,6 +137,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return {
        gamelink: state.gamelink,
+       user: state.user,
     }
   }
   const mapDispatchToProps = (dispatch) => {

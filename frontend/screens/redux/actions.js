@@ -30,3 +30,9 @@ export const sendvideocat = (z) => {
         videocat: z,
     }
 }
+export const senduser = (z) => {
+    return {
+        type: 'senduser',
+        user: z,
+    }
+}
