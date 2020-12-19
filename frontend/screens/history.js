@@ -3,7 +3,7 @@
 import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
 import React, { Component, useState } from 'react';
 import { Dimensions } from 'react-native';
-import { sendvideo } from '../redux/actions';
+import { sendvideo, sendgame } from '../redux/actions';
 import { connect } from 'react-redux';
 
 const wind = Dimensions.get('window');
@@ -37,8 +37,8 @@ class History extends Component {
     .catch(error => console.log('error', error));
     }
     go(x){
-       if(x.link[0]==="x"){this.props.navigation.navigate(x.kind)}
-       else{sendgame(item.link);this.props.navigation.navigate('Game')}
+       if(x.kind==="video"){sendvideo(item.link);this.props.navigation.navigate(x.kind)}
+       else{sendgame(item.link);this.props.navigation.navigate(x.kind)}
     }
     render() {
         return(
@@ -122,6 +122,7 @@ const mapStateToProps = (state) => {
   }
   const mapDispatchToProps = (dispatch) => {
     return {
+      sendgame: (z) => { dispatch(sendgame(z)) },
       sendvideo: (z) => { dispatch(sendvideo(z)) },
     }
   }

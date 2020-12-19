@@ -39,6 +39,26 @@ class Videos extends Component {
             })
             .catch(error => console.log('error', error));
     }
+    save(item) {
+
+        var myHeaders = new Headers();
+   myHeaders.append("Content-Type", "application/json");
+   myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+   
+   var raw = JSON.stringify({"user":this.props.user,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
+   
+   var requestOptions = {
+     method: 'POST',
+     headers: myHeaders,
+     body: raw,
+     redirect: 'follow'
+   };
+   
+   fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
+     .then(response => response.json())
+     .then(result => console.log(result))
+     .catch(error => console.log('error', error));
+   }
     render() {
         var key1 = 0
        const navigation = this.props.navigation
@@ -50,7 +70,8 @@ class Videos extends Component {
             <FlatList
             data={videoctagory}
             renderItem={({ item })=>(
-                <TouchableOpacity onPress={() =>{ 
+                <TouchableOpacity onPress={(item) =>{ 
+                                     save(item)
                                      sendvideo(item.link);
                                      navigation.navigate('Video')
                                      }} >
@@ -141,6 +162,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return {
        videolink: state.videolink,
+       user: state.user,
        videocat: state.videocat
     }
   }
