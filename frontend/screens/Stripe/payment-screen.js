@@ -21,11 +21,11 @@ const PaymentScreen = () => {
         console.log('*********************** donate & user:' + username + '      ' + amount)
         let jsonResponse = JSON.parse(paymentResponse);
       // perform operation to check payment status
-
+         console.log(jsonResponse)
       
       
       var raw = JSON.stringify({
-        "authToken": JSON.parse(paymentResponse.token.id),
+        "authToken": jsonResponse.token.id,
         "username":username,
         "amount":parseInt(amount)});
     
@@ -113,9 +113,9 @@ const PaymentScreen = () => {
             if(response !== undefined){
                 console.log('Response is  defined')
                 return <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 300, marginTop: 50}}>
-                    <Text>************** ************** **************</Text>
+              
                     <Text style={{ fontSize: 25, margin: 10}}> { paymentStatus} </Text>
-                    <Text style={{ fontSize: 16, margin: 10}}> { response} </Text>
+                   
                 </View>
 
             }else{
