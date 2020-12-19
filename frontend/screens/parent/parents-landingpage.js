@@ -2,9 +2,7 @@ import React, { Component, useState } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 
 import { Asset } from 'expo-asset';
-import { AppLoading } from 'expo';
 import MusicApp from './index';
-
 
 function cacheImages(images) {
     return images.map(image => {
@@ -29,16 +27,11 @@ async _loadAssetsAsync() {
     await Promise.all([...imageAssets]);
   }
 render() {
-    if (!this.state.isReady) {
-        return (
-          <AppLoading
-            startAsync={this._loadAssetsAsync}
-            onFinish={() => this.setState({ isReady: true })}
-            onError={console.warn}
-          />
-        );
-      }
-      return <MusicApp props={this.props}/>;
+
+  return (
+    <MusicApp props={this.props}/>
+  );
+
 }}
 
 const styles = StyleSheet.create({
