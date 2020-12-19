@@ -1,5 +1,5 @@
 import { useLinkProps } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useState,Component } from 'react';
 import { StyleSheet, Text, View, Image, FlatList,Button } from 'react-native';
 import { senduser } from './redux/actions';
 import { connect } from 'react-redux';
