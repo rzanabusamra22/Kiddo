@@ -30,7 +30,7 @@ class Home extends Component {
                        })
                     .then(response => response.json())
                     .then(result => {this.props.senduser(result)})
-                    .catch(()=> console.log('Err fetch user info'))
+                    .catch(()=>{})
                 })
                 .catch(()=> console.log('Err fetch userid'))
       }
