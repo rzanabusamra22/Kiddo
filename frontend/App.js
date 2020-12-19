@@ -398,8 +398,8 @@ const ParentStackScreen = ({navigation}) =>{
    }}/>
 
    <ParentStack.Screen
-     name="AdminProfile" 
-     component={AdminProfile}  
+     name="parentProfile" 
+     component={parentProfile}  
      options={{ 
       title: 'Kiddo',
       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
