@@ -15,9 +15,11 @@ render() {
           <Text style={styles.logo1}>
               Kiddo Parents
           </Text>
-          <TextInput placeholder='NAME'style={styles.textInput} placeholderTextColor='black'></TextInput>
-          <TextInput placeholder='EMAIL'style={styles.textInput} placeholderTextColor='black'></TextInput>
-          <TextInput placeholder='PASSWORD'style={styles.textInput} placeholderTextColor='black'></TextInput>
+          <TextInput placeholder='Name'style={styles.textInput} placeholderTextColor='black'></TextInput>
+          <TextInput placeholder='Email'style={styles.textInput} placeholderTextColor='black'></TextInput>
+          <TextInput placeholder='Password'style={styles.textInput} placeholderTextColor='black'></TextInput>
+          <TextInput placeholder='Phone Number'style={styles.textInput} placeholderTextColor='black'></TextInput>
+          <TextInput placeholder='Profile Picture'style={styles.textInput} placeholderTextColor='black'></TextInput>
           <TouchableOpacity style={styles.button}>
             <Text style={{fontSize:20,fontWeight:'bold'}}>SIGN UP</Text>
           </TouchableOpacity>
