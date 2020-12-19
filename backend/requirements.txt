@@ -56,6 +56,7 @@ six==1.15.0
 social-auth-app-django==4.0.0
 social-auth-core==3.3.3
 sqlparse==0.4.1
+stripe==2.55.1
 style==1.1.0
 toml==0.10.2
 update==0.0.1
