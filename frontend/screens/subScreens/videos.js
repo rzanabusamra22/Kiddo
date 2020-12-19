@@ -82,28 +82,7 @@ class Videos extends Component {
             )}
             keyExtractor={(item,i)=>{return `${i}`}}
             numColumns = {2}
-            />
-            
-            //     <ScrollView style={styles.container}>
-            //     {/* <Progress.Bar progress={0.3} width={200} /> */}
-            //     {this.state.result.map(function (x, i) {
-            //         return (
-                    
-            //             <TouchableOpacity onPress={() =>{ 
-            //                  sendvideo(x.link);
-            //                  navigation.navigate('Video')
-            //                 //  {display:"flex" , alignItems:"center",  marginLeft: vw * 6, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }
-            //                  }}  key={i} style={StyleSheet.container, StyleSheet.img}>
-
-            //                 <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,paddingBottom:100*vh ,width: 100 * vw }} source={{ uri: x?.thumbnail }} />
-            //             </TouchableOpacity>
-                        
-                    
-            //         )
-            //     })}
-            
-            // </ScrollView>
-            
+            />         
         );
     }
 }

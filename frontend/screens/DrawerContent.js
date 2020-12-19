@@ -107,6 +107,17 @@ class DrawerContent extends React.Component{
                             label="Donate"
                             onPress={() => {this.props.navigation.navigate('Donate')}}
                         />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="account-star-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="History"
+                            onPress={() => {this.props.navigation.navigate('History')}}
+                        />
                     </Drawer.Section>
                 </View>
             </DrawerContentScrollView >
