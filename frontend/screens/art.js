@@ -24,7 +24,7 @@ export default function Art({ navigation }){
                      source={x.pic}
                      style={{ width: 200, height: 180 }}
                      />
-                     <Text>{x.item}</Text>
+                     <Text style={styles.text}>{x.item}</Text>
                      </View>
                      </View>
                      </TouchableOpacity>  
@@ -37,9 +37,6 @@ export default function Art({ navigation }){
 }
 
 const styles = StyleSheet.create({
-    mainContainer:{
-    marginTop:50,
-    },
     a1:{
         flexDirection:'row',
         justifyContent:'center',
@@ -53,7 +50,8 @@ const styles = StyleSheet.create({
         marginHorizontal:4,
         marginVertical:6,
         width:250,
-        marginLeft:80
+        marginLeft:80,
+        marginTop:33
     },
     a2:{
         flexDirection:'row',
@@ -76,5 +74,11 @@ const styles = StyleSheet.create({
         alignItems:'center',
         marginHorizontal:20,
         marginVertical:35
+    },
+    text:{
+        color:'#fff',
+        fontSize:25,
+        fontWeight: "bold",
+        marginTop:20,
     }
 })

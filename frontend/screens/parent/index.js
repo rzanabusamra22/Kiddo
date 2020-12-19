@@ -139,9 +139,11 @@ class MusicApp extends Component {
            {/* Password input */}
            <TextInput placeholder='PASSWORD'style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Signin Botton 2  */}
+           <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('parentProfile')}}>
            <Animated.View style={styles.button}>
-              <Text style={{fontSize:20,fontWeight:'bold'}}>SIGN IN</Text>
+                <Text style={{fontSize:20,fontWeight:'bold'}}>SIGN IN</Text>
           </Animated.View>
+          </TouchableOpacity>
           </Animated.View >
         </View>
       </View>

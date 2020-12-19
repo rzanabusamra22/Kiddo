@@ -45,6 +45,7 @@ import DrawerContent2 from './screens/DrawerContent2';
 import Parent from './screens/parent/parents-landingpage'
 import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
+import parentProfile from './screens/parent/parentProfile'
 //Donation
 // import Stripe from "./screens/stripe/";
 //Navigation
@@ -395,6 +396,17 @@ const ParentStackScreen = ({navigation}) =>{
         routes: [{ name: 'Home' }],
       }) }/>)
    }}/>
+
+   <ParentStack.Screen
+     name="parentProfile" 
+     component={parentProfile}  
+     options={{ 
+      title: 'Kiddo',
+      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }) }/>)
+     }}/>
  
     </ParentStack.Navigator>
   )

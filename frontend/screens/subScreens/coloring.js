@@ -9,7 +9,6 @@ var vw = wind.width * 0.01
 var vh = wind.height * 0.01
 class Coloring extends Component {
     constructor(props) {
-        
         super(props)
         this.state = {
             result: [],
