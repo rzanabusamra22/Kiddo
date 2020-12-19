@@ -1,3 +1,4 @@
+import { useLinkProps } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList,Button } from 'react-native';
 import CategoryItem from './category-item-card'
@@ -9,7 +10,7 @@ export default function Home({ navigation }) {
     const [imgs, setImg] = useState([
         { src: require('./assests/pictures/learn-card-blue.png'), key: "1" ,nav:"Learn"},
         { src: require('./assests/pictures/art-card-green.png'), key: "4" ,nav:"Art"},
-        { src: require('./assests/pictures/videos-card-blue.png'), key: "3" ,nav:"Videos"},
+        { src: require('./assests/pictures/videos-card-blue.png'), key: "3" ,nav:"Videolists"},
         { src: require('./assests/pictures/albums-card-green.png'), key: "2" ,nav:"Album"},
         { src: require('./assests/pictures/games-card-orange.png'), key: "5" ,nav:"Games"},
     ])
@@ -47,6 +48,6 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#FFFACD'
     }
 });

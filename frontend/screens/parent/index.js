@@ -110,7 +110,7 @@ class MusicApp extends Component {
       <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'flex-end'}}>
         {/* Background Picture */}
         <Animated.View style={{...StyleSheet.absoluteFill, transform: [{ translateY: this.bgY }]}}>
-          <Image source={require('../parent/PG.png')} style={{ flex: 1, height: null, width: null }}/>
+          <Image source={require('./PG.png')} style={{ flex: 1, height: null, width: null }}/>
         </Animated.View>
         {/* Landpage Content */}
         <View style={{ height: height / 3, justifyContent: 'center' }}>
@@ -139,9 +139,11 @@ class MusicApp extends Component {
            {/* Password input */}
            <TextInput placeholder='PASSWORD'style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Signin Botton 2  */}
+           <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('parentProfile')}}>
            <Animated.View style={styles.button}>
-              <Text style={{fontSize:20,fontWeight:'bold'}}>SIGN IN</Text>
+                <Text style={{fontSize:20,fontWeight:'bold'}}>SIGN IN</Text>
           </Animated.View>
+          </TouchableOpacity>
           </Animated.View >
         </View>
       </View>
