@@ -17,9 +17,9 @@ import { connect } from 'react-redux';
     }
      render(){
     const list = [
-        {key:"a1",item:"funny",pic:require('./assests/pictures/Letters.png')},
-        {key:"a2",item:"cartoon",pic:require('./assests/pictures/Numbers.png')},
-        {key:"a3",item:"song",pic:require('./assests/pictures/Body-parts.png')},
+        {key:"a1",item:"funny",pic:'./assests/pictures/Letters.png'},
+        {key:"a2",item:"cartoon",pic:'./assests/pictures/Numbers.png'},
+        {key:"a3",item:"song",pic:'./assests/pictures/Body-parts.png'},
         
     ]
         return(
@@ -34,7 +34,7 @@ import { connect } from 'react-redux';
                         <View style={styles.cardContent}>
                         <Text style={styles.text}>{x.item}</Text>
                         <Image 
-                         source={x.pic}
+                         source={require(x.pic)}
                          style={{ width: 90, height: 45 }}/>
                          </View>
                          </View>
