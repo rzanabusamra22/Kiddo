@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { WebView } from 'react-native-webview'
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, Button, Alert, Linking ,FlatList} from 'react-native';
+import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, Button, Alert, Linking,FlatList  } from 'react-native';
 import { Dimensions } from 'react-native';
 import { senddraw } from '../redux/actions';
 import { connect } from 'react-redux';
@@ -25,7 +25,7 @@ class Drawing extends Component {
             redirect: 'follow',
             headers: myHeaders
         };
-        fetch("https://blackpearl2.ew.r.appspot.com/records", requestOptions)
+        fetch("https://blackpearl2.ew.r.appspot.com/plays", requestOptions)
             .then(response => response.json())
             .then(result => {
                 this.setState({
@@ -37,14 +37,14 @@ class Drawing extends Component {
     
     render() {
         const navigation = this.props.navigation
-        const sendgame = this.props.sendgame
+        const senddraw = this.props.senddraw
         const anygame=this.state.result.filter((game,i)=>{return game.category==="draw"})
          return (
              <FlatList
              data ={anygame}
              renderItem={({item})=>(
                          <TouchableOpacity onPress={() =>{ 
-                              sendgame(item.link);
+                            senddraw(item.link);
                               navigation.navigate('Game')
                               }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
  

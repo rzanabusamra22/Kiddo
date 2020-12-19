@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { WebView } from 'react-native-webview'
-import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, Button, Alert, Linking ,FlatList} from 'react-native';
+import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, Button, Alert, Linking,FlatList  } from 'react-native';
 import { Dimensions } from 'react-native';
 import { sendcoloring } from '../redux/actions';
 import { connect } from 'react-redux';
@@ -9,7 +9,6 @@ var vw = wind.width * 0.01
 var vh = wind.height * 0.01
 class Coloring extends Component {
     constructor(props) {
-        
         super(props)
         this.state = {
             result: [],
@@ -25,7 +24,7 @@ class Coloring extends Component {
             redirect: 'follow',
             headers: myHeaders
         };
-        fetch("https://blackpearl2.ew.r.appspot.com/records", requestOptions)
+        fetch("https://blackpearl2.ew.r.appspot.com/plays", requestOptions)
             .then(response => response.json())
             .then(result => {
                 this.setState({
@@ -37,14 +36,14 @@ class Coloring extends Component {
     
     render() {
         const navigation = this.props.navigation
-        const sendgame = this.props.sendgame
+        const sendcoloring = this.props.sendcoloring
         const anygame=this.state.result.filter((game,i)=>{return game.category==="color"})
          return (
              <FlatList
              data ={anygame}
              renderItem={({item})=>(
                          <TouchableOpacity onPress={() =>{ 
-                              sendgame(item.link);
+                            sendcoloring(item.link);
                               navigation.navigate('Game')
                               }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
  
