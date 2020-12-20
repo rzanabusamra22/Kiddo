@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Image, StyleSheet, Text, View } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
+//The array of pictures
 const slides = [
     {key: "blue",image: {uri: 'https://i.imgur.com/Ep7evnj.png'}},
     {key: "green",image: {uri: 'https://i.imgur.com/xLQtVUv.png'}},

@@ -1,11 +1,6 @@
-//android restart 
-//import RestartAndroid from 'react-native-restart-android'
-
 //Admin Is signedin
 import React from 'react';
-
 import { View, StyleSheet} from 'react-native';
-
 import AsyncStorage from '@react-native-community/async-storage'
 import {
     DrawerContentScrollView,

@@ -7,6 +7,7 @@ export default function Donate(){
     const [modalOpen, setModalOpen] = useState(false);
     return(
         <View style={styles.container}>
+          {/* The functionality of the modal pop-up */}
             <Modal visible={modalOpen} animationType='slide'>
                <View style={styles.modalContent}> 
                <MaterialIcons 
@@ -45,53 +46,57 @@ export default function Donate(){
 }
 
 const styles = StyleSheet.create({ 
-       container: { flex: 1, backgroundColor: 'white', justifyContent: 'center'},
-        text:{
-        fontWeight: 'bold',
-        textAlign:'center',
-        color:'#2b31ae',
-        fontSize:30
-        },
-        text2:{
-        fontWeight: 'bold',
-        textAlign:'center',
-        color:'#2b31ae',
-        fontSize:25,
-        },
-        buttonContainer:{
-        flexDirection:'row',
-        justifyContent:'center',
-        },
-        Btn: {
-        width: "80%",
-        borderRadius: 25,
-        backgroundColor: '#f4511e',
-        height: 50,
-        marginTop: 5,
-        },
-        BtnText: {
-        marginTop:10,
-        color: "#fff",
-        fontWeight: 'bold',
-        textAlign:'center',
-        fontSize:20
-        },
-        modalToggle: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 10,
-        borderWidth: 1,
-        borderColor: '#f2f2f2',
-        padding: 10,
-        borderRadius: 10,
-        alignSelf: 'center',
-          },
-        modalClose: {
-        marginTop: 20,
-        marginBottom: 0,
-          },
-        modalContent: {
-        flex: 1,
-          }
+container: { 
+  flex: 1, 
+  backgroundColor: 'white',
+  justifyContent: 'center'
+},
+text:{
+  fontWeight: 'bold',
+  textAlign:'center',
+  color:'#2b31ae',
+  fontSize:30
+},
+text2:{
+  fontWeight: 'bold',
+  textAlign:'center',
+  color:'#2b31ae',
+  fontSize:25,
+},
+buttonContainer:{
+  flexDirection:'row',
+  justifyContent:'center',
+},
+Btn: {
+  width: "80%",
+  borderRadius: 25,
+  backgroundColor: '#f4511e',
+  height: 50,
+  marginTop: 5,
+},
+BtnText: {
+  marginTop:10,
+  color: "#fff",
+  fontWeight: 'bold',
+  textAlign:'center',
+  fontSize:20
+},
+modalToggle: {
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom: 10,
+  borderWidth: 1,
+  borderColor: '#f2f2f2',
+  padding: 10,
+  borderRadius: 10,
+  alignSelf: 'center',
+},
+modalClose: {
+  marginTop: 20,
+  marginBottom: 0,
+},
+modalContent: {
+  flex: 1,
+}
 })
 

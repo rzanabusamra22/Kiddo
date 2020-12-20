@@ -2,6 +2,7 @@ import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
 
 export default function Learn({ navigation }){
+    //The array of pictures .
     const [list,setList] = useState([
         {nav:"Alphabet",key:"a1",item:"Alphabet",pic:'https://i.imgur.com/vYKCqse.png'},
         {nav:"Numbers",key:"a2",item:"Numbers",pic:'https://i.imgur.com/KORqjZ3.png'},
@@ -13,8 +14,8 @@ export default function Learn({ navigation }){
     ])
     const pressHandler = (x) => {
         navigation.navigate(x)
-        //console.log(x)
     }
+    //The main page of the learn category display the picture + control navigation to othe componants
         return(
             <View style={styles.mainContainer}>
              <SafeAreaView >
@@ -39,8 +40,6 @@ export default function Learn({ navigation }){
             </View>
             )
     }
-
-
 const styles = StyleSheet.create({
     a1:{
         borderRadius:6,

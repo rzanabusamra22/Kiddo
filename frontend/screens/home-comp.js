@@ -4,6 +4,7 @@ import CategoryItem from './category-item-card'
 import { senduser } from './redux/actions';
 import { connect } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
+//The main page in the app
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -25,10 +26,8 @@ class Home extends Component {
                     .catch(()=>{})
                        })
       }
-
     render() {
-
-    //navigation or props without {}
+    //navigation to the categories from the main page + picture display of that category
     const imgs = [
         { src: 'https://imgur.com/6lgs8ZW.png', key: "1" ,nav:"Learn"},
         { src: 'https://imgur.com/3Tddewk.png', key: "4" ,nav:"Art"},
@@ -36,11 +35,9 @@ class Home extends Component {
         { src: 'https://imgur.com/nZ39fI6.png', key: "2" ,nav:"Album"},
         { src: 'https://imgur.com/HF8KJbd.png', key: "5" ,nav:"Games"},
     ]
-    
     const pressHandler = (x) => {
         this.props.navigation.navigate(x)
     }
-    
     return (
         <View style={styles.container}>
             <View style={styles.content}>
@@ -58,7 +55,6 @@ class Home extends Component {
     );
     }
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

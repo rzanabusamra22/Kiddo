@@ -15,10 +15,6 @@ import Learn from './screens/learn';
 import Art from './screens/art';
 import Videolists from './screens/videolists';
 import Videos from './screens/videos';
-import Video from './screens/video';
-import Game from './screens/game';
-import Draw from './screens/subScreens/draw';
-import ColoringS from './screens/subScreens/coloringS';
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -46,8 +42,6 @@ import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
 import parentProfile from './screens/parent/parentProfile'
 import History from './screens/history'
-//Donation
-// import Stripe from "./screens/stripe/";
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -100,16 +94,6 @@ const HomeStackScreen = ({navigation}) =>{
         routes: [{ name: 'Home' }],
       }) }/>),
    }}/>
-    <HomeStack.Screen 
-    name="Video" 
-    component={Video} 
-    options={{ 
-      title: 'Kiddo',
-      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      }) }/>),
-   }}/>
    <HomeStack.Screen 
     name="Videolists" 
     component={Videolists} 
@@ -149,16 +133,6 @@ const HomeStackScreen = ({navigation}) =>{
         index: 0,
         routes: [{ name: 'Home' }],
       }) }/>),
-   }}/>
-    <HomeStack.Screen 
-    name="Game" 
-    component={Game} 
-    options={{ 
-      title: 'Kiddo',
-      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      }) }/>)
    }}/>
     {/* Learn Catagories  */}
      <HomeStack.Screen 
@@ -241,16 +215,6 @@ const HomeStackScreen = ({navigation}) =>{
         routes: [{ name: 'Home' }],
       }) }/>)
    }}/>
-   <HomeStack.Screen 
-    name="coloringS" 
-    component={ColoringS} 
-    options={{ 
-      title: 'Kiddo',
-      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      }) }/>),
-   }}/>
      <HomeStack.Screen 
      name="Drawing" 
      component={Drawing} 
@@ -260,16 +224,6 @@ const HomeStackScreen = ({navigation}) =>{
         index: 0,
         routes: [{ name: 'Home' }],
       }) }/>)
-   }}/>
-   <HomeStack.Screen 
-    name="draw" 
-    component={Draw} 
-    options={{ 
-      title: 'Kiddo',
-      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      }) }/>),
    }}/>
     </HomeStack.Navigator>
   )
@@ -397,8 +351,6 @@ const ParentStackScreen = ({navigation}) =>{
         routes: [{ name: 'Home' }],
       }) }/>)
    }}/>
-
-
    <ParentStack.Screen
      name="parentProfile" 
      component={parentProfile}  
@@ -413,7 +365,7 @@ const ParentStackScreen = ({navigation}) =>{
     </ParentStack.Navigator>
   )
 }
-
+//History Stack
 const HistoryStackScreen = ({navigation}) =>{
   return(
     <Historystack.Navigator 

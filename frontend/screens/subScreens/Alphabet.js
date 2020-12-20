@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Image, StyleSheet, Text, View } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
+//the array of pictures
 const slides = [
     {key: "A",image: {uri: 'https://i.imgur.com/nTnaSnC.png'}},
     {key: "B",image: {uri: 'https://i.imgur.com/JUo3oew.png'}},
@@ -29,6 +30,7 @@ const slides = [
     {key: "Y",image: {uri: 'https://i.imgur.com/NEdp3C6.png'}},
     {key: "Z",image: {uri: 'https://i.imgur.com/BhifPhf.png'}},
   ];
+  //The slide functionality 
 class Alphabet extends Component{
     constructor(){
         super()
