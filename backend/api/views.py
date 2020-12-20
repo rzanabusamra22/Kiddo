@@ -2,6 +2,15 @@
 from .serializers import *
 from rest_framework import viewsets
 from .models import *
+
+#date
+from django.utils import timezone
+import datetime
+#
+#uuid
+import uuid
+import stripe 
+
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -9,13 +18,15 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from datetime import datetime
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from django.http import HttpResponse
 from rest_framework.parsers import JSONParser
 import json
+import stripe
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
 # def public(request):
 #     return HttpResponse("You don't need to be authenticated to see this")
 
@@ -52,45 +63,70 @@ from rest_framework.views import APIView
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def signup(request):
-    print('***************** SIGNUP **************')
-    print(request)
+    #print('***************** SIGNUP **************')
+    #print(request)
     #body_unicode = request.body.decode('utf-8')
     #body = json.loads(body_unicode)
     data = JSONParser().parse(request)
+    #print('here 61')
     serializer = UserSerializer(data=data)
-    
-  
     #username=body['username'], password=body['password'], email=body["email"]
-   
     #serializer.set_password('password')
-    print('**************** pass AFTER')
-   # print(serializer.password)
+    #print('**************** pass AFTER')
+    #print(serializer.password)
     if serializer.is_valid():
+            print('user serializer is valid')
             serializer.save()
             return JsonResponse(serializer.data, status=201)
     return JsonResponse(serializer.errors, status=400)
 
+#recieves donations
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def donate(request):
+    data = JSONParser().parse(request)
+    stripe.api_key = "sk_test_51HoFgjCxgtcfoZwvcEdcYWIIp09TagQbzRsNAnY34gPlj6zMdDSxgN9tK9FzMbVIJWJMEkM7SKlqAxTZEGmS9CHl00Dxl3xZhc"
+    # print('123456789----------- ')
+
+    try:
+        stripe.Charge.create(
+            amount=data["amount"],
+            currency="USD",
+            source=data["authToken"],
+        )
+    except:
+        return Response('Credit Card Invalid', status=401)
+
+    data.pop("authToken")
+    print(data)
+    serializer = DonationSerializer(data=data)
+    print('********************')
+    print(serializer)
+    # date=timezone.now(),
+    print('****           DATE              ')
+    # print(date)
+        # 
+    if serializer.is_valid():
+        print('valid')
+        #
+       
+        serializer.save()
+        return JsonResponse(serializer.data, status=201)
+    return JsonResponse(serializer.errors)
+
+
 #return user id when sign in 
 @api_view(['GET'])
-def sample_view(request):
+def id(request):
     current_user = request.user
-    print(current_user.id)
+    #print(current_user.id)
     return Response(current_user.id)
 
 #changing pass later
 
-
-
-@api_view(['GET'])
-def id(request):
-    current_user = request.user
-    print(current_user.id)
-    return Response(current_user.id)
-
-
 @api_view(['GET'])
 def index(request):
-    print('**************************')
+    #print('**************************')
     date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     message = 'server is live current time is '
     return Response(data=message + date,status=status.HTTP_200_OK)
@@ -99,28 +135,51 @@ def index(request):
 #     queryset = User.objects.all()
 #     serializer_class = UserSerializer
 
+class UserViewSet (viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['username']
+    search_fields = ['username']
+    ordering_fields = '__all__'
+    ordering = ['username']
 
+class HistoryViewSet (viewsets.ModelViewSet):
+    queryset = History.objects.all()
+    serializer_class = HistorySerializer
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['user', 'kind']
+    search_fields = ['user', 'kind']
+    ordering_fields = ['user', 'kind']
+
+class DonationViewSet (viewsets.ModelViewSet):
+    queryset = Donation.objects.all()
+    serializer_class = DonationSerializer
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['user']
+    search_fields = ['user']
+    ordering_fields = ['user','amount']
 
 class PlayViewSet(viewsets.ModelViewSet):
     queryset = Play.objects.all()
     serializer_class = PlaySerializer
-
-
-class UserViewSet (viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class SupporterViewSet (viewsets.ModelViewSet):
-    queryset = Supporter.objects.all()
-    serializer_class = SupporterSerializer
-
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['category']
+    search_fields = ['category']
+    ordering_fields = ['category']
 
 class RecordViewSet (viewsets.ModelViewSet):
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
-
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['category']
+    search_fields = ['category']
+    ordering_fields = ['category']
 
 class PhotoViewSet (viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
+    filter_backends = [DjangoFilterBackend,SearchFilter, OrderingFilter]
+    filterset_fields = ['category']
+    search_fields = ['category']
+    ordering_fields = ['category']

@@ -24,3 +24,15 @@ export const sendcoloring = (z) => {
         coloringlink: z,
     }
 }
+export const sendvideocat = (z) => {
+    return {
+        type: 'sendvideocat',
+        videocat: z,
+    }
+}
+export const senduser = (z) => {
+    return {
+        type: 'senduser',
+        user: z,
+    }
+}

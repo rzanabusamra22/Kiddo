@@ -6,22 +6,11 @@ import {
     DrawerItem
 } from '@react-navigation/drawer';
 import {
-    useTheme,
-    Avatar,
-    Title,
-    Caption,
-    Paragraph,
-    Drawer,
-    Text,
-    TouchableRipple,
-    Switch
+    Drawer
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { color } from 'react-native-reanimated';
-
 
 export default function DrawerContent2(props) {
-
     return(
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>
@@ -41,7 +30,7 @@ export default function DrawerContent2(props) {
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="account-check-outline" 
+                                name="gift-outline" 
                                 color={color}
                                 size={size}
                                 />
@@ -61,8 +50,8 @@ export default function DrawerContent2(props) {
                         size={size}
                         />
                     )}
-                    label="Admin SignIn"
-                    onPress={() => {props.navigation.navigate('SignIn')}}
+                    label="SignIn"
+                    onPress={() => {props.navigation.navigate('Parent', {frn: props.frn} )}}
                 />
             </Drawer.Section>
         </View>

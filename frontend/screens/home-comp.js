@@ -1,28 +1,50 @@
-import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList,Button } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import React, { useState,Component } from 'react';
 import CategoryItem from './category-item-card'
-// import LottieView from 'lottie-react-native';
+import { senduser } from './redux/actions';
+import { connect } from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
+class Home extends Component {
+    constructor(props) {
+        super(props)
+            this.state = {
+                result: [],
+            }} 
 
+    componentDidMount() {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+                 
+                   AsyncStorage.getItem('@user').then((user)=>{
+                   fetch(`https://blackpearl2.ew.r.appspot.com/users/?username=${user}`, {
+                        headers: myHeaders,
+                        redirect: 'follow'
+                       })
+                    .then(response => response.json())
+                    .then(result => {this.props.senduser(result[0])})
+                    .catch(()=>{})
+                       })
+      }
 
-export default function Home({ navigation }) {
+    render() {
+
     //navigation or props without {}
-    const [imgs, setImg] = useState([
-        { src: require('./assests/pictures/learn-card-blue.png'), key: "1" ,nav:"Learn"},
-        { src: require('./assests/pictures/art-card-green.png'), key: "4" ,nav:"Art"},
-        { src: require('./assests/pictures/videos-card-blue.png'), key: "3" ,nav:"Videos"},
-        { src: require('./assests/pictures/albums-card-green.png'), key: "2" ,nav:"Album"},
-        { src: require('./assests/pictures/games-card-orange.png'), key: "5" ,nav:"Games"},
-    ])
+    const imgs = [
+        { src: 'https://imgur.com/6lgs8ZW.png', key: "1" ,nav:"Learn"},
+        { src: 'https://imgur.com/3Tddewk.png', key: "4" ,nav:"Art"},
+        { src: 'https://imgur.com/XtsLPGS.png', key: "3" ,nav:"Videolists"},
+        { src: 'https://imgur.com/nZ39fI6.png', key: "2" ,nav:"Album"},
+        { src: 'https://imgur.com/HF8KJbd.png', key: "5" ,nav:"Games"},
+    ]
+    
     const pressHandler = (x) => {
-        navigation.navigate(x)
+        this.props.navigation.navigate(x)
     }
     
     return (
         <View style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.list}>
-                {/* <LottieView source={require('./assests/pictures/17629-all-together.json')} autoPlay loop /> */}
                     <FlatList
                         data={imgs}
                         renderItem={({ item }) => (
@@ -34,13 +56,12 @@ export default function Home({ navigation }) {
             </View>
         </View>
     );
+    }
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // paddingTop: 10,
-        // backgroundColor: 'blue',
     },
     content: {
         backgroundColor: 'red',
@@ -48,6 +69,19 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#FFFACD'
     }
 });
+
+// Redux
+const mapStateToProps = (state) => {
+    return {
+    }
+  }
+const mapDispatchToProps = (dispatch) => {
+    return {
+      senduser: (z) => { dispatch(senduser(z)) },
+    }
+  }
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Home);  
