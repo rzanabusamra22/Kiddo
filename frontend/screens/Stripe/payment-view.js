@@ -145,7 +145,7 @@ const PaymentView = (props) => {
 
                             
                                 <div class="pay-btn">
-                                    <input type="submit" class="btn btn-info btn-lg" value="Donation Done" />
+                                    <input type="submit" class="btn btn btn-secondary" value="Donation Done" />
                                 </div>
                 
                         </form>

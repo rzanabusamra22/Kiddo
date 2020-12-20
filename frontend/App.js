@@ -429,7 +429,9 @@ class App extends React.Component {
   return (
     <Provider store={store}>
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={ (props) => 
+      <Drawer.Navigator 
+      // drawerStyle={{backgroundColor: 'rgb(255, 255, 255,0.1)'}}
+      drawerContent={ (props) => 
        {
        if(this.state.token){
        return  <DrawerContent {...props}/>

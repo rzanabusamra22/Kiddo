@@ -19,7 +19,7 @@ class parentProfile extends Component{
             </View>
             <View style={styles.infoContainer}>
                 <Text style={[styles.text1, { fontWeight: "200", fontSize: 36 }]}>ParentName</Text>
-                <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>Parent Panal</Text>
+                <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>Parent Number</Text>
             </View>
             <TouchableOpacity>
             <View style={styles.button}>

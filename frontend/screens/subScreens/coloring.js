@@ -24,7 +24,7 @@ class Coloring extends Component {
             redirect: 'follow',
             headers: myHeaders
         };
-        fetch("https://blackpearl2.ew.r.appspot.com/plays", requestOptions)
+        fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=color", requestOptions)
             .then(response => response.json())
             .then(result => {
                 this.setState({
@@ -37,7 +37,7 @@ class Coloring extends Component {
     render() {
         const navigation = this.props.navigation
         const sendcoloring = this.props.sendcoloring
-        const anygame=this.state.result.filter((game,i)=>{return game.category==="color"})
+        const anygame=this.state.result
          return (
              <FlatList
              data ={anygame}
