@@ -29,7 +29,7 @@ class Videos extends Component {
             headers:myHeaders
         };
 
-        fetch("https://blackpearl2.ew.r.appspot.com/records/", requestOptions)
+        fetch(`https://blackpearl2.ew.r.appspot.com/records/?category=${this.props.videocat}`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
@@ -39,24 +39,44 @@ class Videos extends Component {
             })
             .catch(error => console.log('error', error));
     }
+    save(item) {
+        var myHeaders = new Headers();
+   myHeaders.append("Content-Type", "application/json");
+   myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+   
+   var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
+   
+   var requestOptions = {
+     method: 'POST',
+     headers: myHeaders,
+     body: raw,
+     redirect: 'follow'
+   };
+   
+   fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
+     .then(response => response.json())
+     .then(result => console.log(result))
+     .catch(error => console.log('error', error));
+   }
     render() {
         var key1 = 0
        const navigation = this.props.navigation
        const sendvideo = this.props.sendvideo
        console.log(this.props.videocat)
-       const videoctagory = this.state.result.filter((video,i)=>{return video.category===this.props.videocat})
+       const videoctagory = this.state.result
         return (
 
             <FlatList
             data={videoctagory}
             renderItem={({ item })=>(
                 <TouchableOpacity onPress={() =>{ 
+                                     this.save(item)
                                      sendvideo(item.link);
                                      navigation.navigate('Video')
                                      }} >
         
-                                    <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,marginright:100
-                                        ,paddingBottom:30*vh ,width: 50 * vw }} source={{ uri: item ?.thumbnail }} />
+                                    <Image style={{ borderRadius: 40, height: 6 * vh,marginBottom:15,marginTop:5,marginRight:5
+                                        ,paddingBottom:25*vh ,width: 50 * vw }} source={{ uri: item ?.thumbnail }} />
                                 </TouchableOpacity>
             )}
             keyExtractor={(item,i)=>{return `${i}`}}
@@ -141,6 +161,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return {
        videolink: state.videolink,
+       user: state.user,
        videocat: state.videocat
     }
   }

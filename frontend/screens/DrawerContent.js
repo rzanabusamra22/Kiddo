@@ -23,47 +23,17 @@ import {
     Switch
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { connect } from 'react-redux';
 
 
 class DrawerContent extends React.Component{
   constructor(props){
     super(props)
       this.state={
-        user: {username:'Admin', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU'}
-        ,flag:0
+        flag:0
       }
   }
 
-  componentDidMount() {
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
-    myHeaders.append("Content-Type", "application/json");
-
-
-    fetch("https://blackpearl2.ew.r.appspot.com/getid/", 
-            {headers: 
-                myHeaders
-              ,
-            redirect: 'follow'
-        })
-            .then(response => response.text())
-            .then(result => {
-             //   fetch("http://localhost:8000/users/"+result, {
-               fetch("https://blackpearl2.ew.r.appspot.com/users/"+result, {
-                    headers: myHeaders,
-                    redirect: 'follow'
-                   })
-                .then(response => response.json())
-                .then(result => {
-                    this.setState({
-                      user: result
-                    })
-                    console.log(result)})
-                .catch(()=> console.log('Err fetch user info'))
-            })
-            .catch(()=> console.log('Err fetch userid'))
-  }
    
  
   signOutHandler = async () => {
@@ -85,7 +55,6 @@ class DrawerContent extends React.Component{
 
 };
     render(){
-      console.log( 'dc1 ****** ',this.props.frn)
     return(
         <View style={{flex:1}}>
               <DrawerContentScrollView {...this.props}>
@@ -94,12 +63,12 @@ class DrawerContent extends React.Component{
                       <View style={{flexDirection:'row',marginTop: 15}}>
                       <Avatar.Image 
                                 source={{
-                                  uri: this.state.user.thumbnail
+                                  uri: this.props.user.thumbnail
                                 }}
                                 size={50}
                             />
                             <View  style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title}>{this.state.user.username}</Title>
+                                <Title style={styles.title}>{this.props.user.username}</Title>
                                 <Caption style={styles.caption}>Admin</Caption>
                             </View>
                       </View>
@@ -203,5 +172,16 @@ const styles = StyleSheet.create({
       paddingHorizontal: 16,
     },
   });
-  export default DrawerContent
-  
+
+  // Redux
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerContent);  

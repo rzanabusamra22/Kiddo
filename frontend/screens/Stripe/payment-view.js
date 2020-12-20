@@ -7,8 +7,8 @@ const STRIPE_PK = 'pk_test_51HoFgjCxgtcfoZwvsKFbfVjfG9zEtZV8SlBCIQ9gziIN1dFFj5Wb
 
 const PaymentView = (props) => { 
 
-    const { amount } = props
-    const { username } = props 
+    const { amount,username } = props
+    
 
     const onCheckStatus = (response) => {
         props.onCheckStatus(response)
@@ -33,7 +33,7 @@ const PaymentView = (props) => {
                     flex-direction: column;
                     height: 200px;
                     justify-content: space-around;
-                    background-color: #3D097F;
+                    background-color: #f4511e;
                     border-radius: 20px;
                     padding: 10px;
                     padding-top: 20px;
@@ -93,12 +93,7 @@ const PaymentView = (props) => {
                 
                 <!-- donation info -->
                 <div class="container-fluid">
-                    <div class="row">
-                       
-                            Donator: ${username}
-                            Amount: ${amount}
-                     
-                    </div>
+
                     <div class="row">
                         <label class="card-errors" id="card-errors"></label>
                     </div>
@@ -110,7 +105,7 @@ const PaymentView = (props) => {
                                     <div id="card-element" class="card-element">
 
                                         <div class="form-group">
-                                            <label for="card_number">Carn Number</label>
+                                            <label for="card_number">Card Number</label>
                                             <input type="text" class="form-control" id="card_number" data-stripe="number">
                                         </div>
 
@@ -150,7 +145,7 @@ const PaymentView = (props) => {
 
                             
                                 <div class="pay-btn">
-                                    <input type="submit" class="btn btn-info btn-lg" value="Pay Now" />
+                                    <input type="submit" class="btn btn-info btn-lg" value="Donation Done" />
                                 </div>
                 
                         </form>
@@ -283,10 +278,7 @@ const PaymentView = (props) => {
         const { data } =  event.nativeEvent;
         console.log('******* paymentView, data: ',  data)
         onCheckStatus(data)
-        
     }
-
-
 
 return <WebView
     javaScriptEnabled={true}
@@ -298,6 +290,4 @@ return <WebView
 />
 
 }
- 
-
  export default PaymentView

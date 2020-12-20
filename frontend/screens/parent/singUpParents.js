@@ -16,8 +16,8 @@ render() {
               Kiddo Parents
           </Text>
           <TextInput placeholder='Name'style={styles.textInput} placeholderTextColor='black'></TextInput>
-          <TextInput placeholder='Email'style={styles.textInput} placeholderTextColor='black'></TextInput>
-          <TextInput placeholder='Password'style={styles.textInput} placeholderTextColor='black'></TextInput>
+          <TextInput keyboardType="email-address" placeholder='Email'style={styles.textInput} placeholderTextColor='black'></TextInput>
+          <TextInput secureTextEntry={true} placeholder='Password'style={styles.textInput} placeholderTextColor='black'></TextInput>
           <TextInput placeholder='Phone Number'style={styles.textInput} placeholderTextColor='black'></TextInput>
           <TextInput placeholder='Profile Picture'style={styles.textInput} placeholderTextColor='black'></TextInput>
           <TouchableOpacity style={styles.button}>

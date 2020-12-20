@@ -1,3 +1,6 @@
+import 'react-native-gesture-handler/jestSetup';
+require('jest-fetch-mock').enableMocks();
+
 if(window){
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -13,9 +16,6 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 }
-
-import 'react-native-gesture-handler/jestSetup';
-
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
 
