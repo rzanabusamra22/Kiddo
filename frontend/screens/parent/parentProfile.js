@@ -44,13 +44,8 @@ class parentProfile extends Component{
                 </View>
             </View>
             <View style={styles.infoContainer}>
-<<<<<<< HEAD
-                <Text style={[styles.text1, { fontWeight: "200", fontSize: 36 }]}>ParentName</Text>
-                <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>Parent Number</Text>
-=======
                 <Text style={[styles.text1, { fontWeight: "200", fontSize: 36 }]}>{this.props.user?.username}</Text>
                 <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>{this.props.user?.phone}</Text>
->>>>>>> 23ee8c2b72245a3719277977ee1df728ba15def6
             </View>
             <TouchableOpacity>
             <View style={styles.button}>
