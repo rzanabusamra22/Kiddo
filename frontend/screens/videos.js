@@ -39,12 +39,9 @@ class Videos extends Component {
             .catch(error => console.log('error', error));
     }
     save(item) {
-<<<<<<< HEAD:frontend/screens/videos.js
-=======
         if(this.props.user){
 
         console.log(this.props.user.username)
->>>>>>> 23ee8c2b72245a3719277977ee1df728ba15def6:frontend/screens/subScreens/videos.js
         var myHeaders = new Headers();
    myHeaders.append("Content-Type", "application/json");
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");

@@ -42,7 +42,6 @@ import DrawerContent from './screens/DrawerContent';
 import DrawerContent2 from './screens/DrawerContent2';
 //Parent
 import Parent from './screens/parent/parents-landingpage'
-import History from './screens/history'
 import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
 import parentProfile from './screens/parent/parentProfile'
