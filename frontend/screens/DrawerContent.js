@@ -25,7 +25,6 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
 
-
 class DrawerContent extends React.Component{
   constructor(props){
     super(props)
@@ -184,7 +183,7 @@ const styles = StyleSheet.create({
     },
   });
 
-  // Redux
+// Redux
 const mapStateToProps = (state) => {
   return {
     user: state.user,

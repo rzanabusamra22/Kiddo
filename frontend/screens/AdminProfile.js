@@ -1,27 +1,36 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Image,TouchableOpacity } from "react-native";
+import { connect } from 'react-redux';
+import Animated, { Easing } from 'react-native-reanimated';
+
 
 class AdminProfile extends Component{
-    constructor() {
-        super()
-        this.state = {
-            result: []
+    constructor(props) {
+        super(props)
+            this.state = {
+                result: []
+            }
         }
-    }
+
     render(){
     return(
         <SafeAreaView style={styles.container}>
             
             <View style={{ alignSelf: "center" }}>
                 <View style={styles.profileImage}>
-                    <Image source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU"}} style={styles.image} resizeMode="center"></Image>
+                    <Image source={{uri: this.props.user?.thumbnail}} style={styles.image} resizeMode="center"></Image>
                 </View>
             </View>
             <View style={styles.infoContainer}>
-                <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>AdminName</Text>
-                <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>Admin Panal</Text>
+                <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>{this.props.user?.name}</Text>
+                <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>{this.props.user?.phone}</Text>
             </View>
-            {/* to add a button :) */}
+            <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('parentProfile')}}>
+            <Animated.View style={styles.button}>
+                <Image source={{uri: 'https://i.imgur.com/6xtJi3t.png'}} style={{height:50,width:50}} resizeMode="center"></Image>
+                <Text style={{fontSize:20,fontWeight:'bold'}}>Edit</Text>
+            </Animated.View>
+            </TouchableOpacity>
         </SafeAreaView>
     )
 }}
@@ -52,4 +61,16 @@ const styles = StyleSheet.create({
         marginTop: 16
     }
 });
-export default AdminProfile
+
+// Redux
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminProfile);  

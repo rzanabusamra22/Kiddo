@@ -1,8 +1,7 @@
 import React, { Component, useState } from 'react';
-import { WebView } from 'react-native-webview'
 import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
 import { Dimensions } from 'react-native';
-import { sendvideo } from '../redux/actions';
+import { sendvideo } from './redux/actions';
 import { connect } from 'react-redux';
 // import * as Progress from 'react-native-progress';
 const wind = Dimensions.get('window');
@@ -145,7 +144,7 @@ const mapStateToProps = (state) => {
        videocat: state.videocat
     }
   }
-  const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
       sendvideo: (z) => { dispatch(sendvideo(z)) },
     }

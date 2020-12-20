@@ -14,7 +14,7 @@ import Home from './screens/home-comp'
 import Learn from './screens/learn';
 import Art from './screens/art';
 import Videolists from './screens/videolists';
-import Videos from './screens/subScreens/videos';
+import Videos from './screens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
 import Draw from './screens/subScreens/draw';
@@ -42,6 +42,7 @@ import DrawerContent from './screens/DrawerContent';
 import DrawerContent2 from './screens/DrawerContent2';
 //Parent
 import Parent from './screens/parent/parents-landingpage'
+import History from './screens/history'
 import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
 import parentProfile from './screens/parent/parentProfile'
