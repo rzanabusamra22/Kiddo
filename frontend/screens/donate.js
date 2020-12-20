@@ -26,9 +26,10 @@ export default function Donate(){
            </Text>
            <Image
             style={styles.picture}
+            style={{ width: '100%', height: 150 }}
             source={{
             uri:
-            'https://www.crisisservicescanada.ca/wp-content/uploads/2019/02/banner-update-08.png',
+            'https://i.imgur.com/8txMhbj.png',
             }}
              />
             <View style={styles.buttonContainer}>
@@ -44,10 +45,7 @@ export default function Donate(){
 }
 
 const styles = StyleSheet.create({ 
-        picture: {
-          width: "100%",
-          height: "45%",
-        },container: { flex: 1, backgroundColor: 'white', justifyContent: 'center'},
+       container: { flex: 1, backgroundColor: 'white', justifyContent: 'center'},
         text:{
         fontWeight: 'bold',
         textAlign:'center',

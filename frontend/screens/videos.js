@@ -1,8 +1,7 @@
 import React, { Component, useState } from 'react';
-import { WebView } from 'react-native-webview'
 import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
 import { Dimensions } from 'react-native';
-import { sendvideo } from '../redux/actions';
+import { sendvideo } from './redux/actions';
 import { connect } from 'react-redux';
 // import * as Progress from 'react-native-progress';
 const wind = Dimensions.get('window');
@@ -20,8 +19,8 @@ class Videos extends Component {
     componentDidMount() {
 
         var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+    //myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+    //myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'GET',
@@ -29,7 +28,7 @@ class Videos extends Component {
             headers:myHeaders
         };
 
-        fetch("https://blackpearl2.ew.r.appspot.com/records/", requestOptions)
+        fetch(`https://blackpearl2.ew.r.appspot.com/records/?category=${this.props.videocat}`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
@@ -40,10 +39,16 @@ class Videos extends Component {
             .catch(error => console.log('error', error));
     }
     save(item) {
+<<<<<<< HEAD:frontend/screens/videos.js
+=======
+        if(this.props.user){
+
         console.log(this.props.user.username)
+>>>>>>> 23ee8c2b72245a3719277977ee1df728ba15def6:frontend/screens/subScreens/videos.js
         var myHeaders = new Headers();
    myHeaders.append("Content-Type", "application/json");
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+
    
    var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
    
@@ -58,13 +63,13 @@ class Videos extends Component {
      .then(response => response.json())
      .then(result => console.log(result))
      .catch(error => console.log('error', error));
-   }
+   }}
     render() {
         var key1 = 0
        const navigation = this.props.navigation
        const sendvideo = this.props.sendvideo
        console.log(this.props.videocat)
-       const videoctagory = this.state.result.filter((video,i)=>{return video.category===this.props.videocat})
+       const videoctagory = this.state.result
         return (
 
             <FlatList
@@ -76,8 +81,8 @@ class Videos extends Component {
                                      navigation.navigate('Video')
                                      }} >
         
-                                    <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,marginright:100
-                                        ,paddingBottom:30*vh ,width: 50 * vw }} source={{ uri: item ?.thumbnail }} />
+                                    <Image style={{ borderRadius: 40, height: 6 * vh,marginBottom:15,marginTop:5,marginRight:5
+                                        ,paddingBottom:25*vh ,width: 50 * vw }} source={{ uri: item ?.thumbnail }} />
                                 </TouchableOpacity>
             )}
             keyExtractor={(item,i)=>{return `${i}`}}
@@ -145,7 +150,7 @@ const mapStateToProps = (state) => {
        videocat: state.videocat
     }
   }
-  const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
       sendvideo: (z) => { dispatch(sendvideo(z)) },
     }

@@ -1,25 +1,56 @@
+
 import React, { Component, useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView ,TouchableOpacity} from "react-native";
+import { connect } from 'react-redux';
+import { senduser } from '../redux/actions';
+import AsyncStorage from '@react-native-community/async-storage'
+
 
 class parentProfile extends Component{
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             result: []
         }
     }
+    
+    componentDidMount() {
+        var myHeaders = new Headers();
+   
+      
+        myHeaders.append("Content-Type", "application/json");
+                    
+                   AsyncStorage.getItem('@user').then((user)=>{
+                    console.log('*****************************************', user)
+                   fetch(`https://blackpearl2.ew.r.appspot.com/users/?username=${user}`, {
+                        headers: myHeaders,
+                        redirect: 'follow'
+                       })
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log('----------------------------------------',result)
+                        this.props.senduser(result[0])})
+                    .catch(()=>{})
+                })}
+            
+
     render(){
     return(
         <SafeAreaView style={styles.container}>
             <Text style={[styles.text, { fontWeight: "200", fontSize: 30 ,color:'#2b31ae'}]}>Thank You For Trusting Us</Text>
             <View style={{ alignSelf: "center" }}>
                 <View style={styles.profileImage}>
-                    <Image source={{uri: "https://en.artpsy.pro/wp-content/uploads/2012/09/family.png"}} style={styles.image} resizeMode="center"></Image>
+                    <Image source={{uri: this.props.user?.thumbnail}} style={styles.image} resizeMode="center"></Image>
                 </View>
             </View>
             <View style={styles.infoContainer}>
+<<<<<<< HEAD
                 <Text style={[styles.text1, { fontWeight: "200", fontSize: 36 }]}>ParentName</Text>
-                <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>Parent Panal</Text>
+                <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>Parent Number</Text>
+=======
+                <Text style={[styles.text1, { fontWeight: "200", fontSize: 36 }]}>{this.props.user?.username}</Text>
+                <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>{this.props.user?.phone}</Text>
+>>>>>>> 23ee8c2b72245a3719277977ee1df728ba15def6
             </View>
             <TouchableOpacity>
             <View style={styles.button}>
@@ -74,4 +105,15 @@ const styles = StyleSheet.create({
       marginTop:20
     }
 });
-export default parentProfile
+const mapStateToProps = (state) => {
+    return {
+       user: state.user,
+    }
+  }
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        senduser: (z) => { dispatch(senduser(z)) },
+    }
+  }
+  
+export default connect(mapStateToProps, mapDispatchToProps)(parentProfile);  

@@ -14,7 +14,7 @@ import Home from './screens/home-comp'
 import Learn from './screens/learn';
 import Art from './screens/art';
 import Videolists from './screens/videolists';
-import Videos from './screens/subScreens/videos';
+import Videos from './screens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
 import Draw from './screens/subScreens/draw';
@@ -42,9 +42,11 @@ import DrawerContent from './screens/DrawerContent';
 import DrawerContent2 from './screens/DrawerContent2';
 //Parent
 import Parent from './screens/parent/parents-landingpage'
+import History from './screens/history'
 import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
 import parentProfile from './screens/parent/parentProfile'
+import History from './screens/history'
 //Donation
 // import Stripe from "./screens/stripe/";
 //Navigation
@@ -55,6 +57,7 @@ const SignInstack = createStackNavigator();
 const Donatestack = createStackNavigator();
 const AdminProfilestack = createStackNavigator();
 const ParentStack = createStackNavigator();
+const Historystack = createStackNavigator();
 //Home Stack 
 const HomeStackScreen = ({navigation}) =>{
   return(
@@ -396,6 +399,7 @@ const ParentStackScreen = ({navigation}) =>{
       }) }/>)
    }}/>
 
+
    <ParentStack.Screen
      name="parentProfile" 
      component={parentProfile}  
@@ -410,6 +414,33 @@ const ParentStackScreen = ({navigation}) =>{
     </ParentStack.Navigator>
   )
 }
+
+const HistoryStackScreen = ({navigation}) =>{
+  return(
+    <Historystack.Navigator 
+  initialRouteName="Home"
+  screenOptions={{
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }}
+  >
+    <Historystack.Screen
+     name="History"
+     component={History}
+     options={{ 
+      title: 'Kiddo',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
+    }}
+ />
+    </Historystack.Navigator>
+  )
+}
 // The App 
 class App extends React.Component {
   constructor(){
@@ -418,17 +449,20 @@ class App extends React.Component {
       token:''
     }
   }
-  componentDidMount(){
-    var assigntoken = async()=>{
-    const token = await AsyncStorage.getItem('@token')
-    this.setState({token})}
-    assigntoken()
-  }
+
+componentDidMount() {
+  AsyncStorage.getItem('@token').then((token)=>{
+    this.setState({token})
+  })
+   }
+  
   render(){
   return (
     <Provider store={store}>
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={ (props) => 
+      <Drawer.Navigator 
+      // drawerStyle={{backgroundColor: 'rgb(255, 255, 255,0.1)'}}
+      drawerContent={ (props) => 
        {
        if(this.state.token){
        return  <DrawerContent {...props}/>
@@ -442,6 +476,8 @@ class App extends React.Component {
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
         <Drawer.Screen name="Profile" component={AdminStackScreen} />
         <Drawer.Screen name="Parent"  component={ParentStackScreen} />
+        <Drawer.Screen name="History"  component={HistoryStackScreen} />
+
       </Drawer.Navigator>
     </NavigationContainer>
     </Provider>

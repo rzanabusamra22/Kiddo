@@ -23,14 +23,27 @@ var requestOptions = {
   },
   redirect: 'follow'
 };
-fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
+fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
   .then(response => response.json())
   .then( (result) => {
         if(result.token !== undefined){
           AsyncStorage.setItem('@token', result.token)
           .then(()=>{
-            RNRestart.Restart();
-          })          }         }          )
+           // location.reload();
+           //this.setState({flag: 1})
+            console.log(this.props.navigation)
+            console.log('********** frn from admin-signin ', this.props.frn)
+            //RestartAndroid.restart()
+            //RNRestart.Restart();
+           // this.props.navigation.push('Home');
+            this.props.navigation.navigate('Home')
+          })
+          console.log('*******************||**||*********************')
+          //  console.log(AsyncStorage.getItem('@token'))
+          } 
+            
+        }  
+        )
   .catch(error => console.log('error', error));
     }
     

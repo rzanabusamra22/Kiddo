@@ -2,7 +2,7 @@
 // import
 import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
 import React, { Component, useState } from 'react';
-import { sendvideo, sendgame } from '../redux/actions';
+import { sendvideo, sendgame } from './redux/actions';
 import { connect } from 'react-redux';
 
 class History extends Component {
@@ -16,8 +16,8 @@ class History extends Component {
 
     // fetch the history for the current user
     var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-        myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+       // myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+       // myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
         myHeaders.append("Content-Type", "application/json");
 
     var requestOptions = {
@@ -36,19 +36,19 @@ class History extends Component {
     go(x){
 
         // when clicking on a history item visits the page again
-       if(x.kind==="video"){sendvideo(item.link);this.props.navigation.navigate(x.kind)}
-       else{sendgame(item.link);this.props.navigation.navigate(x.kind)}
+       if(x.kind==="video"){sendvideo(x.link);this.props.navigation.navigate(x.kind)}
+       else{sendgame(x.link);this.props.navigation.navigate(x.kind)}
 
     }
 
     render() {
         return(
             <View style={styles.mainContainer}>
-             <SafeAreaView >
+          
                 <ScrollView >
                 {this.state.result.map((x,i)=>{
                         return (
-                        <TouchableOpacity onPress={(x)=>go(x)} key={i}>
+                        <TouchableOpacity onPress={()=>this.go(x)} key={i}>
                         <View style={styles.container}>
                         <Image 
                          source={x.thumbnail}
@@ -60,7 +60,7 @@ class History extends Component {
                         )
                 })}
                 </ScrollView>
-             </SafeAreaView>
+            
             </View>
     )}
 }

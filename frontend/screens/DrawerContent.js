@@ -25,33 +25,35 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
 
-
 class DrawerContent extends React.Component{
   constructor(props){
     super(props)
       this.state={
-        flag:0
+        user: {username:'user', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU'}
+        ,flag:0
       }
   }
+  
+  ///////////////////////////////////////////////////////////
 
-   
- 
   signOutHandler = async () => {
     console.log('*****************************************')
     console.log(AsyncStorage.getItem('@token'))
    await AsyncStorage.removeItem('@token')
    console.log(AsyncStorage.getItem('@token'))
    //this.props.setUser({});
-   this.setState({user:{}})//jft
-   console.log('PROPS:   ',this.props.frn)
-   console.log(this.props.nth)
+   await AsyncStorage.removeItem('@user')
+//   console.log('PROPS:   ',this.props.frn)
+ //  console.log(this.props.nth)
    //RestartAndroid.restart()
-
-   this.props.frn();
+   //RNRestart.Restart();
+ //  this.props.frn();
    //this.setState({flag: 1})
   // RNRestart.Restart();
    //Restart();
-  // this.props.navigation.navigate('Home')
+
+
+   this.props.navigation.navigate('Home')
 
 };
     render(){
@@ -68,8 +70,12 @@ class DrawerContent extends React.Component{
                                 size={50}
                             />
                             <View  style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title}>{this.props.user.username}</Title>
-                                <Caption style={styles.caption}>Admin</Caption>
+                                <Title style={styles.title} >{this.props.user.username}</Title>
+                        
+                                {this.props.user?.is_staff? <Caption style={styles.caption} > Admin </Caption>
+                                :  <Caption style={styles.caption} > User </Caption>  
+                              }
+                               
                             </View>
                       </View>
                     </View>
@@ -184,7 +190,7 @@ const styles = StyleSheet.create({
     },
   });
 
-  // Redux
+// Redux
 const mapStateToProps = (state) => {
   return {
     user: state.user,
