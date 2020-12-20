@@ -5,11 +5,11 @@ import {Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpa
 
 const SignUp =({navigation})=>{
     
-  const [parentname, onChangeName] = useState('parentname')
-  const [password, onChangePassword] = useState('password');
-  const [picture, onChangePicture] = useState('picture');
-  const [phone, onChangePhone] = useState('phone')
-  const [email, onChangeEmail] = useState('email')
+  const [parentname, onChangeName] = useState('')
+  const [password, onChangePassword] = useState('');
+  const [picture, onChangePicture] = useState('');
+  const [phone, onChangePhone] = useState('')
+  const [email, onChangeEmail] = useState('')
 
   
 
@@ -100,11 +100,10 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
           <Text style={styles.logo1}>
               Kiddo Parents               
           </Text>
-          <TextInput value={parentname} name="parentname" placeholder='Name'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangeName(text)}
-                        ></TextInput>
-          <TextInput value={email} name="email" placeholder='Email'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangeEmail(text)}></TextInput>
-          <TextInput value={password} name="password" placeholder='Password'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePassword(text)}></TextInput>
-          <TextInput value={phone} name="phone" placeholder='Phone Number'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePhone(text)}></TextInput>
+          <TextInput value={parentname} name="parentname" placeholder='Name'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangeName(text)}></TextInput>
+          <TextInput value={email} keyboardType="email-address"   name="email" placeholder='Email'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangeEmail(text)}></TextInput>
+          <TextInput value={password} secureTextEntry={true} name="password" placeholder='Password'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePassword(text)}></TextInput>
+          <TextInput value={phone} name="phone" keyboardType="phone-pad"  placeholder='Phone Number'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePhone(text)}></TextInput>
           <TextInput value={picture} name="picture" placeholder='Profile Picture'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePicture(text)}></TextInput>
           <TouchableOpacity style={styles.button}>
             <Text style={{fontSize:20,fontWeight:'bold'}} onPress={submitSignup}>SIGN UP</Text>
@@ -122,7 +121,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center'
     },
     logo1: {
-      fontWeight: "bold",
+      fontWeight: "200",
       fontSize: 30,
       color: "black",
       marginBottom: 10

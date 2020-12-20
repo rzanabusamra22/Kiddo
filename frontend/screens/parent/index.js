@@ -197,9 +197,9 @@ class MusicApp extends Component {
                </Animated.View>
            </TapGestureHandler>
            {/* Email input */}
-           <TextInput placeholder='USERNAME' value={this.state.username} onChangeText={text=>this.onchange('username',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
+           <TextInput placeholder='User Name' value={this.state.username} onChangeText={text=>this.onchange('username',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Password input */}
-           <TextInput  placeholder='PASSWORD'value={this.state.password} onChangeText={text=>this.onchange('password',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
+           <TextInput  placeholder='Password'value={this.state.password} secureTextEntry={true}  onChangeText={text=>this.onchange('password',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Signin Botton 2  */}
            <TouchableOpacity onPress={this.handleSubmit}>
            <Animated.View style={styles.button}>
