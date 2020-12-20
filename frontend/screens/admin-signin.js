@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import AsyncStorage from '@react-native-community/async-storage'
 import { StyleSheet, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, Button } from 'react-native';
 
-
-
 const [STORAGE_KEY] = '@save_token'
 class Signin extends React.Component {
     constructor({navigation, frn}){
@@ -14,28 +12,8 @@ class Signin extends React.Component {
            flag:0
         }
     }
-
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
     
      handleSubmit = () => {
-        
-        console.log('****************************')
-        console.log(this.state.username + "   " + this.state.password)
-        // fetch('http://127.0.0.1:5000/signin', {
-        //     method: 'POST',
-        //     headers: {
-        //         Accept: 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         username: username,
-        //         password: password
-        //     })
-        // }); 
-        //for then---> alert
-
-     
  var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
 var requestOptions = {
   method: 'POST',
@@ -45,17 +23,11 @@ var requestOptions = {
   },
   redirect: 'follow'
 };
-//fetch("http://localhost:8000/auth/login/", requestOptions)
-fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
+fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
   .then(response => response.json())
   .then( (result) => {
-        //this.props.setUser(results.data)
         if(result.token !== undefined){
-    
-          // AsyncStorage.setItem('@storage_Key', result.token)
-          console.log(result.token)
           AsyncStorage.setItem('@token', result.token)
-         
           .then(()=>{
            // location.reload();
            //this.setState({flag: 1})
@@ -73,9 +45,6 @@ fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
         }  
         )
   .catch(error => console.log('error', error));
-        
-         //setUsername('')
-        // setPassword('')
     }
     
     render(){
@@ -167,4 +136,5 @@ const styles = StyleSheet.create({
         color: "black"
     }
 });
+
 export default Signin

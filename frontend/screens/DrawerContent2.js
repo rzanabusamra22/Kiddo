@@ -38,17 +38,6 @@ export default function DrawerContent2(props) {
                             label="Donate"
                             onPress={() => {props.navigation.navigate('Donate')}}
                         />
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <Icon 
-                                name="account-star-outline" 
-                                color={color}
-                                size={size}
-                                />
-                            )}
-                            label="Parent"
-                            onPress={() => {props.navigation.navigate('Parent')}}
-                        />
                     </Drawer.Section>
                 </View>
             </DrawerContentScrollView >
@@ -62,7 +51,7 @@ export default function DrawerContent2(props) {
                         />
                     )}
                     label="SignIn"
-                    onPress={() => {props.navigation.navigate('SignIn', {frn: props.frn} )}}
+                    onPress={() => {props.navigation.navigate('Parent', {frn: props.frn} )}}
                 />
             </Drawer.Section>
         </View>

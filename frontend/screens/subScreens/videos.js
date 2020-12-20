@@ -20,8 +20,8 @@ class Videos extends Component {
     componentDidMount() {
 
         var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+    //myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+    //myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'GET',
@@ -39,6 +39,29 @@ class Videos extends Component {
             })
             .catch(error => console.log('error', error));
     }
+    save(item) {
+        if(this.props.user){
+
+        console.log(this.props.user.username)
+        var myHeaders = new Headers();
+   myHeaders.append("Content-Type", "application/json");
+   myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+
+   
+   var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
+   
+   var requestOptions = {
+     method: 'POST',
+     headers: myHeaders,
+     body: raw,
+     redirect: 'follow'
+   };
+   
+   fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
+     .then(response => response.json())
+     .then(result => console.log(result))
+     .catch(error => console.log('error', error));
+   }}
     render() {
         var key1 = 0
        const navigation = this.props.navigation
@@ -51,6 +74,7 @@ class Videos extends Component {
             data={videoctagory}
             renderItem={({ item })=>(
                 <TouchableOpacity onPress={() =>{ 
+                                     this.save(item)
                                      sendvideo(item.link);
                                      navigation.navigate('Video')
                                      }} >
@@ -61,28 +85,7 @@ class Videos extends Component {
             )}
             keyExtractor={(item,i)=>{return `${i}`}}
             numColumns = {2}
-            />
-            
-            //     <ScrollView style={styles.container}>
-            //     {/* <Progress.Bar progress={0.3} width={200} /> */}
-            //     {this.state.result.map(function (x, i) {
-            //         return (
-                    
-            //             <TouchableOpacity onPress={() =>{ 
-            //                  sendvideo(x.link);
-            //                  navigation.navigate('Video')
-            //                 //  {display:"flex" , alignItems:"center",  marginLeft: vw * 6, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }
-            //                  }}  key={i} style={StyleSheet.container, StyleSheet.img}>
-
-            //                 <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,paddingBottom:100*vh ,width: 100 * vw }} source={{ uri: x?.thumbnail }} />
-            //             </TouchableOpacity>
-                        
-                    
-            //         )
-            //     })}
-            
-            // </ScrollView>
-            
+            />         
         );
     }
 }
@@ -141,6 +144,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return {
        videolink: state.videolink,
+       user: state.user,
        videocat: state.videocat
     }
   }

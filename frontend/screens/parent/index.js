@@ -128,13 +128,14 @@ class MusicApp extends Component {
     redirect: 'follow'
     };
     //fetch("http://localhost:8000/auth/login/", requestOptions)
-    fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
+    fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {
       
     if(result.token !== undefined){
       console.log(result.token)
       AsyncStorage.setItem('@token', result.token)
+      AsyncStorage.setItem('@user', this.state.username)
       this.props.props.navigation.navigate('parentProfile')
    
       } 

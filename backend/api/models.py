@@ -8,10 +8,10 @@ class User(AbstractBaseUser,PermissionsMixin):
     is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=True)
     username = models.CharField(max_length=40, unique=True)
-    password = models.CharField(max_length=244)
-    email = models.EmailField(max_length=200, unique=True)
+    password = models.CharField(max_length=90)
+    email = models.EmailField(max_length=90, unique=True)
     phone = PhoneField(blank=True, help_text='Contact phone number')
-    thumbnail = models.CharField(max_length=244, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU")
+    thumbnail = models.CharField(max_length=255, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU")
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['password']
     def __str__(self):
@@ -19,8 +19,8 @@ class User(AbstractBaseUser,PermissionsMixin):
         
 class History(models.Model):
     user = models.CharField(max_length=40)
-    link = models.CharField(max_length=244)
-    thumbnail = models.CharField(max_length=244)
+    link = models.CharField(max_length=255)
+    thumbnail = models.CharField(max_length=255)
     kind = models.CharField(max_length=50)
 
 class Donation(models.Model):
@@ -29,16 +29,16 @@ class Donation(models.Model):
     REQUIRED_FIELDS = [ "amount" ]
 
 class Record(models.Model):
-    link = models.CharField(max_length=244, unique=True)
+    link = models.CharField(max_length=255, unique=True)
     category = models.CharField(max_length=50, default="video")
-    thumbnail = models.CharField(max_length=244, unique=True)
+    thumbnail = models.CharField(max_length=255, unique=True)
 
 class Photo(models.Model):
-    link = models.CharField(max_length=244, unique=True)
+    link = models.CharField(max_length=255, unique=True)
     category = models.CharField(max_length=50, default="picture")
-    sound = models.CharField(max_length=244)
+    sound = models.CharField(max_length=255)
 
 class Play(models.Model):
-    link = models.CharField(max_length=244, unique=True)
+    link = models.CharField(max_length=255, unique=True)
     category = models.CharField(max_length=50, default="game")
-    thumbnail = models.CharField(max_length=244, unique=True)
+    thumbnail = models.CharField(max_length=255, unique=True)

@@ -1,18 +1,6 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
-
-import { Asset } from 'expo-asset';
 import MusicApp from './index';
-
-function cacheImages(images) {
-    return images.map(image => {
-      if (typeof image === 'string') {
-        return Image.prefetch(image);
-      } else {
-        return Asset.fromModule(image).downloadAsync();
-      }
-    });
-  }
 
 class Parent extends Component{
     constructor(props) {
@@ -21,17 +9,11 @@ class Parent extends Component{
         isReady:false
     }
 }
-async _loadAssetsAsync() {
-    const imageAssets = cacheImages([require('./PG.png')]);
 
-    await Promise.all([...imageAssets]);
-  }
 render() {
-
   return (
     <MusicApp props={this.props}/>
   );
-
 }}
 
 const styles = StyleSheet.create({
@@ -42,4 +24,5 @@ const styles = StyleSheet.create({
       justifyContent: 'center'
     }
   });
-export default Parent
+
+export default Parent;
