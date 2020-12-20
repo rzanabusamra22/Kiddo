@@ -46,7 +46,6 @@ import History from './screens/history'
 import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
 import parentProfile from './screens/parent/parentProfile'
-import History from './screens/history'
 //Donation
 // import Stripe from "./screens/stripe/";
 //Navigation
