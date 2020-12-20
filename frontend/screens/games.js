@@ -18,8 +18,8 @@ class Games extends Component {
     componentDidMount() {
 
         var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+    //myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+   // myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'GET',
@@ -38,6 +38,7 @@ class Games extends Component {
 }
 
     save(item) {
+        if(this.props.user){
 
         var myHeaders = new Headers();
    myHeaders.append("Content-Type", "application/json");
@@ -57,7 +58,7 @@ class Games extends Component {
      .then(result => console.log(result))
      .catch(error => console.log('error', error));
    }
-    
+}
     render() {
        const navigation = this.props.navigation
        const sendgame = this.props.sendgame

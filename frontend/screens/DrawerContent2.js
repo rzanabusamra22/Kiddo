@@ -51,7 +51,7 @@ export default function DrawerContent2(props) {
                         />
                     )}
                     label="SignIn"
-                    onPress={() => {props.navigation.navigate('Parent')}}
+                    onPress={() => {props.navigation.navigate('Parent', {frn: props.frn} )}}
                 />
             </Drawer.Section>
         </View>
