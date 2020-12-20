@@ -115,9 +115,9 @@ class MusicApp extends Component {
     })
   }
   handleSubmit = () => {
-    console.log('---------handle submit---------this: ',this)
-    console.log('****************************')
-    console.log(this.state.username + "   " + this.state.password)
+    // console.log('---------handle submit---------this: ',this)
+    // console.log('****************************')
+    // console.log(this.state.username + "   " + this.state.password)
     var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
     var requestOptions = {
     method: 'POST',

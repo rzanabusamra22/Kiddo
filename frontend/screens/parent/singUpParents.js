@@ -5,24 +5,25 @@ import {Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpa
 
 const SignUp =({navigation})=>{
     
-  const [parentname, onChangeName] = useState('parentname')
-  const [password, onChangePassword] = useState('password');
-  const [picture, onChangePicture] = useState('picture');
-  const [phone, onChangePhone] = useState('phone')
-  const [email, onChangeEmail] = useState('email')
+  const [parentname, onChangeName] = useState('')
+  const [password, onChangePassword] = useState('');
+  const [picture, onChangePicture] = useState('');
+  const [phone, onChangePhone] = useState('')
+  const [email, onChangeEmail] = useState('')
 
   
 
-submitSignup = ()=>{
+const submitSignup = ()=>{
   var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
 
 var raw = JSON.stringify({
   "username":parentname,
   "password":password,
   "email":email,
   "thumbnail": picture,
-  "phone": phone
+  "phone": parseInt(phone)
 });
 
 var requestOptions = {
@@ -80,7 +81,7 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
     }
   })
   .catch(error => {console.log('error', error)
-  console.log(result)
+   
     Alert.alert(
       "Parents SignUp",
       "Failed signed up",
@@ -106,8 +107,8 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
           <TextInput value={password} name="password" placeholder='Password'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePassword(text)}></TextInput>
           <TextInput value={phone} name="phone" placeholder='Phone Number'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePhone(text)}></TextInput>
           <TextInput value={picture} name="picture" placeholder='Profile Picture'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePicture(text)}></TextInput>
-          <TouchableOpacity style={styles.button}>
-            <Text style={{fontSize:20,fontWeight:'bold'}} onPress={submitSignup}>SIGN UP</Text>
+          <TouchableOpacity style={styles.button} onPress={submitSignup}>
+            <Text style={{fontSize:20,fontWeight:'bold'}} >SIGN UP</Text>
           </TouchableOpacity>
         </View>
       )

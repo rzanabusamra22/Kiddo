@@ -47,8 +47,8 @@ class parentProfile extends Component{
                 <Text style={[styles.text1, { fontWeight: "200", fontSize: 36 }]}>{this.props.user?.username}</Text>
                 <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>{this.props.user?.phone}</Text>
             </View>
-            <TouchableOpacity>
-            <View style={styles.button}>
+            <TouchableOpacity onPress={this.props.navigation.navigate('History')}  >
+            <View style={styles.button} >
                 <Text style={{fontSize:20,fontWeight: "200"}}>My Kid History</Text>
            </View>
            </TouchableOpacity>

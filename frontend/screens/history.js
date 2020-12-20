@@ -4,6 +4,8 @@ import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableW
 import React, { Component, useState } from 'react';
 import { sendvideo, sendgame } from './redux/actions';
 import { connect } from 'react-redux';
+import { Dimensions } from "react-native";
+const win = Dimensions.get('window');
 
 class History extends Component {
     constructor(props) {
@@ -26,7 +28,7 @@ class History extends Component {
         headers:myHeaders
     };
 
-    fetch(`https://blackpearl2.ew.r.appspot.com/historys/?user=${this.props.user.username}&kind=`, requestOptions)
+    fetch(`https://blackpearl2.ew.r.appspot.com/historys/?user=${this.props.user?.username}&kind=`, requestOptions)
         .then(response => response.json())
         .then(result => {this.setState({result})})
         .catch(error => console.log('error', error));
@@ -43,77 +45,45 @@ class History extends Component {
 
     render() {
         return(
-            <View style={styles.mainContainer}>
+            <View style={styles.container}>
+            <View style={styles.content}>
+             
+                    <FlatList
+                                    data={this.state.result}
+                                    renderItem={({ item,i }) => (
+                                        <TouchableOpacity style={styles.container} onPress={()=>this.go(item)} key={i}>
+                                    <View >
+                                    <Image 
+                                     source={item.thumbnail}
+                                     style={{ width: win.width/3,
+                                        height: win.width/3, borderRadius:8, margin:win.width/40}}
+                                     />
+                                    
+                                     </View>
+                                     </TouchableOpacity>  
+                                    )}
+                                    numColumns={2}
+                    />
+                </View>
           
-                <ScrollView >
-                {this.state.result.map((x,i)=>{
-                        return (
-                        <TouchableOpacity onPress={()=>this.go(x)} key={i}>
-                        <View style={styles.container}>
-                        <Image 
-                         source={x.thumbnail}
-                         style={{ width: 200, height: 180 }}
-                         />
-                         <Text>{x.kind}</Text>
-                         </View>
-                         </TouchableOpacity>  
-                        )
-                })}
-                </ScrollView>
-            
-            </View>
+        </View>
     )}
 }
 
 // react native styles
 const styles = StyleSheet.create({
+   
     container: {
-        flex: 1,
+        flex: 1
+    },
+    content: {
         backgroundColor: 'white',
-        flexDirection: 'row',
-        flexWrap: 'wrap'
+        flex: 1,
+        padding: win.width/10,
+        justifyContent: 'center',
+        paddingTop: win.width/50
     },
-    img: {
-        width: 120,
-        height: 120
-    },
-    logo: {
-        fontWeight: "bold",
-        fontSize: 50,
-        color: "black",
-        marginBottom: 40
-    },
-    inputView: {
-        backgroundColor: "#dcdcdc",
-        width: "80%",
-        borderRadius: 25,
-        height: 50,
-        marginBottom: 20,
-        justifyContent: "center",
-        padding: 20
-    },
-    inputText: {
-        height: 50,
-        color: "black"
-    },
-    forgot: {
-        color: "black",
-        fontSize: 11
-    },
-    loginBtn: {
-        width: "80%",
-        borderRadius: 25,
-        borderColor: 'black',
-        backgroundColor: 'pink',
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 40,
-        marginBottom: 10
-    },
-    loginText: {
-        color: "black"
-    }
+  
 });
 
 // Redux
