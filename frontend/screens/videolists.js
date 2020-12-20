@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
     }
      pressHandler = (x) => {
          this.props.sendvideocat(x.item)
-         console.log(this.props.videocat)
         this.props.navigation.navigate("Videos")
     }
      render(){

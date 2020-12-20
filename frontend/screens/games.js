@@ -28,7 +28,6 @@ class Games extends Component {
         fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=other", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result)
             this.setState({
                 result
             })
