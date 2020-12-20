@@ -22,8 +22,8 @@ class AdminProfile extends Component{
                 </View>
             </View>
             <View style={styles.infoContainer}>
-                <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>Name</Text>
-                <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}> Panal</Text>
+                <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>{this.props.user?.name}</Text>
+                <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>{this.props.user?.phone}</Text>
             </View>
             <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('parentProfile')}}>
             <Animated.View style={styles.button}>

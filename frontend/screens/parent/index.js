@@ -115,9 +115,9 @@ class MusicApp extends Component {
     })
   }
   handleSubmit = () => {
-    console.log('---------handle submit---------this: ',this)
-    console.log('****************************')
-    console.log(this.state.username + "   " + this.state.password)
+    // console.log('---------handle submit---------this: ',this)
+    // console.log('****************************')
+    // console.log(this.state.username + "   " + this.state.password)
     var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
     var requestOptions = {
     method: 'POST',
@@ -133,7 +133,7 @@ class MusicApp extends Component {
     .then( (result) => {
       
     if(result.token !== undefined){
-      console.log(result.token)
+      // console.log(result.token)
       AsyncStorage.setItem('@token', result.token)
       AsyncStorage.setItem('@user', this.state.username)
       this.props.props.navigation.navigate('parentProfile')

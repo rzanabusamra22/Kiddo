@@ -65,12 +65,12 @@ class DrawerContent extends React.Component{
                       <View style={{flexDirection:'row',marginTop: 15}}>
                       <Avatar.Image 
                                 source={{
-                                  uri: this.props.user.thumbnail
+                                  uri: this.props.user?.thumbnail
                                 }}
                                 size={50}
                             />
                             <View  style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title} >{this.props.user.username}</Title>
+                                <Title style={styles.title} >{this.props.user?.username}</Title>
                         
                                 {this.props.user?.is_staff? <Caption style={styles.caption} > Admin </Caption>
                                 :  <Caption style={styles.caption} > User </Caption>  
