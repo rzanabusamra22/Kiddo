@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
-        backgroundColor: '#FFFACD'
+        backgroundColor: '#fff45e'
     }
 });
 

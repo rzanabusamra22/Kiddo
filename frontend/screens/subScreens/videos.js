@@ -75,8 +75,8 @@ class Videos extends Component {
                                      navigation.navigate('Video')
                                      }} >
         
-                                    <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,marginright:100
-                                        ,paddingBottom:30*vh ,width: 50 * vw }} source={{ uri: item ?.thumbnail }} />
+                                    <Image style={{ borderRadius: 40, height: 6 * vh,marginBottom:15,marginTop:5,marginRight:5
+                                        ,paddingBottom:25*vh ,width: 50 * vw }} source={{ uri: item ?.thumbnail }} />
                                 </TouchableOpacity>
             )}
             keyExtractor={(item,i)=>{return `${i}`}}
