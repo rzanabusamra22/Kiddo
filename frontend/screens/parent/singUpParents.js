@@ -10,7 +10,6 @@ const SignUp =({navigation})=>{
 const submitSignup = ()=>{
   var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
 var raw = JSON.stringify({
   "username":parentname,
 });
@@ -23,7 +22,6 @@ var requestOptions = {
 fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
   .then(response => response.json())
   .then(result => {
-    console.log(result)
     var signup_error_msg = '' 
     if(Array.isArray(result.username)){
       signup_error_msg +=  '\n' + result.username 

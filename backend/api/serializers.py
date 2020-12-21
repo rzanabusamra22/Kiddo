@@ -17,7 +17,7 @@ class PlaySerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = [ 'username', 'password', 'email', 'phone', 'thumbnail', 'is_staff', 'is_superuser',]
+        fields = [ 'username', 'password', 'email', 'phone', 'thumbnail', 'is_staff', 'is_active', 'is_superuser',]
 
 class HistorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

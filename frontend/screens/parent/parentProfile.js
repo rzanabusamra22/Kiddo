@@ -19,17 +19,14 @@ class parentProfile extends Component{
    
       
         myHeaders.append("Content-Type", "application/json");
-   myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
                     
                    AsyncStorage.getItem('@user').then((user)=>{
-                    console.log('*****************************************', user)
                    fetch(`https://blackpearl2.ew.r.appspot.com/users/?username=${user}`, {
                         headers: myHeaders,
                         redirect: 'follow'
                        })
                     .then(response => response.json())
                     .then(result => {
-                        console.log('----------------------------------------',result)
                         this.props.senduser(result[0])})
                     .catch(()=>{})
                 })}

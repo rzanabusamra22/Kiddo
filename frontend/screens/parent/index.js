@@ -126,11 +126,9 @@ class MusicApp extends Component {
     body: raw ,
     headers: {
     "Content-Type": "application/json",
-    "Authorization": "Basic eG9ybzoxMjM="
     },
     redirect: 'follow'
     };
-    //fetch("http://localhost:8000/auth/login/", requestOptions)
     fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {

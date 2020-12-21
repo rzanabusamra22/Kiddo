@@ -14,7 +14,6 @@ class Home extends Component {
     componentDidMount() {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
                  
                    AsyncStorage.getItem('@user').then((user)=>{
                    fetch(`https://blackpearl2.ew.r.appspot.com/users/?username=${user}`, {

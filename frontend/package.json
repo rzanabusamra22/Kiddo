@@ -1,24 +1,25 @@
 {
   "name": "kiddo",
   "description": "app for kids",
+  "main": "index.js",
   "license": "none",
   "version": "1.0.0",
   "homepage": "https://kiddoi.web.app/",
   "author": "BlackPearl",
   "scripts": {
-    "rn start": "react-native start",
+    "rn-start": "react-native start",
     "rn-android": "react-native run-android",
     "rn-ios": "react-native run-ios",
+    "start": "expo start",
     "web": "expo start --web",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "build:ios": "expo build:ios",
     "build:android": "expo build:android",
+    "build:ios": "expo build:ios",
     "start-web": "react-scripts start",
     "build-web": "react-scripts build",
     "test-web": "react-scripts test",
     "eject-web": "react-scripts eject",
-    "start": "expo start",
     "test": "jest"
   },
   "dependencies": {
