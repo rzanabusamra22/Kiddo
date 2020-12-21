@@ -1,12 +1,8 @@
-//android restart 
-//import RestartAndroid from 'react-native-restart-android'
-
 //Admin Is signedin
 import React from 'react';
-
 import { View, StyleSheet} from 'react-native';
-
 import AsyncStorage from '@react-native-community/async-storage'
+import RestartAndroid from 'react-native-restart-android'
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -51,9 +47,8 @@ class DrawerContent extends React.Component{
    //this.setState({flag: 1})
   // RNRestart.Restart();
    //Restart();
-
-
-   this.props.navigation.navigate('Home')
+   
+   RNRestart.Restart();
 
 };
     render(){
@@ -100,7 +95,7 @@ class DrawerContent extends React.Component{
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {this.props.navigation.navigate('Profile')}}
+                            onPress={() => {this.props.navigation.navigate('parentProfile')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
