@@ -17,6 +17,7 @@
 1. [Development](#development)
     1. [Installing Dependencies FrontEnd](#installing-dependencies-frontend)
     1. [Installing Dependencies BackEnd](#installing-dependencies-backend)
+1. [Links](#links)
 1. [Picture Documentation](#picture-documentation)
 
 ## About
@@ -24,7 +25,17 @@
 - Safe Online Environment For the Kids (Android Mobile App)
 
 ## Technologies Used
--
+- DataBase (Local Host: Sqlite3 - Deployed Version: MySql)
+- Backend
+- Frontend
+- React
+- User Interface Framework
+- Design
+- Testing
+- Authentication
+- Continuous Integration
+- Deployment
+
 
 ## Requirements
 - TextEditor 
@@ -59,8 +70,8 @@ npm start
 4. Note: backend is connected with frontend using proxy.
 
 ### Installing Dependencies BackEnd
-
-### Picture Documentation
+## Links
+## Picture Documentation
 
 ![Home Page]()
 
