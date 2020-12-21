@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager,Permissions
 class User(AbstractBaseUser,PermissionsMixin):
     objects =  UserManager()
     is_staff = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=True)
     username = models.CharField(max_length=40, unique=True)
     password = models.CharField(max_length=90)

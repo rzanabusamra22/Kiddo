@@ -117,28 +117,28 @@ if os.getenv('GAE_APPLICATION', None):
             'NAME': 'blackpearl',
         }
     }
-else:
-    # Running locally so connect to either a local MySQL instance or connect to Cloud SQL via the proxy. 
-    # To host the database locally
-    # run $ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
-            'NAME': 'blackpearl',
-            'USER': 'xoro',
-            'PASSWORD': '',
-        }
-    }
 # else:
-#     # run offline database
+#     # Running locally so connect to either a local MySQL instance or connect to Cloud SQL via the proxy. 
+#     # To host the database locally
+#     # run $ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306
 #     DATABASES = {
 #         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': 'db.sqlite3',
+#             'ENGINE': 'django.db.backends.mysql',
+#             'HOST': '127.0.0.1',
+#             'PORT': '3306',
+#             'NAME': 'blackpearl',
+#             'USER': 'xoro',
+#             'PASSWORD': '',
 #         }
 #     }
+else:
+    # run offline database
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -182,17 +182,26 @@ STATIC_ROOT = 'static'
 # REST
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ]
+
+     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication', 
-    ],
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication'
+     ],
+    
+     
+    
    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-       # 'rest_framework.permissions.IsAuthenticated'
-       # 'rest_framework.permissions.AllowAny'
-    ],
+       'rest_framework.permissions.IsAuthenticated'
+      # 'rest_framework.permissions.AllowAny'
+   ],
+
    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
@@ -201,54 +210,10 @@ AUTH_USER_MODEL = 'api.User'
 DJOSER = {
     'LOGIN_FIELD': 'username',
     'USER_CREATE_PASSWORD_RETYPE':True,
-    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
-    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': '#/activate/{uid}/{token}',
-    'SEND_ACTIVATION_EMAIL': True,
-    'SEND_CONFIRMATION_EMAIL': True,
-    'HIDE_USERS' : True,
     'SERIALIZERS': {
         'user_create': 'api.serializers.UserSerializer',
-        'user': 'api.serializers.UserSerializer',
-        'activation': 'djoser.serializers.ActivationSerializer',
-        'password_reset': 'djoser.serializers.SendEmailResetSerializer',
-        'password_reset_confirm': 'djoser.serializers.PasswordResetConfirmSerializer',
-        'password_reset_confirm_retype': 'djoser.serializers.PasswordResetConfirmRetypeSerializer',
-        'set_password': 'djoser.serializers.SetPasswordSerializer',
-        'set_password_retype': 'djoser.serializers.SetPasswordRetypeSerializer',
-        'set_username': 'djoser.serializers.SetUsernameSerializer',
-        'set_username_retype': 'djoser.serializers.SetUsernameRetypeSerializer',
-        'username_reset': 'djoser.serializers.SendEmailResetSerializer',
-        'username_reset_confirm': 'djoser.serializers.UsernameResetConfirmSerializer',
-        'username_reset_confirm_retype': 'djoser.serializers.UsernameResetConfirmRetypeSerializer',
-        'user_create_password_retype': 'djoser.serializers.UserCreatePasswordRetypeSerializer',
-        'user_delete': 'djoser.serializers.UserDeleteSerializer',
-        'current_user': 'djoser.serializers.UserSerializer',
-        'token': 'djoser.serializers.TokenSerializer',
-        'token_create': 'djoser.serializers.TokenCreateSerializer',
-    },
-    "EMAIL" : {
-        'activation': 'djoser.email.ActivationEmail',
-        'confirmation': 'djoser.email.ConfirmationEmail',
-        'password_reset': 'djoser.email.PasswordResetEmail',
-        'password_changed_confirmation': 'djoser.email.PasswordChangedConfirmationEmail',
-        'username_changed_confirmation': 'djoser.email.UsernameChangedConfirmationEmail',
-        'username_reset': 'djoser.email.UsernameResetEmail',
-    },
-    "PERMISSIONS" : {
-        'activation': ['rest_framework.permissions.AllowAny'],
-        'password_reset': ['rest_framework.permissions.AllowAny'],
-        'password_reset_confirm': ['rest_framework.permissions.AllowAny'],
-        'set_password': ['djoser.permissions.CurrentUserOrAdmin'],
-        'username_reset': ['rest_framework.permissions.AllowAny'],
-        'username_reset_confirm': ['rest_framework.permissions.AllowAny'],
-        'set_username': ['djoser.permissions.CurrentUserOrAdmin'],
-        'user_create': ['rest_framework.permissions.AllowAny'],
-        'user_delete': ['djoser.permissions.CurrentUserOrAdmin'],
-        'user': ['djoser.permissions.CurrentUserOrAdmin'],
-        'user_list': ['djoser.permissions.CurrentUserOrAdmin'],
-        'token_create': ['rest_framework.permissions.AllowAny'],
-        'token_destroy': ['rest_framework.permissions.IsAuthenticated'],
+        'user': 'api.serializers.UserSerializer'
+
     }
 }
 

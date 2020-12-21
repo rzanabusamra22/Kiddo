@@ -133,23 +133,23 @@ class MusicApp extends Component {
     fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {
-      
+    console.log(result)
     if(result.token !== undefined){
       // console.log(result.token)
       AsyncStorage.setItem('@token', result.token)
       AsyncStorage.setItem('@user', this.state.username)
-      this.props.props.navigation.navigate('parentProfile')
+      //this.props.props.navigation.navigate('parentProfile')
 
-      // Alert.alert(
-      //   "User Sign-in",
-      //    `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
-      //   [
-      //     { text: "Ok", onPress: () =>{ 
-      //       RestartAndroid.restart()
-      //   }}
-      //   ],
-      //   { cancelable: true}
-      // );
+      Alert.alert(
+        "User Sign-in",
+         `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
+        [
+          { text: "Ok", onPress: () =>{ 
+           // RNRestart.restart()
+        }}
+        ],
+        { cancelable: true}
+      );
 
       } 
       
@@ -172,7 +172,7 @@ class MusicApp extends Component {
     }  
     )
 .catch(error => console.log('error', error));
-RNRestart.Restart();
+
 }
   //main return + render 
   render() {
