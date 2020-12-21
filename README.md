@@ -123,7 +123,7 @@ pip freeze > requirements.txt
 python manage.py makemigrations api
 python manage.py migrate
 ```
-### Installing Dependencies BackEnd
+### Deploying
 
 ## Links
 ## Picture Documentation
