@@ -3,7 +3,8 @@ import { Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOp
 import AsyncStorage from '@react-native-community/async-storage'
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
-import RestartAndroid from 'react-native-restart-android'
+import RNRestart from 'react-native-restart';
+
 const { width, height } = Dimensions.get('window');
 // for the animations Setting 
 const {Value,event,block,cond,eq,set,Clock,startClock,stopClock,debug,timing,clockRunning,interpolate,concat,Extrapolate} = Animated;
@@ -124,11 +125,11 @@ class MusicApp extends Component {
     method: 'POST',
     body: raw ,
     headers: {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization": "Basic eG9ybzoxMjM="
     },
     redirect: 'follow'
     };
-    //fetch("http://localhost:8000/auth/login/", requestOptions)
     fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {
@@ -138,8 +139,20 @@ class MusicApp extends Component {
       AsyncStorage.setItem('@token', result.token)
       AsyncStorage.setItem('@user', this.state.username)
       this.props.props.navigation.navigate('parentProfile')
-   
+
+      // Alert.alert(
+      //   "User Sign-in",
+      //    `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
+      //   [
+      //     { text: "Ok", onPress: () =>{ 
+      //       RestartAndroid.restart()
+      //   }}
+      //   ],
+      //   { cancelable: true}
+      // );
+
       } 
+      
       else{
         Alert.alert(
           "User Sign-in",
@@ -159,9 +172,7 @@ class MusicApp extends Component {
     }  
     )
 .catch(error => console.log('error', error));
-    
-     //setUsername('')
-    // setPassword('')
+RNRestart.Restart();
 }
   //main return + render 
   render() {
@@ -198,9 +209,9 @@ class MusicApp extends Component {
                </Animated.View>
            </TapGestureHandler>
            {/* Email input */}
-           <TextInput placeholder='USERNAME' value={this.state.username} onChangeText={text=>this.onchange('username',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
+           <TextInput placeholder='User Name' value={this.state.username} onChangeText={text=>this.onchange('username',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Password input */}
-           <TextInput  placeholder='PASSWORD'value={this.state.password} onChangeText={text=>this.onchange('password',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
+           <TextInput  placeholder='Password' secureTextEntry={true} value={this.state.password} onChangeText={text=>this.onchange('password',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Signin Botton 2  */}
            <TouchableOpacity onPress={this.handleSubmit}>
            <Animated.View style={styles.button}>

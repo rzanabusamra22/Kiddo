@@ -17,6 +17,7 @@
 1. [Development](#development)
     1. [Installing Dependencies FrontEnd](#installing-dependencies-frontend)
     1. [Installing Dependencies BackEnd](#installing-dependencies-backend)
+    1. [Deploying](#deploying)
 1. [Links](#links)
 1. [Picture Documentation](#picture-documentation)
 
@@ -32,45 +33,121 @@
    - React (Redux - React Native Navigation - Hooks)
    - User Interface Framework (React Native Paper)
    - Design (React Native Animation - React Native Alerts)
+- Payment System (Stripe)
 - Testing (Jest & Enzyme)
 - Authentication (JWT - Django Rest Framework Permissions)
 - Continuous Integration (CircleCI)
-- Deployment (Firebase)
+- Deployment/Cloud Solutions (FrontEnd:Firebase - BackEnd:Google Cloud(NginX))
 
 ## Requirements
+
 - TextEditor 
-- 
+- Android studio
+- React Native > v0.6
+- expo > v39.0
+- expo-cli > v4.0
+- Python 3.9 
+- django 1.0.0
+
 ## Development
 
 1. Fork the repo from github.
 2. Clone down your fork
 ```
-  git clone https://github.com/<Your Github userName>/legacy
+git clone https://github.com/<Your Github userName>/Kiddo
 ```
-3. Move into the repo after its been cloned onto your machine.
+3. Move into the repo after its been cloned onto your local machine.
 4. Follow the instructions in the 'Installing Dependencies' section.
 
 ### Installing Dependencies FrontEnd
 
-1. Open terminal 1: From within the root directory:
-```
-npm install
+1. Open terminal 1: From root directory to forntend directory:
 
-npm start 
-```
-2. Open terminal 2: From root directory to forntend directory:
 ```
 cd frontend/
-
 npm install
-
-npm start 
+expo start
 ```
-3. wait until your localhost is open at 3000
-4. Note: backend is connected with frontend using proxy.
-
+2. To run the App
+  - (Option1) Press Android device/emulator to run the app in Android studio.
+  - (Option2) Scan the code and run it on your phone using Expo Phone Application.
+3. To run Jest test
+```
+npm test
+``` 
+4. To build the App 
+  - (Android)
+```
+npm run android
+``` 
+  - (ios) - prefered on mac
+```
+pod install
+npm run ios
+```
 ### Installing Dependencies BackEnd
+
+1. Open terminal 2: From root directory to backend directory:
+
+```
+cd backend/
+python -m venv venv
+```
+2. To enter venv (Virtual Environment)
+```
+. venv/Scripts/activate
+```
+3. To install dependencies (after entering venv)
+```
+pip install -r requirements.txt
+```
+4. To run server localy (You should install the dependencies first)
+```
+python manage.py runserver
+```
+5. To run MySql database on localhost (You can skip this and use sqlite3 default database)
+- Uncomment the database code in /backend/settings.py 
+- Install gcloud 
+- inside /backend terminal do the following
+```
+$ ./cloud_sql_proxy 
+-instances=blackpearl2:us-central1:blackpearl=tcp:3306
+```
+6. To update dependencies file
+- Enter venv or cd /backend 
+```
+pip freeze > requirements.txt
+```
+7. To update the database tables for localhost
+```
+python manage.py makemigrations api
+python manage.py migrate
+```
+### Deploying
+
+To deploy the server using app engine
+1. Install gcloud
+```
+cd backend/
+gcloud app deploy
+```
+2. To update the deployed server
+Run MySql database on localhost.
+```
+cd backend/
+python manage.py makemigrations api
+python manage.py migrate
+gcloud app deploy
+```
 ## Links
+
+- Backend Server
+https://blackpearl2.ew.r.appspot.com/
+- Backend Admin Server
+https://blackpearl2.ew.r.appspot.com/admin 
+- Front End
+
+
 ## Picture Documentation
 
 ![Home Page]()

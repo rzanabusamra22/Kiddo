@@ -355,6 +355,7 @@ const AdminStackScreen = ({navigation}) =>{
 //Parent Stack 
 const ParentStackScreen = ({navigation}) =>{
   return(
+    // Parent
     <ParentStack.Navigator 
   initialRouteName="Home"
   screenOptions={{
@@ -367,6 +368,15 @@ const ParentStackScreen = ({navigation}) =>{
     },
   }}
   >
+    <ParentStack.Screen
+     name="Parent"
+     component={Parent}
+     options={{ 
+      title: 'Kiddo',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+     headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
+    }}
+ />
     <ParentStack.Screen
      name="parentProfile"
      component={parentProfile}
@@ -460,6 +470,7 @@ componentDidMount() {
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
         <Drawer.Screen name="Profile" component={AdminStackScreen} />
+        <Drawer.Screen name="Parent"  component={ParentStackScreen} />
         <Drawer.Screen name="parentProfile"  component={ParentStackScreen} />
         <Drawer.Screen name="History"  component={HistoryStackScreen} />
 
