@@ -100,16 +100,27 @@ python -m venv venv
 ```
 pip install -r requirements.txt
 ```
-4. To run server localy (you should install the dependencies first)
+4. To run server localy (You should install the dependencies first)
 ```
 python manage.py runserver
 ```
 5. To run MySql database on localhost (You can skip this and use sqlite3 default database)
 - Uncomment the database code in /backend/settings.py 
 - Install gcloud 
-- inside /backend terminal
+- inside /backend terminal do the following
 ```
-
+$ ./cloud_sql_proxy 
+-instances=blackpearl2:us-central1:blackpearl=tcp:3306
+```
+6. To update dependencies file
+- Enter venv or cd /backend 
+```
+pip freeze > requirements.txt
+```
+7. To update the database tables for localhost
+```
+python manage.py makemigrations api
+python manage.py migrate
 ```
 
 ## Links
