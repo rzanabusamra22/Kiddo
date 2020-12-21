@@ -8,7 +8,6 @@ export default function Art({ navigation }){
     ])
     const pressHandler = (x) => {
         navigation.navigate(x)
-        console.log(x)
     }
     return(
         <View style={styles.mainContainer}>

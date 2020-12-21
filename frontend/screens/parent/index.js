@@ -3,6 +3,7 @@ import { Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOp
 import AsyncStorage from '@react-native-community/async-storage'
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
+import RestartAndroid from 'react-native-restart-android'
 const { width, height } = Dimensions.get('window');
 // for the animations Setting 
 const {Value,event,block,cond,eq,set,Clock,startClock,stopClock,debug,timing,clockRunning,interpolate,concat,Extrapolate} = Animated;

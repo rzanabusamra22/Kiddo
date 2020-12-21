@@ -1,38 +1,25 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React, { Component, useState } from 'react';
 import {Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpacity} from 'react-native';
-
-
 const SignUp =({navigation})=>{
-    
   const [parentname, onChangeName] = useState('')
   const [password, onChangePassword] = useState('');
   const [picture, onChangePicture] = useState('');
   const [phone, onChangePhone] = useState('')
   const [email, onChangeEmail] = useState('')
-
-  
-
 const submitSignup = ()=>{
   var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-
 var raw = JSON.stringify({
   "username":parentname,
-  "password":password,
-  "email":email,
-  "thumbnail": picture,
-  "phone": parseInt(phone)
 });
-
 var requestOptions = {
   method: 'POST',
   headers: myHeaders,
   body: raw,
   redirect: 'follow'
 };
-
 fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
   .then(response => response.json())
   .then(result => {
@@ -56,14 +43,11 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
       "Successfully signed up",
       [
         { text: "OK", onPress: () =>{ console.log("OK Pressed") 
-        
         navigation.navigate('Home')
       }}
       ],
       { cancelable: true}
     );
-    
-  
   }
     else{
       Alert.alert(
@@ -81,7 +65,6 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
     }
   })
   .catch(error => {console.log('error', error)
-   
     Alert.alert(
       "Parents SignUp",
       "Failed signed up",
@@ -94,8 +77,6 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
     );
 });
 }
-
-
       return (
         <View style={styles.container}>
           <Text style={styles.logo1}>
@@ -112,9 +93,7 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
           </TouchableOpacity>
         </View>
       )
-
 }
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -123,7 +102,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center'
     },
     logo1: {
-      fontWeight: "bold",
+      fontWeight: "200",
       fontSize: 30,
       color: "black",
       marginBottom: 10
