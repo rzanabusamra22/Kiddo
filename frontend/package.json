@@ -2,12 +2,23 @@
   "name": "kiddo",
   "description": "app for kids",
   "license": "none",
-  "main": "index.js",
+  "version": "1.0.0",
+  "homepage": "https://kiddoi.web.app/",
+  "author": "BlackPearl",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "rn start": "react-native start",
+    "rn-android": "react-native run-android",
+    "rn-ios": "react-native run-ios",
     "web": "expo start --web",
-    "start": "react-native start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "build:ios": "expo build:ios",
+    "build:android": "expo build:android",
+    "start-web": "react-scripts start",
+    "build-web": "react-scripts build",
+    "test-web": "react-scripts test",
+    "eject-web": "react-scripts eject",
+    "start": "expo start",
     "test": "jest"
   },
   "dependencies": {
@@ -46,24 +57,25 @@
     "react-native-unimodules": "~0.11.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-viewport-units": "0.0.5",
-    "react-native-web": "~0.13.12",
+    "react-native-web": "^0.13.18",
     "react-native-webview": "10.7.0",
     "react-navigation": "^4.4.3",
     "react-navigation-stack": "^2.10.2",
     "react-redux": "^7.2.2",
+    "react-scripts": "^4.0.1",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0",
+    "jest": "^25.5.4",
     "babel-jest": "^25.5.1",
+    "@babel/core": "^7.12.10",
     "babel-preset-react-native": "^4.0.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "enzyme-to-json": "^3.6.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.5.4",
     "jest-react-native": "^18.0.0",
     "react-test-renderer": "^16.13.1",
     "redux-mock-store": "^1.5.4",
@@ -73,5 +85,17 @@
     "type": "git",
     "url": "git://github.com/TheBlackPearl-FinaleProject/Kiddo"
   },
-  "private": false
+  "private": false,
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
