@@ -39,8 +39,14 @@
 - Deployment/Cloud Solutions (FrontEnd:Firebase - BackEnd:Google Cloud(NginX))
 
 ## Requirements
+
 - TextEditor 
-- 
+- React Native > v0.6
+- expo > v39.0
+- expo-cli > v4.0
+- Python 3.9 
+- django 1.0.0
+
 ## Development
 
 1. Fork the repo from github.
