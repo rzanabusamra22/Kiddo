@@ -52,29 +52,22 @@
 1. Fork the repo from github.
 2. Clone down your fork
 ```
-  git clone https://github.com/<Your Github userName>/legacy
+  git clone https://github.com/<Your Github userName>/Kiddo
 ```
 3. Move into the repo after its been cloned onto your machine.
 4. Follow the instructions in the 'Installing Dependencies' section.
 
 ### Installing Dependencies FrontEnd
 
-1. Open terminal 1: From within the root directory:
-```
-npm install
+1. Open terminal 1: From root directory to forntend directory:
 
-npm start 
-```
-2. Open terminal 2: From root directory to forntend directory:
 ```
 cd frontend/
 
 npm install
 
-npm start 
+npm run web
 ```
-3. wait until your localhost is open at 3000
-4. Note: backend is connected with frontend using proxy.
 
 ### Installing Dependencies BackEnd
 ## Links
