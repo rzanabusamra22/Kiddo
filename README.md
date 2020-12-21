@@ -67,10 +67,17 @@ cd frontend/
 
 npm install
 
-expo start 
+expo start  OR  npm run web
 ```
-2. (Option1)Press Android device/emulator to run the app in Android studio.
-2. (Option2)Scan the code and run it on your phone using Expo Phone Application.
+2. To run the App
+  - (Option1)Press Android device/emulator to run the app in Android studio.
+  - (Option2)Scan the code and run it on your phone using Expo Phone Application.
+3. To run Jest test
+```
+npm test
+``` 
+4. To build the App 
+
 
 ### Installing Dependencies BackEnd
 ## Links
