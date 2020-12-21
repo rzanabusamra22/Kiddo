@@ -3,15 +3,16 @@
 # Project Name : KIDDO
 
 ## Team
+
   - Dima Jaber
   - Hamdallah Fatayer 
   - Noor Aldeen Ashqar
   - Razan Abusamra
   
-
 ## Table of Contents
 
 1. [About](#about)
+1. [Technologies Used](#technologies-used)
 1. [Requirements](#requirements)
 1. [Development](#development)
     1. [Installing Dependencies FrontEnd](#installing-dependencies-frontend)
@@ -20,10 +21,13 @@
 
 ## About
 
+- Safe Online Environment For the Kids (Android Mobile App)
+
+## Technologies Used
+-
 
 ## Requirements
-
-- 
+- TextEditor 
 - 
 ## Development
 
