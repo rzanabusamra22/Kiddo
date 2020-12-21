@@ -124,6 +124,7 @@ python manage.py makemigrations api
 python manage.py migrate
 ```
 ### Deploying
+
 To deploy the server using app engine
 1. Install gcloud
 ```
@@ -139,6 +140,14 @@ python manage.py migrate
 gcloud app deploy
 ```
 ## Links
+
+- Backend Server
+https://blackpearl2.ew.r.appspot.com/
+- Backend Admin Server
+https://blackpearl2.ew.r.appspot.com/admin 
+- Front End
+
+
 ## Picture Documentation
 
 ![Home Page]()
