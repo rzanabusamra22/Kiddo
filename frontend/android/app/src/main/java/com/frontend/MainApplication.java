@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 
+
+import com.rnrestartandroid.RNRestartAndroidPackage;
+
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.reactnativerestart.RestartPackage;
@@ -50,9 +53,10 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       List<ReactPackage> packages = new PackageList(this).getPackages();
-      packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
-      packages.add(new LottiePackage());
-      return packages;
+      return Arrays.<ReactPackage>asList(
+      new MainReactPackage()
+     , new RNRestartAndroidPackage()
+  
     }
 
     @Override
