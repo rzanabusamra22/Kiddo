@@ -33,7 +33,7 @@ const PaymentView = (props) => {
                     flex-direction: column;
                     height: 200px;
                     justify-content: space-around;
-                    background-color: #3D097F;
+                    background-color: #f4511e;
                     border-radius: 20px;
                     padding: 10px;
                     padding-top: 20px;
@@ -93,12 +93,7 @@ const PaymentView = (props) => {
                 
                 <!-- donation info -->
                 <div class="container-fluid">
-                    <div class="row">
-                       
-                            Donator: ${username}
-                            Amount: ${amount}
-                     
-                    </div>
+
                     <div class="row">
                         <label class="card-errors" id="card-errors"></label>
                     </div>
@@ -150,7 +145,7 @@ const PaymentView = (props) => {
 
                             
                                 <div class="pay-btn">
-                                    <input type="submit" class="btn btn-info btn-lg" value="Pay Now" />
+                                    <input type="submit" class="btn btn-info btn-lg" value="Donation Done" />
                                 </div>
                 
                         </form>
@@ -283,10 +278,7 @@ const PaymentView = (props) => {
         const { data } =  event.nativeEvent;
         console.log('******* paymentView, data: ',  data)
         onCheckStatus(data)
-        
     }
-
-
 
 return <WebView
     javaScriptEnabled={true}
@@ -298,6 +290,4 @@ return <WebView
 />
 
 }
- 
-
  export default PaymentView

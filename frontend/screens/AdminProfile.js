@@ -18,8 +18,8 @@ class AdminProfile extends Component{
                 </View>
             </View>
             <View style={styles.infoContainer}>
-                <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>AdminName</Text>
-                <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>Admin Panal</Text>
+                <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>Name</Text>
+                <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}> Panal</Text>
             </View>
             {/* to add a button :) */}
         </SafeAreaView>
