@@ -25,17 +25,17 @@
 - Safe Online Environment For the Kids (Android Mobile App)
 
 ## Technologies Used
-- DataBase (Local Host: Sqlite3 - Deployed Version: MySql)
-- Backend
-- Frontend
-- React
-- User Interface Framework
-- Design
-- Testing
-- Authentication
-- Continuous Integration
-- Deployment
 
+- DataBase (Local Host: Sqlite3 - Deployed Version: MySql)
+- Backend (Python Django)
+- Frontend (React Native)
+   - React (Redux - React Native Navigation - Hooks)
+   - User Interface Framework (React Native Paper)
+   - Design (React Native Animation - React Native Alerts)
+- Testing (Jest & Enzyme)
+- Authentication (JWT - Django Rest Framework Permissions)
+- Continuous Integration (CircleCI)
+- Deployment (Firebase)
 
 ## Requirements
 - TextEditor 
