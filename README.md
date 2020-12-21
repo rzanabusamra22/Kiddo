@@ -1,134 +1,78 @@
 [![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://blackpearl2.ew.r.appspot.com/)
 
-# Project Name #
-[Kiddo](https://blackpearl2.ew.r.appspot.com/)
+# Project Name : KIDDO
 
-### Heading ###
-Website for kids
+## Team
 
-### Details ###
-This website gives a safe envorinment for kids to play and learn
+  - Dima Jaber
+  - Hamdallah Fatayer 
+  - Noor Aldeen Ashqar
+  - Razan Abusamra
+  
+## Table of Contents
 
-## Table of contents ##
-* Technologies
-* Frontend
-* Backend
-* Deploy
-* Members
+1. [About](#about)
+1. [Technologies Used](#technologies-used)
+1. [Requirements](#requirements)
+1. [Development](#development)
+    1. [Installing Dependencies FrontEnd](#installing-dependencies-frontend)
+    1. [Installing Dependencies BackEnd](#installing-dependencies-backend)
+1. [Links](#links)
+1. [Picture Documentation](#picture-documentation)
 
-## Technologies Used ##
-### Languages ###
-* Python
-* Javascript
-* CSS
-* HTML
-### Libraries & Technologies ###
-* Django
-* Rest Framework API
-* JWT
-* Sqlite3
-* MySql
-* React Native
-* React Native Sound
-* React Native Animation
-* React Navigation
-* React Redux
-* Expo Cli
-* Jest
-* Enzyme
-* Stripe
-* Circle Ci
-### Programs ###
-* VS Code
-* Android Studio
-* gCloud SDK
-### Command Lines ###
-* npm -->
-* git -->
-* pip -->
-* py -->
-* expo -->
-* jest -->
-* gcloud -->
-* curl -->
-* gem -->
-* pod -->
-* choco -->
-* circleci -->
-* react-native -->
-* xx xx xx xx xx
-* brew -->
-* sudo -->
+## About
 
-## Frontend ##
-* To install dependancies
-* Open bash inside /frontend
-* `$ npm i`
+- Safe Online Environment For the Kids (Android Mobile App)
 
-* To run the app on localhost
-* Open bash inside /frontend
-* `$ npm run web` or `$ expo start`
+## Technologies Used
 
-* To build Android App
-* Open bash inside /frontend
-* `$ npm run android`
+- DataBase (Local Host: Sqlite3 - Deployed Version: MySql)
+- Backend (Python Django)
+- Frontend (React Native)
+   - React (Redux - React Native Navigation - Hooks)
+   - User Interface Framework (React Native Paper)
+   - Design (React Native Animation - React Native Alerts)
+- Testing (Jest & Enzyme)
+- Authentication (JWT - Django Rest Framework Permissions)
+- Continuous Integration (CircleCI)
+- Deployment (Firebase)
 
-* To build ios App (on windows)
-* Install ruby & curl & git & cocoapods then Open bash inside /frontend/ios
-* `$ pod install` then `$ npm run ios`
+## Requirements
+- TextEditor 
+- 
+## Development
+
+1. Fork the repo from github.
+2. Clone down your fork
+```
+  git clone https://github.com/<Your Github userName>/legacy
+```
+3. Move into the repo after its been cloned onto your machine.
+4. Follow the instructions in the 'Installing Dependencies' section.
+
+### Installing Dependencies FrontEnd
+
+1. Open terminal 1: From within the root directory:
+```
+npm install
+
+npm start 
+```
+2. Open terminal 2: From root directory to forntend directory:
+```
+cd frontend/
+
+npm install
+
+npm start 
+```
+3. wait until your localhost is open at 3000
+4. Note: backend is connected with frontend using proxy.
+
+### Installing Dependencies BackEnd
+## Links
+## Picture Documentation
+
+![Home Page]()
 
 
-## Backend ##
-* To create new virtual environment (venv)
-* Open bash inside /backend
-* `$ python -m venv venv`
-
-* To enter venv
-* Open bash inside /backend
-* `$ . venv/Scripts/activate`
-
-* To install dependancies
-* Enter venv or open bash inside /backend (global install)
-* `$ pip install -r requirements.txt`
-
-* To run the server locally (after installing dependancies)
-* Enter venv or open bash inside /backend
-* `$ python manage.py runserver`
-
-* To run mysql database on localhost (you can skip this and use sqlite3 default database)
-* Uncomment the database code in /backend/settings.py then Install gcloud then open bash inside /backend
-* `$ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306`
-
-* To update dependancies file
-* Enter venv or open bash inside /backend (global)
-* `$ pip freeze > requirements.txt`
-
-* To update the database tables for localhost
-* Enter venv or open bash inside /backend (global)
-* `$ python manage.py makemigrations api` then `$ python manage.py migrate`
-
-## Deploy ##
-* To deploy a server using app engine
-* Install gcloud then open bash inside /backend
-* `$ gcloud app deploy`
-
-* To update the deployed server
-* Run mysql database on localhost then open bash inside /backend
-* `$ python manage.py makemigrations api` then
-* `$ python manage.py migrate` then `$ gcloud app deploy`
-
-### Deployed links ###
-* Backend server
-* https://blackpearl2.ew.r.appspot.com/
-* Backend admin server
-* https://blackpearl2.ew.r.appspot.com/admin
-
-## Members ##
-* Razan Abusamra - Scrum Master
-react native - expo - react animation - navigation - sliders - picutres - drawer
-* Hamdallah Fatayer - Co-Leader
-python - django - rest framework - google sdk - cloud sql - google app engine - android studio - jest - circle ci - android & ios platform testing
-* Noor Ashqar - Development
-react - expo - jest - database data control - videos - pictures - games - webview & iframe - sounds - songs - redux
-* Dima jaber - Development
-python - django - rest framework - jwt - django token - djoser 

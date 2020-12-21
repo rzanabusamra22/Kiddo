@@ -17,15 +17,15 @@ class Drawing extends Component {
     }
     componentDidMount() {
         var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
+    //myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+    //myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
             headers: myHeaders
         };
-        fetch("https://blackpearl2.ew.r.appspot.com/plays", requestOptions)
+        fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=draw", requestOptions)
             .then(response => response.json())
             .then(result => {
                 this.setState({
@@ -38,7 +38,7 @@ class Drawing extends Component {
     render() {
         const navigation = this.props.navigation
         const senddraw = this.props.senddraw
-        const anygame=this.state.result.filter((game,i)=>{return game.category==="draw"})
+        const anygame=this.state.result
          return (
              <FlatList
              data ={anygame}

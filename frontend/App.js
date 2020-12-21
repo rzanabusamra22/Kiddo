@@ -2,7 +2,6 @@ import * as React from 'react';
 import AsyncStorage from '@react-native-community/async-storage'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { AppLoading } from 'expo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons'
 //redux
@@ -15,7 +14,7 @@ import Home from './screens/home-comp'
 import Learn from './screens/learn';
 import Art from './screens/art';
 import Videolists from './screens/videolists';
-import Videos from './screens/subScreens/videos';
+import Videos from './screens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
 import Draw from './screens/subScreens/draw';
@@ -46,8 +45,7 @@ import Parent from './screens/parent/parents-landingpage'
 import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
 import parentProfile from './screens/parent/parentProfile'
-//Donation
-// import Stripe from "./screens/stripe/";
+import History from './screens/history'
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -56,6 +54,7 @@ const SignInstack = createStackNavigator();
 const Donatestack = createStackNavigator();
 const AdminProfilestack = createStackNavigator();
 const ParentStack = createStackNavigator();
+const Historystack = createStackNavigator();
 //Home Stack 
 const HomeStackScreen = ({navigation}) =>{
   return(
@@ -369,8 +368,8 @@ const ParentStackScreen = ({navigation}) =>{
   }}
   >
     <ParentStack.Screen
-     name="Parent"
-     component={Parent}
+     name="parentProfile"
+     component={parentProfile}
      options={{ 
       title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
@@ -397,18 +396,34 @@ const ParentStackScreen = ({navigation}) =>{
       }) }/>)
    }}/>
 
-   <ParentStack.Screen
-     name="parentProfile" 
-     component={parentProfile}  
+    </ParentStack.Navigator>
+  )
+}
+
+const HistoryStackScreen = ({navigation}) =>{
+  return(
+    <Historystack.Navigator 
+  initialRouteName="Home"
+  screenOptions={{
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }}
+  >
+    <Historystack.Screen
+     name="History"
+     component={History}
      options={{ 
       title: 'Kiddo',
-      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      }) }/>)
-     }}/>
- 
-    </ParentStack.Navigator>
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
+    }}
+ />
+    </Historystack.Navigator>
   )
 }
 // The App 
@@ -419,17 +434,20 @@ class App extends React.Component {
       token:''
     }
   }
-  componentDidMount(){
-    var assigntoken = async()=>{
-    const token = await AsyncStorage.getItem('@token')
-    this.setState({token})}
-    assigntoken()
-  }
+
+componentDidMount() {
+  AsyncStorage.getItem('@token').then((token)=>{
+    this.setState({token})
+  })
+   }
+  
   render(){
   return (
     <Provider store={store}>
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={ (props) => 
+      <Drawer.Navigator 
+      // drawerStyle={{backgroundColor: 'rgb(255, 255, 255,0.1)'}}
+      drawerContent={ (props) => 
        {
        if(this.state.token){
        return  <DrawerContent {...props}/>
@@ -442,7 +460,9 @@ class App extends React.Component {
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
         <Drawer.Screen name="Profile" component={AdminStackScreen} />
-        <Drawer.Screen name="Parent"  component={ParentStackScreen} />
+        <Drawer.Screen name="parentProfile"  component={ParentStackScreen} />
+        <Drawer.Screen name="History"  component={HistoryStackScreen} />
+
       </Drawer.Navigator>
     </NavigationContainer>
     </Provider>

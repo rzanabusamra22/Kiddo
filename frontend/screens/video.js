@@ -13,7 +13,6 @@ import { connect } from 'react-redux';
     return(
       
       <WebView
-      style = {styles.vid}
       source={{
         uri:this.props.videolink
       }}

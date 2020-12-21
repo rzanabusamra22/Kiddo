@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpacity} from 'react-native';
-
+import { Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpacity} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage'
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
+import RestartAndroid from 'react-native-restart-android'
 const { width, height } = Dimensions.get('window');
 // for the animations Setting 
 const {Value,event,block,cond,eq,set,Clock,startClock,stopClock,debug,timing,clockRunning,interpolate,concat,Extrapolate} = Animated;
@@ -13,6 +14,7 @@ function runTiming(clock, value, dest) {
     position: new Value(0),
     time: new Value(0),
     frameTime: new Value(0)
+  
   };
 
   const config = {
@@ -39,6 +41,11 @@ function runTiming(clock, value, dest) {
 class MusicApp extends Component {
   constructor(props) {
     super(props)
+    this.state ={
+      username: '',
+      password:'',
+      flag:0  
+    }
     // functions to controll motion + styling 
     this.buttonOpacity = new Value(1);
     //control the white box when it is open 
@@ -103,6 +110,59 @@ class MusicApp extends Component {
         extrapolate: Extrapolate.CLAMP
       });
   }
+  onchange = (name, value)=>{
+    this.setState({
+      [name]: value
+    })
+  }
+  handleSubmit = () => {
+    // console.log('---------handle submit---------this: ',this)
+    // console.log('****************************')
+    // console.log(this.state.username + "   " + this.state.password)
+    var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
+    var requestOptions = {
+    method: 'POST',
+    body: raw ,
+    headers: {
+    "Content-Type": "application/json"
+    },
+    redirect: 'follow'
+    };
+    //fetch("http://localhost:8000/auth/login/", requestOptions)
+    fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
+    .then(response => response.json())
+    .then( (result) => {
+      
+    if(result.token !== undefined){
+      // console.log(result.token)
+      AsyncStorage.setItem('@token', result.token)
+      AsyncStorage.setItem('@user', this.state.username)
+      this.props.props.navigation.navigate('parentProfile')
+   
+      } 
+      else{
+        Alert.alert(
+          "User Sign-in",
+          "signed in failed" + '\n' + 'username or password : incorrect',
+          [
+            { text: "Cancel", onPress: () =>{ console.log("Cancel Pressed") 
+            this.props.props.navigation.navigate('Home')
+           
+          }},
+          { text: "Try again", onPress: () =>{ console.log("try again") 
+        }}
+          ],
+          { cancelable: true}
+        );
+      }
+        
+    }  
+    )
+.catch(error => console.log('error', error));
+    
+     //setUsername('')
+    // setPassword('')
+}
   //main return + render 
   render() {
     return (
@@ -121,6 +181,9 @@ class MusicApp extends Component {
             </Animated.View>
           </TapGestureHandler>
            {/* Sign up button */}
+           
+
+
            <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('SignUp')}}>
           <Animated.View style={{...styles.button,backgroundColor: '#dc962e',opacity: this.buttonOpacity,transform: [{ translateY: this.buttonY }]}}>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>SIGN UP</Text>
@@ -135,13 +198,13 @@ class MusicApp extends Component {
                </Animated.View>
            </TapGestureHandler>
            {/* Email input */}
-           <TextInput placeholder='EMAIL'style={styles.textInput} placeholderTextColor='black'></TextInput>
+           <TextInput placeholder='USERNAME' value={this.state.username} onChangeText={text=>this.onchange('username',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Password input */}
-           <TextInput placeholder='PASSWORD'style={styles.textInput} placeholderTextColor='black'></TextInput>
+           <TextInput  placeholder='PASSWORD'value={this.state.password} onChangeText={text=>this.onchange('password',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Signin Botton 2  */}
-           <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('parentProfile')}}>
+           <TouchableOpacity onPress={this.handleSubmit}>
            <Animated.View style={styles.button}>
-                <Text style={{fontSize:20,fontWeight:'bold'}}>SIGN IN</Text>
+                <Text style={{fontSize:20,fontWeight:'bold'}} >SIGN IN</Text>
           </Animated.View>
           </TouchableOpacity>
           </Animated.View >
