@@ -67,7 +67,7 @@ cd frontend/
 
 npm install
 
-npm run web
+expo start 
 ```
 2. (Option1)Press Android device/emulator to run the app in Android studio.
 2. (Option2)Scan the code and run it on your phone using Expo Phone Application.
