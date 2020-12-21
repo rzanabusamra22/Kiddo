@@ -46,8 +46,6 @@ import SignUp from './screens/parent/singUpParents'
 import MusicApp from './screens/parent/index'
 import parentProfile from './screens/parent/parentProfile'
 import History from './screens/history'
-//Donation
-// import Stripe from "./screens/stripe/";
 //Navigation
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -370,8 +368,8 @@ const ParentStackScreen = ({navigation}) =>{
   }}
   >
     <ParentStack.Screen
-     name="Parent"
-     component={Parent}
+     name="parentProfile"
+     component={parentProfile}
      options={{ 
       title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
@@ -398,18 +396,6 @@ const ParentStackScreen = ({navigation}) =>{
       }) }/>)
    }}/>
 
-
-   <ParentStack.Screen
-     name="parentProfile" 
-     component={parentProfile}  
-     options={{ 
-      title: 'Kiddo',
-      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      }) }/>)
-     }}/>
- 
     </ParentStack.Navigator>
   )
 }
@@ -474,7 +460,7 @@ componentDidMount() {
         <Drawer.Screen name="SignIn" component={SignInStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
         <Drawer.Screen name="Profile" component={AdminStackScreen} />
-        <Drawer.Screen name="Parent"  component={ParentStackScreen} />
+        <Drawer.Screen name="parentProfile"  component={ParentStackScreen} />
         <Drawer.Screen name="History"  component={HistoryStackScreen} />
 
       </Drawer.Navigator>
@@ -482,5 +468,6 @@ componentDidMount() {
     </Provider>
   ); 
 }}
+
 
 export default App 

@@ -5,17 +5,19 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager,Permissions
 
 class User(AbstractBaseUser,PermissionsMixin):
     objects =  UserManager()
-    is_staff = models.BooleanField(default=True)
-    is_superuser = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     username = models.CharField(max_length=40, unique=True)
     password = models.CharField(max_length=90)
     email = models.EmailField(max_length=90, unique=True)
-    phone = PhoneField(blank=True, help_text='Contact phone number')
+    phone = models.CharField(max_length=40, default="", blank=True, help_text='Contact phone number')
     thumbnail = models.CharField(max_length=255, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU")
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['password']
     def __str__(self):
         return self.username
+    def mail(self):
+        return self.username + "\'s email is : " + self.email
         
 class History(models.Model):
     user = models.CharField(max_length=40)
