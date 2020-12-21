@@ -84,8 +84,34 @@ npm run android
 pod install
 npm run ios
 ```
-
 ### Installing Dependencies BackEnd
+
+1. Open terminal 2: From root directory to backend directory:
+
+```
+cd backend/
+python -m venv venv
+```
+2. To enter venv (Virtual Environment)
+```
+. venv/Scripts/activate
+```
+3. To install dependencies (after entering venv)
+```
+pip install -r requirements.txt
+```
+4. To run server localy (you should install the dependencies first)
+```
+python manage.py runserver
+```
+5. To run MySql database on localhost (You can skip this and use sqlite3 default database)
+- Uncomment the database code in /backend/settings.py 
+- Install gcloud 
+- inside /backend terminal
+```
+
+```
+
 ## Links
 ## Picture Documentation
 
