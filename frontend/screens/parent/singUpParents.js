@@ -82,10 +82,10 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
           </Text>
           <TextInput value={parentname} name="parentname" placeholder='Name'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangeName(text)}
                         ></TextInput>
-          <TextInput value={email} name="email" placeholder='Email'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangeEmail(text)}></TextInput>
-          <TextInput value={password} name="password" placeholder='Password'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePassword(text)}></TextInput>
-          <TextInput value={phone} name="phone" placeholder='Phone Number'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePhone(text)}></TextInput>
-          <TextInput value={picture} name="picture" placeholder='Profile Picture'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePicture(text)}></TextInput>
+          <TextInput value={email} name="Email" keyboardType="email-address"  placeholder='Email'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangeEmail(text)}></TextInput>
+          <TextInput value={password} name="Password" placeholder='Password' secureTextEntry={true} style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePassword(text)}></TextInput>
+          <TextInput value={phone} name="Phone" keyboardType="phone-pad" placeholder='Phone Number'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePhone(text)}></TextInput>
+          <TextInput value={picture} name="Picture" placeholder='Profile Picture'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePicture(text)}></TextInput>
           <TouchableOpacity style={styles.button} onPress={submitSignup}>
             <Text style={{fontSize:20,fontWeight:'bold'}} >SIGN UP</Text>
           </TouchableOpacity>

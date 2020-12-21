@@ -20,6 +20,7 @@ class Videos extends Component {
 
         var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -42,7 +43,7 @@ class Videos extends Component {
         console.log(this.props.user.username)
         var myHeaders = new Headers();
    myHeaders.append("Content-Type", "application/json");
-
+   myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
    
    var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
    

@@ -15,6 +15,7 @@ class History extends Component {
     componentDidMount() {
     var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
     var requestOptions = {
         method: 'GET',
         redirect: 'follow',
