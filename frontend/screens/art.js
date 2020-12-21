@@ -1,6 +1,8 @@
 import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
-import RestartAndroid from 'react-native-restart-android'
+// import RestartAndroid from 'react-native-restart-android'
+import RNRestart from 'react-native-restart';
+
 export default function Art({ navigation }){
     const [list,setList] = useState([
         {nav:"Coloring",key:"a1",item:"Coloring",pic:{uri: 'https://imgur.com/0r8qpuJ.png'}},
@@ -9,7 +11,9 @@ export default function Art({ navigation }){
     const pressHandler = (x) => {
         // navigation.navigate(x)
         //console.log("******************" + RNRestart)
-        RestartAndroid.restart()
+        // RestartAndroid.restart()
+        RNRestart.restart()
+
     }
     return(
         <View style={styles.mainContainer}>
