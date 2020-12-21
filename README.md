@@ -150,6 +150,6 @@ https://blackpearl2.ew.r.appspot.com/admin
 
 ## Picture Documentation
 
-![Home Page]()
+![Home Page](https://i.imgur.com/olCVOWe.png)
 
 
