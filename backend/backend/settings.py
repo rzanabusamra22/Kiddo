@@ -117,28 +117,28 @@ if os.getenv('GAE_APPLICATION', None):
             'NAME': 'blackpearl',
         }
     }
-else:
-    # Running locally so connect to either a local MySQL instance or connect to Cloud SQL via the proxy. 
-    # To host the database locally
-    # run $ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
-            'NAME': 'blackpearl',
-            'USER': 'xoro',
-            'PASSWORD': '',
-        }
-    }
 # else:
-#     # run offline database
+#     # Running locally so connect to either a local MySQL instance or connect to Cloud SQL via the proxy. 
+#     # To host the database locally
+#     # run $ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306
 #     DATABASES = {
 #         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': 'db.sqlite3',
+#             'ENGINE': 'django.db.backends.mysql',
+#             'HOST': '127.0.0.1',
+#             'PORT': '3306',
+#             'NAME': 'blackpearl',
+#             'USER': 'xoro',
+#             'PASSWORD': '',
 #         }
 #     }
+else:
+    # run offline database
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -189,9 +189,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication', 
     ],
    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-       # 'rest_framework.permissions.IsAuthenticated'
-       # 'rest_framework.permissions.AllowAny'
+       # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+       'rest_framework.permissions.IsAuthenticated',
+       # 'rest_framework.permissions.AllowAny',
     ],
    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }

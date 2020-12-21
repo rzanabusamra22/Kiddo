@@ -63,7 +63,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def signup(request):
-    #print('***************** SIGNUP **************')
+    print('***************** SIGNUP **************')
     #print(request)
     #body_unicode = request.body.decode('utf-8')
     #body = json.loads(body_unicode)
