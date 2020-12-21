@@ -32,10 +32,11 @@
    - React (Redux - React Native Navigation - Hooks)
    - User Interface Framework (React Native Paper)
    - Design (React Native Animation - React Native Alerts)
+- Payment System (Stripe)
 - Testing (Jest & Enzyme)
 - Authentication (JWT - Django Rest Framework Permissions)
 - Continuous Integration (CircleCI)
-- Deployment (Firebase)
+- Deployment/Cloud Solutions (FrontEnd:Firebase - BackEnd:Google Cloud(NginX))
 
 ## Requirements
 - TextEditor 
