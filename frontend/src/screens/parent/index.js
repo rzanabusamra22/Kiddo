@@ -3,6 +3,7 @@ import { Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOp
 import AsyncStorage from '@react-native-community/async-storage'
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
+import RestartAndroid from 'react-native-restart-android'
 const { width, height } = Dimensions.get('window');
 // for the animations Setting 
 const {Value,event,block,cond,eq,set,Clock,startClock,stopClock,debug,timing,clockRunning,interpolate,concat,Extrapolate} = Animated;
@@ -118,12 +119,14 @@ class MusicApp extends Component {
     // console.log('---------handle submit---------this: ',this)
     // console.log('****************************')
     // console.log(this.state.username + "   " + this.state.password)
+
     var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
     var requestOptions = {
     method: 'POST',
     body: raw ,
     headers: {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization": "Basic eG9ybzoxMjM="
     },
     redirect: 'follow'
     };

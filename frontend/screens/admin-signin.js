@@ -14,12 +14,14 @@ class Signin extends React.Component {
     }
     
      handleSubmit = () => {
+        
  var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
 var requestOptions = {
   method: 'POST',
   body: raw ,
   headers: {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization": "Basic eG9ybzoxMjM="
   },
   redirect: 'follow'
 };

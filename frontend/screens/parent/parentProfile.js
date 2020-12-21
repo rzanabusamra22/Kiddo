@@ -19,6 +19,7 @@ class parentProfile extends Component{
    
       
         myHeaders.append("Content-Type", "application/json");
+   myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
                     
                    AsyncStorage.getItem('@user').then((user)=>{
                     console.log('*****************************************', user)
