@@ -2,12 +2,23 @@
   "name": "kiddo",
   "description": "app for kids",
   "license": "none",
-  "main": "index.js",
+  "version": "1.0.0",
+  "homepage": "https://kiddoi.web.app/",
+  "author": "BlackPearl",
+  "private": false,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "web": "expo start --web",
     "start": "react-native start",
+    "rnandroid": "react-native run-android",
+    "rnios": "react-native run-ios",
+    "web": "expo start --web",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "build-ios": "expo build:ios",
+    "build-android": "expo build:android",
+    "start-web": "react-scripts start",
+    "build-web": "react-scripts build",
+    "test-web": "react-scripts test",
+    "eject-web": "react-scripts eject",
     "test": "jest"
   },
   "dependencies": {
@@ -72,6 +83,5 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/TheBlackPearl-FinaleProject/Kiddo"
-  },
-  "private": false
+  }
 }

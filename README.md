@@ -81,7 +81,6 @@ This website gives a safe envorinment for kids to play and learn
 * Install ruby & curl & git & cocoapods then Open bash inside /frontend/ios
 * `$ pod install` then `$ npm run ios`
 
-
 ## Backend ##
 * To create new virtual environment (venv)
 * Open bash inside /backend
@@ -112,6 +111,10 @@ This website gives a safe envorinment for kids to play and learn
 * `$ python manage.py makemigrations api` then `$ python manage.py migrate`
 
 ## Deploy ##
+* To deploy a web page
+* Install firebase then open bash inside /frontend
+* `$ firebase init` then `$ firebase deploy`
+
 * To deploy a server using app engine
 * Install gcloud then open bash inside /backend
 * `$ gcloud app deploy`
@@ -122,6 +125,8 @@ This website gives a safe envorinment for kids to play and learn
 * `$ python manage.py migrate` then `$ gcloud app deploy`
 
 ### Deployed links ###
+* Frontend web
+* https://kiddoi.web.app/
 * Backend server
 * https://blackpearl2.ew.r.appspot.com/
 * Backend admin server
@@ -129,10 +134,10 @@ This website gives a safe envorinment for kids to play and learn
 
 ## Members ##
 * Razan Abusamra - Scrum Master
-react native - expo - react animation - navigation - sliders - picutres - drawer - stripe - user profile
+* react native - expo - react animation - navigation - sliders - picutres - drawer - stripe - user profile
 * Hamdallah Fatayer - Co-Leader
-python - django - rest framework - google sdk - cloud sql - google app engine - android studio - jest - circle ci - all platforms testing - deploy backend - deploy frontend - user history
+* python - django - rest framework - google sdk - cloud sql - google app engine - android studio - jest - circle ci - all platforms testing - deploy backend - deploy frontend - user history
 * Noor Ashqar - Development
-react - expo - jest - database data control - videos - pictures - games - webview & iframe - sounds - songs - redux - all platforms builds
+* react - expo - jest - database data control - videos - pictures - games - webview & iframe - sounds - songs - redux - all platforms builds
 * Dima jaber - Development
-python - django - rest framework - jwt - django token - djoser - stripe - sign in & up - RNSound
+* python - django - rest framework - jwt - django token - djoser - stripe - sign in & up - RNSound
