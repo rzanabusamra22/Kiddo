@@ -41,6 +41,7 @@
 ## Requirements
 
 - TextEditor 
+- Android studio
 - React Native > v0.6
 - expo > v39.0
 - expo-cli > v4.0
@@ -54,7 +55,7 @@
 ```
   git clone https://github.com/<Your Github userName>/Kiddo
 ```
-3. Move into the repo after its been cloned onto your machine.
+3. Move into the repo after its been cloned onto your local machine.
 4. Follow the instructions in the 'Installing Dependencies' section.
 
 ### Installing Dependencies FrontEnd
@@ -68,6 +69,8 @@ npm install
 
 npm run web
 ```
+2. (Option1)Press Android device/emulator to run the app in Android studio.
+2. (Option2)Scan the code and run it on your phone using Expo Phone Application.
 
 ### Installing Dependencies BackEnd
 ## Links
