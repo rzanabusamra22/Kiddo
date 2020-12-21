@@ -66,7 +66,7 @@ git clone https://github.com/<Your Github userName>/Kiddo
 ```
 cd frontend/
 npm install
-expo start  OR  npm run web
+expo start
 ```
 2. To run the App
   - (Option1) Press Android device/emulator to run the app in Android studio.

@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
-import RestartAndroid from 'react-native-restart-android'
+import RNRestart from 'react-native-restart';
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -37,19 +37,9 @@ class DrawerContent extends React.Component{
     console.log(AsyncStorage.getItem('@token'))
    await AsyncStorage.removeItem('@token')
    console.log(AsyncStorage.getItem('@token'))
-   //this.props.setUser({});
-   await AsyncStorage.removeItem('@user')
-//   console.log('PROPS:   ',this.props.frn)
- //  console.log(this.props.nth)
-   //RestartAndroid.restart()
-   //RNRestart.Restart();
- //  this.props.frn();
-   //this.setState({flag: 1})
-  // RNRestart.Restart();
-   //Restart();
-   
+   await AsyncStorage.removeItem('@user') 
+   //
    RNRestart.Restart();
-
 };
     render(){
     return(
