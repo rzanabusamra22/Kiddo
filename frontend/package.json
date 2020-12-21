@@ -5,20 +5,20 @@
   "version": "1.0.0",
   "homepage": "https://kiddoi.web.app/",
   "author": "BlackPearl",
-  "private": false,
   "scripts": {
-    "start": "react-native start",
-    "rnandroid": "react-native run-android",
-    "rnios": "react-native run-ios",
+    "rn start": "react-native start",
+    "rn-android": "react-native run-android",
+    "rn-ios": "react-native run-ios",
     "web": "expo start --web",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "build-ios": "expo build:ios",
-    "build-android": "expo build:android",
+    "build:ios": "expo build:ios",
+    "build:android": "expo build:android",
     "start-web": "react-scripts start",
     "build-web": "react-scripts build",
     "test-web": "react-scripts test",
     "eject-web": "react-scripts eject",
+    "start": "expo start",
     "test": "jest"
   },
   "dependencies": {
@@ -57,7 +57,7 @@
     "react-native-unimodules": "~0.11.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-viewport-units": "0.0.5",
-    "react-native-web": "~0.13.12",
+    "react-native-web": "^0.13.18",
     "react-native-webview": "10.7.0",
     "react-navigation": "^4.4.3",
     "react-navigation-stack": "^2.10.2",
@@ -84,5 +84,18 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/TheBlackPearl-FinaleProject/Kiddo"
+  },
+  "private": false,
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
