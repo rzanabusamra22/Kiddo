@@ -4,41 +4,45 @@ import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFee
 import { Dimensions } from 'react-native';
 import { sendgame } from './redux/actions';
 import { connect } from 'react-redux';
-//To make responsive 
 const wind = Dimensions.get('window');
 var vw = wind.width * 0.01
 var vh = wind.height * 0.01
-
 class Games extends Component {
     constructor(props) {
+        
         super(props)
         this.state = {
             result: [],
         }
     }
     componentDidMount() {
-    var myHeaders = new Headers();
+
+        var myHeaders = new Headers();
+    //myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+   // myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
             headers:myHeaders
         };
-        //fetch data from deployed db.
         fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=other", requestOptions)
         .then(response => response.json())
         .then(result => {
+            console.log(result)
             this.setState({
                 result
             })
         })
         .catch(error => console.log('error', error));
 }
+
     save(item) {
         if(this.props.user){
+
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+   myHeaders.append("Content-Type", "application/json");
+   myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
    
    var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Game"});
    
@@ -48,7 +52,7 @@ class Games extends Component {
      body: raw,
      redirect: 'follow'
    };
-   //fetch data from deployed db.
+   
    fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=other", requestOptions)
      .then(response => response.json())
      .then(result => console.log(result))
@@ -72,6 +76,7 @@ class Games extends Component {
                             <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: item?.thumbnail }} />
                         </TouchableOpacity>
                     )
+                
                  }
             keyExtractor={(item,i)=>{return `${i}`}}
             numColumns = {2}

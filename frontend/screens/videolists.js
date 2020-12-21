@@ -1,8 +1,7 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
 import { sendvideocat } from '../screens/redux/actions';
 import { connect } from 'react-redux';
-
  class  Videolists extends React.Component{
      constructor(props){
          super(props)
@@ -11,10 +10,10 @@ import { connect } from 'react-redux';
     }
      pressHandler = (x) => {
          this.props.sendvideocat(x.item)
+         console.log(this.props.videocat)
         this.props.navigation.navigate("Videos")
     }
      render(){
-         //The array of picture that are displayed in the main page of videos + control navigation to the other components
     const list = [
         {key:"a1",item:"funny",pic:{uri: 'https://i.imgur.com/cXuZxf2.jpg'}},
         {key:"a2",item:"cartoon",pic:{uri: 'https://i.imgur.com/RKGP04e.jpg'}},
@@ -109,6 +108,7 @@ const styles = StyleSheet.create({
 })
 const mapStateToProps = (state) => {
     return {
+
     }
   }
   const mapDispatchToProps = (dispatch) => {

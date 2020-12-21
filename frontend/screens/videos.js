@@ -3,27 +3,31 @@ import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableW
 import { Dimensions } from 'react-native';
 import { sendvideo } from './redux/actions';
 import { connect } from 'react-redux';
-
-//To make the page responsive
+// import * as Progress from 'react-native-progress';
 const wind = Dimensions.get('window');
 var vw = wind.width * 0.01
 var vh = wind.height * 0.01
 class Videos extends Component {
     constructor(props) {
+        
         super(props)
         this.state = {
             result: [],
+
         }
     }
     componentDidMount() {
+
         var myHeaders = new Headers();
+    //myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+    //myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
             headers:myHeaders
         };
-         //fetch the data from db.
+
         fetch(`https://blackpearl2.ew.r.appspot.com/records/?category=${this.props.videocat}`, requestOptions)
             .then(response => response.json())
             .then(result => {
@@ -34,9 +38,9 @@ class Videos extends Component {
             })
             .catch(error => console.log('error', error));
     }
-    //for the history to be saved in db.
     save(item) {
         if(this.props.user){
+
         console.log(this.props.user.username)
         var myHeaders = new Headers();
    myHeaders.append("Content-Type", "application/json");
@@ -51,7 +55,7 @@ class Videos extends Component {
      body: raw,
      redirect: 'follow'
    };
-   //to add data to th db
+   
    fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
      .then(response => response.json())
      .then(result => console.log(result))
@@ -64,6 +68,7 @@ class Videos extends Component {
        console.log(this.props.videocat)
        const videoctagory = this.state.result
         return (
+
             <FlatList
             data={videoctagory}
             renderItem={({ item })=>(

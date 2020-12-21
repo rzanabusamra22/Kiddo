@@ -1,10 +1,9 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Image, TouchableOpacity,FlatList  } from 'react-native';
+import { WebView } from 'react-native-webview'
+import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, Button, Alert, Linking,FlatList  } from 'react-native';
 import { Dimensions } from 'react-native';
 import { sendcoloring } from '../redux/actions';
 import { connect } from 'react-redux';
-
-//To make the styleing responsive 
 const wind = Dimensions.get('window');
 var vw = wind.width * 0.01
 var vh = wind.height * 0.01
@@ -17,13 +16,14 @@ class Coloring extends Component {
     }
     componentDidMount() {
         var myHeaders = new Headers();
+    //myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+    //myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
             headers: myHeaders
         };
-        //fetch the data from deployed db.
         fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=color", requestOptions)
             .then(response => response.json())
             .then(result => {
@@ -33,7 +33,7 @@ class Coloring extends Component {
             })
             .catch(error => console.log('error', error));
     }
-    //To dynamic rendaring of the values.
+    
     render() {
         const navigation = this.props.navigation
         const sendcoloring = this.props.sendcoloring
@@ -46,9 +46,11 @@ class Coloring extends Component {
                             sendcoloring(item.link);
                               navigation.navigate('Game')
                               }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
+ 
                              <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: item?.thumbnail }} />
                          </TouchableOpacity>
                      )
+                 
                   }
              keyExtractor={(item,i)=>{return `${i}`}}
              numColumns = {2}

@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import { WebView } from 'react-native-webview'
 import { StyleSheet, Image, Text, View, Keyboard, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, Button, Alert, Linking,FlatList  } from 'react-native';
 import { Dimensions } from 'react-native';
 import { senddraw } from '../redux/actions';

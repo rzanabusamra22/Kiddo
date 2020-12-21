@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import { Dimensions } from "react-native";
 const win = Dimensions.get('window');
-//To control the display of the home page cards + on press functionality 
+
 export default function CategoryItem({ item ,press }) {
+    
     return (
         <View style={styles.container} >
             <TouchableOpacity onPress={()=>press(item.nav)}>
@@ -23,5 +24,9 @@ const styles = StyleSheet.create({
     img: {
         width: win.width,
         height: win.width / 2.5,
+        // shadowColor: '#8eed90',
+        // shadowOffset: {width: 10, height: 10},
+        // shadowOpacity: 30,
+        // elevation: 10
     }
 })

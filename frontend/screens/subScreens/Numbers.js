@@ -1,7 +1,6 @@
 import React, { Component, useState } from 'react';
 import { Image, StyleSheet, Text, View } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
-//The array of pictures
 const slides = [
     {key: "one",image: {uri: 'https://i.imgur.com/N6AqfnY.png'}},
     {key: "two",image: {uri: 'https://i.imgur.com/hV0OYM5.png'}},
@@ -14,7 +13,6 @@ const slides = [
     {key: "nine",image: {uri: 'https://i.imgur.com/Nxbwd4E.png'}},
     {key: "ten",image: {uri: 'https://i.imgur.com/EpyMsS0.png'}},
   ];
-  //The functionality of Slides
 class Numbers extends Component{
     constructor(){
         super()
