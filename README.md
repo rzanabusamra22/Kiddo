@@ -124,7 +124,20 @@ python manage.py makemigrations api
 python manage.py migrate
 ```
 ### Deploying
-
+To deploy the server using app engine
+1. Install gcloud
+```
+cd backend/
+gcloud app deploy
+```
+2. To update the deployed server
+Run MySql database on localhost.
+```
+cd backend/
+python manage.py makemigrations api
+python manage.py migrate
+gcloud app deploy
+```
 ## Links
 ## Picture Documentation
 
