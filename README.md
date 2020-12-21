@@ -53,7 +53,7 @@
 1. Fork the repo from github.
 2. Clone down your fork
 ```
-  git clone https://github.com/<Your Github userName>/Kiddo
+git clone https://github.com/<Your Github userName>/Kiddo
 ```
 3. Move into the repo after its been cloned onto your local machine.
 4. Follow the instructions in the 'Installing Dependencies' section.
@@ -64,20 +64,26 @@
 
 ```
 cd frontend/
-
 npm install
-
 expo start  OR  npm run web
 ```
 2. To run the App
-  - (Option1)Press Android device/emulator to run the app in Android studio.
-  - (Option2)Scan the code and run it on your phone using Expo Phone Application.
+  - (Option1) Press Android device/emulator to run the app in Android studio.
+  - (Option2) Scan the code and run it on your phone using Expo Phone Application.
 3. To run Jest test
 ```
 npm test
 ``` 
 4. To build the App 
-
+  - (Android)
+```
+npm run android
+``` 
+  - (ios) - prefered on mac
+```
+pod install
+npm run ios
+```
 
 ### Installing Dependencies BackEnd
 ## Links
