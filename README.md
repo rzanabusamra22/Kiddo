@@ -17,6 +17,7 @@
 1. [Development](#development)
     1. [Installing Dependencies FrontEnd](#installing-dependencies-frontend)
     1. [Installing Dependencies BackEnd](#installing-dependencies-backend)
+    1. [Deploying](#deploying)
 1. [Links](#links)
 1. [Picture Documentation](#picture-documentation)
 
@@ -122,6 +123,7 @@ pip freeze > requirements.txt
 python manage.py makemigrations api
 python manage.py migrate
 ```
+### Installing Dependencies BackEnd
 
 ## Links
 ## Picture Documentation
