@@ -393,6 +393,15 @@ const SignInStackScreen = ({navigation}) =>{
        headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
+ <SignUpStack.Screen
+ name="Success"
+ component={Success}
+ options={{ 
+  title: 'Kiddo',
+  headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+ headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
+}}
+/>
     </SignInStack.Navigator>
   )
 }
