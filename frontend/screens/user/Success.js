@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { senduser } from '../redux/actions';
 import AsyncStorage from '@react-native-community/async-storage'
 
-class parentProfile extends Component{
+class Success extends Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -108,4 +108,4 @@ const mapStateToProps = (state) => {
     }
   }
   
-export default connect(mapStateToProps, mapDispatchToProps)(parentProfile);  
+export default connect(mapStateToProps, mapDispatchToProps)(Success);  

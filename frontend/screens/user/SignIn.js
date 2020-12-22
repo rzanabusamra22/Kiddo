@@ -126,7 +126,7 @@ class SignIn extends Component {
          `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
         [
           { text: "Ok", onPress: () =>{ 
-             this.props.navigation.navigate('parentProfile')
+             this.props.navigation.navigate('Success')
            
     }}
         ],
