@@ -35,7 +35,6 @@ class Videos extends Component {
                     result
                 })
             })
-            .catch(error => console.log('error', error));
     }
     save(item) {
         if(this.props.user){
@@ -60,10 +59,8 @@ class Videos extends Component {
      .catch(error => console.log('error', error));
    }}
     render() {
-        var key1 = 0
        const navigation = this.props.navigation
        const sendvideo = this.props.sendvideo
-       console.log(this.props.videocat)
        const videoctagory = this.state.result
         return (
 

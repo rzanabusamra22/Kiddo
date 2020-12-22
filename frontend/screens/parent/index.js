@@ -3,7 +3,6 @@ import { Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOp
 import AsyncStorage from '@react-native-community/async-storage'
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
-import RNRestart from 'react-native-restart';
 
 const { width, height } = Dimensions.get('window');
 // for the animations Setting 
@@ -117,10 +116,6 @@ class MusicApp extends Component {
     })
   }
   handleSubmit = () => {
-    // console.log('---------handle submit---------this: ',this)
-    // console.log('****************************')
-    // console.log(this.state.username + "   " + this.state.password)
-
     var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
     var requestOptions = {
     method: 'POST',
@@ -135,22 +130,9 @@ class MusicApp extends Component {
     .then( (result) => {
       
     if(result.token !== undefined){
-      // console.log(result.token)
-      AsyncStorage.setItem('@token', result.token)
-      AsyncStorage.setItem('@user', this.state.username)
-      this.props.props.navigation.navigate('parentProfile')
-
-      // Alert.alert(
-      //   "User Sign-in",
-      //    `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
-      //   [
-      //     { text: "Ok", onPress: () =>{ 
-      //       RestartAndroid.restart()
-      //   }}
-      //   ],
-      //   { cancelable: true}
-      // );
-
+      AsyncStorage.setItem('@token', result.token).then(()=>{
+      AsyncStorage.setItem('@user', this.state.username).then(()=>{
+      this.props.props.navigation.navigate('parentProfile')})})
       } 
       
       else{
@@ -172,7 +154,6 @@ class MusicApp extends Component {
     }  
     )
 .catch(error => console.log('error', error));
-RNRestart.Restart();
 }
   //main return + render 
   render() {
