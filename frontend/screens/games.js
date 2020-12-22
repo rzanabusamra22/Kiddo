@@ -19,7 +19,6 @@ class Games extends Component {
 
         var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -32,7 +31,7 @@ class Games extends Component {
                 result
             })
         })
-        .catch(error => console.log('error', error));
+        .catch(error => console.error(error));
 }
 
     save(item) {
@@ -42,7 +41,8 @@ class Games extends Component {
    myHeaders.append("Content-Type", "application/json");
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
    
-   var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Game"});
+   
+   var raw = JSON.stringify({"user":this.props.user?.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Game"});
    
    var requestOptions = {
      method: 'POST',
@@ -53,8 +53,8 @@ class Games extends Component {
    
    fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=other", requestOptions)
      .then(response => response.json())
-     .then(result => console.log(result))
-     .catch(error => console.log('error', error));
+     .then(result => {})
+     .catch(error => console.error(error));
    }
 }
     render() {

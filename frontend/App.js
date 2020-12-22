@@ -17,8 +17,6 @@ import Videolists from './screens/videolists';
 import Videos from './screens/videos';
 import Video from './screens/video';
 import Game from './screens/game';
-import Draw from './screens/subScreens/draw';
-import ColoringS from './screens/subScreens/coloringS';
 import Album from './screens/Album';
 import Games from './screens/games';
 // Learn Catagories 
@@ -31,7 +29,9 @@ import Colors from './screens/subScreens/Colors';
 import Animals from './screens/subScreens/Animals';
 //Art Catagories 
 import Coloring from './screens/subScreens/coloring.js';
+import ColoringS from './screens/subScreens/coloringS';
 import Drawing from './screens/subScreens/Drawing';
+import Draw from './screens/subScreens/draw';
 //Drawer Pages
 import Signin from './screens/admin-signin';
 import Donate from './screens/donate';

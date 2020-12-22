@@ -3,7 +3,6 @@ import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableW
 import { Dimensions } from 'react-native';
 import { sendvideo } from './redux/actions';
 import { connect } from 'react-redux';
-// import * as Progress from 'react-native-progress';
 const wind = Dimensions.get('window');
 var vw = wind.width * 0.01
 var vh = wind.height * 0.01
@@ -20,7 +19,7 @@ class Videos extends Component {
 
         var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -37,13 +36,11 @@ class Videos extends Component {
     }
     save(item) {
         if(this.props.user){
-
-        console.log(this.props.user.username)
         var myHeaders = new Headers();
    myHeaders.append("Content-Type", "application/json");
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
    
-   var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
+   var raw = JSON.stringify({"user":this.props.user?.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
    
    var requestOptions = {
      method: 'POST',
@@ -54,8 +51,8 @@ class Videos extends Component {
    
    fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
      .then(response => response.json())
-     .then(result => console.log(' + History + '))
-     .catch(error => console.log('error', error));
+     .then(result => {})
+     .catch(error => console.error(error));
    }}
     render() {
        const navigation = this.props.navigation

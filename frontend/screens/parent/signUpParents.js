@@ -10,7 +10,6 @@ const SignUp =({navigation})=>{
 const submitSignup = ()=>{
   var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
 var raw = JSON.stringify({
   "username":parentname,
   "password":password,
@@ -27,26 +26,25 @@ var requestOptions = {
 fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
   .then(response => response.json())
   .then(result => {
-    console.log(result)
     var signup_error_msg = '' 
     if(Array.isArray(result.username)){
       signup_error_msg +=  '\n' + result.username 
-      console.log('first stage: ', signup_error_msg)
+
     }
     if(Array.isArray(result.email)){
       signup_error_msg +=  '\n' + result.email 
-      console.log('second stage: ', signup_error_msg)
+
     }
     if(Array.isArray(result.password)){
       signup_error_msg += '\n' +  result.password 
-      console.log('third stage : ', signup_error_msg)
+
     }
     if(signup_error_msg === '' ){
     Alert.alert(
       "Parents SignUp",
       "Successfully signed up",
       [
-        { text: "OK", onPress: () =>{ console.log("OK Pressed") 
+        { text: "OK", onPress: () =>{ 
         navigation.navigate('Home')
       }}
       ],
@@ -59,8 +57,8 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
         "Signed up Failed " +'\n'+  signup_error_msg ,
         [ 
            { text: "Try again", onPress: () => {
-          console.log("Try again Pressed")} },
-          { text: "CANCEL", onPress: () =>{ console.log("cancel Pressed")
+          } },
+          { text: "CANCEL", onPress: () =>{ 
         navigation.navigate('Home')
         } }
         ],
@@ -68,14 +66,14 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
       );
     }
   })
-  .catch(error => {console.log('error', error)
+  .catch(error => {console.error(error)
     Alert.alert(
       "Parents SignUp",
       "Failed signed up",
       [  
         { text: "Try again", onPress: () => {
-        console.log("Try again Pressed")} },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
+        } },
+        { text: "OK", onPress: () =>{}  }
       ],
       { cancelable: false }
     );

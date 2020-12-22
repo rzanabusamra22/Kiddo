@@ -13,7 +13,6 @@ export default function Learn({ navigation }){
     ])
     const pressHandler = (x) => {
         navigation.navigate(x)
-        //console.log(x)
     }
         return(
             <View style={styles.mainContainer}>
@@ -121,13 +120,10 @@ const styles = StyleSheet.create({
         marginVertical:6
     },
     cardContent:{
-        // flex:1,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
         padding:18,
-        // marginHorizontal:20,
-        // marginVertical:35
     },
     text:{
         color:'#fff',

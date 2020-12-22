@@ -3,26 +3,22 @@ import { Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOp
 import AsyncStorage from '@react-native-community/async-storage'
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
-
+import RNRestart from 'react-native-restart';
 const { width, height } = Dimensions.get('window');
 // for the animations Setting 
 const {Value,event,block,cond,eq,set,Clock,startClock,stopClock,debug,timing,clockRunning,interpolate,concat,Extrapolate} = Animated;
-
 function runTiming(clock, value, dest) {
   const state = {
     finished: new Value(0),
     position: new Value(0),
     time: new Value(0),
     frameTime: new Value(0)
-  
   };
-
   const config = {
     duration: 1000,
     toValue: new Value(0),
     easing: Easing.inOut(Easing.ease)
   };
-
   return block([
     cond(clockRunning(clock), 0, [
       set(state.finished, 0),
@@ -72,38 +68,31 @@ class MusicApp extends Component {
             ])
         }
       ]);
-
-
     this.buttonY = interpolate(this.buttonOpacity, {
       inputRange: [0, 1],
       outputRange: [100, 0],
       extrapolate: Extrapolate.CLAMP
     });
-
     this.bgY = interpolate(this.buttonOpacity, {
       inputRange: [0, 1],
       outputRange: [-height / 3, 0],
       extrapolate: Extrapolate.CLAMP
     });
-
     this.textInputZindex = interpolate(this.buttonOpacity, {
         inputRange: [0, 1],
         outputRange: [1,-1],
         extrapolate: Extrapolate.CLAMP
       });
-
     this.textInputY = interpolate(this.buttonOpacity, {
         inputRange: [0, 1],
         outputRange: [0,100],
         extrapolate: Extrapolate.CLAMP
       });
-
     this.textInputOpacity = interpolate(this.buttonOpacity, {
         inputRange: [0, 1],
         outputRange: [1,0],
         extrapolate: Extrapolate.CLAMP
       });
-
       this.rotateCross = interpolate(this.buttonOpacity, {
         inputRange: [0, 1],
         outputRange: [180,360],
@@ -116,41 +105,51 @@ class MusicApp extends Component {
     })
   }
   handleSubmit = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
-    var requestOptions = {
-    method: 'POST',
-    body: raw ,
-    headers: {
-    "Content-Type": "application/json",
-    },
-    redirect: 'follow'
-    };
+
+        var requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            headers:myHeaders
+        };
+    
     fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {
-      
+    console.log(result)
     if(result.token !== undefined){
-      AsyncStorage.setItem('@token', result.token).then(()=>{
-      AsyncStorage.setItem('@user', this.state.username).then(()=>{
-      this.props.props.navigation.navigate('parentProfile')})})
+      // console.log(result.token)
+      AsyncStorage.setItem('@token', result.token)
+      AsyncStorage.setItem('@user', this.state.username)
+      Alert.alert(
+        "User Sign-in",
+         `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
+        [
+          { text: "Ok", onPress: () =>{ 
+           // RNRestart.restart()
+             this.props.props.navigation.navigate('parentProfile')
+           
+    }}
+        ],
+        { cancelable: true}
+      );
       } 
-      
       else{
         Alert.alert(
           "User Sign-in",
           "signed in failed" + '\n' + 'username or password : incorrect',
           [
-            { text: "Cancel", onPress: () =>{ console.log("Cancel Pressed") 
+            { text: "Cancel", onPress: () =>{ 
             this.props.props.navigation.navigate('Home')
-           
           }},
-          { text: "Try again", onPress: () =>{ console.log("try again") 
+          { text: "Try again", onPress: () =>{ 
         }}
           ],
           { cancelable: true}
         );
       }
-        
     }  
     )
 .catch(error => console.log('error', error));
@@ -173,9 +172,6 @@ class MusicApp extends Component {
             </Animated.View>
           </TapGestureHandler>
            {/* Sign up button */}
-           
-
-
            <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('SignUp')}}>
           <Animated.View style={{...styles.button,backgroundColor: '#dc962e',opacity: this.buttonOpacity,transform: [{ translateY: this.buttonY }]}}>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>SIGN UP</Text>
@@ -206,7 +202,6 @@ class MusicApp extends Component {
   }
 }
 export default MusicApp;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

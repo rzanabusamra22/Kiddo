@@ -15,7 +15,7 @@ class History extends Component {
     componentDidMount() {
     var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+      
     var requestOptions = {
         method: 'GET',
         redirect: 'follow',
@@ -24,7 +24,7 @@ class History extends Component {
     fetch(`https://blackpearl2.ew.r.appspot.com/historys/?user=${this.props.user?.username}&kind=`, requestOptions)
         .then(response => response.json())
         .then(result => {this.setState({result})})
-        .catch(error => console.log('error', error));
+        .catch(error => console.error(error));
     }
     go(x){
         // when clicking on a history item visits the page again
@@ -41,7 +41,8 @@ class History extends Component {
                                         <TouchableOpacity style={styles.container} onPress={()=>this.go(item)} key={i}>
                                     <View >
                                     <Image 
-                                     source={item.thumbnail}
+                                     source={{uri: item.thumbnail}}
+
                                      style={{ width: win.width/3,
                                         height: win.width/3, borderRadius:8, margin:win.width/40}}
                                      />
@@ -49,6 +50,7 @@ class History extends Component {
                                      </TouchableOpacity>  
                                     )}
                                     numColumns={2}
+                                    keyExtractor={(index,key)=>{return key}}
                     />
                 </View>
         </View>
