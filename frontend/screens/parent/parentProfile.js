@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView ,TouchableOpaci
 import { connect } from 'react-redux';
 import { senduser } from '../redux/actions';
 import AsyncStorage from '@react-native-community/async-storage'
-import RNRestart from 'react-native-restart';
 
 class parentProfile extends Component{
     constructor(props) {
@@ -27,7 +26,6 @@ class parentProfile extends Component{
                     .then(response => response.json())
                     .then(result => {
                         this.props.senduser(result[0]);
-                        RNRestart.Restart();
                     })
                     .catch(()=>{})
                 })}

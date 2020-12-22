@@ -30,7 +30,6 @@ class Videos extends Component {
         fetch(`https://blackpearl2.ew.r.appspot.com/records/?category=${this.props.videocat}`, requestOptions)
             .then(response => response.json())
             .then(result => {
-                console.log(result)
                 this.setState({
                     result
                 })
@@ -55,7 +54,7 @@ class Videos extends Component {
    
    fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
      .then(response => response.json())
-     .then(result => console.log(result))
+     .then(result => console.log(' + History + '))
      .catch(error => console.log('error', error));
    }}
     render() {

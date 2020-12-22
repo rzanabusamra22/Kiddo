@@ -2,7 +2,6 @@
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import DrawerContent2 from './DrawerContent2';
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -86,7 +85,7 @@ componentDidMount() {
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {this.props.navigation.navigate('parentProfile')}}
+                            onPress={() => {this.props.navigation.navigate('AdminProfile')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -128,7 +127,64 @@ componentDidMount() {
             </Drawer.Section>
         </View>
     )
-}else{return  <DrawerContent2 {...this.props}/>}}}
+}else{
+  return  (
+<View style={{flex:1}}>
+  <DrawerContentScrollView {...this.props}>
+      <View style={styles.drawerContent}>
+          <Drawer.Section style={styles.drawerSection}>
+              <DrawerItem 
+                  icon={({color, size}) => (
+                      <Icon 
+                      name="home-outline" 
+                      color={color}
+                      size={size}
+                      />
+                  )}
+                  label="Home"
+                  onPress={() => {this.props.navigation.navigate('Home')}}
+              />
+              <DrawerItem 
+                  icon={({color, size}) => (
+                      <Icon 
+                      name="gift-outline" 
+                      color={color}
+                      size={size}
+                      />
+                  )}
+                  label="Donate"
+                  onPress={() => {this.props.navigation.navigate('Donate')}}
+              />
+          </Drawer.Section>
+      </View>
+  </DrawerContentScrollView >
+  <Drawer.Section style={styles.bottomDrawerSection}>
+  <DrawerItem 
+          icon={({color, size}) => (
+              <Icon 
+              name="exit-to-app" 
+              color={color}
+              size={size}
+              />
+          )}
+          label="SignUp"
+          onPress={() => {this.props.navigation.navigate('SignUp')}}
+      />
+      <DrawerItem 
+          icon={({color, size}) => (
+              <Icon 
+              name="exit-to-app" 
+              color={color}
+              size={size}
+              />
+          )}
+          label="SignIn"
+          onPress={() => {AsyncStorage.getItem('@token').then((token)=>{
+            if(token){this.setState({token})}else{this.props.navigation.navigate('Parent')}})}}
+      />
+  </Drawer.Section>
+</View>
+)}}}
 
 const styles = StyleSheet.create({
     drawerContent: {
