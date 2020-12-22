@@ -1,4 +1,3 @@
-//Admin Is signedin
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';

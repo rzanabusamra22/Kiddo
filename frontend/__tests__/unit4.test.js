@@ -12,7 +12,7 @@ import thunk from 'redux-thunk'
 import '@react-native-community/async-storage/jest/async-storage-mock';
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
-import Art from '../screens/art';
+import Art from '../screens/Art';
 
 test('renders correctly', async () => {
   const test = render(<Provider store={mockStore({})}><Art/></Provider>).toJSON();
