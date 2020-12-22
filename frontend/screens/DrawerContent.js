@@ -80,7 +80,7 @@ componentDidMount() {
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {this.props.navigation.navigate('AdminProfile')}}
+                            onPress={() => {this.props.navigation.navigate('Profile')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -175,7 +175,7 @@ componentDidMount() {
           )}
           label="SignIn"
           onPress={() => {AsyncStorage.getItem('@token').then((token)=>{
-            if(token){this.setState({token})}else{this.props.navigation.navigate('MusicApp')}})}}
+            if(token){this.setState({token})}else{this.props.navigation.navigate('SignIn')}})}}
       />
   </Drawer.Section>
 </View>

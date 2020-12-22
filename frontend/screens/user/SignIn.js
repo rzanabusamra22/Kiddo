@@ -3,7 +3,6 @@ import { Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOp
 import AsyncStorage from '@react-native-community/async-storage'
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
-import RNRestart from 'react-native-restart';
 const { width, height } = Dimensions.get('window');
 // for the animations Setting 
 const {Value,event,block,cond,eq,set,Clock,startClock,stopClock,debug,timing,clockRunning,interpolate,concat,Extrapolate} = Animated;
@@ -34,7 +33,7 @@ function runTiming(clock, value, dest) {
   ]);
 }
 //return + render 
-class MusicApp extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props)
     this.state ={
@@ -140,7 +139,7 @@ class MusicApp extends Component {
           "signed in failed" + '\n' + 'username or password : incorrect',
           [
             { text: "Cancel", onPress: () =>{ 
-            this.props.props.navigation.navigate('Home')
+            this.props.navigation.navigate('Home')
           }},
           { text: "Try again", onPress: () =>{ 
         }}
@@ -159,7 +158,7 @@ class MusicApp extends Component {
       <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'flex-end'}}>
         {/* Background Picture */}
         <Animated.View style={{...StyleSheet.absoluteFill, transform: [{ translateY: this.bgY }]}}>
-          <Image source={require('./PG.png')} style={{ flex: 1, height: null, width: null }}/>
+          <Image source={require('./Login.png')} style={{ flex: 1, height: null, width: null }}/>
         </Animated.View>
         {/* Landpage Content */}
         <View style={{ height: height / 3, justifyContent: 'center' }}>
@@ -170,7 +169,7 @@ class MusicApp extends Component {
             </Animated.View>
           </TapGestureHandler>
            {/* Sign up button */}
-           <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('SignUp')}}>
+           <TouchableOpacity onPress={() => {this.props.navigation.navigate('SignUp')}}>
           <Animated.View style={{...styles.button,backgroundColor: '#dc962e',opacity: this.buttonOpacity,transform: [{ translateY: this.buttonY }]}}>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>SIGN UP</Text>
           </Animated.View>
@@ -199,7 +198,7 @@ class MusicApp extends Component {
     );
   }
 }
-export default MusicApp;
+export default SignIn;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

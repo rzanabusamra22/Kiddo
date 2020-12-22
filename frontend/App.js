@@ -1,26 +1,25 @@
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// Navigator
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/Stack';
+import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons'
-//redux
-import {createStore} from 'redux';
+import * as React from 'react';
+// Redux
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import rootReducer from './screens/redux/reducers';
 import { Provider } from 'react-redux';
-import rootReducer from './screens/redux/reducers.js';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import {createStore} from 'redux';
 const store = createStore(rootReducer);
-// Home Screen Categories
-//
-//
-import Home from './screens/home-comp'
-import Learn from './screens/learn';
-import Art from './screens/art';
-import Videolists from './screens/videolists';
-import Videos from './screens/videos';
-import Video from './screens/video';
-import Game from './screens/game';
+// Home Screen
+import Home from './screens/Home'
+import Learn from './screens/Learn';
+import Art from './screens/Art';
+import Videolists from './screens/VideoLists';
+import Videos from './screens/Videos';
+import Video from './screens/Video';
+import Game from './screens/Game';
 import Album from './screens/Album';
-import Games from './screens/games';
+import Games from './screens/Games';
 // Learn Catagories 
 import Alphabet from './screens/subScreens/Alphabet'
 import Numbers from './screens/subScreens/Numbers';
@@ -29,33 +28,29 @@ import Fruits from './screens/subScreens/Fruits';
 import Vegatables from './screens/subScreens/Vegatables';
 import Colors from './screens/subScreens/Colors';
 import Animals from './screens/subScreens/Animals';
-//Art Catagories 
-import Coloring from './screens/subScreens/coloring.js';
-import ColoringS from './screens/subScreens/coloringS';
+// Art Catagories 
+import Coloring from './screens/subScreens/Coloring';
+import ColoringS from './screens/subScreens/Colorings';
 import Drawing from './screens/subScreens/Drawing';
-import Draw from './screens/subScreens/draw';
-//Drawer Pages
-import Signin from './screens/admin-signin';
-import Donate from './screens/donate';
-import AdminProfile from './screens/AdminProfile';
-//Admin Signed In
+import Draw from './screens/subScreens/Draw';
+// Drawer Pages
+import Donate from './screens/Donate';
+import Profile from './screens/Profile';
 import DrawerContent from './screens/DrawerContent';
-//Parent
-import SignUp from './screens/parent/signUpParents'
-import MusicApp from './screens/parent/index'
-import parentProfile from './screens/parent/parentProfile'
-import History from './screens/history'
-//Navigation
-const Stack = createStackNavigator();
+// User
+import SignUp from './screens/user/SignUp'
+import SignIn from './screens/user/SignIn'
+import Success from './screens/user/Success'
+import History from './screens/History'
+// Navigation
 const Drawer = createDrawerNavigator();
 const HomeStack = createStackNavigator();
-const SignInstack = createStackNavigator();
-const Donatestack = createStackNavigator();
-const AdminProfilestack = createStackNavigator();
-const ParentStack = createStackNavigator();
-const Historystack = createStackNavigator();
-const MusicAppstack = createStackNavigator();
-//Home Stack 
+const DonateStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
+const SignUpStack = createStackNavigator();
+const HistoryStack = createStackNavigator();
+const SignInStack = createStackNavigator();
+// Home Stack 
 const HomeStackScreen = ({navigation}) =>{
   return(
     <HomeStack.Navigator 
@@ -272,36 +267,10 @@ const HomeStackScreen = ({navigation}) =>{
     </HomeStack.Navigator>
   )
 }
-//SignIn Stack 
-const SignInStackScreen = ({navigation}) =>{
-  return(
-    <SignInstack.Navigator 
-  initialRouteName="Home"
-  screenOptions={{
-    headerStyle: {
-      backgroundColor: '#f4511e',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  }}
-  >
-    <SignInstack.Screen
-     name="Signin"
-     component={Signin}
-     options={{ 
-       title: 'Kiddo',
-     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> )
-    }}
- />
-    </SignInstack.Navigator>
-  )
-}
-//Donate Stack 
+// Donation Stack 
 const DonateStackScreen = ({navigation}) =>{
   return(
-    <Donatestack.Navigator 
+    <DonateStack.Navigator 
   initialRouteName="Home"
   screenOptions={{
     headerStyle: {
@@ -313,7 +282,7 @@ const DonateStackScreen = ({navigation}) =>{
     },
   }}
   >
-    <Donatestack.Screen
+    <DonateStack.Screen
      name="Donate"
      component={Donate}
      options={{ 
@@ -322,13 +291,13 @@ const DonateStackScreen = ({navigation}) =>{
        headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
-    </Donatestack.Navigator>
+    </DonateStack.Navigator>
   )
 }
-//Admin Stack 
-const AdminStackScreen = ({navigation}) =>{
+// Profile Stack 
+const ProfileStackScreen = ({navigation}) =>{
   return(
-    <AdminProfilestack.Navigator 
+    <ProfileStack.Navigator 
   initialRouteName="Home"
   screenOptions={{
     headerStyle: {
@@ -340,23 +309,23 @@ const AdminStackScreen = ({navigation}) =>{
     },
   }}
   >
-    <AdminProfilestack.Screen
+    <ProfileStack.Screen
      name="Profile"
-     component={AdminProfile}
+     component={Profile}
      options={{ 
       title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
-    </AdminProfilestack.Navigator>
+    </ProfileStack.Navigator>
   )
 }
-//Parent Stack 
-const ParentStackScreen = ({navigation}) =>{
+// SignUp Stack 
+const SignUpStackScreen = ({navigation}) =>{
   return(
-    // Parent
-    <ParentStack.Navigator 
+    // SignUp
+    <SignUpStack.Navigator 
   initialRouteName="Home"
   screenOptions={{
     headerStyle: {
@@ -368,41 +337,42 @@ const ParentStackScreen = ({navigation}) =>{
     },
   }}
   >
-    <ParentStack.Screen
-     name="parentProfile"
-     component={parentProfile}
+     <SignUpStack.Screen
+        name="SignUp" 
+        component={SignUp}  
+        options={{ 
+         title: 'Kiddo',
+         headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
+           index: 0,
+           routes: [{ name: 'Home' }],
+         }) }/>)
+      }}/>
+   
+    <SignUpStack.Screen
+     name="Success"
+     component={Success}
      options={{ 
       title: 'Kiddo',
-     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
-  <ParentStack.Screen
-     name="MusicApp"
-     component={MusicApp}
+  <SignUpStack.Screen
+     name="SignIn"
+     component={SignIn}
      options={{ 
       title: 'Kiddo',
-     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
- />
-  <ParentStack.Screen
-     name="SignUp" 
-     component={SignUp}  
-     options={{ 
-      title: 'Kiddo',
-      headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      }) }/>)
-   }}/>
-
-    </ParentStack.Navigator>
+    />
+    </SignUpStack.Navigator>
   )
 }
-const MusicAppStackScreen = ({navigation}) =>{
+// SignIn Stack 
+const SignInStackScreen = ({navigation}) =>{
   return(
-    <MusicAppstack.Navigator 
+    <SignInStack.Navigator 
   initialRouteName="Home"
   screenOptions={{
     headerStyle: {
@@ -414,22 +384,22 @@ const MusicAppStackScreen = ({navigation}) =>{
     },
   }}
   >
-    <MusicAppstack.Screen
-     name="MusicApp"
-     component={MusicApp}
+    <SignInStack.Screen
+     name="SignIn"
+     component={SignIn}
      options={{ 
       title: 'Kiddo',
      headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
        headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
-    </MusicAppstack.Navigator>
+    </SignInStack.Navigator>
   )
 }
 
 const HistoryStackScreen = ({navigation}) =>{
   return(
-    <Historystack.Navigator 
+    <HistoryStack.Navigator 
   initialRouteName="Home"
   screenOptions={{
     headerStyle: {
@@ -441,7 +411,7 @@ const HistoryStackScreen = ({navigation}) =>{
     },
   }}
   >
-    <Historystack.Screen
+    <HistoryStack.Screen
      name="History"
      component={History}
      options={{ 
@@ -450,7 +420,7 @@ const HistoryStackScreen = ({navigation}) =>{
        headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
     }}
  />
-    </Historystack.Navigator>
+    </HistoryStack.Navigator>
   )
 }
 // The App 
@@ -466,24 +436,21 @@ class App extends React.Component {
   render(){
   return (
     <Provider store={store}>
-      <SafeAreaProvider>
+    <SafeAreaProvider>
     <NavigationContainer>
       <Drawer.Navigator 
       drawerContent={ (props) => { return  <DrawerContent {...props}/>}}> 
         <Drawer.Screen name="Home" component={HomeStackScreen} />
-        <Drawer.Screen name="SignIn" component={SignInStackScreen} />
+        <Drawer.Screen name="Profile" component={ProfileStackScreen} />
         <Drawer.Screen name="Donate" component={DonateStackScreen} />
-        <Drawer.Screen name="Profile" component={AdminStackScreen} />
-        <Drawer.Screen name="Parent"  component={ParentStackScreen} />
-        <Drawer.Screen name="parentProfile"  component={ParentStackScreen} />
-        <Drawer.Screen name="History"  component={HistoryStackScreen} />
-        <Drawer.Screen name="MusicApp"  component={MusicAppStackScreen} />
+        <Drawer.Screen name="History" component={HistoryStackScreen} />
+        <Drawer.Screen name="SignUp" component={SignUpStackScreen} />
+        <Drawer.Screen name="SignIn" component={SignInStackScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
     </SafeAreaProvider>
     </Provider>
   ); 
 }}
-
 
 export default App 
