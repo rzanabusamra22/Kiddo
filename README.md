@@ -1,5 +1,3 @@
-[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://blackpearl2.ew.r.appspot.com/)
-
 # Project Name : KIDDO
 
 ## Team
@@ -152,6 +150,4 @@ https://youtu.be/Vg748ApTsuI
 
 ## Picture Documentation
 
-![Home Page](https://i.imgur.com/olCVOWe.png)
-
-
+![Home Page]()

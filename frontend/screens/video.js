@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
          }
      }
      render(){
-         console.log(this.props.videolink)
     return(
       
       <WebView

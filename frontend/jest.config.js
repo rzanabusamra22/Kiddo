@@ -1,7 +1,7 @@
 // frontend/jest.config.js
 // this file sets the configurations for jest
 module.exports = {
-    "preset": "jest-expo/universal",
+    "preset": "jest-expo",
     "verbose": true,
     "testEnvironment": "jsdom",
     "transformIgnorePatterns": [

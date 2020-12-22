@@ -1,11 +1,9 @@
 ///***  here the delete onclick and flatlist */
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import CategoryItem from './category-item-card'
 
 // import star from './android/imgs/star'
-//<Signin />
 export default function Home() {
     const [categories, setCategories] = useState([
         { name: "Razan", key: '1' },
@@ -48,35 +46,3 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-
-
-
-// <View style={styles.container}>
-    //   <Text>Open up App.js to start working on your app!</Text>
-    //   {/* <TouchableOpacity onPress={() => console.log('clicked')}>
-    //     <Image source={star} />
-    //   </TouchableOpacity> */}
-    //   <StatusBar style="auto" />
-    // </View>
-
-/*
-<FlatList
-    data={array}
-    renderItem = {({item}) =>(
-      <Text>{item.text}</Text>
-    )}
-/>
-
-
-
-*/
-
-// var requestOptions = {
-//     method: 'GET',
-//     redirect: 'follow'
-//   };
-  
-//   fetch("https://blackpearl2.ew.r.appspot.com/users/", requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));

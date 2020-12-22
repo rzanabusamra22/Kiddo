@@ -17,10 +17,7 @@ class Drawing extends Component {
     }
     componentDidMount() {
         var myHeaders = new Headers();
-    //myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    //myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -33,7 +30,7 @@ class Drawing extends Component {
                     result
                 })
             })
-            .catch(error => console.log('error', error));
+            .catch(error => console.error(error));
     }
     
     render() {
@@ -46,7 +43,7 @@ class Drawing extends Component {
              renderItem={({item})=>(
                          <TouchableOpacity onPress={() =>{ 
                             senddraw(item.link);
-                              navigation.navigate('Game')
+                              navigation.navigate('draw')
                               }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
  
                              <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: item?.thumbnail }} />

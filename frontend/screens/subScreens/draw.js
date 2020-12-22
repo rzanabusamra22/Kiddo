@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
          }
      }
      render(){
-         console.log(this.props.drawlink)
+      
     return(
         <WebView
         source={{
