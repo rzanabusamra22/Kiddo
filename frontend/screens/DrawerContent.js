@@ -1,4 +1,3 @@
-//Admin Is signedin
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -32,10 +31,13 @@ componentDidMount() {
     this.setState({token})
   })
    }
-  signOutHandler = async () => {
-   await AsyncStorage.removeItem('@token')
-   await AsyncStorage.removeItem('@user') 
-   this.setState({token:null})
+  signOutHandler = () => {
+    AsyncStorage.removeItem('@user').then(()=>{
+      AsyncStorage.removeItem('@token').then(()=>{
+      AsyncStorage.getItem('@token').then((token)=>{
+        this.setState({token})
+      })})})
+  
 };
     render(){
       if(this.state.token){
@@ -80,7 +82,7 @@ componentDidMount() {
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {this.props.navigation.navigate('AdminProfile')}}
+                            onPress={() => {this.props.navigation.navigate('Success')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -175,7 +177,7 @@ componentDidMount() {
           )}
           label="SignIn"
           onPress={() => {AsyncStorage.getItem('@token').then((token)=>{
-            if(token){this.setState({token})}else{this.props.navigation.navigate('Parent')}})}}
+            if(token){this.setState({token})}else{this.props.navigation.navigate('SignIn')}})}}
       />
   </Drawer.Section>
 </View>

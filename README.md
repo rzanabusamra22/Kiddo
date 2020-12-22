@@ -1,3 +1,5 @@
+[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://blackpearl2.ew.r.appspot.com/)
+
 # Project Name : KIDDO
 
 ## Team
@@ -139,15 +141,14 @@ gcloud app deploy
 ```
 ## Links
 
-- Backend Server
+- Deployed: Backend Server
 https://blackpearl2.ew.r.appspot.com/
-- Backend Admin Server
+- Deployed: Backend Admin Server
 https://blackpearl2.ew.r.appspot.com/admin 
-- Front End
+- Deployed: Front End
 
-- 1 min Ad Video 
-https://youtu.be/Vg748ApTsuI
 
 ## Picture Documentation
 
-![Home Page]()
+![Home Page](https://i.imgur.com/olCVOWe.png)
+

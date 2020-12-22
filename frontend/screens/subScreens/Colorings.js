@@ -2,36 +2,29 @@ import React, { Component, useState } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 import {WebView} from 'react-native-webview'
 import { connect } from 'react-redux';
- class Video extends Component{
+ class ColoringS extends Component{
      constructor(props){
          super(props)
          this.state={
          }
      }
      render(){
+        
     return(
-      
-      <WebView
-      source={{
-        uri:this.props.videolink
-      }}
+        <WebView
+        source={{
+          uri:this.props.coloringlink
+        }}
 />
-
     )
 }}
 
 const styles = StyleSheet.create({
-  container:{
-    flex : 1,
-  }, 
-  vid:{
-      width:500,
-      height:500
-    }
+    
 })
 const mapStateToProps = (state) => {
     return {
-       videolink: state.videolink,
+       coloringlink: state.coloringlink,
     }
   }
   const mapDispatchToProps = (dispatch) => {
@@ -40,4 +33,4 @@ const mapStateToProps = (state) => {
     }
   }
   
-export default connect(mapStateToProps, mapDispatchToProps)(Video);  
+export default connect(mapStateToProps, mapDispatchToProps)(ColoringS);

@@ -25,7 +25,7 @@ class AdminProfile extends Component{
                 <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>{this.props.user?.name}</Text>
                 <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>{this.props.user?.phone}</Text>
             </View>
-            <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('parentProfile')}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate('Success')}}>
             <Animated.View style={styles.button}>
                 <Image source={{uri: 'https://i.imgur.com/6xtJi3t.png'}} style={{height:50,width:50}} resizeMode="center"></Image>
                 <Text style={{fontSize:20,fontWeight:'bold'}}>Edit</Text>

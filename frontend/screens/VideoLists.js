@@ -1,6 +1,6 @@
 import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
-import { sendvideocat } from '../screens/redux/actions';
+import { sendvideocat } from './redux/actions';
 import { connect } from 'react-redux';
  class  Videolists extends React.Component{
      constructor(props){
