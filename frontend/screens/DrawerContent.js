@@ -80,7 +80,7 @@ componentDidMount() {
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {this.props.navigation.navigate('Profile')}}
+                            onPress={() => {this.props.navigation.navigate('Success')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
