@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
      }
 
      render(){
-         console.log(this.props.gamelink)
+
     return(
         <WebView
         source={{

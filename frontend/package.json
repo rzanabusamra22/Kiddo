@@ -14,6 +14,7 @@
     "web": "expo start --web",
     "android": "expo start --android",
     "ios": "expo start --ios",
+    "build:web": "expo build:web",
     "build:android": "expo build:android",
     "build:ios": "expo build:ios",
     "start-web": "react-scripts start",

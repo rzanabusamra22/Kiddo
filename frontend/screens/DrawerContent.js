@@ -80,7 +80,7 @@ componentDidMount() {
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {this.props.navigation.navigate('parentProfile')}}
+                            onPress={() => {this.props.navigation.navigate('AdminProfile')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (

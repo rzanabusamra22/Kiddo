@@ -105,25 +105,21 @@ class MusicApp extends Component {
     })
   }
   handleSubmit = () => {
-    // console.log('---------handle submit---------this: ',this)
-    // console.log('****************************')
-    // console.log(this.state.username + "   " + this.state.password)
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
-    var requestOptions = {
-    method: 'POST',
-    body: raw ,
-    headers: {
-    "Content-Type": "application/json",
-    "Authorization": "Basic eG9ybzoxMjM="
-    },
-    redirect: 'follow'
-    };
+
+        var requestOptions = {
+            method: 'POST',
+            body:raw,
+            redirect: 'follow',
+            headers:myHeaders
+        };
+    
     fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {
-    console.log(result)
     if(result.token !== undefined){
-      // console.log(result.token)
       AsyncStorage.setItem('@token', result.token)
       AsyncStorage.setItem('@user', this.state.username)
       Alert.alert(
@@ -131,7 +127,6 @@ class MusicApp extends Component {
          `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
         [
           { text: "Ok", onPress: () =>{ 
-           // RNRestart.restart()
              this.props.props.navigation.navigate('parentProfile')
            
     }}
@@ -144,10 +139,10 @@ class MusicApp extends Component {
           "User Sign-in",
           "signed in failed" + '\n' + 'username or password : incorrect',
           [
-            { text: "Cancel", onPress: () =>{ console.log("Cancel Pressed") 
+            { text: "Cancel", onPress: () =>{ 
             this.props.props.navigation.navigate('Home')
           }},
-          { text: "Try again", onPress: () =>{ console.log("try again") 
+          { text: "Try again", onPress: () =>{ 
         }}
           ],
           { cancelable: true}
@@ -155,12 +150,12 @@ class MusicApp extends Component {
       }
     }  
     )
-.catch(error => console.log('error', error));
+.catch(error => console.error(error));
 }
   //main return + render 
   render() {
     return (
-      // const { navigation } = this.props;
+
       <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'flex-end'}}>
         {/* Background Picture */}
         <Animated.View style={{...StyleSheet.absoluteFill, transform: [{ translateY: this.bgY }]}}>

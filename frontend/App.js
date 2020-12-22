@@ -1,5 +1,4 @@
 import * as React from 'react';
-import AsyncStorage from '@react-native-community/async-storage'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -40,7 +39,6 @@ import AdminProfile from './screens/AdminProfile';
 //Admin Signed In
 import DrawerContent from './screens/DrawerContent';
 //Parent
-import Parent from './screens/parent/parents-landingpage'
 import SignUp from './screens/parent/signUpParents'
 import MusicApp from './screens/parent/index'
 import parentProfile from './screens/parent/parentProfile'
@@ -367,15 +365,6 @@ const ParentStackScreen = ({navigation}) =>{
     },
   }}
   >
-    <ParentStack.Screen
-     name="Parent"
-     component={Parent}
-     options={{ 
-      title: 'Kiddo',
-     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
-     headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
-    }}
- />
     <ParentStack.Screen
      name="parentProfile"
      component={parentProfile}
