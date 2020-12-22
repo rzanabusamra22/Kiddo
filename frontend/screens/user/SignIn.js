@@ -119,8 +119,8 @@ class SignIn extends Component {
     .then(response => response.json())
     .then( (result) => {
     if(result.token !== undefined){
-      AsyncStorage.setItem('@token', result.token)
-      AsyncStorage.setItem('@user', this.state.username)
+      AsyncStorage.setItem('@token', result.token).then(()=>{
+      AsyncStorage.setItem('@user', this.state.username).then(()=>{
       Alert.alert(
         "User Sign-in",
          `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
@@ -132,7 +132,7 @@ class SignIn extends Component {
         ],
         { cancelable: true}
       );
-      } 
+      })})}
       else{
         Alert.alert(
           "User Sign-in",

@@ -55,8 +55,8 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
       .then(response => response.json())
       .then( (result) => {
       if(result.token !== undefined){
-        AsyncStorage.setItem('@token', result.token)
-        AsyncStorage.setItem('@user', parentname)}})
+        AsyncStorage.setItem('@token', result.token).then(()=>{
+        AsyncStorage.setItem('@user', parentname).then(()=>{
     Alert.alert(
       "Parents SignUp",
       "Successfully signed up",
@@ -68,7 +68,7 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
       ],
       { cancelable: true}
     );
-  }
+  })})}
     else{
       Alert.alert(
         "Parents SignUp",
@@ -95,8 +95,7 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
       ],
       { cancelable: false }
     );
-});
-}
+});}
       return (
         <View style={styles.container}>
           <Text style={styles.logo1}>
