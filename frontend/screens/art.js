@@ -1,7 +1,6 @@
 import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
 // import RestartAndroid from 'react-native-restart-android'
-import RNRestart from 'react-native-restart';
 
 export default function Art({ navigation }){
     const [list,setList] = useState([
@@ -9,11 +8,7 @@ export default function Art({ navigation }){
         {nav:"Drawing",key:"a2",item:"Drawing",pic:{uri: 'https://imgur.com/Hsm0YR5.png'}},
     ])
     const pressHandler = (x) => {
-        // navigation.navigate(x)
-        //console.log("******************" + RNRestart)
-        // RestartAndroid.restart()
-        RNRestart.restart()
-
+        navigation.navigate(x)
     }
     return(
         <View style={styles.mainContainer}>
