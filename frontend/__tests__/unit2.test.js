@@ -12,7 +12,7 @@ import thunk from 'redux-thunk'
 import '@react-native-community/async-storage/jest/async-storage-mock';
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
-import Video from '../screens/video';
+import Video from '../screens/Video';
 
 test('renders correctly', async () => {
   const test = render(<Provider store={mockStore({})}><Video /></Provider>).toJSON()
