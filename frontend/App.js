@@ -8,7 +8,7 @@ import * as React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import rootReducer from './screens/redux/reducers';
 import { Provider } from 'react-redux';
-import {createStore} from 'redux';
+import {createStore} from 'redux'; 
 const store = createStore(rootReducer);
 // Home Screen
 import Home from './screens/Home'
