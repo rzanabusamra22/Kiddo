@@ -27,7 +27,7 @@ jobs:
           command: | 
             cd frontend
             npm i
-            npm test 
+            npm run test-web
 workflows:
   testing:
     jobs:

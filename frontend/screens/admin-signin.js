@@ -14,6 +14,7 @@ class Signin extends React.Component {
     }
     
      handleSubmit = () => {
+        
  var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
 var requestOptions = {
   method: 'POST',
@@ -29,19 +30,9 @@ fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
         if(result.token !== undefined){
           AsyncStorage.setItem('@token', result.token)
           .then(()=>{
-           // location.reload();
-           //this.setState({flag: 1})
-            console.log(this.props.navigation)
-            console.log('********** frn from admin-signin ', this.props.frn)
-            //RestartAndroid.restart()
-            //RNRestart.Restart();
-           // this.props.navigation.push('Home');
             this.props.navigation.navigate('Home')
           })
-          console.log('*******************||**||*********************')
-          //  console.log(AsyncStorage.getItem('@token'))
           } 
-            
         }  
         )
   .catch(error => console.log('error', error));

@@ -12,7 +12,6 @@ const PaymentScreen = () => {
     const onCheckStatus =  (paymentResponse) => {
         setPaymentStatus('Thank you for supporting, Please wait while confirming your donation!')
         setResponse(paymentResponse)
-        console.log('*********************** donate & user:' + username + '      ' + amount)
         let jsonResponse = JSON.parse(paymentResponse);
         // perform operation to check payment status
          console.log(jsonResponse)
@@ -23,34 +22,26 @@ const PaymentScreen = () => {
         "amount":parseInt(amount)});
     
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        //myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
-        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+        
+   myHeaders.append("Content-Type", "application/json");
+        
         var requestOptions = {
           method: 'POST',
           headers: myHeaders,
           body: raw,
           redirect: 'follow'
         };
-        console.log('linebefore 888888888888888888888888888888888888' , raw)
         fetch("http://blackpearl2.ew.r.appspot.com/donate/", requestOptions)
         .then((res)=> res.text())
         .then(stripeResponse =>{
             console.log(stripeResponse)
             if(stripeResponse) {
-                //const  paid  =  stripeResponse.data;
-               // console.log('------------ paid -------------', paid)
-                //if(paid === true){
                     setPaymentStatus('Donation Success')
                 }else{
                     setPaymentStatus('Donation failed due to some issue')
                 }
-            // }else{
-            //     setPaymentStatus(' Donation failed due to some issue')
-            // }
         })
         .catch( (error)=> {
-            console.log(error)
             setPaymentStatus(' Payment failed due to some issue')
         })
        }
