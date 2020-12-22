@@ -54,7 +54,7 @@ class Album extends Component {
                     data={arr1}
                     renderItem={({ item }) => (
                         <TouchableOpacity>
-                            <Image source={item.link} style={{
+                            <Image source={{uri:item.link}} style={{
                                 width: 260,
                                 height: 300,
                                 borderWidth: 5,
@@ -73,7 +73,7 @@ class Album extends Component {
                     data={arr2}
                     renderItem={({ item }) => (
                         <TouchableOpacity>
-                            <Image source={item.link} style={{
+                            <Image source={{uri:item.link}} style={{
                                 width: 260,
                                 height: 300,
                                 borderWidth: 5,
@@ -90,7 +90,7 @@ class Album extends Component {
                     data={arr3}
                     renderItem={({ item }) => (
                         <TouchableOpacity>
-                            <Image source={item.link} style={{
+                            <Image source={{uri:item.link}} style={{
                                 width: 260,
                                 height: 300,
                                 borderWidth: 5,
@@ -107,7 +107,7 @@ class Album extends Component {
                     data={arr4}
                     renderItem={({ item }) => (
                         <TouchableOpacity>
-                            <Image source={item.link} style={{
+                            <Image source={{uri:item.link}} style={{
                                 width: 260,
                                 height: 300,
                                 borderWidth: 5,
