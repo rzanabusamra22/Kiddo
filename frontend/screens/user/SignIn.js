@@ -118,7 +118,7 @@ class SignIn extends Component {
     fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {
-      console.log("Sign in" + result )
+      console.log("Sign in" + JSON.stringify(result) )
     if(result.token !== undefined){
       AsyncStorage.setItem('@token', result.token)
       AsyncStorage.setItem('@user', this.state.username)
