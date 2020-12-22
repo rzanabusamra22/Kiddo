@@ -2,13 +2,17 @@ import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
 //import RestartAndroid from 'react-native-restart-android'
 import RNRestart from 'react-native-restart';
+//import {Restart} from 'fiction-expo-restart';
+
 export default function Art({ navigation }){
     const [list,setList] = useState([
         {nav:"Coloring",key:"a1",item:"Coloring",pic:{uri: 'https://imgur.com/0r8qpuJ.png'}},
         {nav:"Drawing",key:"a2",item:"Drawing",pic:{uri: 'https://imgur.com/Hsm0YR5.png'}},
     ])
     const pressHandler = (x) => {
-        navigation.navigate(x)
+       navigation.navigate(x)
+      // Restart();
+     // DevSettings.reload()
         //console.log("******************" + RNRestart)
         //RestartAndroid.restart()
          //RNRestart.Restart();

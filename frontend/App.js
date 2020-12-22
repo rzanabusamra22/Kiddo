@@ -10,6 +10,8 @@ import { Provider } from 'react-redux';
 import rootReducer from './screens/redux/reducers.js';
 const store = createStore(rootReducer);
 // Home Screen Categories
+//
+//
 import Home from './screens/home-comp'
 import Learn from './screens/learn';
 import Art from './screens/art';
