@@ -5,14 +5,14 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager,Permissions
 
 class User(AbstractBaseUser,PermissionsMixin):
     objects =  UserManager()
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_superuser = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False, blank=True)
+    is_active = models.BooleanField(default=True, blank=True)
+    is_superuser = models.BooleanField(default=False, blank=True)
     username = models.CharField(max_length=40, unique=True)
     password = models.CharField(max_length=90)
-    email = models.EmailField(max_length=90, unique=True)
+    email = models.EmailField(max_length=90, default="", blank=True, unique=True)
     phone = models.CharField(max_length=40, default="", blank=True, help_text='Contact phone number')
-    thumbnail = models.CharField(max_length=255, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU")
+    thumbnail = models.CharField(max_length=255, blank=True, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU")
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['password']
     def __str__(self):
