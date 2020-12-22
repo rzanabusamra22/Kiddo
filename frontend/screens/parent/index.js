@@ -111,6 +111,7 @@ class MusicApp extends Component {
 
         var requestOptions = {
             method: 'POST',
+            body:raw,
             redirect: 'follow',
             headers:myHeaders
         };
@@ -118,9 +119,7 @@ class MusicApp extends Component {
     fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {
-    console.log(result)
     if(result.token !== undefined){
-      // console.log(result.token)
       AsyncStorage.setItem('@token', result.token)
       AsyncStorage.setItem('@user', this.state.username)
       Alert.alert(
@@ -128,7 +127,6 @@ class MusicApp extends Component {
          `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
         [
           { text: "Ok", onPress: () =>{ 
-           // RNRestart.restart()
              this.props.props.navigation.navigate('parentProfile')
            
     }}
@@ -152,12 +150,12 @@ class MusicApp extends Component {
       }
     }  
     )
-.catch(error => console.log('error', error));
+.catch(error => console.error(error));
 }
   //main return + render 
   render() {
     return (
-      // const { navigation } = this.props;
+
       <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'flex-end'}}>
         {/* Background Picture */}
         <Animated.View style={{...StyleSheet.absoluteFill, transform: [{ translateY: this.bgY }]}}>

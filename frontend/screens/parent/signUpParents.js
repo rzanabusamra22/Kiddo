@@ -40,11 +40,29 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
 
     }
     if(signup_error_msg === '' ){
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      var raw = JSON.stringify({"username":parentname,"password":password});
+  
+          var requestOptions = {
+              method: 'POST',
+              body:raw,
+              redirect: 'follow',
+              headers:myHeaders
+          };
+      
+      fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
+      .then(response => response.json())
+      .then( (result) => {
+      if(result.token !== undefined){
+        AsyncStorage.setItem('@token', result.token)
+        AsyncStorage.setItem('@user', parentname)}})
     Alert.alert(
       "Parents SignUp",
       "Successfully signed up",
       [
         { text: "OK", onPress: () =>{ 
+     
         navigation.navigate('Home')
       }}
       ],
