@@ -1,8 +1,7 @@
 //Admin Is signedin
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage'
-import RNRestart from 'react-native-restart';
+import AsyncStorage from '@react-native-community/async-storage';
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -20,7 +19,6 @@ import {
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
-
 class DrawerContent extends React.Component{
   constructor(props){
     super(props)
@@ -29,19 +27,18 @@ class DrawerContent extends React.Component{
         ,flag:0
       }
   }
-  
-  ///////////////////////////////////////////////////////////
-
+componentDidMount() {
+  AsyncStorage.getItem('@token').then((token)=>{
+    this.setState({token})
+  })
+   }
   signOutHandler = async () => {
-    console.log('*****************************************')
-    console.log(AsyncStorage.getItem('@token'))
    await AsyncStorage.removeItem('@token')
-   console.log(AsyncStorage.getItem('@token'))
    await AsyncStorage.removeItem('@user') 
-   //
-   //RNRestart.Restart();
+   this.setState({token:null})
 };
     render(){
+      if(this.state.token){
     return(
         <View style={{flex:1}}>
               <DrawerContentScrollView {...this.props}>
@@ -56,11 +53,9 @@ class DrawerContent extends React.Component{
                             />
                             <View  style={{marginLeft:15, flexDirection:'column'}}>
                                 <Title style={styles.title} >{this.props.user?.username}</Title>
-                        
                                 {this.props.user?.is_staff? <Caption style={styles.caption} > Admin </Caption>
                                 :  <Caption style={styles.caption} > User </Caption>  
                               }
-                               
                             </View>
                       </View>
                     </View>
@@ -85,7 +80,7 @@ class DrawerContent extends React.Component{
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {this.props.navigation.navigate('parentProfile')}}
+                            onPress={() => {this.props.navigation.navigate('AdminProfile')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -127,8 +122,64 @@ class DrawerContent extends React.Component{
             </Drawer.Section>
         </View>
     )
-}}
-
+}else{
+  return  (
+<View style={{flex:1}}>
+  <DrawerContentScrollView {...this.props}>
+      <View style={styles.drawerContent}>
+          <Drawer.Section style={styles.drawerSection}>
+              <DrawerItem 
+                  icon={({color, size}) => (
+                      <Icon 
+                      name="home-outline" 
+                      color={color}
+                      size={size}
+                      />
+                  )}
+                  label="Home"
+                  onPress={() => {this.props.navigation.navigate('Home')}}
+              />
+              <DrawerItem 
+                  icon={({color, size}) => (
+                      <Icon 
+                      name="gift-outline" 
+                      color={color}
+                      size={size}
+                      />
+                  )}
+                  label="Donate"
+                  onPress={() => {this.props.navigation.navigate('Donate')}}
+              />
+          </Drawer.Section>
+      </View>
+  </DrawerContentScrollView >
+  <Drawer.Section style={styles.bottomDrawerSection}>
+  <DrawerItem 
+          icon={({color, size}) => (
+              <Icon 
+              name="exit-to-app" 
+              color={color}
+              size={size}
+              />
+          )}
+          label="SignUp"
+          onPress={() => {this.props.navigation.navigate('SignUp')}}
+      />
+      <DrawerItem 
+          icon={({color, size}) => (
+              <Icon 
+              name="exit-to-app" 
+              color={color}
+              size={size}
+              />
+          )}
+          label="SignIn"
+          onPress={() => {AsyncStorage.getItem('@token').then((token)=>{
+            if(token){this.setState({token})}else{this.props.navigation.navigate('MusicApp')}})}}
+      />
+  </Drawer.Section>
+</View>
+)}}}
 const styles = StyleSheet.create({
     drawerContent: {
       flex: 1,

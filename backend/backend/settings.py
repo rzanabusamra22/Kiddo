@@ -12,26 +12,15 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os 
 from pathlib import Path
-# import json
-# from six.moves.urllib import request
-# from cryptography.x509 import load_pem_x509_certificate
-# from cryptography.hazmat.backends import default_backend
-# from cryptography.hazmat.primitives import serialization
-#from rest_framework.authtoken.models import Token
-print('************************///////////////////*************************')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '^^mf4ndpr(bjf@yvtny-lgdk3yb7f_y)qtr)4=&+b50&@8kdn5'
-#  token = Token.objects.create(user="xoro")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -70,16 +59,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ORIGIN_ALLOW_ALL = True 
 CORS_ALLOW_CREDENTIALS = True
-# CORS_ORIGIN_WHITELIST = [
-#     'http://localhost:8000',
-# ]
-# If this is used, then not need to use `CORS_ORIGIN_ALLOW_ALL = True`
-# CORS_ORIGIN_REGEX_WHITELIST = [
-#     'http://localhost:8000',
-# ]
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -182,27 +163,17 @@ STATIC_ROOT = 'static'
 # REST
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    # ]
-
-     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication', 
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'RemoteUserBackend'
-     ],
-    
-     
-    
+    ],
    'DEFAULT_PERMISSION_CLASSES': [
-       'rest_framework.permissions.IsAuthenticated'
-      # 'rest_framework.permissions.AllowAny'
-   ],
-
+       'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+       # 'rest_framework.permissions.IsAuthenticated',
+       # 'rest_framework.permissions.AllowAny',
+    ],
    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
@@ -211,33 +182,38 @@ AUTH_USER_MODEL = 'api.User'
 DJOSER = {
     'LOGIN_FIELD': 'username',
     'USER_CREATE_PASSWORD_RETYPE':True,
+    # 'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    # 'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+    # 'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    # 'SEND_ACTIVATION_EMAIL': True,
+    # 'SEND_CONFIRMATION_EMAIL': True,
+    # 'HIDE_USERS' : True,
     'SERIALIZERS': {
         'user_create': 'api.serializers.UserSerializer',
-        'user': 'api.serializers.UserSerializer'
-
-    }
+        'user': 'api.serializers.UserSerializer',
+        # 'activation': 'djoser.serializers.ActivationSerializer',
+        'password_reset': 'djoser.serializers.SendEmailResetSerializer',
+        # 'password_reset_confirm': 'djoser.serializers.PasswordResetConfirmSerializer',
+        # 'password_reset_confirm_retype': 'djoser.serializers.PasswordResetConfirmRetypeSerializer',
+        'set_password': 'djoser.serializers.SetPasswordSerializer',
+        # 'set_password_retype': 'djoser.serializers.SetPasswordRetypeSerializer',
+        'set_username': 'djoser.serializers.SetUsernameSerializer',
+        # 'set_username_retype': 'djoser.serializers.SetUsernameRetypeSerializer',
+        # 'username_reset': 'djoser.serializers.SendEmailResetSerializer',
+        # 'username_reset_confirm': 'djoser.serializers.UsernameResetConfirmSerializer',
+        # 'username_reset_confirm_retype': 'djoser.serializers.UsernameResetConfirmRetypeSerializer',
+        # 'user_create_password_retype': 'djoser.serializers.UserCreatePasswordRetypeSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
+        'current_user': 'djoser.serializers.UserSerializer',
+        'token': 'djoser.serializers.TokenSerializer',
+        'token_create': 'djoser.serializers.TokenCreateSerializer',
+    },
+    # "EMAIL" : {
+    #     'activation': 'djoser.email.ActivationEmail',
+    #     'confirmation': 'djoser.email.ConfirmationEmail',
+    #     'password_reset': 'djoser.email.PasswordResetEmail',
+    #     'password_changed_confirmation': 'djoser.email.PasswordChangedConfirmationEmail',
+    #     'username_changed_confirmation': 'djoser.email.UsernameChangedConfirmationEmail',
+    #     'username_reset': 'djoser.email.UsernameResetEmail',
+    # }
 }
-
-# AUTH0_DOMAIN = 'xoro.eu.auth0.com'
-# API_IDENTIFIER = 'https://xoro.eu.auth0.com/api/v2/'
-# PUBLIC_KEY = None
-# JWT_ISSUER = None
-# if AUTH0_DOMAIN:
-#     jsonurl = request.urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
-#     jwks = json.loads(jsonurl.read().decode('utf-8'))
-#     cert = '-----BEGIN CERTIFICATE-----\n' + jwks['keys'][0]['x5c'][0] + '\n-----END CERTIFICATE-----'
-#     certificate = load_pem_x509_certificate(cert.encode('utf-8'), default_backend())
-#     PUBLIC_KEY = certificate.public_key()
-#     JWT_ISSUER = 'https://' + AUTH0_DOMAIN + '/'
-
-# def jwt_get_username_from_payload_handler(payload):
-#     return "dima"
-
-# JWT_AUTH = {
-#     'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt_get_username_from_payload_handler,
-#     'JWT_PUBLIC_KEY': PUBLIC_KEY,
-#     'JWT_ALGORITHM': 'RS256',
-#     'JWT_AUDIENCE': API_IDENTIFIER,
-#     'JWT_ISSUER': JWT_ISSUER,
-#     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
-# }

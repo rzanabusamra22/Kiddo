@@ -14,13 +14,13 @@ class Signin extends React.Component {
     }
     
      handleSubmit = () => {
+        var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
  var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
 var requestOptions = {
   method: 'POST',
   body: raw ,
-  headers: {
-    "Content-Type": "application/json"
-  },
+  headers:myHeaders,
   redirect: 'follow'
 };
 fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
@@ -29,22 +29,12 @@ fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
         if(result.token !== undefined){
           AsyncStorage.setItem('@token', result.token)
           .then(()=>{
-           // location.reload();
-           //this.setState({flag: 1})
-            console.log(this.props.navigation)
-            console.log('********** frn from admin-signin ', this.props.frn)
-            //RestartAndroid.restart()
-            //RNRestart.Restart();
-           // this.props.navigation.push('Home');
             this.props.navigation.navigate('Home')
           })
-          console.log('*******************||**||*********************')
-          //  console.log(AsyncStorage.getItem('@token'))
           } 
-            
         }  
         )
-  .catch(error => console.log('error', error));
+  .catch(error => console.error(error));
     }
     
     render(){
@@ -52,7 +42,7 @@ fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
         <TouchableWithoutFeedback
             onPress={() => {
                 Keyboard.dismiss();
-                console.log('disspacito')
+
             }}
         >
             <View style={styles.container}>

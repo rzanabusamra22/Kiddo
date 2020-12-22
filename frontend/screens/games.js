@@ -18,10 +18,7 @@ class Games extends Component {
     componentDidMount() {
 
         var myHeaders = new Headers();
-    //myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-   // myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -30,12 +27,11 @@ class Games extends Component {
         fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=other", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result)
             this.setState({
                 result
             })
         })
-        .catch(error => console.log('error', error));
+        .catch(error => console.error(error));
 }
 
     save(item) {
@@ -46,7 +42,7 @@ class Games extends Component {
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
    
    
-   var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Game"});
+   var raw = JSON.stringify({"user":this.props.user?.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Game"});
    
    var requestOptions = {
      method: 'POST',
@@ -57,8 +53,8 @@ class Games extends Component {
    
    fetch("https://blackpearl2.ew.r.appspot.com/plays/?category=other", requestOptions)
      .then(response => response.json())
-     .then(result => console.log(result))
-     .catch(error => console.log('error', error));
+     .then(result => {})
+     .catch(error => console.error(error));
    }
 }
     render() {
