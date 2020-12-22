@@ -12,14 +12,14 @@ import {createStore} from 'redux';
 const store = createStore(rootReducer);
 // Home Screen
 import Home from './screens/Home'
-import Learn from './screens/Learn';
+import Learn from './screens/learn';
 import Art from './screens/Art';
-import Videolists from './screens/VideoLists';
-import Videos from './screens/Videos';
-import Video from './screens/Video';
-import Game from './screens/Game';
+import Videolists from './screens/videolists';
+import Videos from './screens/videos';
+import Video from './screens/video';
+import Game from './screens/game';
 import Album from './screens/Album';
-import Games from './screens/Games';
+import Games from './screens/games';
 // Learn Catagories 
 import Alphabet from './screens/subScreens/Alphabet'
 import Numbers from './screens/subScreens/Numbers';
@@ -29,19 +29,19 @@ import Vegatables from './screens/subScreens/Vegatables';
 import Colors from './screens/subScreens/Colors';
 import Animals from './screens/subScreens/Animals';
 // Art Catagories 
-import Coloring from './screens/subScreens/Coloring';
-import ColoringS from './screens/subScreens/Colorings';
+import Coloring from './screens/subScreens/coloring';
+import ColoringS from './screens/subScreens/coloringS';
 import Drawing from './screens/subScreens/Drawing';
-import Draw from './screens/subScreens/Draw';
+import Draw from './screens/subScreens/draw';
 // Drawer Pages
-import Donate from './screens/Donate';
+import Donate from './screens/donate';
 import Profile from './screens/Profile';
 import DrawerContent from './screens/DrawerContent';
 // User
 import SignUp from './screens/user/SignUp'
 import SignIn from './screens/user/SignIn'
 import Success from './screens/user/Success'
-import History from './screens/History'
+import History from './screens/history'
 // Navigation
 const Drawer = createDrawerNavigator();
 const HomeStack = createStackNavigator();
