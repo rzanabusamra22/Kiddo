@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React, { Component, useState } from 'react';
-import {Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpacity} from 'react-native';
+import {Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpacity,TouchableWithoutFeedback,Keyboard} from 'react-native';
 const SignUp =({navigation})=>{
   const [parentname, onChangeName] = useState('')
   const [password, onChangePassword] = useState('');
@@ -26,6 +26,7 @@ var requestOptions = {
 fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
   .then(response => response.json())
   .then(result => {
+    console.log("************Sign Up"+JSON.stringify(result))
     var signup_error_msg = '' 
     if(Array.isArray(result.username)){
       signup_error_msg +=  '\n' + result.username 
@@ -97,20 +98,25 @@ fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
     );
 });}
       return (
+        <TouchableWithoutFeedback  
+        onPress={() => {
+          Keyboard.dismiss();}}
+        >
         <View style={styles.container}>
           <Text style={styles.logo1}>
               Kiddo Parents               
           </Text>
+          <TextInput value={picture} name="Picture" placeholder='Profile Picture'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePicture(text)}></TextInput>
           <TextInput value={parentname} name="parentname" placeholder='Name'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangeName(text)}
                         ></TextInput>
           <TextInput value={email} name="Email" keyboardType="email-address"  placeholder='Email'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangeEmail(text)}></TextInput>
           <TextInput value={password} name="Password" placeholder='Password' secureTextEntry={true} style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePassword(text)}></TextInput>
           <TextInput value={phone} name="Phone" keyboardType="phone-pad" placeholder='Phone Number'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePhone(text)}></TextInput>
-          <TextInput value={picture} name="Picture" placeholder='Profile Picture'style={styles.textInput} placeholderTextColor='black' onChangeText={text => onChangePicture(text)}></TextInput>
           <TouchableOpacity style={styles.button} onPress={submitSignup}>
             <Text style={{fontSize:20,fontWeight:'bold'}} >SIGN UP</Text>
           </TouchableOpacity>
         </View>
+        </TouchableWithoutFeedback>
       )
 }
 const styles = StyleSheet.create({

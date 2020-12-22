@@ -1,7 +1,6 @@
 import React ,{useState} from 'react';
 import { StyleSheet, View, Text ,SafeAreaView, ScrollView,Image,TouchableOpacity} from 'react-native';
 // import RestartAndroid from 'react-native-restart-android'
-import RNRestart from 'react-native-restart';
 
 export default function Art({ navigation }){
     const [list,setList] = useState([

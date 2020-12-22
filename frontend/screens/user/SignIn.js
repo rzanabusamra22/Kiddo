@@ -118,6 +118,7 @@ class SignIn extends Component {
     fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {
+      console.log("Sign in" + JSON.stringify(result) )
     if(result.token !== undefined){
       AsyncStorage.setItem('@token', result.token).then(()=>{
       AsyncStorage.setItem('@user', this.state.username).then(()=>{
@@ -126,7 +127,7 @@ class SignIn extends Component {
          `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
         [
           { text: "Ok", onPress: () =>{ 
-             this.props.navigation.navigate('parentProfile')
+             this.props.navigation.navigate('Success')
            
     }}
         ],

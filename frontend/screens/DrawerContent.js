@@ -1,4 +1,3 @@
-//Admin Is signedin
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -33,11 +32,10 @@ componentDidMount() {
   })
    }
   signOutHandler = () => {
-    AsyncStorage.removeItem('@user').then(()=>{
     AsyncStorage.removeItem('@token').then(()=>{
     AsyncStorage.getItem('@token').then((token)=>{
       this.setState({token})
-    })})})
+    })})
 };
     render(){
       if(this.state.token){
@@ -82,7 +80,7 @@ componentDidMount() {
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {this.props.navigation.navigate('Profile')}}
+                            onPress={() => {this.props.navigation.navigate('Success')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
