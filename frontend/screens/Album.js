@@ -12,7 +12,7 @@ class Album extends Component{
     return(
         <Text>
             Album
-        </Text>
+        </Text> 
     )
 }}
 

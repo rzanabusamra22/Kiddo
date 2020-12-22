@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView ,TouchableOpaci
 import { connect } from 'react-redux';
 import { senduser } from '../redux/actions';
 import AsyncStorage from '@react-native-community/async-storage'
-
+import RNRestart from 'react-native-restart';
 
 class parentProfile extends Component{
     constructor(props) {
@@ -19,18 +19,16 @@ class parentProfile extends Component{
    
       
         myHeaders.append("Content-Type", "application/json");
-   myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-                    
                    AsyncStorage.getItem('@user').then((user)=>{
-                    console.log('*****************************************', user)
                    fetch(`https://blackpearl2.ew.r.appspot.com/users/?username=${user}`, {
                         headers: myHeaders,
                         redirect: 'follow'
                        })
                     .then(response => response.json())
                     .then(result => {
-                        console.log('----------------------------------------',result)
-                        this.props.senduser(result[0])})
+                        this.props.senduser(result[0]);
+                        RNRestart.Restart();
+                    })
                     .catch(()=>{})
                 })}
             
@@ -48,7 +46,7 @@ class parentProfile extends Component{
                 <Text style={[styles.text1, { fontWeight: "200", fontSize: 36 }]}>{this.props.user?.username}</Text>
                 <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>{this.props.user?.phone}</Text>
             </View>
-            <TouchableOpacity onPress={this.props.navigation.navigate('History')}  >
+            <TouchableOpacity onPress={()=>{this.props.navigation.navigate('History')}}  >
             <View style={styles.button} >
                 <Text style={{fontSize:20,fontWeight: "200"}}>My Kid History</Text>
            </View>

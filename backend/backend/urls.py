@@ -36,7 +36,7 @@ router.register(r'photos', views.PhotoViewSet)
 urlpatterns = [
    path('admin/', admin.site.urls),
    path("", include( router.urls )),
-   path("auth/", include('djoser.urls')),
+   path("", include('djoser.urls')),
    path("token/", include('djoser.urls.authtoken')), #api/auth/
 #    url(r'^account/', include('djoser.urls')),
    path('jwt/', jwt_views.obtain_jwt_token, name='auth'),

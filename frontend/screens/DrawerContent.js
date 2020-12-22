@@ -1,8 +1,8 @@
 //Admin Is signedin
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage'
-import RestartAndroid from 'react-native-restart-android'
+import AsyncStorage from '@react-native-community/async-storage';
+import DrawerContent2 from './DrawerContent2';
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -30,28 +30,19 @@ class DrawerContent extends React.Component{
       }
   }
   
-  ///////////////////////////////////////////////////////////
+componentDidMount() {
+  AsyncStorage.getItem('@token').then((token)=>{
+    this.setState({token})
+  })
+   }
 
   signOutHandler = async () => {
-    console.log('*****************************************')
-    console.log(AsyncStorage.getItem('@token'))
    await AsyncStorage.removeItem('@token')
-   console.log(AsyncStorage.getItem('@token'))
-   //this.props.setUser({});
-   await AsyncStorage.removeItem('@user')
-//   console.log('PROPS:   ',this.props.frn)
- //  console.log(this.props.nth)
-   //RestartAndroid.restart()
-   //RNRestart.Restart();
- //  this.props.frn();
-   //this.setState({flag: 1})
-  // RNRestart.Restart();
-   //Restart();
-   
-   RNRestart.Restart();
-
+   await AsyncStorage.removeItem('@user') 
+   this.setState({token:null})
 };
     render(){
+      if(this.state.token){
     return(
         <View style={{flex:1}}>
               <DrawerContentScrollView {...this.props}>
@@ -137,7 +128,7 @@ class DrawerContent extends React.Component{
             </Drawer.Section>
         </View>
     )
-}}
+}else{return  <DrawerContent2 {...this.props}/>}}}
 
 const styles = StyleSheet.create({
     drawerContent: {

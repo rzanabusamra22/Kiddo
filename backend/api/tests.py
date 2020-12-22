@@ -13,6 +13,5 @@ class UserTestCase(TestCase):
         """Check if users are added"""
         john = User.objects.get(username="john")
         sara = User.objects.get(username="sara")
-        self.assertEqual(john.mail(), 'john\'s email is john@gmail.com')
-        self.assertEqual(sara.mail(), 'sara\'s email is sara@gmail.com')
-
+        self.assertEqual(john.mail(), 'john\'s email is : john@gmail.com')
+        self.assertEqual(sara.mail(), 'sara\'s email is : sara@gmail.com')

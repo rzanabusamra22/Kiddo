@@ -28,3 +28,7 @@ jest.mock('react-native-reanimated', () => {
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
+jest.mock('@react-native-community/async-storage', () => require('@react-native-community/async-storage/jest/async-storage-mock'));
+jest.mock('react-native-vector-icons/MaterialIcons', () => { return {TabBarItemIOS:""}}) 
+jest.mock('react-native-vector-icons/Ionicons', () => ({ TabBarItemIOS: 'TabBarItemIOS' }));
+jest.mock('react-native-vector-icons/Ionicons', () => ({ ToolbarAndroid: 'ToolbarAndroid' }));

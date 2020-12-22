@@ -6,9 +6,7 @@ export default function Art({ navigation }){
         {nav:"Coloring",key:"a1",item:"Coloring",pic:{uri: 'https://imgur.com/0r8qpuJ.png'}},
         {nav:"Drawing",key:"a2",item:"Drawing",pic:{uri: 'https://imgur.com/Hsm0YR5.png'}},
     ])
-    const pressHandler = (x) => {
-        navigation.navigate(x)
-    }
+
     return(
         <View style={styles.mainContainer}>
          <SafeAreaView >
@@ -16,7 +14,7 @@ export default function Art({ navigation }){
             {list.map((x,i)=>{
                  var y=x.key
                     return (
-                    <TouchableOpacity onPress={()=>pressHandler(x.nav)} key={i}>
+                    <TouchableOpacity onPress={()=>{}} key={i}>
                     <View style={styles[y]}>
                     <View style={styles.cardContent}>
                     <Image 

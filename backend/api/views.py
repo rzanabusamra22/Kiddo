@@ -86,8 +86,6 @@ def signup(request):
 def donate(request):
     data = JSONParser().parse(request)
     stripe.api_key = "sk_test_51HoFgjCxgtcfoZwvcEdcYWIIp09TagQbzRsNAnY34gPlj6zMdDSxgN9tK9FzMbVIJWJMEkM7SKlqAxTZEGmS9CHl00Dxl3xZhc"
-    # print('123456789----------- ')
-
     try:
         stripe.Charge.create(
             amount=data["amount"],
@@ -96,20 +94,9 @@ def donate(request):
         )
     except:
         return Response('Credit Card Invalid', status=401)
-
     data.pop("authToken")
-    print(data)
     serializer = DonationSerializer(data=data)
-    print('********************')
-    print(serializer)
-    # date=timezone.now(),
-    print('****           DATE              ')
-    # print(date)
-        # 
     if serializer.is_valid():
-        print('valid')
-        #
-       
         serializer.save()
         return JsonResponse(serializer.data, status=201)
     return JsonResponse(serializer.errors)
@@ -183,3 +170,4 @@ class PhotoViewSet (viewsets.ModelViewSet):
     filterset_fields = ['category']
     search_fields = ['category']
     ordering_fields = ['category']
+    
