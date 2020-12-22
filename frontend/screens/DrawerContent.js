@@ -20,8 +20,8 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
 class DrawerContent extends React.Component{
-  constructor(props){
-    super(props)
+  constructor({ navigation: { setParams } }){
+    super({ navigation: { setParams } })
       this.state={
         user: {username:'user', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU'}
         ,flag:0
@@ -175,7 +175,14 @@ componentDidMount() {
           )}
           label="SignIn"
           onPress={() => {AsyncStorage.getItem('@token').then((token)=>{
-            if(token){this.setState({token})}else{this.props.navigation.navigate('MusicApp')}})}}
+            if(token){this.setState({token})}else{
+             
+                setParams({
+                  test: "winne the pooh"
+                })
+              
+          
+              this.props.navigation.navigate('MusicApp',{ names: ['Brent', 'Satya', 'Michaś'] })}})}}
       />
   </Drawer.Section>
 </View>

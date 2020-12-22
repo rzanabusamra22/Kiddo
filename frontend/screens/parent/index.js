@@ -105,6 +105,9 @@ class MusicApp extends Component {
     })
   }
   handleSubmit = () => {
+   // console.log(this.props.navigation.getParam('name'))
+    console.log(this.props.navigation)
+    console.log(this.props.navigation.route.params)
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
@@ -140,7 +143,7 @@ class MusicApp extends Component {
           "signed in failed" + '\n' + 'username or password : incorrect',
           [
             { text: "Cancel", onPress: () =>{ 
-            this.props.props.navigation.navigate('Home')
+            this.props.navigation.navigate('Home')
           }},
           { text: "Try again", onPress: () =>{ 
         }}
@@ -170,7 +173,7 @@ class MusicApp extends Component {
             </Animated.View>
           </TapGestureHandler>
            {/* Sign up button */}
-           <TouchableOpacity onPress={() => {this.props.props.navigation.navigate('SignUp')}}>
+           <TouchableOpacity onPress={() => {this.props.navigation.navigate('SignUp')}}>
           <Animated.View style={{...styles.button,backgroundColor: '#dc962e',opacity: this.buttonOpacity,transform: [{ translateY: this.buttonY }]}}>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>SIGN UP</Text>
           </Animated.View>
