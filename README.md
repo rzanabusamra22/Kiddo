@@ -139,11 +139,11 @@ gcloud app deploy
 ```
 ## Links
 
-- Backend Server
+- Deployed: Backend Server
 https://blackpearl2.ew.r.appspot.com/
-- Backend Admin Server
+- Deployed: Backend Admin Server
 https://blackpearl2.ew.r.appspot.com/admin 
-- Front End
+- Deployed: Front End
 
 - 1 min Ad Video 
 https://youtu.be/Vg748ApTsuI
