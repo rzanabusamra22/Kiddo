@@ -2,9 +2,8 @@ import React, { Component, useState } from 'react';
 import { Image, StyleSheet, Text, View } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { TouchableOpacity } from 'react-native';
- //var Sound = require('react-native-sound');
- import SoundPlayer from 'react-native-sound-player'
- 
+import SoundPlayer from 'react-native-sound-player'
+
 const slides = [
   {key: "chicken",image: {uri: 'https://i.imgur.com/I9KTOXD.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6620"},
   {key: "cow",image: {uri: 'https://i.imgur.com/DxLuZ6L.png'},sound: "https://www.fesliyanstudios.com/play-mp3/6523"},
@@ -13,8 +12,7 @@ const slides = [
   {key: "sheep",image: {uri: 'https://i.imgur.com/MeAefcJ.png'}, sound: "https://www.fesliyanstudios.com/play-mp3/6630"}
   ];
 
- //sound 
-
+  
 class Animals extends Component{
     constructor(){
         super()
@@ -26,7 +24,15 @@ class Animals extends Component{
     _renderItem = ({ item }) => {
         return (
           <View style={styles.container}>
-          <TouchableOpacity onPress={()=>{  }
+          <TouchableOpacity onPress={()=>{
+             try {
+             
+              // or play from url
+              SoundPlayer.playUrl('"https://www.fesliyanstudios.com/play-mp3/6595"')
+          } catch (e) {
+              console.log(`cannot play the sound file`, e)
+          }
+          }
           }>         
             <Image
               source={item.image}
