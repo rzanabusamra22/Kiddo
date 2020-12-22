@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpacity} from 'react-native';
+import { Alert, View, Text, StyleSheet,ImageBackground, Image, Dimensions,TextInput ,TouchableOpacity} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 import Animated, { Easing } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
@@ -172,7 +172,7 @@ class MusicApp extends Component {
     }  
     )
 .catch(error => console.log('error', error));
-RNRestart.Restart();
+// RNRestart.Restart();
 }
   //main return + render 
   render() {
@@ -181,7 +181,9 @@ RNRestart.Restart();
       <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'flex-end'}}>
         {/* Background Picture */}
         <Animated.View style={{...StyleSheet.absoluteFill, transform: [{ translateY: this.bgY }]}}>
-          <Image source={require('./PG.png')} style={{ flex: 1, height: null, width: null }}/>
+          <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'flex-end'}}>
+          <ImageBackground source={{uri:('https://dogemuchwow.com/wp-content/uploads/2019/03/man-shark-trans.jpg')}} style={{ flex: 1, height: 233, width: 311 }}></ImageBackground>
+          </View>
         </Animated.View>
         {/* Landpage Content */}
         <View style={{ height: height / 3, justifyContent: 'center' }}>

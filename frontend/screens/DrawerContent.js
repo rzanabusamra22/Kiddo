@@ -39,7 +39,7 @@ class DrawerContent extends React.Component{
    console.log(AsyncStorage.getItem('@token'))
    await AsyncStorage.removeItem('@user') 
    //
-   RNRestart.Restart();
+  //  RNRestart.Restart();
 };
     render(){
     return(

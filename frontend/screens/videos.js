@@ -28,16 +28,6 @@ class Videos extends Component {
             redirect: 'follow',
             headers:myHeaders
         };
-
-        fetch(`https://blackpearl2.ew.r.appspot.com/records/?category=${this.props.videocat}`, requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                console.log(result)
-                this.setState({
-                    result
-                })
-            })
-            .catch(error => console.log('error', error));
     }
     save(item) {
         if(this.props.user){
@@ -48,7 +38,7 @@ class Videos extends Component {
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
 
    
-   var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
+   var raw = JSON.stringify({"user":this.props.user?.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
    
    var requestOptions = {
      method: 'POST',
