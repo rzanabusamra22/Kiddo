@@ -26,6 +26,7 @@ var requestOptions = {
 fetch("http://blackpearl2.ew.r.appspot.com/signup/", requestOptions)
   .then(response => response.json())
   .then(result => {
+    console.log("************Sign Up"+result)
     var signup_error_msg = '' 
     if(Array.isArray(result.username)){
       signup_error_msg +=  '\n' + result.username 
