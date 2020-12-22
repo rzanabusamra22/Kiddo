@@ -1,8 +1,7 @@
 import React, { Component, useState } from 'react';
-import { WebView } from 'react-native-webview'
 import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
 import { Dimensions } from 'react-native';
-import { sendvideo } from '../redux/actions';
+import { sendvideo } from './redux/actions';
 import { connect } from 'react-redux';
 // import * as Progress from 'react-native-progress';
 const wind = Dimensions.get('window');
@@ -20,9 +19,8 @@ class Videos extends Component {
     componentDidMount() {
 
         var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -37,14 +35,16 @@ class Videos extends Component {
                     result
                 })
             })
-            .catch(error => console.log('error', error));
     }
     save(item) {
+        if(this.props.user){
+
+        console.log(this.props.user.username)
         var myHeaders = new Headers();
    myHeaders.append("Content-Type", "application/json");
    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
    
-   var raw = JSON.stringify({"user":this.props.user.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
+   var raw = JSON.stringify({"user":this.props.user?.username,"link":item.link,"thumbnail":item?.thumbnail,"kind":"Video"});
    
    var requestOptions = {
      method: 'POST',
@@ -57,12 +57,10 @@ class Videos extends Component {
      .then(response => response.json())
      .then(result => console.log(result))
      .catch(error => console.log('error', error));
-   }
+   }}
     render() {
-        var key1 = 0
        const navigation = this.props.navigation
        const sendvideo = this.props.sendvideo
-       console.log(this.props.videocat)
        const videoctagory = this.state.result
         return (
 
@@ -81,28 +79,7 @@ class Videos extends Component {
             )}
             keyExtractor={(item,i)=>{return `${i}`}}
             numColumns = {2}
-            />
-            
-            //     <ScrollView style={styles.container}>
-            //     {/* <Progress.Bar progress={0.3} width={200} /> */}
-            //     {this.state.result.map(function (x, i) {
-            //         return (
-                    
-            //             <TouchableOpacity onPress={() =>{ 
-            //                  sendvideo(x.link);
-            //                  navigation.navigate('Video')
-            //                 //  {display:"flex" , alignItems:"center",  marginLeft: vw * 6, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }
-            //                  }}  key={i} style={StyleSheet.container, StyleSheet.img}>
-
-            //                 <Image style={{ borderRadius: 15, height: 6 * vh,marginBottom:30,paddingBottom:100*vh ,width: 100 * vw }} source={{ uri: x?.thumbnail }} />
-            //             </TouchableOpacity>
-                        
-                    
-            //         )
-            //     })}
-            
-            // </ScrollView>
-            
+            />         
         );
     }
 }
@@ -165,7 +142,7 @@ const mapStateToProps = (state) => {
        videocat: state.videocat
     }
   }
-  const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
       sendvideo: (z) => { dispatch(sendvideo(z)) },
     }

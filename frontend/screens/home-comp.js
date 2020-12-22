@@ -3,7 +3,7 @@ import React, { useState,Component } from 'react';
 import CategoryItem from './category-item-card'
 import { senduser } from './redux/actions';
 import { connect } from 'react-redux';
-
+import AsyncStorage from '@react-native-community/async-storage';
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -13,26 +13,17 @@ class Home extends Component {
 
     componentDidMount() {
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-        myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
         myHeaders.append("Content-Type", "application/json");
-    
-    
-        fetch("https://blackpearl2.ew.r.appspot.com/getid/", 
-                {headers: myHeaders,
-                redirect: 'follow'
-                })
-                .then(response => response.text())
-                .then(result => {
-                   fetch("https://blackpearl2.ew.r.appspot.com/users/"+result, {
+        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");        
+                   AsyncStorage.getItem('@user').then((user)=>{
+                   fetch(`https://blackpearl2.ew.r.appspot.com/users/?username=${user}`, {
                         headers: myHeaders,
                         redirect: 'follow'
                        })
                     .then(response => response.json())
-                    .then(result => {this.props.senduser(result)})
-                    .catch(()=> console.log('Err fetch user info'))
-                })
-                .catch(()=> console.log('Err fetch userid'))
+                    .then(result => {this.props.senduser(result[0])})
+                    .catch(()=>{})
+                       })
       }
 
     render() {

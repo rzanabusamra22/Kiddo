@@ -1,12 +1,7 @@
-//android restart 
-//import RestartAndroid from 'react-native-restart-android'
-
 //Admin Is signedin
 import React from 'react';
-
 import { View, StyleSheet} from 'react-native';
-
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-community/async-storage';
 import {
     DrawerContentScrollView,
     DrawerItem
@@ -24,35 +19,26 @@ import {
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
-
-
 class DrawerContent extends React.Component{
   constructor(props){
     super(props)
       this.state={
-        flag:0
+        user: {username:'user', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FMgEe33BwCdnfLO89QdJEYxWMgc9I982fw&usqp=CAU'}
+        ,flag:0
       }
   }
-
+componentDidMount() {
+  AsyncStorage.getItem('@token').then((token)=>{
+    this.setState({token})
+  })
+   }
   signOutHandler = async () => {
-    console.log('*****************************************')
-    console.log(AsyncStorage.getItem('@token'))
    await AsyncStorage.removeItem('@token')
-   console.log(AsyncStorage.getItem('@token'))
-   //this.props.setUser({});
-   this.setState({user:{}})//jft
-   console.log('PROPS:   ',this.props.frn)
-   console.log(this.props.nth)
-   //RestartAndroid.restart()
-
-   this.props.frn();
-   //this.setState({flag: 1})
-  // RNRestart.Restart();
-   //Restart();
-  // this.props.navigation.navigate('Home')
-
+   await AsyncStorage.removeItem('@user') 
+   this.setState({token:null})
 };
     render(){
+      if(this.state.token){
     return(
         <View style={{flex:1}}>
               <DrawerContentScrollView {...this.props}>
@@ -61,13 +47,15 @@ class DrawerContent extends React.Component{
                       <View style={{flexDirection:'row',marginTop: 15}}>
                       <Avatar.Image 
                                 source={{
-                                  uri: this.props.user.thumbnail
+                                  uri: this.props.user?.thumbnail
                                 }}
                                 size={50}
                             />
                             <View  style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title}>{this.props.user.username}</Title>
-                                <Caption style={styles.caption}>Admin</Caption>
+                                <Title style={styles.title} >{this.props.user?.username}</Title>
+                                {this.props.user?.is_staff? <Caption style={styles.caption} > Admin </Caption>
+                                :  <Caption style={styles.caption} > User </Caption>  
+                              }
                             </View>
                       </View>
                     </View>
@@ -92,7 +80,7 @@ class DrawerContent extends React.Component{
                                 />
                             )}
                             label="Profile"
-                            onPress={() => {this.props.navigation.navigate('Profile')}}
+                            onPress={() => {this.props.navigation.navigate('parentProfile')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -104,6 +92,17 @@ class DrawerContent extends React.Component{
                             )}
                             label="Donate"
                             onPress={() => {this.props.navigation.navigate('Donate')}}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="account-star-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="History"
+                            onPress={() => {this.props.navigation.navigate('History')}}
                         />
                     </Drawer.Section>
                 </View>
@@ -123,8 +122,64 @@ class DrawerContent extends React.Component{
             </Drawer.Section>
         </View>
     )
-}}
-
+}else{
+  return  (
+<View style={{flex:1}}>
+  <DrawerContentScrollView {...this.props}>
+      <View style={styles.drawerContent}>
+          <Drawer.Section style={styles.drawerSection}>
+              <DrawerItem 
+                  icon={({color, size}) => (
+                      <Icon 
+                      name="home-outline" 
+                      color={color}
+                      size={size}
+                      />
+                  )}
+                  label="Home"
+                  onPress={() => {this.props.navigation.navigate('Home')}}
+              />
+              <DrawerItem 
+                  icon={({color, size}) => (
+                      <Icon 
+                      name="gift-outline" 
+                      color={color}
+                      size={size}
+                      />
+                  )}
+                  label="Donate"
+                  onPress={() => {this.props.navigation.navigate('Donate')}}
+              />
+          </Drawer.Section>
+      </View>
+  </DrawerContentScrollView >
+  <Drawer.Section style={styles.bottomDrawerSection}>
+  <DrawerItem 
+          icon={({color, size}) => (
+              <Icon 
+              name="exit-to-app" 
+              color={color}
+              size={size}
+              />
+          )}
+          label="SignUp"
+          onPress={() => {this.props.navigation.navigate('SignUp')}}
+      />
+      <DrawerItem 
+          icon={({color, size}) => (
+              <Icon 
+              name="exit-to-app" 
+              color={color}
+              size={size}
+              />
+          )}
+          label="SignIn"
+          onPress={() => {AsyncStorage.getItem('@token').then((token)=>{
+            if(token){this.setState({token})}else{this.props.navigation.navigate('Parent')}})}}
+      />
+  </Drawer.Section>
+</View>
+)}}}
 const styles = StyleSheet.create({
     drawerContent: {
       flex: 1,
@@ -171,7 +226,7 @@ const styles = StyleSheet.create({
     },
   });
 
-  // Redux
+// Redux
 const mapStateToProps = (state) => {
   return {
     user: state.user,

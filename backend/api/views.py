@@ -63,11 +63,12 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def signup(request):
-    #print('***************** SIGNUP **************')
+    print('***************** SIGNUP **************')
     #print(request)
     #body_unicode = request.body.decode('utf-8')
     #body = json.loads(body_unicode)
     data = JSONParser().parse(request)
+    #print('here 61')
     serializer = UserSerializer(data=data)
     #username=body['username'], password=body['password'], email=body["email"]
     #serializer.set_password('password')
@@ -92,21 +93,14 @@ def donate(request):
             source=data["authToken"],
         )
     except:
-        return Response('Invalid Card', status=401)
-
+        return Response('Credit Card Invalid', status=401)
     data.pop("authToken")
-    # print(data)
     serializer = DonationSerializer(data=data)
-    # print('********************')
-    # print(serializer)
-    # date=timezone.now(),
-    # print('**** DATE')
-    # print(date)
     if serializer.is_valid():
-        #print('valid')
         serializer.save()
         return JsonResponse(serializer.data, status=201)
-    return JsonResponse(serializer.errors, status=400)
+    return JsonResponse(serializer.errors)
+
 
 #return user id when sign in 
 @api_view(['GET'])
@@ -176,3 +170,4 @@ class PhotoViewSet (viewsets.ModelViewSet):
     filterset_fields = ['category']
     search_fields = ['category']
     ordering_fields = ['category']
+    

@@ -1,138 +1,153 @@
-[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://blackpearl2.ew.r.appspot.com/)
+# Project Name : KIDDO
 
-# Project Name #
-[Kiddo](https://blackpearl2.ew.r.appspot.com/)
+## Team
 
-### Heading ###
-Website for kids
+  - Dima Jaber
+  - Hamdallah Fatayer 
+  - Noor Aldeen Ashqar
+  - Razan Abusamra
+  
+## Table of Contents
 
-### Details ###
-This website gives a safe envorinment for kids to play and learn
+1. [About](#about)
+1. [Technologies Used](#technologies-used)
+1. [Requirements](#requirements)
+1. [Development](#development)
+    1. [Installing Dependencies FrontEnd](#installing-dependencies-frontend)
+    1. [Installing Dependencies BackEnd](#installing-dependencies-backend)
+    1. [Deploying](#deploying)
+1. [Links](#links)
+1. [Picture Documentation](#picture-documentation)
 
-## Table of contents ##
-* Technologies
-* Frontend
-* Backend
-* Deploy
-* Members
+## About
 
-## Technologies Used ##
-### Languages ###
-* Python
-* Javascript
-* CSS
-* HTML
-### Libraries & Technologies ###
-* Django
-* Rest Framework API
-* JWT
-* Sqlite3
-* MySql
-* React Native
-* React Native Sound
-* React Native Animation
-* React Navigation
-* React Redux
-* Expo Cli
-* Jest
-* Enzyme
-* Stripe
-* Circle Ci
-### Programs ###
-* VS Code
-* Android Studio
-* gCloud SDK
-### Command Lines Used ###
-* npm -->
-* git -->
-* pip -->
-* py -->
-* expo -->
-* jest -->
-* gcloud -->
-* curl -->
-* gem -->
-* pod -->
-* choco -->
-* circleci -->
-* react-native -->
-* x For IOS x
-* brew -->
-* sudo -->
+- Safe Online Environment For the Kids (Android Mobile App)
 
-## Frontend ##
-* To install dependancies
-* Open bash inside /frontend
-* `$ npm i`
+## Technologies Used
 
-* To run the app on localhost
-* Open bash inside /frontend
-* `$ npm run web` or `$ expo start`
+- DataBase (Local Host: Sqlite3 - Deployed Version: MySql)
+- Backend (Python Django)
+- Frontend (React Native)
+   - React (Redux - React Native Navigation - Hooks)
+   - User Interface Framework (React Native Paper)
+   - Design (React Native Animation - React Native Alerts)
+- Payment System (Stripe)
+- Testing (Jest & Enzyme)
+- Authentication (JWT - Django Rest Framework Permissions)
+- Continuous Integration (CircleCI)
+- Deployment/Cloud Solutions (FrontEnd:Firebase - BackEnd:Google Cloud(NginX))
 
-* To run jest test
-* Open bash inside /frontend
-* `$ npm test`
+## Requirements
 
-* To build Android App
-* Open bash inside /frontend
-* `$ npm run android`
+- TextEditor 
+- Android studio
+- React Native > v0.6
+- expo > v39.0
+- expo-cli > v4.0
+- Python 3.9 
+- django 1.0.0
 
-* To build ios App (prefered on mac)
-* Install ruby & curl & git & cocoapods then Open bash inside /frontend/ios
-* `$ pod install` then `$ npm run ios`
+## Development
 
+1. Fork the repo from github.
+2. Clone down your fork
+```
+git clone https://github.com/<Your Github userName>/Kiddo
+```
+3. Move into the repo after its been cloned onto your local machine.
+4. Follow the instructions in the 'Installing Dependencies' section.
 
-## Backend ##
-* To create new virtual environment (venv)
-* Open bash inside /backend
-* `$ python -m venv venv`
+### Installing Dependencies FrontEnd
 
-* To enter venv
-* Open bash inside /backend
-* `$ . venv/Scripts/activate`
+1. Open terminal 1: From root directory to forntend directory:
 
-* To install dependancies
-* Enter venv or open bash inside /backend (global install)
-* `$ pip install -r requirements.txt`
+```
+cd frontend/
+npm install
+expo start
+```
+2. To run the App
+  - (Option1) Press Android device/emulator to run the app in Android studio.
+  - (Option2) Scan the code and run it on your phone using Expo Phone Application.
+3. To run Jest test
+```
+npm test
+``` 
+4. To build the App 
+  - (Android)
+```
+npm run android
+``` 
+  - (ios) - prefered on mac
+```
+pod install
+npm run ios
+```
+### Installing Dependencies BackEnd
 
-* To run the server locally (after installing dependancies)
-* Enter venv or open bash inside /backend
-* `$ python manage.py runserver`
+1. Open terminal 2: From root directory to backend directory:
 
-* To run mysql database on localhost (you can skip this and use sqlite3 default database)
-* Uncomment the database code in /backend/settings.py then Install gcloud then open bash inside /backend
-* `$ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306`
+```
+cd backend/
+python -m venv venv
+```
+2. To enter venv (Virtual Environment)
+```
+. venv/Scripts/activate
+```
+3. To install dependencies (after entering venv)
+```
+pip install -r requirements.txt
+```
+4. To run server localy (You should install the dependencies first)
+```
+python manage.py runserver
+```
+5. To run MySql database on localhost (You can skip this and use sqlite3 default database)
+- Uncomment the database code in /backend/settings.py 
+- Install gcloud 
+- inside /backend terminal do the following
+```
+$ ./cloud_sql_proxy 
+-instances=blackpearl2:us-central1:blackpearl=tcp:3306
+```
+6. To update dependencies file
+- Enter venv or cd /backend 
+```
+pip freeze > requirements.txt
+```
+7. To update the database tables for localhost
+```
+python manage.py makemigrations api
+python manage.py migrate
+```
+### Deploying
 
-* To update dependancies file
-* Enter venv or open bash inside /backend (global)
-* `$ pip freeze > requirements.txt`
+To deploy the server using app engine
+1. Install gcloud
+```
+cd backend/
+gcloud app deploy
+```
+2. To update the deployed server
+Run MySql database on localhost.
+```
+cd backend/
+python manage.py makemigrations api
+python manage.py migrate
+gcloud app deploy
+```
+## Links
 
-* To update the database tables for localhost
-* Enter venv or open bash inside /backend (global)
-* `$ python manage.py makemigrations api` then `$ python manage.py migrate`
+- Backend Server
+https://blackpearl2.ew.r.appspot.com/
+- Backend Admin Server
+https://blackpearl2.ew.r.appspot.com/admin 
+- Front End
 
-## Deploy ##
-* To deploy a server using app engine
-* Install gcloud then open bash inside /backend
-* `$ gcloud app deploy`
+- 1 min Ad Video 
+https://youtu.be/Vg748ApTsuI
 
-* To update the deployed server
-* Run mysql database on localhost then open bash inside /backend
-* `$ python manage.py makemigrations api` then
-* `$ python manage.py migrate` then `$ gcloud app deploy`
+## Picture Documentation
 
-### Deployed links ###
-* Backend server
-* https://blackpearl2.ew.r.appspot.com/
-* Backend admin server
-* https://blackpearl2.ew.r.appspot.com/admin
-
-## Members ##
-* Razan Abusamra - Scrum Master
-react native - expo - react animation - navigation - sliders - picutres - drawer - stripe - user profile
-* Hamdallah Fatayer - Co-Leader
-python - django - rest framework - google sdk - cloud sql - google app engine - android studio - jest - circle ci - all platforms testing - deploy backend - deploy frontend - user history
-* Noor Ashqar - Development
-react - expo - jest - database data control - videos - pictures - games - webview & iframe - sounds - songs - redux - all platforms builds
-* Dima jaber - Development
-python - django - rest framework - jwt - django token - djoser - stripe - sign in & up - RNSound
+![Home Page]()

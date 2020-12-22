@@ -14,6 +14,7 @@ class Signin extends React.Component {
     }
     
      handleSubmit = () => {
+        
  var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
 var requestOptions = {
   method: 'POST',
@@ -23,14 +24,17 @@ var requestOptions = {
   },
   redirect: 'follow'
 };
-fetch("https://blackpearl2.ew.r.appspot.com/auth/login/", requestOptions)
+fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
   .then(response => response.json())
   .then( (result) => {
         if(result.token !== undefined){
           AsyncStorage.setItem('@token', result.token)
           .then(()=>{
-            RNRestart.Restart();
-          })          }         }          )
+            this.props.navigation.navigate('Home')
+          })
+          } 
+        }  
+        )
   .catch(error => console.log('error', error));
     }
     

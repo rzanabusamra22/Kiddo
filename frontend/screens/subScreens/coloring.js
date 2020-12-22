@@ -16,9 +16,8 @@ class Coloring extends Component {
     }
     componentDidMount() {
         var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Cookie", "csrftoken=8D1Sq0vmt6e688rpIH6GYE3e7UPibIdjv3Adw5y7f0n4juVJLHgL6MBl0QdGYamu");
     myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -43,8 +42,8 @@ class Coloring extends Component {
              data ={anygame}
              renderItem={({item})=>(
                          <TouchableOpacity onPress={() =>{ 
-                            sendcoloring(item.link);
-                              navigation.navigate('Game')
+                              sendcoloring(item.link);
+                              navigation.navigate('coloringS')
                               }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
  
                              <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: item?.thumbnail }} />

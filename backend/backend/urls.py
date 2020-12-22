@@ -37,10 +37,10 @@ urlpatterns = [
    path('admin/', admin.site.urls),
    path("", include( router.urls )),
    path("", include('djoser.urls')),
-   path("", include('djoser.urls.authtoken')), #api/auth/
+   path("token/", include('djoser.urls.authtoken')), #api/auth/
 #    url(r'^account/', include('djoser.urls')),
-   url(r'^auth/login/', jwt_views.obtain_jwt_token, name='auth'),
-   path('checkserver/',views.index,name='index'),
+   path('jwt/', jwt_views.obtain_jwt_token, name='auth'),
+   path('status/',views.index,name='index'),
    path('signup/', views.signup, name='signup'),
    path('getid/', views.id, name="id"),
    path('donate/', views.donate, name="donate")
