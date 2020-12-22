@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import React, { Component, useState } from 'react';
 import {Alert, View, Text, StyleSheet, Image, Dimensions,TextInput ,TouchableOpacity} from 'react-native';
 const SignUp =({navigation})=>{
