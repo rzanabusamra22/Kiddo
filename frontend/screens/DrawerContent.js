@@ -175,7 +175,7 @@ componentDidMount() {
           )}
           label="SignIn"
           onPress={() => {AsyncStorage.getItem('@token').then((token)=>{
-            if(token){this.setState({token})}else{this.props.navigation.navigate('Parent')}})}}
+            if(token){this.setState({token})}else{this.props.navigation.navigate('MusicApp')}})}}
       />
   </Drawer.Section>
 </View>
