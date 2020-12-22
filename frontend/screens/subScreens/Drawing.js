@@ -43,7 +43,7 @@ class Drawing extends Component {
              renderItem={({item})=>(
                          <TouchableOpacity onPress={() =>{ 
                             senddraw(item.link);
-                              navigation.navigate('Game')
+                              navigation.navigate('draw')
                               }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
  
                              <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: item?.thumbnail }} />

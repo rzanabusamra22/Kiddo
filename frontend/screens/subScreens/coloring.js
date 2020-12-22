@@ -41,8 +41,8 @@ class Coloring extends Component {
              data ={anygame}
              renderItem={({item})=>(
                          <TouchableOpacity onPress={() =>{ 
-                            sendcoloring(item.link);
-                              navigation.navigate('Game')
+                              sendcoloring(item.link);
+                              navigation.navigate('coloringS')
                               }}  style={{ marginLeft: vw * 7, marginTop: 6 * vh, height: 25 * vh, width: 40 * vw }}>
  
                              <Image style={{ borderRadius: 15, height: "100%", width: "100%" }}  source={{ uri: item?.thumbnail }} />

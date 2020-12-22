@@ -41,7 +41,8 @@ class History extends Component {
                                         <TouchableOpacity style={styles.container} onPress={()=>this.go(item)} key={i}>
                                     <View >
                                     <Image 
-                                     source={item.thumbnail}
+                                     source={{uri: item.thumbnail}}
+
                                      style={{ width: win.width/3,
                                         height: win.width/3, borderRadius:8, margin:win.width/40}}
                                      />
@@ -49,6 +50,7 @@ class History extends Component {
                                      </TouchableOpacity>  
                                     )}
                                     numColumns={2}
+                                    keyExtractor={(index,key)=>{return key}}
                     />
                 </View>
         </View>

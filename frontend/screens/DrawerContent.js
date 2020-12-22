@@ -19,7 +19,6 @@ import {
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
-
 class DrawerContent extends React.Component{
   constructor(props){
     super(props)
@@ -28,13 +27,11 @@ class DrawerContent extends React.Component{
         ,flag:0
       }
   }
-  
 componentDidMount() {
   AsyncStorage.getItem('@token').then((token)=>{
     this.setState({token})
   })
    }
-
   signOutHandler = async () => {
    await AsyncStorage.removeItem('@token')
    await AsyncStorage.removeItem('@user') 
@@ -56,11 +53,9 @@ componentDidMount() {
                             />
                             <View  style={{marginLeft:15, flexDirection:'column'}}>
                                 <Title style={styles.title} >{this.props.user?.username}</Title>
-                        
                                 {this.props.user?.is_staff? <Caption style={styles.caption} > Admin </Caption>
                                 :  <Caption style={styles.caption} > User </Caption>  
                               }
-                               
                             </View>
                       </View>
                     </View>
@@ -185,7 +180,6 @@ componentDidMount() {
   </Drawer.Section>
 </View>
 )}}}
-
 const styles = StyleSheet.create({
     drawerContent: {
       flex: 1,
