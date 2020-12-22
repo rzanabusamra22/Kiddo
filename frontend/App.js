@@ -41,7 +41,7 @@ import AdminProfile from './screens/AdminProfile';
 import DrawerContent from './screens/DrawerContent';
 //Parent
 import Parent from './screens/parent/parents-landingpage'
-import SignUp from './screens/parent/singUpParents'
+import SignUp from './screens/parent/signUpParents'
 import MusicApp from './screens/parent/index'
 import parentProfile from './screens/parent/parentProfile'
 import History from './screens/history'

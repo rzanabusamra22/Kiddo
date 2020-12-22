@@ -12,6 +12,10 @@ const submitSignup = ()=>{
 myHeaders.append("Content-Type", "application/json");
 var raw = JSON.stringify({
   "username":parentname,
+  "password":password,
+  "thumbnail":picture,
+  "email":email,
+  "phone":phone
 });
 var requestOptions = {
   method: 'POST',
