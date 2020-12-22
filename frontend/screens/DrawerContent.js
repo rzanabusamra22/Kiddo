@@ -32,10 +32,13 @@ componentDidMount() {
     this.setState({token})
   })
    }
-  signOutHandler = async () => {
-   await AsyncStorage.removeItem('@token')
-   await AsyncStorage.removeItem('@user') 
-   this.setState({token:null})
+  signOutHandler = () => {
+    AsyncStorage.removeItem('@user').then(()=>{
+      AsyncStorage.removeItem('@token').then(()=>{
+      AsyncStorage.getItem('@token').then((token)=>{
+        this.setState({token})
+      })})})
+  
 };
     render(){
       if(this.state.token){
