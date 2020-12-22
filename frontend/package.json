@@ -18,7 +18,7 @@
     "build:ios": "expo build:ios",
     "start-web": "react-scripts start",
     "build-web": "react-scripts build",
-    "test-web": "react-scripts test",
+    "test-web": "react-scripts test --passWithNoTests",
     "eject-web": "react-scripts eject",
     "test": "jest"
   },
