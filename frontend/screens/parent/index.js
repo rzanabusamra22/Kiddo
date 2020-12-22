@@ -116,15 +116,16 @@ class MusicApp extends Component {
     })
   }
   handleSubmit = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({"username":this.state.username,"password":this.state.password});
-    var requestOptions = {
-    method: 'POST',
-    body: raw ,
-    headers: {
-    "Content-Type": "application/json",
-    },
-    redirect: 'follow'
-    };
+
+        var requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            headers:myHeaders
+        };
+    
     fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
     .then(response => response.json())
     .then( (result) => {
@@ -140,11 +141,11 @@ class MusicApp extends Component {
           "User Sign-in",
           "signed in failed" + '\n' + 'username or password : incorrect',
           [
-            { text: "Cancel", onPress: () =>{ console.log("Cancel Pressed") 
+            { text: "Cancel", onPress: () =>{ 
             this.props.props.navigation.navigate('Home')
            
           }},
-          { text: "Try again", onPress: () =>{ console.log("try again") 
+          { text: "Try again", onPress: () =>{ 
         }}
           ],
           { cancelable: true}

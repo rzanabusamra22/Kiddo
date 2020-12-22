@@ -196,7 +196,7 @@ const PaymentView = (props) => {
                          * Error Handling
                          */
 
-                        //show card error if entered Invalid Card Number
+                        // Show card error if entered Invalid Card Number
                         function showCardError(error){
                             document.getElementById('card-errors').innerHTML = ""
                             if(error){
@@ -208,10 +208,10 @@ const PaymentView = (props) => {
                         card.on('change', function(event) {
                             if (event.complete) {
                                 showCardError()
-                                // enable payment button
+                                // Enable payment button
                             } else if (event.error) {
                                 const { message} = event.error
-                                console.log(message)
+                                
                                 showCardError(message)
                             }
                         });
@@ -249,7 +249,7 @@ const PaymentView = (props) => {
             
                             stripe.createToken(card, additionalData).then(function(result) {
                             
-                            console.log(result);
+                           
 
                             if (result.token) {
                                 window.postMessage(JSON.stringify(result));
@@ -276,7 +276,7 @@ const PaymentView = (props) => {
 
     const onMessage = (event) => {
         const { data } =  event.nativeEvent;
-        console.log('******* paymentView, data: ',  data)
+       
         onCheckStatus(data)
     }
 

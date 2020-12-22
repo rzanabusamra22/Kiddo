@@ -14,7 +14,7 @@ const PaymentScreen = () => {
         setResponse(paymentResponse)
         let jsonResponse = JSON.parse(paymentResponse);
         // perform operation to check payment status
-         console.log(jsonResponse)
+    
       
         var raw = JSON.stringify({
         "authToken": jsonResponse.token.id,
@@ -34,7 +34,7 @@ const PaymentScreen = () => {
         fetch("http://blackpearl2.ew.r.appspot.com/donate/", requestOptions)
         .then((res)=> res.text())
         .then(stripeResponse =>{
-            console.log(stripeResponse)
+        
             if(stripeResponse) {
                     setPaymentStatus('Donation Success')
                 }else{
@@ -74,12 +74,12 @@ const PaymentScreen = () => {
             // show to make payment
         }else{
             if(response !== undefined){
-                console.log('Response is  defined')
+         
                 return <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 300, marginTop: 50}}>
                     <Text style={{ fontSize: 25, margin: 10}}> { paymentStatus} </Text>
                 </View>
             }else{
-                console.log('Response is not defined')
+             
                 return <PaymentView onCheckStatus={onCheckStatus}  amount={amount} username={username}/>
             }
         }
