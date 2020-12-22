@@ -10,6 +10,8 @@ import rootReducer from './screens/redux/reducers.js';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 const store = createStore(rootReducer);
 // Home Screen Categories
+//
+//
 import Home from './screens/home-comp'
 import Learn from './screens/learn';
 import Art from './screens/art';
@@ -52,6 +54,7 @@ const Donatestack = createStackNavigator();
 const AdminProfilestack = createStackNavigator();
 const ParentStack = createStackNavigator();
 const Historystack = createStackNavigator();
+const MusicAppstack = createStackNavigator();
 //Home Stack 
 const HomeStackScreen = ({navigation}) =>{
   return(
@@ -397,6 +400,32 @@ const ParentStackScreen = ({navigation}) =>{
     </ParentStack.Navigator>
   )
 }
+const MusicAppStackScreen = ({navigation}) =>{
+  return(
+    <MusicAppstack.Navigator 
+  initialRouteName="Home"
+  screenOptions={{
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }}
+  >
+    <MusicAppstack.Screen
+     name="MusicApp"
+     component={MusicApp}
+     options={{ 
+      title: 'Kiddo',
+     headerLeft: () => (<Icon.Button name="ios-menu" size={25} backgroundColor={"#f4511e"} onPress={()=> navigation.openDrawer()}/> ),
+       headerRight: () => (<Icon.Button name="ios-home" size={20} backgroundColor={"#f4511e"} onPress={()=> navigation.navigate('Home')}/>),
+    }}
+ />
+    </MusicAppstack.Navigator>
+  )
+}
 
 const HistoryStackScreen = ({navigation}) =>{
   return(
@@ -448,7 +477,7 @@ class App extends React.Component {
         <Drawer.Screen name="Parent"  component={ParentStackScreen} />
         <Drawer.Screen name="parentProfile"  component={ParentStackScreen} />
         <Drawer.Screen name="History"  component={HistoryStackScreen} />
-
+        <Drawer.Screen name="MusicApp"  component={MusicAppStackScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
     </SafeAreaProvider>
