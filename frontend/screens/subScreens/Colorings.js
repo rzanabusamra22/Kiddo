@@ -1,30 +1,36 @@
+// frontend/screens/subScrees/Colorings.js
+import { connect } from 'react-redux';
+import {WebView} from 'react-native-webview';
 import React, { Component, useState } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
-import {WebView} from 'react-native-webview'
-import { connect } from 'react-redux';
- class Draw extends Component{
+
+// The coloring game to be played
+ class Colorings extends Component{
      constructor(props){
          super(props)
          this.state={
          }
      }
      render(){
-      
+        
     return(
         <WebView
         source={{
-          uri:this.props.drawlink
+          uri:this.props.coloringlink
         }}
 />
     )
 }}
 
+// Styles
 const styles = StyleSheet.create({
     
 })
+
+// Redux
 const mapStateToProps = (state) => {
     return {
-       drawlink: state.drawlink,
+       coloringlink: state.coloringlink,
     }
   }
   const mapDispatchToProps = (dispatch) => {
@@ -33,4 +39,4 @@ const mapStateToProps = (state) => {
     }
   }
   
-export default connect(mapStateToProps, mapDispatchToProps)(Draw);  
+export default connect(mapStateToProps, mapDispatchToProps)(Colorings);
