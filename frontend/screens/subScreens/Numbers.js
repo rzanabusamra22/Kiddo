@@ -1,6 +1,9 @@
+// frontend/screens/subScrees/Numbers.js
 import React, { Component, useState } from 'react';
-import { Image, StyleSheet, Text, View } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
+import { Image, StyleSheet, Text, View } from "react-native";
+
+// Static values container
 const slides = [
     {key: "one",image: {uri: 'https://i.imgur.com/N6AqfnY.png'}},
     {key: "two",image: {uri: 'https://i.imgur.com/hV0OYM5.png'}},
@@ -13,6 +16,8 @@ const slides = [
     {key: "nine",image: {uri: 'https://i.imgur.com/Nxbwd4E.png'}},
     {key: "ten",image: {uri: 'https://i.imgur.com/EpyMsS0.png'}},
   ];
+
+// Shows the basic numbers to learn them
 class Numbers extends Component{
     constructor(){
         super()
@@ -40,6 +45,8 @@ class Numbers extends Component{
            />
           );
 }}
+
+// Styles
 const styles = StyleSheet.create({
     container: {
         flexDirection:'row',
@@ -49,6 +56,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
       }
 });
+
 export default Numbers
 
 

@@ -1,30 +1,36 @@
+// frontend/screens/subScrees/Draw.js
+import { connect } from 'react-redux';
+import {WebView} from 'react-native-webview';
 import React, { Component, useState } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
-import {WebView} from 'react-native-webview'
-import { connect } from 'react-redux';
- class ColoringS extends Component{
+
+// This shows the drawing game selected to be played in webview
+ class Draw extends Component{
      constructor(props){
          super(props)
          this.state={
          }
      }
      render(){
-        
+      
     return(
         <WebView
         source={{
-          uri:this.props.coloringlink
+          uri:this.props.drawlink
         }}
 />
     )
 }}
 
+// Styles
 const styles = StyleSheet.create({
     
 })
+
+// Redux
 const mapStateToProps = (state) => {
     return {
-       coloringlink: state.coloringlink,
+       drawlink: state.drawlink,
     }
   }
   const mapDispatchToProps = (dispatch) => {
@@ -33,4 +39,4 @@ const mapStateToProps = (state) => {
     }
   }
   
-export default connect(mapStateToProps, mapDispatchToProps)(ColoringS);
+export default connect(mapStateToProps, mapDispatchToProps)(Draw);  

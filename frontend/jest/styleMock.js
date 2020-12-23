@@ -1,3 +1,2 @@
-// __mocks__/styleMock.js
-
+// jest/styleMock.js
 module.exports = {};
