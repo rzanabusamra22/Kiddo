@@ -39,7 +39,7 @@ class Drawing extends Component {
       headers: myHeaders,
     };
     fetch(
-      "https://blackpearl2.ew.r.appspot.com/plays/?category=draw",
+      `https://blackpearl2.ew.r.appspot.com/plays/?category=draw`,
       requestOptions
     )
       .then((response) => response.json())
@@ -47,10 +47,31 @@ class Drawing extends Component {
         this.setState({
           result,
         });
-      })
-      .catch((error) => console.error(error));
+      });
   }
-
+  save(item) {
+    if (this.props.user) {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+      var raw = JSON.stringify({
+        user: this.props.user?.username,
+        link: item.link,
+        thumbnail: item?.thumbnail,
+        kind: "Draw",
+      });
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+      fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {})
+        .catch((error) => console.error(error));
+    }
+  }
   render() {
     const navigation = this.props.navigation;
     const senddraw = this.props.senddraw;
@@ -61,6 +82,7 @@ class Drawing extends Component {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
+              this.save(item);
               senddraw(item.link);
               navigation.navigate("Draw");
             }}
@@ -141,6 +163,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     drawlink: state.drawlink,
+    user: state.user,
   };
 };
 const mapDispatchToProps = (dispatch) => {
