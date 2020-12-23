@@ -12,7 +12,6 @@ import { act } from "react-test-renderer";
 import configureMockStore from "redux-mock-store";
 import DrawerContent from "../screens/DrawerContent";
 import { render } from "@testing-library/react-native";
-import "@react-native-community/async-storage/jest/async-storage-mock";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const middlewares = [thunk];

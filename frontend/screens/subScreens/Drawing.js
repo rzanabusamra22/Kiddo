@@ -62,7 +62,7 @@ class Drawing extends Component {
           <TouchableOpacity
             onPress={() => {
               senddraw(item.link);
-              navigation.navigate("draw");
+              navigation.navigate("Draw");
             }}
             style={{
               marginLeft: vw * 7,

@@ -27,10 +27,10 @@ class History extends Component {
         .then(result => {this.setState({result})})
         .catch(error => console.error(error));
     }
-    go(x){
+    go(item){
         // When clicking on a history item visits the page again
-       if(x.kind==="video"){sendvideo(x.link);this.props.navigation.navigate(x.kind)}
-       else{sendgame(x.link);this.props.navigation.navigate(x.kind)}
+       if(item.kind==="video"){this.props.sendvideo(item.link);this.props.navigation.navigate(item.kind)}
+       else{this.props.sendgame(item.link);this.props.navigation.navigate(item.kind)}
     }
     render() {
         return(
@@ -51,7 +51,7 @@ class History extends Component {
                                      </TouchableOpacity>  
                                     )}
                                     numColumns={2}
-                                    keyExtractor={(index,key)=>{return key}}
+                                    keyExtractor={(index,key)=>{return `${key}`}}
                     />
                 </View>
         </View>

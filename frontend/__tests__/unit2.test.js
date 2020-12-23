@@ -12,7 +12,6 @@ import { Provider } from "react-redux";
 import { act } from "react-test-renderer";
 import configureMockStore from "redux-mock-store";
 import { render } from "@testing-library/react-native";
-import "@react-native-community/async-storage/jest/async-storage-mock";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
