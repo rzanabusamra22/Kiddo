@@ -5,7 +5,7 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from "react-native";
 
 // This component will show a lot of photos in a nice viewing fashion; scrolling both ways horizontally & vertically
@@ -66,7 +66,7 @@ class Album extends Component {
                   borderColor: "#F4511E",
                   resizeMode: "contain",
                   margin: 8,
-                  borderRadius:30,
+                  borderRadius: 30,
                 }}
               ></Image>
             </TouchableOpacity>
@@ -91,7 +91,7 @@ class Album extends Component {
                   borderColor: "#F4511E",
                   resizeMode: "contain",
                   margin: 8,
-                  borderRadius:30,
+                  borderRadius: 30,
                 }}
               ></Image>
             </TouchableOpacity>
@@ -116,7 +116,7 @@ class Album extends Component {
                   borderColor: "#F4511E",
                   resizeMode: "contain",
                   margin: 8,
-                  borderRadius:30,
+                  borderRadius: 30,
                 }}
               ></Image>
             </TouchableOpacity>
@@ -141,7 +141,7 @@ class Album extends Component {
                   borderColor: "#F4511E",
                   resizeMode: "contain",
                   margin: 8,
-                  borderRadius:30,
+                  borderRadius: 30,
                 }}
               ></Image>
             </TouchableOpacity>
