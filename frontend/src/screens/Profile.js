@@ -1,4 +1,4 @@
-// frontend/screens/Profile.js
+// frontend/src/screens/Profile.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,

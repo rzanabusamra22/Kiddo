@@ -1,4 +1,4 @@
-// frontend/screens/Album.js
+// frontend/src/screens/Album.js
 import React, { Component, useState } from "react";
 import {
   Image,

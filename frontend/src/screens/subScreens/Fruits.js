@@ -1,4 +1,4 @@
-// frontend/screens/subScrees/Fruits.js
+// frontend/src/screens/subScrees/Fruits.js
 import React, { Component, useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { Image, StyleSheet, Text, View } from "react-native";

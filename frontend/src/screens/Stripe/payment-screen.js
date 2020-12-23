@@ -1,4 +1,4 @@
-// frontend/screens/Stripe/payment-screen.js
+// frontend/src/screens/Stripe/payment-screen.js
 import React, { useState, useEffect } from "react";
 import {
   View,

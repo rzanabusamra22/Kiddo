@@ -1,4 +1,4 @@
-// frontend/screens/Games.js
+// frontend/src/screens/Games.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,

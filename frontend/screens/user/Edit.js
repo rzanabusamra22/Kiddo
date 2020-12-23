@@ -137,8 +137,8 @@ const Update = (props) => {
       .catch((error) => {
         console.error(error);
         Alert.alert(
-          "Parents SignUp",
-          "Failed signed up",
+          "Edit failed",
+          "Failed to edit",
           [
             { text: "Try again", onPress: () => {} },
             { text: "OK", onPress: () => {} },

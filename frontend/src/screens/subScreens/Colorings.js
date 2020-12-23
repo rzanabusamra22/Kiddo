@@ -1,4 +1,4 @@
-// frontend/screens/subScrees/Colorings.js
+// frontend/src/screens/subScrees/Colorings.js
 import { connect } from "react-redux";
 import React, { Component, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";

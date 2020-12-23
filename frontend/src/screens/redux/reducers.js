@@ -1,4 +1,4 @@
-// frontend/screens/redux/reducers.js
+// frontend/src/screens/redux/reducers.js
 
 // Creates the Redux variables
 const initState = {

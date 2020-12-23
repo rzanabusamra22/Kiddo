@@ -1,4 +1,4 @@
-// frontend/screens/Stripe/payment-view.js
+// frontend/src/screens/Stripe/payment-view.js
 import React, { useState, useEffect } from "react";
 
 const STRIPE_PK =
