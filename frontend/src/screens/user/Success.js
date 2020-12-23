@@ -67,6 +67,9 @@ class Success extends Component {
           <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>
             {this.props.user?.phone}
           </Text>
+          <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>
+            {this.props.user?.email}
+          </Text>
         </View>
         <TouchableOpacity
           onPress={() => {

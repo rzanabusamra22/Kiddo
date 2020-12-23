@@ -1,6 +1,7 @@
 {
   "name": "kiddo",
   "description": "app for kids",
+  "main": "./build/index.js",
   "license": "none",
   "version": "1.0.0",
   "homepage": "https://kiddoi.web.app/",
