@@ -1,4 +1,4 @@
-// frontend/screens/DrawerContent.js
+// frontend/src/screens/DrawerContent.js
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -17,6 +17,7 @@ import {
 import { connect } from "react-redux";
 import { senduser } from "./redux/actions";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+
 // Drawer
 class DrawerContent extends React.Component {
   constructor(props) {
@@ -199,6 +200,7 @@ class DrawerContent extends React.Component {
     }
   }
 }
+
 // Styles
 const styles = StyleSheet.create({
   drawerContent: {
@@ -245,6 +247,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
 });
+
 // Redux
 const mapStateToProps = (state) => {
   return {

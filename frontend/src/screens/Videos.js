@@ -1,4 +1,4 @@
-// frontend/screens/Games.js
+// frontend/screens/Videos.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,
@@ -7,23 +7,23 @@ import {
   View,
   Keyboard,
   TextInput,
-  TouchableWithoutFeedback,
   FlatList,
+  TouchableWithoutFeedback,
   TouchableOpacity,
-  ScrollView,
   Button,
   Alert,
+  ScrollView,
   Linking,
 } from "react-native";
 import { connect } from "react-redux";
 import { Dimensions } from "react-native";
-import { sendgame } from "./redux/actions";
+import { sendvideo } from "./redux/actions";
 const wind = Dimensions.get("window");
 var vw = wind.width * 0.01;
 var vh = wind.height * 0.01;
 
-// This component renders all the games
-class Games extends Component {
+// This component renders all the videos of one category clicked by the user
+class Videos extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,13 +33,15 @@ class Games extends Component {
   componentDidMount() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+
     var requestOptions = {
       method: "GET",
       redirect: "follow",
       headers: myHeaders,
     };
+
     fetch(
-      "https://blackpearl2.ew.r.appspot.com/plays/?category=other",
+      `https://blackpearl2.ew.r.appspot.com/records/?category=${this.props.videocat}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -47,21 +49,21 @@ class Games extends Component {
         this.setState({
           result,
         });
-      })
-      .catch((error) => console.error(error));
+      });
   }
-
   save(item) {
     if (this.props.user) {
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+
       var raw = JSON.stringify({
         user: this.props.user?.username,
         link: item.link,
         thumbnail: item?.thumbnail,
-        kind: "Game",
+        kind: "Video",
       });
+
       var requestOptions = {
         method: "POST",
         headers: myHeaders,
@@ -77,27 +79,29 @@ class Games extends Component {
   }
   render() {
     const navigation = this.props.navigation;
-    const sendgame = this.props.sendgame;
-    const anygame = this.state.result;
+    const sendvideo = this.props.sendvideo;
+    const videoctagory = this.state.result;
     return (
       <FlatList
-        data={anygame}
+        data={videoctagory}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
               this.save(item);
-              sendgame(item.link);
-              navigation.navigate("Game");
-            }}
-            style={{
-              marginLeft: vw * 7,
-              marginTop: 6 * vh,
-              height: 25 * vh,
-              width: 40 * vw,
+              sendvideo(item.link);
+              navigation.navigate("Video");
             }}
           >
             <Image
-              style={{ borderRadius: 15, height: "100%", width: "100%" }}
+              style={{
+                borderRadius: 40,
+                height: 6 * vh,
+                marginBottom: 15,
+                marginTop: 5,
+                marginRight: 5,
+                paddingBottom: 25 * vh,
+                width: 50 * vw,
+              }}
               source={{ uri: item?.thumbnail }}
             />
           </TouchableOpacity>
@@ -165,16 +169,17 @@ const styles = StyleSheet.create({
 // Redux
 const mapStateToProps = (state) => {
   return {
-    gamelink: state.gamelink,
+    videolink: state.videolink,
     user: state.user,
+    videocat: state.videocat,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    sendgame: (z) => {
-      dispatch(sendgame(z));
+    sendvideo: (z) => {
+      dispatch(sendvideo(z));
     },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Games);
+export default connect(mapStateToProps, mapDispatchToProps)(Videos);

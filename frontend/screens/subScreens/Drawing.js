@@ -33,11 +33,13 @@ class Drawing extends Component {
   componentDidMount() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+
     var requestOptions = {
       method: "GET",
       redirect: "follow",
       headers: myHeaders,
     };
+
     fetch(
       `https://blackpearl2.ew.r.appspot.com/plays/?category=draw`,
       requestOptions

@@ -1,4 +1,4 @@
-// frontend/screens/user/SignUp.js
+// frontend/src/screens/user/SignUp.js
 import React, { Component, useState } from "react";
 import {
   View,
@@ -67,13 +67,14 @@ const SignUp = (props) => {
             redirect: "follow",
             headers: myHeaders,
           };
+
           fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
             .then((response) => response.json())
             .then((result) => {
               if (result.token !== undefined) {
                 AsyncStorage.setItem("@token", result.token).then(() => {
                   AsyncStorage.setItem("@user", parentname).then(() => {
-                    Alert.alert(
+                    alert(
                       "Parents SignUp",
                       "Successfully signed up",
                       [
@@ -89,7 +90,7 @@ const SignUp = (props) => {
                   });
                 });
               } else {
-                Alert.alert(
+                alert(
                   "Parents SignUp",
                   "Signed up Failed " + "\n" + signup_error_msg,
                   [
@@ -107,7 +108,7 @@ const SignUp = (props) => {
             })
             .catch((error) => {
               console.error(error);
-              Alert.alert(
+              alert(
                 "Parents SignUp",
                 "Failed signed up",
                 [
@@ -178,6 +179,7 @@ const SignUp = (props) => {
     </TouchableWithoutFeedback>
   );
 };
+
 // Styles
 const styles = StyleSheet.create({
   container: {
