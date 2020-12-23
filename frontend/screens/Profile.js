@@ -40,11 +40,7 @@ class Profile extends Component {
             {this.props.user?.phone}
           </Text>
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            this.props.navigation.navigate("Success");
-          }}
-        >
+        <TouchableOpacity>
           <Animated.View style={styles.button}>
             <Image
               source={{ uri: "https://i.imgur.com/6xtJi3t.png" }}

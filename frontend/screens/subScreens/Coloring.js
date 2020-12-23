@@ -51,6 +51,35 @@ class Coloring extends Component {
           result,
         });
       });
+<<<<<<< HEAD
+=======
+  }
+  save(item) {
+    if (this.props.user) {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+      var raw = JSON.stringify({
+        user: this.props.user?.username,
+        link: item.link,
+        thumbnail: item?.thumbnail,
+        kind: "Colorings",
+      });
+      console.log(raw);
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+      fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((error) => console.error(error));
+    }
+>>>>>>> 66b8e445d9c15cfa362f6792426859ee25e3129b
   }
   save(item) {
     if (this.props.user) {
@@ -89,6 +118,7 @@ class Coloring extends Component {
           <TouchableOpacity
             onPress={() => {
               sendcoloring(item.link);
+              this.save(item);
               navigation.navigate("Colorings");
             }}
             style={{
@@ -168,6 +198,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     coloringlink: state.coloringlink,
+    user: state.user,
   };
 };
 const mapDispatchToProps = (dispatch) => {

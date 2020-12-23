@@ -56,28 +56,36 @@ class Drawing extends Component {
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66b8e445d9c15cfa362f6792426859ee25e3129b
       var raw = JSON.stringify({
         user: this.props.user?.username,
         link: item.link,
         thumbnail: item?.thumbnail,
         kind: "Draw",
       });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66b8e445d9c15cfa362f6792426859ee25e3129b
       var requestOptions = {
         method: "POST",
         headers: myHeaders,
         body: raw,
         redirect: "follow",
       };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66b8e445d9c15cfa362f6792426859ee25e3129b
       fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
         .then((response) => response.json())
         .then((result) => {})
         .catch((error) => console.error(error));
     }
   }
-
   render() {
     const navigation = this.props.navigation;
     const senddraw = this.props.senddraw;
@@ -88,8 +96,9 @@ class Drawing extends Component {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
+              this.save(item);
               senddraw(item.link);
-              navigation.navigate("draw");
+              navigation.navigate("Draw");
             }}
             style={{
               marginLeft: vw * 7,
@@ -168,6 +177,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     drawlink: state.drawlink,
+    user: state.user,
   };
 };
 const mapDispatchToProps = (dispatch) => {

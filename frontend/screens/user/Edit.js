@@ -1,23 +1,19 @@
 // frontend/screens/user/Edit.js
-// frontend/screens/user/SignUp.js
+
 import React, { Component, useState } from "react";
-import AsyncStorage from "@react-native-community/async-storage";
 import {
   View,
   Text,
-  Image,
   Alert,
   Keyboard,
   TextInput,
-  Dimensions,
   StyleSheet,
   TouchableOpacity,
-  TouchableWithoutFeedback,
-  Button,
+  TouchableWithoutFeedback
 } from "react-native";
 
-// Responsible for creating new accounts
-const Update = ({ navigation }) => {
+// Responsible for updating existed
+const Update = ( props ) => {
   const [parentname, onChangeName] = useState("");
   const [password, onChangePassword] = useState("");
   const [picture, onChangePicture] = useState("");
@@ -50,7 +46,7 @@ const Update = ({ navigation }) => {
       body: raw,
       redirect: "follow",
     };
-    fetch(`https://blackpearl2.ew.r.appspot.com/users/${id}/`, requestOptions)
+    fetch(`https://blackpearl2.ew.r.appspot.com/users/${props.user.id}/`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         var signup_error_msg = "";
@@ -82,7 +78,7 @@ const Update = ({ navigation }) => {
                   {
                     text: "OK",
                     onPress: () => {
-                      navigation.navigate("Home");
+                      props.navigation.navigate("Home");
                     },
                   },
                 ],
@@ -99,7 +95,7 @@ const Update = ({ navigation }) => {
                     {
                       text: "CANCEL",
                       onPress: () => {
-                        navigation.navigate("Home");
+                        props.navigation.navigate("Home");
                       },
                     },
                   ],
@@ -223,6 +219,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
 });
+// Redux
+const mapStateToProps = (state) => {
+    return {
+      user: state.user,
+    };
+  };
+  const mapDispatchToProps = (dispatch) => {
+    return {};
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Update);
+  
 
-export default Update;
 
