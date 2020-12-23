@@ -1,15 +1,21 @@
-// frontend/screens/Profile.js
+// frontend/src/screens/Profile.js
 import React, { Component, useState } from "react";
 import {
-  StyleSheet,
   Text,
   View,
-  SafeAreaView,
   Image,
+  Dimensions,
+  StyleSheet,
+  ScrollView,
+  SafeAreaView,
   TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
+import { senduser } from "./redux/actions";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Animated, { Easing } from "react-native-reanimated";
+const win = Dimensions.get("window");
+// This appears after a user successfully signs in
 
 // This will render the user's profile interface and info
 class Profile extends Component {
@@ -20,9 +26,34 @@ class Profile extends Component {
     };
   }
 
+  componentDidMount() {
+    var myHeaders = new Headers();
+
+    myHeaders.append("Content-Type", "application/json");
+    AsyncStorage.getItem("@user").then((user) => {
+      fetch(`https://blackpearl2.ew.r.appspot.com/users/?username=${user}`, {
+        headers: myHeaders,
+        redirect: "follow",
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          this.props.senduser(result[0]);
+        })
+        .catch(() => {});
+    });
+  }
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
+        <Text
+          style={[
+            styles.text,
+            { fontWeight: "200", fontSize: 30, color: "#2b31ae" },
+          ]}
+        >
+          Thank You For Trusting Us
+        </Text>
         <View style={{ alignSelf: "center" }}>
           <View style={styles.profileImage}>
             <Image
@@ -33,11 +64,14 @@ class Profile extends Component {
           </View>
         </View>
         <View style={styles.infoContainer}>
-          <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>
-            {this.props.user?.name}
+          <Text style={[styles.text1, { fontWeight: "200", fontSize: 36 }]}>
+            {this.props.user?.username}
           </Text>
-          <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>
+          <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>
             {this.props.user?.phone}
+          </Text>
+          <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>
+            {this.props.user?.email}
           </Text>
         </View>
         <TouchableOpacity>
@@ -53,6 +87,17 @@ class Profile extends Component {
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>Edit</Text>
           </Animated.View>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate("History");
+          }}
+        >
+          <View style={styles.button}>
+            <Text style={{ fontSize: 20, fontWeight: "200" }}>
+              My Kid History
+            </Text>
+          </View>
+        </TouchableOpacity>
       </SafeAreaView>
     );
   }
@@ -62,29 +107,46 @@ class Profile extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#FFF",
   },
   text: {
+    marginTop: 70,
+    textAlign: "center",
+    color: "#2b31ae",
+  },
+  text1: {
     color: "#52575D",
   },
   image: {
     flex: 1,
-    height: undefined,
-    width: undefined,
+    height: win.width / 2.5,
+    width: win.width / 2.5,
   },
   profileImage: {
     width: 200,
     height: 200,
     borderRadius: 100,
     overflow: "hidden",
-    marginTop: 50,
+    marginTop: 15,
   },
   infoContainer: {
     alignSelf: "center",
     alignItems: "center",
+    margin: win.width / 20,
     marginTop: 16,
+  },
+  button: {
+    backgroundColor: "white",
+    height: 70,
+    marginHorizontal: 75,
+    borderRadius: 35,
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 5,
+    shadowOffset: { width: 2, height: 2 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    marginTop: 20,
   },
 });
 
@@ -95,7 +157,11 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    senduser: (z) => {
+      dispatch(senduser(z));
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

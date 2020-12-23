@@ -1,9 +1,9 @@
-// frontend/screens/subScrees/Animals.js
+// frontend/src/screens/subScrees/Animals.js
+import $ from "jquery";
 import { TouchableOpacity } from "react-native";
 import React, { Component, useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { Image, StyleSheet, Text, View } from "react-native";
-import $ from "jquery";
 
 // Static variables in array to be rendered
 const slides = [
@@ -45,8 +45,8 @@ class Animals extends Component {
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() => {
-            $("#audio").attr({
-              src: item.sound
+            $("audio")[0].attr({
+              src: item.sound,
             });
           }}
         >

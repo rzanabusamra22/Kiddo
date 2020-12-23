@@ -1,4 +1,4 @@
-// frontend/screens/Learn.js
+// frontend/src/screens/Learn.js
 import React, { useState } from "react";
 import {
   StyleSheet,

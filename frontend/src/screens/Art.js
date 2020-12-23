@@ -1,4 +1,4 @@
-// frontend/screens/Art.js
+// frontend/src/screens/Art.js
 import React, { useState } from "react";
 import {
   StyleSheet,

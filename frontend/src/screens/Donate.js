@@ -1,4 +1,4 @@
-// frontend/screens/Donate.js
+// frontend/src/screens/Donate.js
 import React, { useState } from "react";
 import {
   StyleSheet,

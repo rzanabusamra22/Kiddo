@@ -1,4 +1,4 @@
-// frontend/screens/History.js
+// frontend/src/screens/History.js
 import { connect } from "react-redux";
 import { Dimensions } from "react-native";
 import React, { Component, useState } from "react";
