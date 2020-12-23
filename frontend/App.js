@@ -572,6 +572,29 @@ const ProfileStackScreen = ({ navigation }) => {
           ),
         }}
       />
+       <ProfileStack.Screen
+        name="Edit"
+        component={Edit}
+        options={{
+          title: "Kiddo",
+          headerLeft: () => (
+            <Icon.Button
+              name="ios-menu"
+              size={25}
+              backgroundColor={"#f4511e"}
+              onPress={() => navigation.openDrawer()}
+            />
+          ),
+          headerRight: () => (
+            <Icon.Button
+              name="ios-home"
+              size={20}
+              backgroundColor={"#f4511e"}
+              onPress={() => navigation.navigate("Home")}
+            />
+          ),
+        }}
+      />
     </ProfileStack.Navigator>
   );
 };
@@ -635,6 +658,7 @@ const SignUpStackScreen = ({ navigation }) => {
           ),
         }}
       />
+
       <SignUpStack.Screen
         name="SignIn"
         component={SignIn}
