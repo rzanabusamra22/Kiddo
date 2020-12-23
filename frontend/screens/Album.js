@@ -1,3 +1,4 @@
+// frontend/screens/Album.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,

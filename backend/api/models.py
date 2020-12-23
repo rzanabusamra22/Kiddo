@@ -1,8 +1,9 @@
+# backend/api/models.py
 from django.db import models
 from phone_field import PhoneField
 from django.contrib.auth.models import AbstractBaseUser, UserManager,PermissionsMixin
-#creates a new db model to add it to django
 
+# Creates a new db model to adds it to the currently connected database when migrations are being made
 class User(AbstractBaseUser,PermissionsMixin):
     objects =  UserManager()
     is_staff = models.BooleanField(default=False, blank=True)
@@ -45,3 +46,4 @@ class Play(models.Model):
     link = models.CharField(max_length=255, unique=True)
     category = models.CharField(max_length=50, default="game")
     thumbnail = models.CharField(max_length=255, unique=True)
+    

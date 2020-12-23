@@ -26,43 +26,41 @@ SECRET_KEY = '^^mf4ndpr(bjf@yvtny-lgdk3yb7f_y)qtr)4=&+b50&@8kdn5'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CORS_ORIGIN_ALLOW_ALL = True 
+CORS_ALLOW_CREDENTIALS = True
+ROOT_URLCONF = 'backend.urls'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Application definition
-
 INSTALLED_APPS = [
     'api',
+    'djoser',
     'backend',
     'corsheaders',
-    'rest_framework',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework.authtoken',
-    'rest_framework_jwt',
-    'djoser',
     'phone_field',
     'django_filters',
+    'rest_framework',
+    'rest_framework_jwt',
+    'django.contrib.auth',
+    'django.contrib.admin',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'rest_framework.authtoken',
+    'django.contrib.staticfiles',
+    'django.contrib.contenttypes',
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True 
-CORS_ALLOW_CREDENTIALS = True
-
-ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
@@ -80,12 +78,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 if os.getenv('GAE_APPLICATION', None):
     # Running on production App Engine, so connect to Google Cloud SQL using
     # the unix socket at /cloudsql/blackpearl2:us-central1:blackpearl
@@ -98,7 +92,7 @@ if os.getenv('GAE_APPLICATION', None):
             'NAME': 'blackpearl',
         }
     }
-# else:
+# else: # (uncomment if needed)
 #     # Running locally so connect to either a local MySQL instance or connect to Cloud SQL via the proxy. 
 #     # To host the database locally
 #     # run $ ./cloud_sql_proxy -instances=blackpearl2:us-central1:blackpearl=tcp:3306
@@ -123,7 +117,6 @@ else:
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -142,26 +135,19 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 
 # REST
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication', 
@@ -179,7 +165,7 @@ REST_FRAMEWORK = {
 
 AUTH_USER_MODEL = 'api.User'
 
-DJOSER = {
+DJOSER = { # (uncomment fields if needed)
     'LOGIN_FIELD': 'username',
     'USER_CREATE_PASSWORD_RETYPE':True,
     # 'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',

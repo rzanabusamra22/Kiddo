@@ -1,3 +1,7 @@
+// frontend/App.js
+
+// Imports
+
 // Navigator
 import * as React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -32,7 +36,7 @@ import Vegatables from "./screens/subScreens/Vegatables";
 import Draw from "./screens/subScreens/Draw";
 import Drawing from "./screens/subScreens/Drawing";
 import Coloring from "./screens/subScreens/Coloring";
-import ColoringS from "./screens/subScreens/Colorings";
+import Colorings from "./screens/subScreens/Colorings";
 // Drawer Pages
 import Donate from "./screens/Donate";
 import Profile from "./screens/Profile";
@@ -404,8 +408,8 @@ const HomeStackScreen = ({ navigation }) => {
         }}
       />
       <HomeStack.Screen
-        name="coloringS"
-        component={ColoringS}
+        name="Colorings"
+        component={Colorings}
         options={{
           title: "Kiddo",
           headerRight: () => (
