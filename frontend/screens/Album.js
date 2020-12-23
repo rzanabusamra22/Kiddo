@@ -62,10 +62,11 @@ class Album extends Component {
                 style={{
                   width: 260,
                   height: 300,
-                  borderWidth: 5,
+                  borderWidth: 1,
                   borderColor: "#F4511E",
                   resizeMode: "contain",
                   margin: 8,
+                  borderRadius:30,
                 }}
               ></Image>
             </TouchableOpacity>
@@ -77,6 +78,8 @@ class Album extends Component {
         <FlatList
           horizontal
           data={arr2}
+          showsHorizontalScrollIndicator={false}
+          legacyImplementation={false}
           renderItem={({ item }) => (
             <TouchableOpacity>
               <Image
@@ -84,10 +87,11 @@ class Album extends Component {
                 style={{
                   width: 260,
                   height: 300,
-                  borderWidth: 5,
-                  borderColor: "#d35647",
+                  borderWidth: 1,
+                  borderColor: "#F4511E",
                   resizeMode: "contain",
                   margin: 8,
+                  borderRadius:30,
                 }}
               ></Image>
             </TouchableOpacity>
@@ -99,6 +103,8 @@ class Album extends Component {
         <FlatList
           horizontal
           data={arr3}
+          showsHorizontalScrollIndicator={false}
+          legacyImplementation={false}
           renderItem={({ item }) => (
             <TouchableOpacity>
               <Image
@@ -106,10 +112,11 @@ class Album extends Component {
                 style={{
                   width: 260,
                   height: 300,
-                  borderWidth: 5,
-                  borderColor: "#d35647",
+                  borderWidth: 1,
+                  borderColor: "#F4511E",
                   resizeMode: "contain",
                   margin: 8,
+                  borderRadius:30,
                 }}
               ></Image>
             </TouchableOpacity>
@@ -121,6 +128,8 @@ class Album extends Component {
         <FlatList
           horizontal
           data={arr4}
+          showsHorizontalScrollIndicator={false}
+          legacyImplementation={false}
           renderItem={({ item }) => (
             <TouchableOpacity>
               <Image
@@ -128,10 +137,11 @@ class Album extends Component {
                 style={{
                   width: 260,
                   height: 300,
-                  borderWidth: 5,
-                  borderColor: "#d35647",
+                  borderWidth: 1,
+                  borderColor: "#F4511E",
                   resizeMode: "contain",
                   margin: 8,
+                  borderRadius:30,
                 }}
               ></Image>
             </TouchableOpacity>
