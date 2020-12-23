@@ -121,6 +121,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     flexDirection: "row",
     flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
   },
   img: {
     width: 120,

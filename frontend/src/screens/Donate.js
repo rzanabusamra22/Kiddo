@@ -16,7 +16,7 @@ export default function Donate() {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <View style={styles.container}>
-      <Modal visible={modalOpen} animationType="slide">
+      <Modal style={{width: "100vw"}} visible={modalOpen} animationType="slide">
         <View style={styles.modalContent}>
           <MaterialIcons
             name="close"
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    justifyContent: "center",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -71,6 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   buttonContainer: {
+    width: 350,
     flexDirection: "row",
     justifyContent: "center",
   },
@@ -104,5 +104,7 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

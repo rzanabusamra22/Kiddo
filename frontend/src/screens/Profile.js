@@ -25,31 +25,7 @@ class Profile extends Component {
       result: [],
     };
   }
-  
-  deleteAccount =()=>{
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-    myHeaders.append("Cookie", "csrftoken=i5EmzSQ98ekECN5CN1u5OJa2rY5dAgU9JNxpZGgxqOYR5YSu3YIpdHxMcptAHAmL");
 
-    var raw = "";
-
-    var requestOptions = {
-    method: 'DELETE',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow'
- };
- console.log('************ user id : ',this.props.user.id)
-fetch(`https://blackpearl2.ew.r.appspot.com/users/${this.props.user.id}/`, requestOptions)
-  .then(response => response.text())
-  .then(result => {
-    AsyncStorage.removeItem("@user")
-    AsyncStorage.removeItem("@token")
-    this.props.senduser("");
-    console.log(result)
-    this.props.navigation.navigate('Home')})
-  .catch(error => console.log('error', error));
-  }
   componentDidMount() {
     var myHeaders = new Headers();
 
@@ -99,14 +75,15 @@ fetch(`https://blackpearl2.ew.r.appspot.com/users/${this.props.user.id}/`, reque
           </Text>
         </View>
         <TouchableOpacity>
-          <Animated.View style={styles.button}>
+          <Animated.View
+            onPress={() => {
+              this.props.navigation.navigate("Edit");
+            }}
+          >
             <Image
               source={{ uri: "https://i.imgur.com/6xtJi3t.png" }}
               style={{ height: 50, width: 50 }}
               resizeMode="center"
-              onPress={() => {
-                this.props.navigation.navigate("Edit");
-              }}
             ></Image>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>Edit</Text>
           </Animated.View>
@@ -122,9 +99,6 @@ fetch(`https://blackpearl2.ew.r.appspot.com/users/${this.props.user.id}/`, reque
             </Text>
           </View>
         </TouchableOpacity>
-       <TouchableOpacity style={styles.button} onPress={this.deleteAccount}>
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Delete Account</Text>
-      </TouchableOpacity>
       </SafeAreaView>
     );
   }
@@ -135,6 +109,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     marginTop: 70,
@@ -146,13 +122,11 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    height: win.width / 2.5,
-    width: win.width / 2.5,
   },
   profileImage: {
     width: 200,
     height: 200,
-    borderRadius: 100,
+    borderRadius: 33,
     overflow: "hidden",
     marginTop: 15,
   },
@@ -165,6 +139,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "white",
     height: 70,
+    width: 350,
     marginHorizontal: 75,
     borderRadius: 35,
     alignItems: "center",

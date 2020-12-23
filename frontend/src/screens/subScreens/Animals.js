@@ -5,40 +5,32 @@ import React, { Component, useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-// Static variables in array to be rendered
-const slides = [
-  {
-    key: "chicken",
-    image: { uri: "https://i.imgur.com/I9KTOXD.png" },
-    sound: "https://www.fesliyanstudios.com/play-mp3/6620",
-  },
-  {
-    key: "cow",
-    image: { uri: "https://i.imgur.com/DxLuZ6L.png" },
-    sound: "https://www.fesliyanstudios.com/play-mp3/6523",
-  },
-  {
-    key: "duck",
-    image: { uri: "https://i.imgur.com/66YRBq0.png" },
-    sound: "https://www.fesliyanstudios.com/play-mp3/6595",
-  },
-  {
-    key: "horse",
-    image: { uri: "https://i.imgur.com/2cJG2FR.png" },
-    sound: "https://www.fesliyanstudios.com/play-mp3/6595",
-  },
-  {
-    key: "sheep",
-    image: { uri: "https://i.imgur.com/MeAefcJ.png" },
-    sound: "https://www.fesliyanstudios.com/play-mp3/6630",
-  },
-];
-
 // Animals pictures slides and their sounds
 class Animals extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { result: [] };
+  }
+
+  componentDidMount() {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+      headers: myHeaders,
+    };
+    fetch(
+      "https://blackpearl2.ew.r.appspot.com/photos/?category=animal",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        this.setState({
+          result,
+        });
+      })
+      .catch((error) => console.error(error));
   }
   _renderItem = ({ item }) => {
     return (
@@ -51,10 +43,10 @@ class Animals extends Component {
           }}
         >
           <Image
-            source={item.image}
+            source={{ uri: item.link }}
             style={{
               height: 600,
-              width: 400,
+              width: 600,
             }}
           />
         </TouchableOpacity>
@@ -62,7 +54,9 @@ class Animals extends Component {
     );
   };
   render() {
-    return <AppIntroSlider renderItem={this._renderItem} data={slides} />;
+    return (
+      <AppIntroSlider renderItem={this._renderItem} data={this.state.result} />
+    );
   }
 }
 

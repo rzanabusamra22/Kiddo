@@ -74,6 +74,7 @@ const SignUp = (props) => {
                 AsyncStorage.setItem("@token", result.token).then(() => {
                   AsyncStorage.setItem("@user", parentname).then(() => {
                     alert("Successfully signed up");
+                    location.reload();
                   });
                 });
               } else {

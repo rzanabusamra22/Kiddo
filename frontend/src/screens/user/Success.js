@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "white",
     height: 70,
-    width: 300,
+    width: 350,
     marginHorizontal: 75,
     borderRadius: 35,
     alignItems: "center",
@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     marginTop: 20,
   },
-  
 });
 
 // Redux
