@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   View,
+  Text,
   FlatList,
   TouchableOpacity,
 } from "react-native";
@@ -25,6 +26,30 @@ class History extends Component {
       this.getHistory();
     });
   }
+  deleteHistory=()=> {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+ //   myHeaders.append("Cookie", "csrftoken=i5EmzSQ98ekECN5CN1u5OJa2rY5dAgU9JNxpZGgxqOYR5YSu3YIpdHxMcptAHAmL");
+
+    var raw = "";
+
+    var requestOptions = {
+    method: 'DELETE',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+};
+
+    for(var i = 0; i < this.state.result.length; i++){
+   console.log(this.state.result[i].id)
+fetch(`https://blackpearl2.ew.r.appspot.com/historys/${this.state.result[i].id}/`, requestOptions)
+  .then(response => response.json())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+    }
+  }
+
+
   getHistory() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -99,6 +124,9 @@ class History extends Component {
             refreshing={this.state.isFetching}
           />
         </View>
+        <TouchableOpacity style={styles.button} onPress={this.deleteHistory}>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Delete History</Text>
+      </TouchableOpacity>
       </View>
     );
   }
@@ -115,6 +143,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: win.width / 50,
   },
+button: {
+backgroundColor: "white",
+height: 70,
+width: 350,
+marginHorizontal: 20,
+borderRadius: 35,
+alignItems: "center",
+justifyContent: "center",
+marginVertical: 5,
+shadowOffset: { width: 2, height: 2 },
+shadowColor: "black",
+shadowOpacity: 0.2,
+},
 });
 // Redux
 const mapStateToProps = (state) => {

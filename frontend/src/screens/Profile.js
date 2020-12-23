@@ -26,7 +26,31 @@ class Profile extends Component {
       result: [],
     };
   }
+  
+  deleteAccount =()=>{
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+    myHeaders.append("Cookie", "csrftoken=i5EmzSQ98ekECN5CN1u5OJa2rY5dAgU9JNxpZGgxqOYR5YSu3YIpdHxMcptAHAmL");
 
+    var raw = "";
+
+    var requestOptions = {
+    method: 'DELETE',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+ };
+ console.log('************ user id : ',this.props.user.id)
+fetch(`https://blackpearl2.ew.r.appspot.com/users/${this.props.user.id}/`, requestOptions)
+  .then(response => response.text())
+  .then(result => {
+    AsyncStorage.removeItem("@user")
+    AsyncStorage.removeItem("@token")
+    this.props.senduser("");
+    console.log(result)
+    this.props.navigation.navigate('Home')})
+  .catch(error => console.log('error', error));
+  }
   componentDidMount() {
     var myHeaders = new Headers();
 
@@ -99,6 +123,9 @@ class Profile extends Component {
             </Text>
           </View>
         </TouchableOpacity>
+       <TouchableOpacity style={styles.button} onPress={this.deleteAccount}>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Delete Account</Text>
+      </TouchableOpacity>
       </SafeAreaView>
     );
   }
