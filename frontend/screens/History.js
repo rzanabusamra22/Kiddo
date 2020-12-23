@@ -1,11 +1,12 @@
-// frontend/screens/history.js
-// import
-import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
-import React, { Component, useState } from 'react';
-import { sendvideo, sendgame } from './redux/actions';
+// frontend/screens/History.js
 import { connect } from 'react-redux';
 import { Dimensions } from "react-native";
+import React, { Component, useState } from 'react';
+import { sendvideo, sendgame } from './redux/actions';
+import { StyleSheet,Image,View,FlatList,TouchableOpacity} from 'react-native';
 const win = Dimensions.get('window');
+
+// This will render activity history of the current user
 class History extends Component {
     constructor(props) {
         super(props)
@@ -27,7 +28,7 @@ class History extends Component {
         .catch(error => console.error(error));
     }
     go(x){
-        // when clicking on a history item visits the page again
+        // When clicking on a history item visits the page again
        if(x.kind==="video"){sendvideo(x.link);this.props.navigation.navigate(x.kind)}
        else{sendgame(x.link);this.props.navigation.navigate(x.kind)}
     }
@@ -56,7 +57,8 @@ class History extends Component {
         </View>
     )}
 }
-// react native styles
+
+// Styles
 const styles = StyleSheet.create({
    
     container: {
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
         paddingTop: win.width/50
     },
 });
+
 // Redux
 const mapStateToProps = (state) => {
     return {
