@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Animated, { Easing } from "react-native-reanimated";
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { TapGestureHandler, State } from "react-native-gesture-handler";
 const { width, height } = Dimensions.get("window");
 

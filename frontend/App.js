@@ -448,7 +448,7 @@ const HomeStackScreen = ({ navigation }) => {
         }}
       />
       <HomeStack.Screen
-        name="draw"
+        name="Draw"
         component={Draw}
         options={{
           title: "Kiddo",
@@ -529,6 +529,29 @@ const ProfileStackScreen = ({ navigation }) => {
       <ProfileStack.Screen
         name="Profile"
         component={Profile}
+        options={{
+          title: "Kiddo",
+          headerLeft: () => (
+            <Icon.Button
+              name="ios-menu"
+              size={25}
+              backgroundColor={"#f4511e"}
+              onPress={() => navigation.openDrawer()}
+            />
+          ),
+          headerRight: () => (
+            <Icon.Button
+              name="ios-home"
+              size={20}
+              backgroundColor={"#f4511e"}
+              onPress={() => navigation.navigate("Home")}
+            />
+          ),
+        }}
+      />
+      <ProfileStack.Screen
+        name="History"
+        component={History}
         options={{
           title: "Kiddo",
           headerLeft: () => (
@@ -676,7 +699,7 @@ const SignInStackScreen = ({ navigation }) => {
           ),
         }}
       />
-      <SignUpStack.Screen
+      <SignInStack.Screen
         name="Success"
         component={Success}
         options={{

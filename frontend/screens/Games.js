@@ -56,14 +56,13 @@ class Games extends Component {
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-
       var raw = JSON.stringify({
         user: this.props.user?.username,
         link: item.link,
         thumbnail: item?.thumbnail,
         kind: "Game",
       });
-
+      console.log(raw);
       var requestOptions = {
         method: "POST",
         headers: myHeaders,
@@ -71,10 +70,7 @@ class Games extends Component {
         redirect: "follow",
       };
 
-      fetch(
-        "https://blackpearl2.ew.r.appspot.com/plays/?category=other",
-        requestOptions
-      )
+      fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
         .then((response) => response.json())
         .then((result) => {})
         .catch((error) => console.error(error));
