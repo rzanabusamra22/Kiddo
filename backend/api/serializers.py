@@ -3,15 +3,10 @@ from .models import *
 from rest_framework import serializers
 from djoser.serializers import UserCreateSerializer
 
-class PlaySerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Play
-        fields = ['category', 'link', 'thumbnail']
-
 class UserSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = [ 'username', 'password', 'email', 'phone', 'thumbnail', 'is_staff', 'is_active', 'is_superuser']
+        fields = [ 'id', 'username', 'password', 'email', 'phone', 'thumbnail', 'is_staff', 'is_active', 'is_superuser']
 
 class HistorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -32,4 +27,9 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Photo
         fields = ['category', 'link', 'sound']
+
+class PlaySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Play
+        fields = ['category', 'link', 'thumbnail']
         
