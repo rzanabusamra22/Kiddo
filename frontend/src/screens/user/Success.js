@@ -1,14 +1,14 @@
 // frontend/src/screens/user/Success.js
 import React, { Component, useState } from "react";
 import {
-  StyleSheet,
   Text,
   View,
-  SafeAreaView,
   Image,
   ScrollView,
-  TouchableOpacity,
+  StyleSheet,
   Dimensions,
+  SafeAreaView,
+  TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
 import { senduser } from "../redux/actions";

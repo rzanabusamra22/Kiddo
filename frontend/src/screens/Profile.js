@@ -1,14 +1,14 @@
 // frontend/src/screens/Profile.js
 import React, { Component, useState } from "react";
 import {
-  StyleSheet,
   Text,
   View,
-  SafeAreaView,
   Image,
-  ScrollView,
-  TouchableOpacity,
   Dimensions,
+  StyleSheet,
+  ScrollView,
+  SafeAreaView,
+  TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
 import { senduser } from "./redux/actions";
@@ -132,8 +132,8 @@ const styles = StyleSheet.create({
   infoContainer: {
     alignSelf: "center",
     alignItems: "center",
-    margin: win.width/20,
-    marginTop: 16
+    margin: win.width / 20,
+    marginTop: 16,
   },
   button: {
     backgroundColor: "white",
@@ -148,7 +148,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     marginTop: 20,
   },
-  
 });
 
 // Redux
@@ -166,14 +165,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
-
-
-
-
-
-
-
-
-
-
-

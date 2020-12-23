@@ -1,14 +1,14 @@
 // frontend/screens/user/Success.js
 import React, { Component, useState } from "react";
 import {
-  StyleSheet,
   Text,
   View,
-  SafeAreaView,
   Image,
   ScrollView,
-  TouchableOpacity,
+  StyleSheet,
   Dimensions,
+  SafeAreaView,
+  TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
 import { senduser } from "../redux/actions";
@@ -66,6 +66,9 @@ class Success extends Component {
           </Text>
           <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>
             {this.props.user?.phone}
+          </Text>
+          <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>
+            {this.props.user?.email}
           </Text>
         </View>
         <TouchableOpacity
@@ -128,6 +131,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     marginTop: 20,
   },
+  
 });
 
 // Redux
