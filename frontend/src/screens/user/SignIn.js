@@ -154,7 +154,7 @@ class SignIn extends Component {
         if (result.token !== undefined) {
           AsyncStorage.setItem("@token", result.token).then(() => {
             AsyncStorage.setItem("@user", this.state.username).then(() => {
-              Alert.alert(
+              alert(
                 "User Sign-in",
                 `Hello ${this.state.username}` +
                   "\n" +
@@ -172,7 +172,7 @@ class SignIn extends Component {
             });
           });
         } else {
-          Alert.alert(
+          alert(
             "User Sign-in",
             "signed in failed" + "\n" + "username or password : incorrect",
             [

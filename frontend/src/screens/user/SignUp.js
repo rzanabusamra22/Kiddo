@@ -74,7 +74,7 @@ const SignUp = (props) => {
               if (result.token !== undefined) {
                 AsyncStorage.setItem("@token", result.token).then(() => {
                   AsyncStorage.setItem("@user", parentname).then(() => {
-                    Alert.alert(
+                    alert(
                       "Parents SignUp",
                       "Successfully signed up",
                       [
@@ -90,7 +90,7 @@ const SignUp = (props) => {
                   });
                 });
               } else {
-                Alert.alert(
+                alert(
                   "Parents SignUp",
                   "Signed up Failed " + "\n" + signup_error_msg,
                   [
@@ -108,7 +108,7 @@ const SignUp = (props) => {
             })
             .catch((error) => {
               console.error(error);
-              Alert.alert(
+              alert(
                 "Parents SignUp",
                 "Failed signed up",
                 [
