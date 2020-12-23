@@ -1,5 +1,6 @@
 // frontend/screens/user/Edit.js
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { Component, useState } from "react";
 import {
   View,
@@ -11,7 +12,8 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback
 } from "react-native";
-
+import { connect } from "react-redux";
+import { senduser } from "../redux/actions";
 // Responsible for updating existed
 const Update = ( props ) => {
   const [parentname, onChangeName] = useState("");
@@ -22,18 +24,31 @@ const Update = ( props ) => {
   const submitEditions = () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+
     var raw = {}
-    if(username !== ''){
-        raw.username = username
+    if(parentname !== ''){
+        raw.username = parentname
     }
     if(email !== ''){
         raw.email = email
     }
+    if(password === ''){
+        Alert.alert(
+            "Required",
+          "Password can't be empty ",
+          [
+            { text: "Ok", onPress: () => {} },
+          ],
+          { cancelable: true }
+        );
+    }
     if(password !== ''){
         raw.password = password
     }
-    if(thumbnail !== ''){
-        raw.thumbnail = thumbnail
+
+    if(picture !== ''){
+        raw.thumbnail = picture
     }
     if(phone !== ''){
         raw.phone = phone
@@ -49,6 +64,7 @@ const Update = ( props ) => {
     fetch(`https://blackpearl2.ew.r.appspot.com/users/${props.user.id}/`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
+        console.log(result)
         var signup_error_msg = "";
         if (Array.isArray(result.username)) {
           signup_error_msg += "\n" + result.username;
@@ -59,18 +75,33 @@ const Update = ( props ) => {
         if (Array.isArray(result.password)) {
           signup_error_msg += "\n" + result.password;
         }
-        if (signup_error_msg === "") {
-          var myHeaders = new Headers();
-          myHeaders.append("Content-Type", "application/json");
-          var raw = JSON.stringify({
-            username: parentname,
-            password: password,
-          });
-
     
-
-
          if( signup_error_msg === ''){
+            console.log(props)
+            props.senduser(result)
+                 
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+        myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({"username":result.username,"password":password});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log('******************** jwt ******************', result)
+        if (result.token !== undefined) {
+          AsyncStorage.setItem("@token", result.token)
+            AsyncStorage.setItem("@user", username)
+          }});
+ 
             Alert.alert(
                 "Account info editing",
                 "Successfully edited",
@@ -102,8 +133,7 @@ const Update = ( props ) => {
                   { cancelable: true }
                 );
               }
-            }})
-            .catch((error) => {
+            }) .catch((error) => {
               console.error(error);
               Alert.alert(
                 "Parents SignUp",
@@ -154,7 +184,7 @@ const Update = ( props ) => {
           value={password}
           name="Password"
           placeholder="Password"
-          secureTextEntry={true}
+          secureTextEntry={false}
           style={styles.textInput}
           placeholderTextColor="black"
           onChangeText={(text) => onChangePassword(text)}
@@ -226,7 +256,11 @@ const mapStateToProps = (state) => {
     };
   };
   const mapDispatchToProps = (dispatch) => {
-    return {};
+    return {
+      senduser: (z) => {
+        dispatch(senduser(z));
+      },
+    };
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(Update);

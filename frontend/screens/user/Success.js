@@ -12,13 +12,8 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { senduser } from "../redux/actions";
-<<<<<<< HEAD
-import AsyncStorage from "@react-native-community/async-storage";
-const win = Dimensions.get('window')
-=======
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
->>>>>>> 66b8e445d9c15cfa362f6792426859ee25e3129b
+const win = Dimensions.get("window")
 // This appears after a user successfully signs in
 class Success extends Component {
   constructor(props) {

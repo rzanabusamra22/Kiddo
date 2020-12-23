@@ -51,8 +51,6 @@ class Coloring extends Component {
           result,
         });
       });
-<<<<<<< HEAD
-=======
   }
   save(item) {
     if (this.props.user) {
@@ -79,7 +77,6 @@ class Coloring extends Component {
         })
         .catch((error) => console.error(error));
     }
->>>>>>> 66b8e445d9c15cfa362f6792426859ee25e3129b
   }
   save(item) {
     if (this.props.user) {

@@ -13,21 +13,6 @@ import {
 const win = Dimensions.get("window");
 // This will render activity history of the current user
 class History extends Component {
-<<<<<<< HEAD
-    constructor(props) {
-        super(props)
-            this.state = {
-                result: [],
-                isFetching: false,
-            }}
-    onRefresh() {
-                this.setState({ isFetching: true }, function() { this.getHistory() });
-             }
-    getHistory() {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-      
-=======
   constructor(props) {
     super(props);
     this.state = {
@@ -43,57 +28,11 @@ class History extends Component {
   getHistory() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
->>>>>>> 66b8e445d9c15cfa362f6792426859ee25e3129b
     var requestOptions = {
       method: "GET",
       redirect: "follow",
       headers: myHeaders,
     };
-<<<<<<< HEAD
-    fetch(`https://blackpearl2.ew.r.appspot.com/historys/?user=${this.props.user?.username}&kind=`, requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            this.setState({
-                result:result,
-                isFetching: false
-            })})
-        .catch(error => console.error(error));
-      
-    }
-    componentDidMount() {
-        this.getHistory()
-    }
-    go(x){
-        // When clicking on a history item visits the page again
-       if(x.kind==="video"){sendvideo(x.link);this.props.navigation.navigate(x.kind)}
-       else{sendgame(x.link);this.props.navigation.navigate(x.kind)}
-    
-       
-    }
-    render() {
-        return(
-            <View style={styles.container}>
-            <View style={styles.content}>
-                    <FlatList
-                                    data={this.state.result}
-                                    renderItem={({ item,i }) => (
-                                        <TouchableOpacity style={styles.container} onPress={()=>this.go(item)} key={i}>
-                                    <View >
-                                    <Image 
-                                     source={{uri: item.thumbnail}}
-
-                                     style={{ width: win.width/3,
-                                        height: win.width/3, borderRadius:8, margin:win.width/40}}
-                                     />
-                                     </View>
-                                     </TouchableOpacity>  
-                                    )}
-                                    numColumns={2}
-                                    keyExtractor={(index,key)=>{return key}}
-                                    onRefresh={() => this.onRefresh()}
-                                    refreshing={this.state.isFetching}
-                    />
-=======
     fetch(
       `https://blackpearl2.ew.r.appspot.com/historys/?user=${this.props.user?.username}&kind=`,
       requestOptions
@@ -149,7 +88,6 @@ class History extends Component {
                       margin: win.width / 40,
                     }}
                   />
->>>>>>> 66b8e445d9c15cfa362f6792426859ee25e3129b
                 </View>
               </TouchableOpacity>
             )}
