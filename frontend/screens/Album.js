@@ -1,11 +1,11 @@
 // frontend/screens/Album.js
 import React, { Component, useState } from "react";
 import {
-  StyleSheet,
   Image,
   FlatList,
-  TouchableOpacity,
+  StyleSheet,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 
 // This component will show a lot of photos in a nice viewing fashion; scrolling both ways horizontally & vertically

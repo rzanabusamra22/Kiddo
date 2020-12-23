@@ -3,8 +3,7 @@ import { TouchableOpacity } from "react-native";
 import React, { Component, useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { Image, StyleSheet, Text, View } from "react-native";
-// import SoundPlayer from 'react-native-sound-player'
-// var Sound = require('react-native-sound');
+import $ from "jquery";
 
 // Static variables in array to be rendered
 const slides = [
@@ -41,11 +40,16 @@ class Animals extends Component {
     super();
     this.state = {};
   }
-
   _renderItem = ({ item }) => {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            $("#audio").attr({
+              src: item.sound
+            });
+          }}
+        >
           <Image
             source={item.image}
             style={{
