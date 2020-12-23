@@ -4,7 +4,6 @@ import {
   View,
   Text,
   Image,
-  Alert,
   TextInput,
   StyleSheet,
   Dimensions,
@@ -154,38 +153,12 @@ class SignIn extends Component {
         if (result.token !== undefined) {
           AsyncStorage.setItem("@token", result.token).then(() => {
             AsyncStorage.setItem("@user", this.state.username).then(() => {
-              alert(
-                "User Sign-in",
-                `Hello ${this.state.username}` +
-                  "\n" +
-                  "signed in successfully",
-                [
-                  {
-                    text: "Ok",
-                    onPress: () => {
-                      this.props.navigation.navigate("Success");
-                    },
-                  },
-                ],
-                { cancelable: true }
-              );
+              location.reload();
+              this.props.navigation.navigate("Success");
             });
           });
         } else {
-          alert(
-            "User Sign-in",
-            "signed in failed" + "\n" + "username or password : incorrect",
-            [
-              {
-                text: "Cancel",
-                onPress: () => {
-                  this.props.navigation.navigate("Home");
-                },
-              },
-              { text: "Try again", onPress: () => {} },
-            ],
-            { cancelable: true }
-          );
+          alert("signed in failed" + "\n" + "username or password : incorrect");
         }
       })
       .catch((error) => console.error(error));
@@ -195,29 +168,20 @@ class SignIn extends Component {
       <View
         style={{
           flex: 1,
-          backgroundColor: "white",
+          backgroundImage: require("./Login.png"),
           justifyContent: "flex-end",
+          alignItems: "center",
         }}
       >
-        {/* Background Picture */}
-        <Animated.View
-          style={{
-            ...StyleSheet.absoluteFill,
-            transform: [{ translateY: this.bgY }],
-          }}
-        >
-          <Image
-            source={require("./Login.png")}
-            style={{ flex: 1, height: null, width: null }}
-          />
-        </Animated.View>
         {/* Landpage Content */}
-        <View style={{ height: height / 3, justifyContent: "center" }}>
+        <View style={{ height: height / 3, alignItems: "center", justifyContent: "center" }}>
           {/* Sign in button 1 control the main animation*/}
           <TapGestureHandler onHandlerStateChange={this.onStateChange}>
             <Animated.View
               style={{
                 ...styles.button,
+                width: '90vw',
+                backgroundColor: "#42a7f5",
                 opacity: this.buttonOpacity,
                 transform: [{ translateY: this.buttonY }],
               }}
@@ -234,6 +198,7 @@ class SignIn extends Component {
             <Animated.View
               style={{
                 ...styles.button,
+                width: '90vw',
                 backgroundColor: "#dc962e",
                 opacity: this.buttonOpacity,
                 transform: [{ translateY: this.buttonY }],
@@ -258,19 +223,6 @@ class SignIn extends Component {
               justifyContent: "center",
             }}
           >
-            {/* Closeing Setting */}
-            <TapGestureHandler onHandlerStateChange={this.onCloseState}>
-              <Animated.View style={styles.closeButton}>
-                <Animated.Text
-                  style={{
-                    fontSize: 15,
-                    transform: [{ rotate: concat(this.rotateCross, "deg") }],
-                  }}
-                >
-                  X
-                </Animated.Text>
-              </Animated.View>
-            </TapGestureHandler>
             {/* Email input */}
             <TextInput
               placeholder="User Name"
@@ -313,6 +265,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "white",
     height: 70,
+    width: 350,
     marginHorizontal: 20,
     borderRadius: 35,
     alignItems: "center",

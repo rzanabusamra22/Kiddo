@@ -75,14 +75,15 @@ class Profile extends Component {
           </Text>
         </View>
         <TouchableOpacity>
-          <Animated.View style={styles.button}>
+          <Animated.View
+            onPress={() => {
+              this.props.navigation.navigate("Edit");
+            }}
+          >
             <Image
               source={{ uri: "https://i.imgur.com/6xtJi3t.png" }}
               style={{ height: 50, width: 50 }}
               resizeMode="center"
-              onPress={() => {
-                this.props.navigation.navigate("Edit");
-              }}
             ></Image>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>Edit</Text>
           </Animated.View>
@@ -108,6 +109,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     marginTop: 70,
@@ -119,13 +122,11 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    height: win.width / 2.5,
-    width: win.width / 2.5,
   },
   profileImage: {
     width: 200,
     height: 200,
-    borderRadius: 100,
+    borderRadius: 33,
     overflow: "hidden",
     marginTop: 15,
   },
@@ -138,6 +139,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "white",
     height: 70,
+    width: 350,
     marginHorizontal: 75,
     borderRadius: 35,
     alignItems: "center",

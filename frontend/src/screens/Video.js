@@ -10,7 +10,7 @@ class Video extends Component {
     this.state = {};
   }
   render() {
-    return <iframe src={this.props.videolink} />;
+    return <iframe src={this.props.videolink} width="100%" height="100%" />;
   }
 }
 

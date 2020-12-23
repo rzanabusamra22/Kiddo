@@ -25,6 +25,30 @@ class History extends Component {
       this.getHistory();
     });
   }
+  deleteHistory = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+
+    var raw = "";
+
+    var requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    for (var i = 0; i < this.state.result.length; i++) {
+      fetch(
+        `https://blackpearl2.ew.r.appspot.com/historys/${this.state.result[i].id}/`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((result) => {})
+        .catch((error) => console.log("error", error));
+    }
+  };
   getHistory() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -99,6 +123,11 @@ class History extends Component {
             refreshing={this.state.isFetching}
           />
         </View>
+        <TouchableOpacity style={styles.button} onPress={this.deleteHistory}>
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+            Delete History
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }

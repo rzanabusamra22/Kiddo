@@ -10,7 +10,7 @@ class Colorings extends Component {
     this.state = {};
   }
   render() {
-    return <iframe src={this.props.coloringlink} />;
+    return <iframe src={this.props.coloringlink} width="100%" height="100%" />;
   }
 }
 

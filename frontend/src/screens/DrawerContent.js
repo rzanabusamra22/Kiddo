@@ -72,7 +72,14 @@ class DrawerContent extends React.Component {
                   )}
                   label="Home"
                   onPress={() => {
-                    this.props.navigation.navigate("Home");
+                    AsyncStorage.getItem("@token").then((token) => {
+                      if (!token) {
+                        this.setState({ token });
+                        this.props.navigation.navigate("Home");
+                      } else {
+                        this.props.navigation.navigate("Home");
+                      }
+                    });
                   }}
                 />
                 <DrawerItem
@@ -81,7 +88,14 @@ class DrawerContent extends React.Component {
                   )}
                   label="Profile"
                   onPress={() => {
-                    this.props.navigation.navigate("Profile");
+                    AsyncStorage.getItem("@token").then((token) => {
+                      if (!token) {
+                        this.setState({ token });
+                        this.props.navigation.navigate("Profile");
+                      } else {
+                        this.props.navigation.navigate("Profile");
+                      }
+                    });
                   }}
                 />
                 <DrawerItem
@@ -90,7 +104,14 @@ class DrawerContent extends React.Component {
                   )}
                   label="Donate"
                   onPress={() => {
-                    this.props.navigation.navigate("Donate");
+                    AsyncStorage.getItem("@token").then((token) => {
+                      if (!token) {
+                        this.setState({ token });
+                        this.props.navigation.navigate("Donate");
+                      } else {
+                        this.props.navigation.navigate("Donate");
+                      }
+                    });
                   }}
                 />
                 <DrawerItem
@@ -103,7 +124,13 @@ class DrawerContent extends React.Component {
                   )}
                   label="History"
                   onPress={() => {
-                    this.props.navigation.navigate("History");
+                    AsyncStorage.getItem("@token").then((token) => {
+                      if (!token) {
+                        this.setState({ token });
+                      } else {
+                        this.props.navigation.navigate("History");
+                      }
+                    });
                   }}
                 />
               </Drawer.Section>
@@ -116,7 +143,13 @@ class DrawerContent extends React.Component {
               )}
               label="Sign Out"
               onPress={() => {
-                this.signOutHandler();
+                AsyncStorage.getItem("@token").then((token) => {
+                  if (!token) {
+                    this.setState({ token });
+                  } else {
+                    this.signOutHandler();
+                  }
+                });
               }}
             />
           </Drawer.Section>

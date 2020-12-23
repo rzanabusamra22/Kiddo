@@ -4,7 +4,6 @@ import {
   View,
   Text,
   Image,
-  Alert,
   Keyboard,
   TextInput,
   Dimensions,
@@ -74,49 +73,17 @@ const SignUp = (props) => {
               if (result.token !== undefined) {
                 AsyncStorage.setItem("@token", result.token).then(() => {
                   AsyncStorage.setItem("@user", parentname).then(() => {
-                    alert(
-                      "Parents SignUp",
-                      "Successfully signed up",
-                      [
-                        {
-                          text: "OK",
-                          onPress: () => {
-                            props.navigation.navigate("Home");
-                          },
-                        },
-                      ],
-                      { cancelable: true }
-                    );
+                    alert("Successfully signed up");
+                    location.reload();
                   });
                 });
               } else {
-                alert(
-                  "Parents SignUp",
-                  "Signed up Failed " + "\n" + signup_error_msg,
-                  [
-                    { text: "Try again", onPress: () => {} },
-                    {
-                      text: "CANCEL",
-                      onPress: () => {
-                        props.navigation.navigate("Home");
-                      },
-                    },
-                  ],
-                  { cancelable: true }
-                );
+                alert("Signed up Failed " + "\n" + signup_error_msg);
               }
             })
             .catch((error) => {
               console.error(error);
-              alert(
-                "Parents SignUp",
-                "Failed signed up",
-                [
-                  { text: "Try again", onPress: () => {} },
-                  { text: "OK", onPress: () => {} },
-                ],
-                { cancelable: false }
-              );
+              alert("Failed signed up");
             });
         }
       });
@@ -129,7 +96,7 @@ const SignUp = (props) => {
     >
       <View style={styles.container}>
         <Text style={styles.logo1}>Kiddo Parents</Text>
-        
+
         <TextInput
           value={parentname}
           name="parentname"

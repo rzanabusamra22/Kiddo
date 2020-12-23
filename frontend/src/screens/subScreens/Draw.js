@@ -10,7 +10,7 @@ class Draw extends Component {
     this.state = {};
   }
   render() {
-    return <iframe src={this.props.drawlink} />;
+    return <iframe src={this.props.drawlink} width="100%" height="100%" />;
   }
 }
 
