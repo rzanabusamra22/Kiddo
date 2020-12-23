@@ -1,6 +1,6 @@
 // frontend/screens/user/SignUp.js
 import React, { Component, useState } from "react";
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   View,
   Text,
@@ -215,4 +215,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
 });
+
 export default SignUp;

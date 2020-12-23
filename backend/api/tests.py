@@ -1,9 +1,11 @@
-from django.test.runner import DiscoverRunner
-from django.test import TransactionTestCase
-from django.test import SimpleTestCase
-from django.test import TestCase
+# backend/api/tests.py
 from api.models import User
+from django.test import TestCase
+from django.test import SimpleTestCase
+from django.test import TransactionTestCase
+from django.test.runner import DiscoverRunner
 
+# backend unit test & database integration test
 class UserTestCase(TestCase):
     def setUp(self):
         User.objects.create(username="john", password="123qwe@#", email="john@gmail.com")

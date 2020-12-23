@@ -1,7 +1,7 @@
 // frontend/screens/DrawerContent.js
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import {
   useTheme,
@@ -83,7 +83,7 @@ class DrawerContent extends React.Component {
                   )}
                   label="Profile"
                   onPress={() => {
-                    this.props.navigation.navigate("Success");
+                    this.props.navigation.navigate("Profile");
                   }}
                 />
                 <DrawerItem
@@ -255,4 +255,5 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(DrawerContent);
