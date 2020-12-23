@@ -4,7 +4,6 @@ import React, { Component, useState } from "react";
 import {
   View,
   Text,
-  Alert,
   Keyboard,
   TextInput,
   StyleSheet,
@@ -31,23 +30,13 @@ const Update = (props) => {
       raw.username = parentname;
     }
     if (parentname === "") {
-      alert(
-        "Required",
-        "Username can't be empty ",
-        [{ text: "Ok", onPress: () => {} }],
-        { cancelable: true }
-      );
+      alert("Username can't be empty ");
     }
     if (email !== "") {
       raw.email = email;
     }
     if (password === "") {
-      alert(
-        "Required",
-        "Password can't be empty ",
-        [{ text: "Ok", onPress: () => {} }],
-        { cancelable: true }
-      );
+      alert("Password can't be empty ");
     }
     if (password !== "") {
       raw.password = password;
@@ -73,18 +62,18 @@ const Update = (props) => {
     )
       .then((response) => response.json())
       .then((result) => {
-        var signup_error_msg = "";
+        var error_msg = "";
         if (Array.isArray(result.username)) {
-          signup_error_msg += "\n" + result.username;
+          error_msg += "\n" + result.username;
         }
         if (Array.isArray(result.email)) {
-          signup_error_msg += "\n" + result.email;
+          error_msg += "\n" + result.email;
         }
         if (Array.isArray(result.password)) {
-          signup_error_msg += "\n" + result.password;
+          error_msg += "\n" + result.password;
         }
 
-        if (signup_error_msg === "") {
+        if (error_msg === "") {
           props.senduser(result);
 
           var myHeaders = new Headers();
@@ -109,60 +98,28 @@ const Update = (props) => {
               if (result.token !== undefined) {
                 AsyncStorage.setItem("@token", result.token);
                 AsyncStorage.setItem("@user", username);
+              } else {
+                alert("Editing Failed " + "\n" + error_msg);
               }
+            })
+            .catch((error) => {
+              console.error(error);
+              alert("Failed to edit");
             });
-
-          alert(
-            "Account info editing",
-            "Successfully edited",
-            [
-              {
-                text: "OK",
-                onPress: () => {
-                  props.navigation.navigate("Home");
-                },
-              },
-            ],
-            { cancelable: true }
-          );
-        } else {
-          alert(
-            "Account info editing",
-            "Editing Failed " + "\n" + signup_error_msg,
-            [
-              { text: "Try again", onPress: () => {} },
-              {
-                text: "CANCEL",
-                onPress: () => {
-                  props.navigation.navigate("Home");
-                },
-              },
-            ],
-            { cancelable: true }
-          );
         }
-      })
-      .catch((error) => {
-        console.error(error);
-        alert(
-          "Parents SignUp",
-          "Failed signed up",
-          [
-            { text: "Try again", onPress: () => {} },
-            { text: "OK", onPress: () => {} },
-          ],
-          { cancelable: false }
-        );
       });
   };
 
   return (
-    <TouchableWithoutFeedback >
-      <View style={styles.container}  onPress={() => {
-        Keyboard.dismiss();
-      }}>
+    <TouchableWithoutFeedback>
+      <View
+        style={styles.container}
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+      >
         <Text style={styles.logo1}>Update Account Info</Text>
-        
+
         <TextInput
           value={parentname}
           name="parentname"
@@ -197,7 +154,7 @@ const Update = (props) => {
           placeholderTextColor="black"
           onChangeText={(text) => onChangeEmail(text)}
         ></TextInput>
-        
+
         <TextInput
           value={phone}
           name="Phone"

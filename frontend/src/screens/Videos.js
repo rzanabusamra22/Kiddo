@@ -11,7 +11,6 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Button,
-  Alert,
   ScrollView,
   Linking,
 } from "react-native";

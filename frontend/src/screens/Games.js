@@ -12,7 +12,6 @@ import {
   TouchableOpacity,
   ScrollView,
   Button,
-  Alert,
   Linking,
 } from "react-native";
 import { connect } from "react-redux";

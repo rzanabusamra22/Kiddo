@@ -31,7 +31,7 @@ export default function Donate() {
       <Text style={styles.text2}>The Kiddo Community</Text>
       <Image
         style={styles.picture}
-        style={{ width: "100%", height: 150 }}
+        style={{ width: "100%", height: 500 }}
         source={{
           uri: "https://i.imgur.com/8txMhbj.png",
         }}
@@ -51,7 +51,13 @@ export default function Donate() {
 
 // Styles
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "white", justifyContent: "center" },
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   text: {
     fontWeight: "bold",
     textAlign: "center",

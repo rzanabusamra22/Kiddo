@@ -17,7 +17,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    $("body")[0].append('<audio autoplay="autoplay" src=""></audio>');
+    $("body").append('<audio autoplay="autoplay" src=""></audio>');
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 

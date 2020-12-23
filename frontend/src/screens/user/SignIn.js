@@ -4,7 +4,6 @@ import {
   View,
   Text,
   Image,
-  Alert,
   TextInput,
   StyleSheet,
   Dimensions,
@@ -154,38 +153,12 @@ class SignIn extends Component {
         if (result.token !== undefined) {
           AsyncStorage.setItem("@token", result.token).then(() => {
             AsyncStorage.setItem("@user", this.state.username).then(() => {
-              alert(
-                "User Sign-in",
-                `Hello ${this.state.username}` +
-                  "\n" +
-                  "signed in successfully",
-                [
-                  {
-                    text: "Ok",
-                    onPress: () => {
-                      this.props.navigation.navigate("Success");
-                    },
-                  },
-                ],
-                { cancelable: true }
-              );
+              location.reload();
+              this.props.navigation.navigate("Success");
             });
           });
         } else {
-          alert(
-            "User Sign-in",
-            "signed in failed" + "\n" + "username or password : incorrect",
-            [
-              {
-                text: "Cancel",
-                onPress: () => {
-                  this.props.navigation.navigate("Home");
-                },
-              },
-              { text: "Try again", onPress: () => {} },
-            ],
-            { cancelable: true }
-          );
+          alert("signed in failed" + "\n" + "username or password : incorrect");
         }
       })
       .catch((error) => console.error(error));

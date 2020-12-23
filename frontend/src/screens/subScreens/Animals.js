@@ -45,7 +45,7 @@ class Animals extends Component {
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() => {
-            $("audio")[0].attr({
+            $("audio").attr({
               src: item.sound,
             });
           }}

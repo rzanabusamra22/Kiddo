@@ -91,7 +91,9 @@ class Success extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
     backgroundColor: "#FFF",
+    justifyContent: "center",
   },
   text: {
     marginTop: 70,
@@ -103,13 +105,11 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    height: win.width / 2.5,
-    width: win.width / 2.5,
   },
   profileImage: {
     width: 200,
     height: 200,
-    borderRadius: 100,
+    borderRadius: 33,
     overflow: "hidden",
     marginTop: 15,
   },
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "white",
     height: 70,
+    width: 300,
     marginHorizontal: 75,
     borderRadius: 35,
     alignItems: "center",
