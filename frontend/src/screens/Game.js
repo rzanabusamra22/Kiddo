@@ -11,7 +11,7 @@ class Game extends Component {
   }
 
   render() {
-    return <iframe src={this.props.gamelink} />;
+    return <iframe src={this.props.gamelink} width="100%" height="100%" />;
   }
 }
 
