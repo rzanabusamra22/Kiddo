@@ -1,4 +1,4 @@
-// frontend/App.js
+// frontend/src/App.js
 
 // Imports
 
