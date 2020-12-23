@@ -1,9 +1,11 @@
 
 import React, { Component, useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView ,TouchableOpacity} from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView ,TouchableOpacity, Dimensions} from "react-native";
 import { connect } from 'react-redux';
 import { senduser } from '../redux/actions';
 import AsyncStorage from '@react-native-community/async-storage'
+
+const win = Dimensions.get("window")
 
 class Success extends Component{
     constructor(props) {
@@ -37,7 +39,7 @@ class Success extends Component{
             <Text style={[styles.text, { fontWeight: "200", fontSize: 30 ,color:'#2b31ae'}]}>Thank You For Trusting Us</Text>
             <View style={{ alignSelf: "center" }}>
                 <View style={styles.profileImage}>
-                    <Image source={{uri: this.props.user?.thumbnail}} style={styles.image} resizeMode="center"></Image>
+                    <Image source={{uri: this.props.user?.thumbnail}}  style={styles.image} resizeMode="center"></Image>
                 </View>
             </View>
             <View style={styles.infoContainer}>
@@ -68,15 +70,16 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        height: undefined,
-        width: undefined
+        height: 200,
+        width: 200
+        // height: win.height/2.5,
+        // width: win.width/2.5
     },
     profileImage: {
         width: 200,
         height: 200,
         borderRadius: 100,
-        overflow: "hidden",
-        marginTop:15
+        overflow: "hidden"
     },
     infoContainer: {
         alignSelf: "center",
