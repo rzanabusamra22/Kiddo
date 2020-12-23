@@ -120,6 +120,7 @@ class MusicApp extends Component {
     .then(response => response.json())
     .then( (result) => {
     if(result.token !== undefined){
+
       AsyncStorage.setItem('@token', result.token)
       AsyncStorage.setItem('@user', this.state.username)
       Alert.alert(
@@ -127,6 +128,10 @@ class MusicApp extends Component {
          `Hello ${this.state.username}`  + '\n' + "signed in successfully" ,
         [
           { text: "Ok", onPress: () =>{ 
+            this.setState({
+              username:'',
+              password:''
+            })
              this.props.navigation.navigate('parentProfile')
            
     }}
@@ -140,6 +145,10 @@ class MusicApp extends Component {
           "signed in failed" + '\n' + 'username or password : incorrect',
           [
             { text: "Cancel", onPress: () =>{ 
+              this.setState({
+                username:'',
+                password:''
+              })
             this.props.props.navigation.navigate('Home')
           }},
           { text: "Try again", onPress: () =>{ 
@@ -184,7 +193,7 @@ class MusicApp extends Component {
                </Animated.View>
            </TapGestureHandler>
            {/* Email input */}
-           <TextInput placeholder='User Name' value={this.state.username} onChangeText={text=>this.onchange('username',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
+           <TextInput placeholder='User Name' value={this.state.username} onChangeText={text=> this.onchange('username',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Password input */}
            <TextInput  placeholder='Password' secureTextEntry={true} value={this.state.password} onChangeText={text=>this.onchange('password',text)} style={styles.textInput} placeholderTextColor='black'></TextInput>
            {/* Signin Botton 2  */}

@@ -27,7 +27,7 @@ class Animals extends Component{
           <TouchableOpacity onPress={()=>{
              try {
              
-              // or play from url
+             
               SoundPlayer.playUrl('"https://www.fesliyanstudios.com/play-mp3/6595"')
           } catch (e) {
               console.log(`cannot play the sound file`, e)
