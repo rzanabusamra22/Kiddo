@@ -30,7 +30,7 @@ class Coloring extends Component {
       result: [],
     };
   }
- 
+
   componentDidMount() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -63,7 +63,6 @@ class Coloring extends Component {
         thumbnail: item?.thumbnail,
         kind: "Colorings",
       });
-      console.log(raw);
       var requestOptions = {
         method: "POST",
         headers: myHeaders,
@@ -72,9 +71,7 @@ class Coloring extends Component {
       };
       fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
         .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-        })
+        .then((result) => {})
         .catch((error) => console.error(error));
     }
   }
@@ -114,8 +111,8 @@ class Coloring extends Component {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
-              sendcoloring(item.link);
               this.save(item);
+              sendcoloring(item.link);
               navigation.navigate("Colorings");
             }}
             style={{

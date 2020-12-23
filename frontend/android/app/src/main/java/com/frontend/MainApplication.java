@@ -5,17 +5,6 @@ import android.content.Context;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-<<<<<<< HEAD
-import com.zmxv.RNSound.RNSoundPackage;
-import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
-import com.reactnativerestart.RestartPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-
-import com.zmxv.RNSound.RNSoundPackage;
-import com.zmxv.RNSound.RNSoundPackage;
-=======
->>>>>>> 66b8e445d9c15cfa362f6792426859ee25e3129b
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;

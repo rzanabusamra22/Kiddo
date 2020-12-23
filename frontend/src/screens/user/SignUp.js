@@ -1,4 +1,4 @@
-// frontend/screens/user/SignUp.js
+// frontend/src/screens/user/SignUp.js
 import React, { Component, useState } from "react";
 import {
   View,
@@ -74,7 +74,7 @@ const SignUp = (props) => {
               if (result.token !== undefined) {
                 AsyncStorage.setItem("@token", result.token).then(() => {
                   AsyncStorage.setItem("@user", parentname).then(() => {
-                    Alert.alert(
+                    alert(
                       "Parents SignUp",
                       "Successfully signed up",
                       [
@@ -90,7 +90,7 @@ const SignUp = (props) => {
                   });
                 });
               } else {
-                Alert.alert(
+                alert(
                   "Parents SignUp",
                   "Signed up Failed " + "\n" + signup_error_msg,
                   [
@@ -108,7 +108,7 @@ const SignUp = (props) => {
             })
             .catch((error) => {
               console.error(error);
-              Alert.alert(
+              alert(
                 "Parents SignUp",
                 "Failed signed up",
                 [
@@ -129,14 +129,7 @@ const SignUp = (props) => {
     >
       <View style={styles.container}>
         <Text style={styles.logo1}>Kiddo Parents</Text>
-        <TextInput
-          value={picture}
-          name="Picture"
-          placeholder="Profile Picture"
-          style={styles.textInput}
-          placeholderTextColor="black"
-          onChangeText={(text) => onChangePicture(text)}
-        ></TextInput>
+        
         <TextInput
           value={parentname}
           name="parentname"
@@ -144,6 +137,15 @@ const SignUp = (props) => {
           style={styles.textInput}
           placeholderTextColor="black"
           onChangeText={(text) => onChangeName(text)}
+        ></TextInput>
+        <TextInput
+          value={password}
+          name="Password"
+          placeholder="Password"
+          secureTextEntry={true}
+          style={styles.textInput}
+          placeholderTextColor="black"
+          onChangeText={(text) => onChangePassword(text)}
         ></TextInput>
         <TextInput
           value={email}
@@ -155,13 +157,12 @@ const SignUp = (props) => {
           onChangeText={(text) => onChangeEmail(text)}
         ></TextInput>
         <TextInput
-          value={password}
-          name="Password"
-          placeholder="Password"
-          secureTextEntry={true}
+          value={picture}
+          name="Picture"
+          placeholder="Profile Picture"
           style={styles.textInput}
           placeholderTextColor="black"
-          onChangeText={(text) => onChangePassword(text)}
+          onChangeText={(text) => onChangePicture(text)}
         ></TextInput>
         <TextInput
           value={phone}

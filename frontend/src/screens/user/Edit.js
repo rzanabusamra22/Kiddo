@@ -1,4 +1,4 @@
-// frontend/screens/user/Edit.js
+// frontend/src/screens/user/Edit.js
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { Component, useState } from "react";
 import {
@@ -30,11 +30,19 @@ const Update = (props) => {
     if (parentname !== "") {
       raw.username = parentname;
     }
+    if (parentname === "") {
+      alert(
+        "Required",
+        "Username can't be empty ",
+        [{ text: "Ok", onPress: () => {} }],
+        { cancelable: true }
+      );
+    }
     if (email !== "") {
       raw.email = email;
     }
     if (password === "") {
-      Alert.alert(
+      alert(
         "Required",
         "Password can't be empty ",
         [{ text: "Ok", onPress: () => {} }],
@@ -104,7 +112,7 @@ const Update = (props) => {
               }
             });
 
-          Alert.alert(
+          alert(
             "Account info editing",
             "Successfully edited",
             [
@@ -118,7 +126,7 @@ const Update = (props) => {
             { cancelable: true }
           );
         } else {
-          Alert.alert(
+          alert(
             "Account info editing",
             "Editing Failed " + "\n" + signup_error_msg,
             [
@@ -136,7 +144,7 @@ const Update = (props) => {
       })
       .catch((error) => {
         console.error(error);
-        Alert.alert(
+        alert(
           "Parents SignUp",
           "Failed signed up",
           [
@@ -149,21 +157,12 @@ const Update = (props) => {
   };
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
+    <TouchableWithoutFeedback >
+      <View style={styles.container}  onPress={() => {
         Keyboard.dismiss();
-      }}
-    >
-      <View style={styles.container}>
+      }}>
         <Text style={styles.logo1}>Update Account Info</Text>
-        <TextInput
-          value={picture}
-          name="Picture"
-          placeholder="Profile Picture"
-          style={styles.textInput}
-          placeholderTextColor="black"
-          onChangeText={(text) => onChangePicture(text)}
-        ></TextInput>
+        
         <TextInput
           value={parentname}
           name="parentname"
@@ -171,15 +170,6 @@ const Update = (props) => {
           style={styles.textInput}
           placeholderTextColor="black"
           onChangeText={(text) => onChangeName(text)}
-        ></TextInput>
-        <TextInput
-          value={email}
-          name="Email"
-          keyboardType="email-address"
-          placeholder="Email"
-          style={styles.textInput}
-          placeholderTextColor="black"
-          onChangeText={(text) => onChangeEmail(text)}
         ></TextInput>
         <TextInput
           value={password}
@@ -190,6 +180,24 @@ const Update = (props) => {
           placeholderTextColor="black"
           onChangeText={(text) => onChangePassword(text)}
         ></TextInput>
+        <TextInput
+          value={picture}
+          name="Picture"
+          placeholder="Profile Picture"
+          style={styles.textInput}
+          placeholderTextColor="black"
+          onChangeText={(text) => onChangePicture(text)}
+        ></TextInput>
+        <TextInput
+          value={email}
+          name="Email"
+          keyboardType="email-address"
+          placeholder="Email"
+          style={styles.textInput}
+          placeholderTextColor="black"
+          onChangeText={(text) => onChangeEmail(text)}
+        ></TextInput>
+        
         <TextInput
           value={phone}
           name="Phone"

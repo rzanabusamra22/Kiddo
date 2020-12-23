@@ -40,15 +40,16 @@ class Profile extends Component {
             {this.props.user?.phone}
           </Text>
         </View>
-        <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate("Edit");
-              }}>
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate("Edit");
+          }}
+        >
           <Animated.View style={styles.button}>
             <Image
               source={{ uri: "https://i.imgur.com/6xtJi3t.png" }}
               style={{ height: 50, width: 50 }}
               resizeMode="center"
-              
             ></Image>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>Edit</Text>
           </Animated.View>

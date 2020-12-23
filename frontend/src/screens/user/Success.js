@@ -1,4 +1,4 @@
-// frontend/screens/user/Success.js
+// frontend/src/screens/user/Success.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,
@@ -67,6 +67,9 @@ class Success extends Component {
           <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>
             {this.props.user?.phone}
           </Text>
+          <Text style={[styles.text1, { color: "#AEB5BC", fontSize: 14 }]}>
+            {this.props.user?.email}
+          </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
@@ -128,6 +131,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     marginTop: 20,
   },
+  
 });
 
 // Redux
