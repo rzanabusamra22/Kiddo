@@ -1,4 +1,4 @@
-// frontend/screens/VideoLists.js
+// frontend/src/screens/VideoLists.js
 import React, { useState } from "react";
 import {
   StyleSheet,

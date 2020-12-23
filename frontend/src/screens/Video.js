@@ -1,4 +1,4 @@
-// frontend/screens/Video.js
+// frontend/src/screens/Video.js
 import { connect } from "react-redux";
 import React, { Component, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";

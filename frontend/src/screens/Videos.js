@@ -1,4 +1,4 @@
-// frontend/screens/Videos.js
+// frontend/src/screens/Videos.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,

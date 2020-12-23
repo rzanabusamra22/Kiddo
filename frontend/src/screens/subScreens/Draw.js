@@ -1,4 +1,4 @@
-// frontend/screens/subScrees/Draw.js
+// frontend/src/screens/subScrees/Draw.js
 import { connect } from "react-redux";
 import React, { Component, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";

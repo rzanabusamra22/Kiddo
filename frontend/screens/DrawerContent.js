@@ -15,6 +15,7 @@ import {
   Switch,
 } from "react-native-paper";
 import { connect } from "react-redux";
+import { senduser } from "./redux/actions";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 // Drawer

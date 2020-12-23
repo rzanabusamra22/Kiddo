@@ -1,4 +1,5 @@
-// frontend/screens/Home.js
+// frontend/src/screens/Home.js
+import $ from "jquery";
 import { connect } from "react-redux";
 import { senduser } from "./redux/actions";
 import CategoryItem from "./category-item-card";
@@ -16,6 +17,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    $("body")[0].append('<audio autoplay="autoplay" src=""></audio>');
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
