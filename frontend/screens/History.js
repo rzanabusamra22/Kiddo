@@ -1,21 +1,24 @@
-// frontend/screens/history.js
-// import
-import { StyleSheet, Image, Text, View, Keyboard, TextInput,FlatList, TouchableWithoutFeedback, TouchableOpacity, Button, Alert,ScrollView, Linking } from 'react-native';
-import React, { Component, useState } from 'react';
-import { sendvideo, sendgame } from './redux/actions';
+// frontend/screens/History.js
 import { connect } from 'react-redux';
 import { Dimensions } from "react-native";
+import React, { Component, useState } from 'react';
+import { sendvideo, sendgame } from './redux/actions';
+import { StyleSheet,Image,View,FlatList,TouchableOpacity} from 'react-native';
 const win = Dimensions.get('window');
+// This will render activity history of the current user
 class History extends Component {
     constructor(props) {
         super(props)
             this.state = {
                 result: [],
+                isFetching: false,
             }}
-    componentDidMount() {
-    var myHeaders = new Headers();
+    onRefresh() {
+                this.setState({ isFetching: true }, function() { this.getHistory() });
+             }
+    getHistory() {
+        var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-      
     var requestOptions = {
         method: 'GET',
         redirect: 'follow',
@@ -23,11 +26,18 @@ class History extends Component {
     };
     fetch(`https://blackpearl2.ew.r.appspot.com/historys/?user=${this.props.user?.username}&kind=`, requestOptions)
         .then(response => response.json())
-        .then(result => {this.setState({result})})
+        .then(result => {
+            this.setState({
+                result:result,
+                isFetching: false
+            })})
         .catch(error => console.error(error));
     }
+    componentDidMount() {
+        this.getHistory()
+    }
     go(x){
-        // when clicking on a history item visits the page again
+        // When clicking on a history item visits the page again
        if(x.kind==="video"){sendvideo(x.link);this.props.navigation.navigate(x.kind)}
        else{sendgame(x.link);this.props.navigation.navigate(x.kind)}
     }
@@ -42,7 +52,6 @@ class History extends Component {
                                     <View >
                                     <Image 
                                      source={{uri: item.thumbnail}}
-
                                      style={{ width: win.width/3,
                                         height: win.width/3, borderRadius:8, margin:win.width/40}}
                                      />
@@ -51,14 +60,15 @@ class History extends Component {
                                     )}
                                     numColumns={2}
                                     keyExtractor={(index,key)=>{return key}}
+                                    onRefresh={() => this.onRefresh()}
+                                    refreshing={this.state.isFetching}
                     />
                 </View>
         </View>
     )}
 }
-// react native styles
+// Styles
 const styles = StyleSheet.create({
-   
     container: {
         flex: 1
     },
