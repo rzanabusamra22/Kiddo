@@ -60,9 +60,9 @@ class Games extends Component {
         user: this.props.user?.username,
         link: item.link,
         thumbnail: item?.thumbnail,
-        kind: "Game"
+        kind: "Game",
       });
-      console.log(raw)
+      console.log(raw);
       var requestOptions = {
         method: "POST",
         headers: myHeaders,
@@ -70,10 +70,7 @@ class Games extends Component {
         redirect: "follow",
       };
 
-      fetch(
-        "https://blackpearl2.ew.r.appspot.com/historys/",
-        requestOptions
-      )
+      fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
         .then((response) => response.json())
         .then((result) => {})
         .catch((error) => console.error(error));

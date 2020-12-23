@@ -1,10 +1,10 @@
 // frontend/screens/Home.js
-import { StyleSheet, Text, View, Image, FlatList, Button } from "react-native";
-import React, { useState, Component } from "react";
-import CategoryItem from "./category-item-card";
-import { senduser } from "./redux/actions";
 import { connect } from "react-redux";
-import AsyncStorage from "@react-native-community/async-storage";
+import { senduser } from "./redux/actions";
+import CategoryItem from "./category-item-card";
+import React, { useState, Component } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StyleSheet, Text, View, Image, FlatList, Button } from "react-native";
 
 // Home sweet Home!
 class Home extends Component {
