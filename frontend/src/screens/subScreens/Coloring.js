@@ -1,45 +1,48 @@
-// frontend/screens/Games.js
+// frontend/src/screens/subScrees/Coloring.js
 import React, { Component, useState } from "react";
 import {
-  StyleSheet,
-  Image,
   Text,
   View,
+  Image,
+  Alert,
+  Button,
+  Linking,
+  FlatList,
   Keyboard,
   TextInput,
-  TouchableWithoutFeedback,
-  FlatList,
-  TouchableOpacity,
   ScrollView,
-  Button,
-  Alert,
-  Linking,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { connect } from "react-redux";
 import { Dimensions } from "react-native";
-import { sendgame } from "./redux/actions";
+import { sendcoloring } from "../redux/actions";
 const wind = Dimensions.get("window");
 var vw = wind.width * 0.01;
 var vh = wind.height * 0.01;
 
-// This component renders all the games
-class Games extends Component {
+// All the coloring games
+class Coloring extends Component {
   constructor(props) {
     super(props);
     this.state = {
       result: [],
     };
   }
+
   componentDidMount() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+
     var requestOptions = {
       method: "GET",
       redirect: "follow",
       headers: myHeaders,
     };
+
     fetch(
-      "https://blackpearl2.ew.r.appspot.com/plays/?category=other",
+      "https://blackpearl2.ew.r.appspot.com/plays/?category=color",
       requestOptions
     )
       .then((response) => response.json())
@@ -47,10 +50,8 @@ class Games extends Component {
         this.setState({
           result,
         });
-      })
-      .catch((error) => console.error(error));
+      });
   }
-
   save(item) {
     if (this.props.user) {
       var myHeaders = new Headers();
@@ -60,8 +61,33 @@ class Games extends Component {
         user: this.props.user?.username,
         link: item.link,
         thumbnail: item?.thumbnail,
-        kind: "Game",
+        kind: "Colorings",
       });
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+      fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {})
+        .catch((error) => console.error(error));
+    }
+  }
+  save(item) {
+    if (this.props.user) {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+
+      var raw = JSON.stringify({
+        user: this.props.user?.username,
+        link: item.link,
+        thumbnail: item?.thumbnail,
+        kind: "Color",
+      });
+
       var requestOptions = {
         method: "POST",
         headers: myHeaders,
@@ -77,7 +103,7 @@ class Games extends Component {
   }
   render() {
     const navigation = this.props.navigation;
-    const sendgame = this.props.sendgame;
+    const sendcoloring = this.props.sendcoloring;
     const anygame = this.state.result;
     return (
       <FlatList
@@ -86,8 +112,8 @@ class Games extends Component {
           <TouchableOpacity
             onPress={() => {
               this.save(item);
-              sendgame(item.link);
-              navigation.navigate("Game");
+              sendcoloring(item.link);
+              navigation.navigate("Colorings");
             }}
             style={{
               marginLeft: vw * 7,
@@ -165,16 +191,16 @@ const styles = StyleSheet.create({
 // Redux
 const mapStateToProps = (state) => {
   return {
-    gamelink: state.gamelink,
+    coloringlink: state.coloringlink,
     user: state.user,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    sendgame: (z) => {
-      dispatch(sendgame(z));
+    sendcoloring: (z) => {
+      dispatch(sendcoloring(z));
     },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Games);
+export default connect(mapStateToProps, mapDispatchToProps)(Coloring);

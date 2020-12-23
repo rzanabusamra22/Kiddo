@@ -1,4 +1,4 @@
-// frontend/screens/user/Success.js
+// frontend/src/screens/user/Success.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,

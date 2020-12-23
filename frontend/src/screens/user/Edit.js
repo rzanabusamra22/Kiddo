@@ -1,4 +1,4 @@
-// frontend/screens/user/Edit.js
+// frontend/src/screens/user/Edit.js
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { Component, useState } from "react";
 import {
@@ -34,7 +34,7 @@ const Update = (props) => {
       raw.email = email;
     }
     if (password === "") {
-      Alert.alert(
+      alert(
         "Required",
         "Password can't be empty ",
         [{ text: "Ok", onPress: () => {} }],
@@ -104,7 +104,7 @@ const Update = (props) => {
               }
             });
 
-          Alert.alert(
+          alert(
             "Account info editing",
             "Successfully edited",
             [
@@ -118,7 +118,7 @@ const Update = (props) => {
             { cancelable: true }
           );
         } else {
-          Alert.alert(
+          alert(
             "Account info editing",
             "Editing Failed " + "\n" + signup_error_msg,
             [
@@ -136,7 +136,7 @@ const Update = (props) => {
       })
       .catch((error) => {
         console.error(error);
-        Alert.alert(
+        alert(
           "Parents SignUp",
           "Failed signed up",
           [
