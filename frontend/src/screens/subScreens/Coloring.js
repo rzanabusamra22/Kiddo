@@ -1,4 +1,4 @@
-// frontend/screens/subScrees/Coloring.js
+// frontend/src/screens/subScrees/Coloring.js
 import React, { Component, useState } from "react";
 import {
   Text,
@@ -30,14 +30,17 @@ class Coloring extends Component {
       result: [],
     };
   }
+
   componentDidMount() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+
     var requestOptions = {
       method: "GET",
       redirect: "follow",
       headers: myHeaders,
     };
+
     fetch(
       "https://blackpearl2.ew.r.appspot.com/plays/?category=color",
       requestOptions
@@ -60,7 +63,6 @@ class Coloring extends Component {
         thumbnail: item?.thumbnail,
         kind: "Colorings",
       });
-      console.log(raw);
       var requestOptions = {
         method: "POST",
         headers: myHeaders,
@@ -69,13 +71,36 @@ class Coloring extends Component {
       };
       fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
         .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-        })
+        .then((result) => {})
         .catch((error) => console.error(error));
     }
   }
+  save(item) {
+    if (this.props.user) {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
 
+      var raw = JSON.stringify({
+        user: this.props.user?.username,
+        link: item.link,
+        thumbnail: item?.thumbnail,
+        kind: "Color",
+      });
+
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      fetch("https://blackpearl2.ew.r.appspot.com/historys/", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {})
+        .catch((error) => console.error(error));
+    }
+  }
   render() {
     const navigation = this.props.navigation;
     const sendcoloring = this.props.sendcoloring;
@@ -86,8 +111,8 @@ class Coloring extends Component {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
-              sendcoloring(item.link);
               this.save(item);
+              sendcoloring(item.link);
               navigation.navigate("Colorings");
             }}
             style={{

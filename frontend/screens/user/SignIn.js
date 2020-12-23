@@ -129,7 +129,6 @@ class SignIn extends Component {
     });
   }
   onchange = (name, value) => {
-    console.log(name + ':' + value)
     this.setState({
       [name]: value,
     });

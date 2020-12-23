@@ -1,4 +1,4 @@
-// frontend/screens/DrawerContent.js
+// frontend/src/screens/DrawerContent.js
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";

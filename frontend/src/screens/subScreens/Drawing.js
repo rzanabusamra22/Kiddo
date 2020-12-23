@@ -1,4 +1,4 @@
-// frontend/screens/subScrees/Drawing.js
+// frontend/src/screens/subScrees/Drawing.js
 import React, { Component, useState } from "react";
 import {
   Text,
@@ -33,11 +33,13 @@ class Drawing extends Component {
   componentDidMount() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+
     var requestOptions = {
       method: "GET",
       redirect: "follow",
       headers: myHeaders,
     };
+
     fetch(
       `https://blackpearl2.ew.r.appspot.com/plays/?category=draw`,
       requestOptions

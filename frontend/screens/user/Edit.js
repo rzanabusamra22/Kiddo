@@ -1,5 +1,4 @@
 // frontend/screens/user/Edit.js
-
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { Component, useState } from "react";
 import {
@@ -10,12 +9,13 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 import { connect } from "react-redux";
 import { senduser } from "../redux/actions";
+
 // Responsible for updating existed
-const Update = ( props ) => {
+const Update = (props) => {
   const [parentname, onChangeName] = useState("");
   const [password, onChangePassword] = useState("");
   const [picture, onChangePicture] = useState("");
@@ -26,45 +26,45 @@ const Update = ( props ) => {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
 
-    var raw = {}
-    if(parentname !== ''){
-        raw.username = parentname
+    var raw = {};
+    if (parentname !== "") {
+      raw.username = parentname;
     }
-    if(email !== ''){
-        raw.email = email
+    if (email !== "") {
+      raw.email = email;
     }
-    if(password === ''){
-        Alert.alert(
-            "Required",
-          "Password can't be empty ",
-          [
-            { text: "Ok", onPress: () => {} },
-          ],
-          { cancelable: true }
-        );
+    if (password === "") {
+      Alert.alert(
+        "Required",
+        "Password can't be empty ",
+        [{ text: "Ok", onPress: () => {} }],
+        { cancelable: true }
+      );
     }
-    if(password !== ''){
-        raw.password = password
+    if (password !== "") {
+      raw.password = password;
     }
 
-    if(picture !== ''){
-        raw.thumbnail = picture
+    if (picture !== "") {
+      raw.thumbnail = picture;
     }
-    if(phone !== ''){
-        raw.phone = phone
+    if (phone !== "") {
+      raw.phone = phone;
     }
 
-  raw = JSON.stringify(raw);
+    raw = JSON.stringify(raw);
     var requestOptions = {
       method: "PUT",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
     };
-    fetch(`https://blackpearl2.ew.r.appspot.com/users/${props.user.id}/`, requestOptions)
+    fetch(
+      `https://blackpearl2.ew.r.appspot.com/users/${props.user.id}/`,
+      requestOptions
+    )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result)
         var signup_error_msg = "";
         if (Array.isArray(result.username)) {
           signup_error_msg += "\n" + result.username;
@@ -75,77 +75,78 @@ const Update = ( props ) => {
         if (Array.isArray(result.password)) {
           signup_error_msg += "\n" + result.password;
         }
-    
-         if( signup_error_msg === ''){
-            console.log(props)
-            props.senduser(result)
-                 
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
-        myHeaders.append("Content-Type", "application/json");
 
-var raw = JSON.stringify({"username":result.username,"password":password});
+        if (signup_error_msg === "") {
+          props.senduser(result);
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
+          var myHeaders = new Headers();
+          myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+          myHeaders.append("Content-Type", "application/json");
 
-fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log('******************** jwt ******************', result)
-        if (result.token !== undefined) {
-          AsyncStorage.setItem("@token", result.token)
-            AsyncStorage.setItem("@user", username)
-          }});
- 
-            Alert.alert(
-                "Account info editing",
-                "Successfully edited",
-                [
-                  {
-                    text: "OK",
-                    onPress: () => {
-                      props.navigation.navigate("Home");
-                    },
-                  },
-                ],
-                { cancelable: true }
-              );
+          var raw = JSON.stringify({
+            username: result.username,
+            password: password,
+          });
 
-         }
-           else {
-                Alert.alert(
-                    "Account info editing",
-                  "Editing Failed " + "\n" + signup_error_msg,
-                  [
-                    { text: "Try again", onPress: () => {} },
-                    {
-                      text: "CANCEL",
-                      onPress: () => {
-                        props.navigation.navigate("Home");
-                      },
-                    },
-                  ],
-                  { cancelable: true }
-                );
+          var requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow",
+          };
+
+          fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+              if (result.token !== undefined) {
+                AsyncStorage.setItem("@token", result.token);
+                AsyncStorage.setItem("@user", username);
               }
-            }) .catch((error) => {
-              console.error(error);
-              Alert.alert(
-                "Parents SignUp",
-                "Failed signed up",
-                [
-                  { text: "Try again", onPress: () => {} },
-                  { text: "OK", onPress: () => {} },
-                ],
-                { cancelable: false }
-              );
             });
+
+          Alert.alert(
+            "Account info editing",
+            "Successfully edited",
+            [
+              {
+                text: "OK",
+                onPress: () => {
+                  props.navigation.navigate("Home");
+                },
+              },
+            ],
+            { cancelable: true }
+          );
+        } else {
+          Alert.alert(
+            "Account info editing",
+            "Editing Failed " + "\n" + signup_error_msg,
+            [
+              { text: "Try again", onPress: () => {} },
+              {
+                text: "CANCEL",
+                onPress: () => {
+                  props.navigation.navigate("Home");
+                },
+              },
+            ],
+            { cancelable: true }
+          );
         }
+      })
+      .catch((error) => {
+        console.error(error);
+        Alert.alert(
+          "Parents SignUp",
+          "Failed signed up",
+          [
+            { text: "Try again", onPress: () => {} },
+            { text: "OK", onPress: () => {} },
+          ],
+          { cancelable: false }
+        );
+      });
+  };
 
   return (
     <TouchableWithoutFeedback
@@ -201,7 +202,6 @@ fetch("https://blackpearl2.ew.r.appspot.com/jwt/", requestOptions)
         <TouchableOpacity style={styles.button} onPress={submitEditions}>
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>Edit</Text>
         </TouchableOpacity>
-    
       </View>
     </TouchableWithoutFeedback>
   );
@@ -249,21 +249,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
 });
+
 // Redux
 const mapStateToProps = (state) => {
-    return {
-      user: state.user,
-    };
+  return {
+    user: state.user,
   };
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      senduser: (z) => {
-        dispatch(senduser(z));
-      },
-    };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    senduser: (z) => {
+      dispatch(senduser(z));
+    },
   };
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(Update);
-  
+};
 
-
+export default connect(mapStateToProps, mapDispatchToProps)(Update);

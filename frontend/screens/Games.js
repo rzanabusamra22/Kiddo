@@ -62,7 +62,6 @@ class Games extends Component {
         thumbnail: item?.thumbnail,
         kind: "Game",
       });
-      console.log(raw);
       var requestOptions = {
         method: "POST",
         headers: myHeaders,

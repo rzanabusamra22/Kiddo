@@ -1,4 +1,4 @@
-// frontend/screens/user/Success.js
+// frontend/src/screens/user/Success.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,
@@ -8,11 +8,12 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import { connect } from "react-redux";
 import { senduser } from "../redux/actions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+const win = Dimensions.get("window");
 // This appears after a user successfully signs in
 class Success extends Component {
   constructor(props) {
@@ -99,8 +100,8 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    height: undefined,
-    width: undefined,
+    height: win.width / 2.5,
+    width: win.width / 2.5,
   },
   profileImage: {
     width: 200,

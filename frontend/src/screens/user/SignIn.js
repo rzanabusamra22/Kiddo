@@ -1,4 +1,4 @@
-// frontend/screens/user/SignIn.js
+// frontend/src/screens/user/SignIn.js
 import React, { Component } from "react";
 import {
   View,
