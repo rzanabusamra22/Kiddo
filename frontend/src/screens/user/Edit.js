@@ -30,7 +30,7 @@ const Update = (props) => {
     if (parentname !== "") {
       raw.username = parentname;
     }
-    if (username === "") {
+    if (parentname === "") {
       alert(
         "Required",
         "Username can't be empty ",

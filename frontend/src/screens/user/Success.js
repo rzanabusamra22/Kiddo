@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     marginTop: 20,
   },
+  
 });
 
 // Redux

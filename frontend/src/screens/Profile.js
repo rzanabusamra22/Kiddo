@@ -19,8 +19,6 @@ const win = Dimensions.get("window");
 // This appears after a user successfully signs in
 
 // This will render the user's profile interface and info
-
-
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -77,7 +75,6 @@ class Profile extends Component {
             {this.props.user?.email}
           </Text>
         </View>
-
         <TouchableOpacity>
           <Animated.View style={styles.button}>
             <Image
@@ -91,7 +88,6 @@ class Profile extends Component {
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>Edit</Text>
           </Animated.View>
         </TouchableOpacity>
-
         <TouchableOpacity
           onPress={() => {
             this.props.navigation.navigate("History");
@@ -108,17 +104,16 @@ class Profile extends Component {
   }
 }
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#FFF",
   },
   text: {
     marginTop: 70,
     textAlign: "center",
-    color: "#2b31ae", /* "#52575D"*/
+    color: "#2b31ae",
   },
   text1: {
     color: "#52575D",
@@ -138,7 +133,8 @@ const styles = StyleSheet.create({
   infoContainer: {
     alignSelf: "center",
     alignItems: "center",
-    marginTop: 16,
+    margin: win.width/20,
+    marginTop: 16
   },
   button: {
     backgroundColor: "white",
@@ -153,6 +149,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     marginTop: 20,
   },
+  
 });
 
 // Redux
@@ -170,3 +167,14 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+
+
+
+
+
+
+
+
+
+
+
