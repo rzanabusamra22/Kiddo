@@ -16,8 +16,8 @@ Including another URLconf
 from api import views
 from django.urls import path
 from django.contrib import admin
-from django.conf.urls import url, include
 from rest_framework import routers
+from django.conf.urls import url, include
 from rest_framework_jwt import views as jwt_views
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -28,22 +28,16 @@ router.register(r'plays', views.PlayViewSet)
 router.register(r'records', views.RecordViewSet)
 router.register(r'donations', views.DonationViewSet)
 router.register(r'photos', views.PhotoViewSet)
-# router.register(r'admins', views.AdminViewSet)
-# router.register(r'token')
 
 # Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
    path('admin/', admin.site.urls),
    path("", include( router.urls )),
-   path("auth/", include('djoser.urls')),
+   path("", include('djoser.urls')),
    path("token/", include('djoser.urls.authtoken')), #api/auth/
-#    url(r'^account/', include('djoser.urls')),
    path('jwt/', jwt_views.obtain_jwt_token, name='auth'),
    path('status/',views.index,name='index'),
    path('signup/', views.signup, name='signup'),
    path('getid/', views.id, name="id"),
    path('donate/', views.donate, name="donate")
 ]
-
-# /users/id  -> apiGet

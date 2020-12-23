@@ -1,13 +1,7 @@
-#from django.contrib.auth.models import User
-from rest_framework import serializers
+# backend/api/serializers.py
 from .models import *
+from rest_framework import serializers
 from djoser.serializers import UserCreateSerializer
-
-# Serializers define the API representation.
-# class UserSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ['url', 'username', 'email', 'is_staff']
 
 class PlaySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -17,7 +11,7 @@ class PlaySerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = [ 'username', 'password', 'email', 'phone', 'thumbnail', 'is_staff', 'is_superuser',]
+        fields = [ 'username', 'password', 'email', 'phone', 'thumbnail', 'is_staff', 'is_active', 'is_superuser']
 
 class HistorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

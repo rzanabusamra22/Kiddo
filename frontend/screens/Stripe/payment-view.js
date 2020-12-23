@@ -1,21 +1,18 @@
+// frontend/screens/Stripe/payment-view.js
+import { WebView } from "react-native-webview";
+import React, { useState, useEffect } from "react";
 
-import React, { useState, useEffect} from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
-import { WebView } from 'react-native-webview'
+const STRIPE_PK =
+  "pk_test_51HoFgjCxgtcfoZwvsKFbfVjfG9zEtZV8SlBCIQ9gziIN1dFFj5WbV4vgjHGQslUdfoenn0j5bGqHu9fwKBVb8WvB0077gk8H7w";
 
-const STRIPE_PK = 'pk_test_51HoFgjCxgtcfoZwvsKFbfVjfG9zEtZV8SlBCIQ9gziIN1dFFj5WbV4vgjHGQslUdfoenn0j5bGqHu9fwKBVb8WvB0077gk8H7w'
+const PaymentView = (props) => {
+  const { amount, username } = props;
 
-const PaymentView = (props) => { 
+  const onCheckStatus = (response) => {
+    props.onCheckStatus(response);
+  };
 
-    const { amount,username } = props
-    
-
-    const onCheckStatus = (response) => {
-        props.onCheckStatus(response)
-    }
-
-
-    const htmlContent = `
+  const htmlContent = `
     
                 <!DOCTYPE html>
             <html lang="en">
@@ -196,7 +193,7 @@ const PaymentView = (props) => {
                          * Error Handling
                          */
 
-                        //show card error if entered Invalid Card Number
+                        // Show card error if entered Invalid Card Number
                         function showCardError(error){
                             document.getElementById('card-errors').innerHTML = ""
                             if(error){
@@ -208,10 +205,10 @@ const PaymentView = (props) => {
                         card.on('change', function(event) {
                             if (event.complete) {
                                 showCardError()
-                                // enable payment button
+                                // Enable payment button
                             } else if (event.error) {
                                 const { message} = event.error
-                                console.log(message)
+                                
                                 showCardError(message)
                             }
                         });
@@ -249,7 +246,7 @@ const PaymentView = (props) => {
             
                             stripe.createToken(card, additionalData).then(function(result) {
                             
-                            console.log(result);
+                           
 
                             if (result.token) {
                                 window.postMessage(JSON.stringify(result));
@@ -267,27 +264,28 @@ const PaymentView = (props) => {
 
     `;
 
-    const injectedJavaScript = `(function() {
+  const injectedJavaScript = `(function() {
         window.postMessage = function(data){
             window.ReactNativeWebView.postMessage(data);
         };
     })()`;
 
+  const onMessage = (event) => {
+    const { data } = event.nativeEvent;
 
-    const onMessage = (event) => {
-        const { data } =  event.nativeEvent;
-        console.log('******* paymentView, data: ',  data)
-        onCheckStatus(data)
-    }
+    onCheckStatus(data);
+  };
 
-return <WebView
-    javaScriptEnabled={true}
-    style={{ flex: 1}}
-    originWhitelist={['*']}
-    source={{ html: htmlContent}}
-    injectedJavaScript={injectedJavaScript}
-    onMessage={onMessage}
-/>
+  return (
+    <WebView
+      javaScriptEnabled={true}
+      style={{ flex: 1 }}
+      originWhitelist={["*"]}
+      source={{ html: htmlContent }}
+      injectedJavaScript={injectedJavaScript}
+      onMessage={onMessage}
+    />
+  );
+};
 
-}
- export default PaymentView
+export default PaymentView;
