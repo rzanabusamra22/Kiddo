@@ -1,7 +1,6 @@
 {
   "name": "kiddo",
   "description": "app for kids",
-  "main": "index.js",
   "license": "none",
   "version": "1.0.0",
   "homepage": "https://kiddoi.web.app/",
@@ -26,7 +25,6 @@
   "dependencies": {
     "@babel/preset-env": "^7.12.10",
     "@react-native-async-storage/async-storage": "^1.13.2",
-    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/cli": "^4.13.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/drawer": "^5.11.4",
@@ -45,6 +43,7 @@
     "install": "^0.13.0",
     "jest-expo": "^40.0.1",
     "jest-fetch-mock": "^3.0.3",
+    "jquery": "^3.5.1",
     "jsdom": "^16.4.0",
     "link": "^0.1.5",
     "lottie-react-native": "^2.6.1",
@@ -56,6 +55,7 @@
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-paper": "^4.4.1",
+    "react-native-pull-to-refresh": "^2.1.3",
     "react-native-reanimated": "^1.13.2",
     "react-native-restart": "0.0.20",
     "react-native-restart-android": "0.0.7",

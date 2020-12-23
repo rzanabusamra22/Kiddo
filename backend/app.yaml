@@ -10,9 +10,9 @@ handlers:
 - url: /.*
   script: auto
 
-# This is an alternative to app variable in main.py (if it fails to be detected)
+# This is an alternative to app variable in main.py (if it fails to be detected)(uncomment if needed)
 # entrypoint: gunicorn -b :$PORT main:app
 
-# To create a flex env & custom runtime (Needs Dockerfile)
+# To create a flex env & custom runtime (Needs Dockerfile)(uncomment if needed)
 # runtime: custom
 # env: flex

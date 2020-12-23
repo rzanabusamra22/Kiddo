@@ -1,3 +1,2 @@
-// __mocks__/fileMock.js
-
-module.exports = '';
+// jest/fileMock.js
+module.exports = "";
