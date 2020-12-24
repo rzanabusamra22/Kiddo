@@ -1,4 +1,4 @@
-[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://blackpearl2.ew.r.appspot.com/)
+[![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://kiddoi.web.app/)
 
 # Project Name : KIDDO
 
@@ -141,12 +141,12 @@ gcloud app deploy
 ```
 ## Links
 
+- Deployed: Front End
+https://kiddoi.web.app/
 - Deployed: Backend Server
 https://blackpearl2.ew.r.appspot.com/
 - Deployed: Backend Admin Server
 https://blackpearl2.ew.r.appspot.com/admin 
-- Deployed: Front End
-
 
 ## Picture Documentation
 

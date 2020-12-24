@@ -11,7 +11,7 @@ class UserSerializer(UserCreateSerializer):
 class HistorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = History
-        fields = ['user', 'link', 'thumbnail', 'kind']
+        fields = [ 'id', 'user', 'link', 'thumbnail', 'kind']
 
 class DonationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

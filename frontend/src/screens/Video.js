@@ -1,4 +1,4 @@
-// frontend/screens/Video.js
+// frontend/src/screens/Video.js
 import { connect } from "react-redux";
 import React, { Component, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
@@ -10,7 +10,7 @@ class Video extends Component {
     this.state = {};
   }
   render() {
-    return <iframe src={this.props.videolink} />;
+    return <iframe src={this.props.videolink} width="100%" height="100%" />;
   }
 }
 

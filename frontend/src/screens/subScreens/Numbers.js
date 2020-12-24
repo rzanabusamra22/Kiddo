@@ -1,4 +1,4 @@
-// frontend/screens/subScrees/Numbers.js
+// frontend/src/screens/subScrees/Numbers.js
 import React, { Component, useState } from 'react';
 import AppIntroSlider from "react-native-app-intro-slider";
 import { Image, StyleSheet, Text, View } from "react-native";

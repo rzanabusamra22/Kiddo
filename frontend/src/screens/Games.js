@@ -1,4 +1,4 @@
-// frontend/screens/Games.js
+// frontend/src/screens/Games.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,
@@ -12,7 +12,6 @@ import {
   TouchableOpacity,
   ScrollView,
   Button,
-  Alert,
   Linking,
 } from "react-native";
 import { connect } from "react-redux";

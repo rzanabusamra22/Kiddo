@@ -3,7 +3,6 @@ import React, { Component, useState } from "react";
 import {
   Text,
   View,
-  Alert,
   Image,
   Button,
   Linking,
