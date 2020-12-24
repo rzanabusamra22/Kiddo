@@ -58,7 +58,7 @@ const SignUp = (props) => {
             username: parentname,
             password: password,
           });
-          this.props.senduser(result);
+          props.senduser(result);
 
           var requestOptions = {
             method: "POST",

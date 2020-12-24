@@ -57,6 +57,9 @@ class Home extends Component {
                 <CategoryItem item={item} press={pressHandler} />
               )}
               numColumns={1}
+              keyExtractor={(index, key) => {
+                return `${key}`;
+              }}
             />
           </View>
         </View>

@@ -41,7 +41,7 @@ class Videolists extends React.Component {
       },
     ];
     return (
-      <View style={styles.mainContainer}>
+      <View style={styles.container}>
         <SafeAreaView>
           <ScrollView>
             {list.map((x, i) => {
@@ -69,6 +69,12 @@ class Videolists extends React.Component {
 
 // Styles
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FFF",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   a1: {
     flexDirection: "row",
     justifyContent: "center",

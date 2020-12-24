@@ -48,7 +48,7 @@ const Update = (props) => {
         this.props.senduser("");
         this.props.navigation.navigate("Home");
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.error(error));
   };
   const submitEditions = () => {
     var myHeaders = new Headers();

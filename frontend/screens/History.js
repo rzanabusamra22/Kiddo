@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   View,
+  Text,
   FlatList,
   TouchableOpacity,
 } from "react-native";
@@ -46,7 +47,7 @@ class History extends Component {
       )
         .then((response) => response.json())
         .then((result) => {})
-        .catch((error) => console.log("error", error));
+        .catch((error) => console.error(error));
     }
   };
   getHistory() {
@@ -132,6 +133,7 @@ class History extends Component {
     );
   }
 }
+
 // Styles
 const styles = StyleSheet.create({
   container: {
