@@ -47,7 +47,7 @@ class History extends Component {
       )
         .then((response) => response.json())
         .then((result) => {})
-        .catch((error) => console.log("error", error));
+        .catch((error) => console.error(error));
     }
   };
 
@@ -108,8 +108,8 @@ class History extends Component {
                   <Image
                     source={{ uri: item.thumbnail }}
                     style={{
-                      width: win.width / 3,
-                      height: win.width / 3,
+                      width: win.width / 5,
+                      height: win.width / 5,
                       borderRadius: 8,
                       margin: win.width / 40,
                     }}
@@ -134,6 +134,7 @@ class History extends Component {
     );
   }
 }
+
 // Styles
 const styles = StyleSheet.create({
   container: {

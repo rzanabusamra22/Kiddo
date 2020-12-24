@@ -94,12 +94,12 @@ class Videos extends Component {
             <Image
               style={{
                 borderRadius: 40,
-                height: 6 * vh,
                 marginBottom: 15,
                 marginTop: 5,
                 marginRight: 5,
                 paddingBottom: 25 * vh,
-                width: 50 * vw,
+                height: wind.width/3,
+                width: wind.width/2
               }}
               source={{ uri: item?.thumbnail }}
             />
@@ -123,10 +123,6 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center",
-  },
-  img: {
-    width: 120,
-    height: 120,
   },
   logo: {
     fontWeight: "bold",
