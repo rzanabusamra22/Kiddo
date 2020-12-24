@@ -118,11 +118,6 @@ const styles = StyleSheet.create({
   text1: {
     color: "#52575D",
   },
-  image: {
-    flex: 1,
-    height: win.width / 2.5,
-    width: win.width / 2.5,
-  },
   profileImage: {
     width: 200,
     height: 200,

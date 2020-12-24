@@ -59,7 +59,6 @@ const SignUp = (props) => {
             password: password,
           });
           props.senduser(result);
-
           var requestOptions = {
             method: "POST",
             body: raw,
@@ -86,6 +85,10 @@ const SignUp = (props) => {
               alert("Failed signed up");
             });
         }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Failed signed up");
       });
   };
   return (

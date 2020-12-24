@@ -119,6 +119,18 @@ const SignUp = (props) => {
               );
             });
         }
+      })
+      .catch((error) => {
+        console.error(error);
+        Alert.alert(
+          "Parents SignUp",
+          "Failed signed up",
+          [
+            { text: "Try again", onPress: () => {} },
+            { text: "OK", onPress: () => {} },
+          ],
+          { cancelable: false }
+        );
       });
   };
   return (
@@ -129,7 +141,7 @@ const SignUp = (props) => {
     >
       <View style={styles.container}>
         <Text style={styles.logo1}>Kiddo Parents</Text>
-        
+
         <TextInput
           value={parentname}
           name="parentname"
