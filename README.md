@@ -1,5 +1,9 @@
 [![Kiddo](https://i.postimg.cc/wTKffWZb/kiddo.png)](https://kiddoi.web.app/)
-
+[![TheBlackPearl](https://circleci.com/gh/TheBlackPearl-FinaleProject/Kiddo.svg?style=shield)](https://github.com/TheBlackPearl-FinaleProject/Kiddo)
+[![GitHub forks](https://img.shields.io/github/forks/TheBlackPearl-FinaleProject/Kiddo?style=plastic)](https://github.com/TheBlackPearl-FinaleProject/Kiddo/network)
+![GitHub last commit](https://img.shields.io/github/last-commit/TheBlackPearl-FinaleProject/Kiddo)
+![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/TheBlackPearl-FinaleProject/Kiddo)
+[![TheBlackPearl](https://circleci.com/gh/TheBlackPearl-FinaleProject/Kiddo.svg?style=svg)](https://github.com/TheBlackPearl-FinaleProject/Kiddo)
 # Project Name : KIDDO
 
 ## Team
@@ -125,8 +129,20 @@ python manage.py migrate
 ```
 ### Deploying
 
+To deploy the website using firebase
+1. Install firebase
+```
+cd frontend/
+firebase init
+```
+2. To deploy
+```
+cd frontend/
+firebase deploy
+```
+
 To deploy the server using app engine
-1. Install gcloud
+1. Install gcloud & delete pipfile + pipfilelock
 ```
 cd backend/
 gcloud app deploy
@@ -151,4 +167,3 @@ https://blackpearl2.ew.r.appspot.com/admin
 ## Picture Documentation
 
 ![Home Page](https://i.imgur.com/olCVOWe.png)
-
