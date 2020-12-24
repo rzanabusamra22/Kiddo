@@ -47,7 +47,7 @@ const Update = (props) => {
         this.props.senduser("");
         location.reload()
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.error(error));
   };
   const submitEditions = () => {
     var myHeaders = new Headers();
