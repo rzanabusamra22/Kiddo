@@ -36,7 +36,9 @@ class Animals extends Component {
   _renderItem = ({ item }) => {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => {
+              // SoundPlayer.playUrl(item.sound)
+        }}>
           <Image
             source={{ uri: item.link }}
             style={{
