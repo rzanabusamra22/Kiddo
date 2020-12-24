@@ -1,4 +1,4 @@
-// frontend/screens/Learn.js
+// frontend/src/screens/Learn.js
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -13,6 +13,12 @@ import {
 // This component renders all the categories of learning related games
 export default function Learn({ navigation }) {
   const [list, setList] = useState([
+    {
+      nav: "Animals",
+      key: "a7",
+      item: "Animals",
+      pic: "https://i.imgur.com/o6XWPz8.png",
+    },
     {
       nav: "Alphabet",
       key: "a1",
@@ -48,12 +54,6 @@ export default function Learn({ navigation }) {
       key: "a6",
       item: "Colors",
       pic: "https://i.imgur.com/rPOfwXs.png",
-    },
-    {
-      nav: "Animals",
-      key: "a7",
-      item: "Animals",
-      pic: "https://i.imgur.com/o6XWPz8.png",
     },
   ]);
   const pressHandler = (x) => {

@@ -10,10 +10,10 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.frontend.generated.BasePackageList;
-
+import com.reactnativerestart.RestartPackage;
 import org.unimodules.adapters.react.ModuleRegistryAdapter;
 import org.unimodules.adapters.react.ReactModuleRegistryProvider;
-
+import com.zmxv.RNSound.RNSoundPackage; 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -37,6 +37,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
+      packages.add(new MainReactPackage());
+      packages.add(new RestartPackage());
+      packages.add(new RNSoundPackage());      
       return packages;
     }
 

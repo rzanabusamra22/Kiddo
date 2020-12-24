@@ -1,4 +1,4 @@
-// frontend/screens/subScrees/Colors.js
+// frontend/src/screens/subScrees/Colors.js
 import React, { Component, useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { Image, StyleSheet, Text, View } from "react-native";

@@ -128,14 +128,7 @@ const SignUp = (props) => {
     >
       <View style={styles.container}>
         <Text style={styles.logo1}>Kiddo Parents</Text>
-        <TextInput
-          value={picture}
-          name="Picture"
-          placeholder="Profile Picture"
-          style={styles.textInput}
-          placeholderTextColor="black"
-          onChangeText={(text) => onChangePicture(text)}
-        ></TextInput>
+        
         <TextInput
           value={parentname}
           name="parentname"
@@ -143,6 +136,15 @@ const SignUp = (props) => {
           style={styles.textInput}
           placeholderTextColor="black"
           onChangeText={(text) => onChangeName(text)}
+        ></TextInput>
+        <TextInput
+          value={password}
+          name="Password"
+          placeholder="Password"
+          secureTextEntry={true}
+          style={styles.textInput}
+          placeholderTextColor="black"
+          onChangeText={(text) => onChangePassword(text)}
         ></TextInput>
         <TextInput
           value={email}
@@ -154,13 +156,12 @@ const SignUp = (props) => {
           onChangeText={(text) => onChangeEmail(text)}
         ></TextInput>
         <TextInput
-          value={password}
-          name="Password"
-          placeholder="Password"
-          secureTextEntry={true}
+          value={picture}
+          name="Picture"
+          placeholder="Profile Picture"
           style={styles.textInput}
           placeholderTextColor="black"
-          onChangeText={(text) => onChangePassword(text)}
+          onChangeText={(text) => onChangePicture(text)}
         ></TextInput>
         <TextInput
           value={phone}

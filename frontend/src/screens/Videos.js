@@ -1,4 +1,4 @@
-// frontend/screens/Videos.js
+// frontend/src/screens/Videos.js
 import React, { Component, useState } from "react";
 import {
   StyleSheet,
@@ -11,7 +11,6 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Button,
-  Alert,
   ScrollView,
   Linking,
 } from "react-native";
@@ -122,6 +121,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     flexDirection: "row",
     flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
   },
   img: {
     width: 120,

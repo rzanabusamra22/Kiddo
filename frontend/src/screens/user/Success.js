@@ -1,14 +1,14 @@
 // frontend/src/screens/user/Success.js
 import React, { Component, useState } from "react";
 import {
-  StyleSheet,
   Text,
   View,
-  SafeAreaView,
   Image,
   ScrollView,
-  TouchableOpacity,
+  StyleSheet,
   Dimensions,
+  SafeAreaView,
+  TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
 import { senduser } from "../redux/actions";
@@ -91,7 +91,9 @@ class Success extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
     backgroundColor: "#FFF",
+    justifyContent: "center",
   },
   text: {
     marginTop: 70,
@@ -103,13 +105,11 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    height: win.width / 2.5,
-    width: win.width / 2.5,
   },
   profileImage: {
     width: 200,
     height: 200,
-    borderRadius: 100,
+    borderRadius: 33,
     overflow: "hidden",
     marginTop: 15,
   },
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "white",
     height: 70,
+    width: 350,
     marginHorizontal: 75,
     borderRadius: 35,
     alignItems: "center",
@@ -131,7 +132,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     marginTop: 20,
   },
-  
 });
 
 // Redux

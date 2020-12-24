@@ -1,13 +1,14 @@
-// frontend/screens/History.js
+// frontend/src/screens/History.js
 import { connect } from "react-redux";
 import { Dimensions } from "react-native";
 import React, { Component, useState } from "react";
 import { sendvideo, sendgame, sendcoloring, senddraw } from "./redux/actions";
 import {
-  StyleSheet,
-  Image,
   View,
+  Text,
+  Image,
   FlatList,
+  StyleSheet,
   TouchableOpacity,
 } from "react-native";
 const win = Dimensions.get("window");
@@ -25,6 +26,31 @@ class History extends Component {
       this.getHistory();
     });
   }
+  deleteHistory = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Basic eG9ybzoxMjM=");
+
+    var raw = "";
+
+    var requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    for (var i = 0; i < this.state.result.length; i++) {
+      fetch(
+        `https://blackpearl2.ew.r.appspot.com/historys/${this.state.result[i].id}/`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((result) => {})
+        .catch((error) => console.log("error", error));
+    }
+  };
+
   getHistory() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -99,6 +125,11 @@ class History extends Component {
             refreshing={this.state.isFetching}
           />
         </View>
+        <TouchableOpacity style={styles.button} onPress={this.deleteHistory}>
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+            Delete History
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -107,6 +138,8 @@ class History extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   content: {
     backgroundColor: "white",
@@ -114,6 +147,19 @@ const styles = StyleSheet.create({
     padding: win.width / 10,
     justifyContent: "center",
     paddingTop: win.width / 50,
+  },
+  button: {
+    backgroundColor: "white",
+    height: 70,
+    width: 350,
+    marginHorizontal: 20,
+    borderRadius: 35,
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 5,
+    shadowOffset: { width: 2, height: 2 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
 });
 // Redux

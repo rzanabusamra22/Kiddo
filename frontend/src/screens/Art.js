@@ -1,4 +1,4 @@
-// frontend/screens/Art.js
+// frontend/src/screens/Art.js
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -30,7 +30,7 @@ export default function Art({ navigation }) {
     navigation.navigate(x);
   };
   return (
-    <View style={styles.mainContainer}>
+    <View style={styles.container}>
       <SafeAreaView>
         <ScrollView>
           {list.map((x, i) => {
@@ -54,6 +54,12 @@ export default function Art({ navigation }) {
 
 // Styles
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FFF",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   a1: {
     flexDirection: "row",
     justifyContent: "center",

@@ -1,4 +1,4 @@
-// frontend/screens/category-item-card.js
+// frontend/src/screens/category-item-card.js
 import React from "react";
 import { Dimensions } from "react-native";
 import { StyleSheet, Text, TouchableOpacity, Image, View } from "react-native";

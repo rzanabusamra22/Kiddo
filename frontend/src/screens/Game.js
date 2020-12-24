@@ -1,4 +1,4 @@
-// frontend/screens/Game.js
+// frontend/src/screens/Game.js
 import { connect } from "react-redux";
 import React, { Component, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
@@ -11,7 +11,7 @@ class Game extends Component {
   }
 
   render() {
-    return <iframe src={this.props.gamelink} />;
+    return <iframe src={this.props.gamelink} width="100%" height="100%" />;
   }
 }
 
