@@ -74,12 +74,12 @@ class Profile extends Component {
             {this.props.user?.email}
           </Text>
         </View>
-        <TouchableOpacity>
-          <Animated.View
-            onPress={() => {
-              this.props.navigation.navigate("Edit");
-            }}
-          >
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate("Edit");
+          }}
+        >
+          <Animated.View>
             <Image
               source={{ uri: "https://i.imgur.com/6xtJi3t.png" }}
               style={{ height: 50, width: 50 }}
