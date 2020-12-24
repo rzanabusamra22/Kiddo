@@ -166,4 +166,7 @@ https://blackpearl2.ew.r.appspot.com/admin
 
 ## Picture Documentation
 
-![Home Page](https://i.imgur.com/olCVOWe.png)
+![Home Page](https://i.imgur.com/JQjqTSk.png)
+![Home Page](https://i.imgur.com/bnqYsZ1.png)
+![Home Page](https://i.imgur.com/ZqTqrt6.png)
+![Home Page](https://i.imgur.com/fYf09ob.png)
